@@ -4,11 +4,14 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
-    "build": "sapper build --legacy",
+    "build": "sapper build --legacy && cp -R ./__sapper__/build ./functions/__sapper__",
+    "prebuild": "rm -rf functions/__sapper__/build && mkdir -p functions/__sapper__/build",
     "export": "sapper export --legacy",
-    "start": "node __sapper__/build",
+    "start": "npm run build && firebase serve",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
+    "predeploy": "npm run build",
+    "deploy": "firebase deploy",
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {

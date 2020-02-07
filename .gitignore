@@ -4,3 +4,6 @@
 yarn-error.log
 /cypress/screenshots/
 /__sapper__/
+/functions/node_modules/
+/functions/__sapper__/
+firebase-debug.log
