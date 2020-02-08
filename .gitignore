@@ -7,3 +7,5 @@ yarn-error.log
 /functions/node_modules/
 /functions/__sapper__/
 firebase-debug.log
+/.firebase/
+/src/node_modules/
