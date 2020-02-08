@@ -10,8 +10,8 @@
     "start": "npm run build && firebase serve",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "predeploy": "npm run build",
-    "deploy": "npm run test && firebase deploy",
+    "predeploy": "npm run build && npm run test",
+    "deploy": "firebase deploy",
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
