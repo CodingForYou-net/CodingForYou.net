@@ -5,4 +5,4 @@ const { sapper } = require('./__sapper__/build/server/server');
 
 const app = express().use(sapper.middleware());
 
-exports.ssr = functions.https.onRequest(app);
+exports.sapper = functions.https.onRequest(app);
