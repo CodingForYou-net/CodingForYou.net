@@ -116,4 +116,46 @@ describe('translation', () => {
       cy.contains('h1', 'Hi, Claude');
     });
   });
+
+  describe('language switch button', () => {
+    it("uses French when button clicked is FR", () => {
+      cy.visit('/?lang=en');
+      cy.get('a')
+      .contains('fr')
+      .click();
+      cy.url().should('include', '/?lang=fr');
+      cy.contains('h1', 'Bonjour, Claude');
+    });
+
+    it("uses English when button clicked is EN", () => {
+      cy.visit('/?lang=fr');
+      cy.get('a')
+      .contains('en')
+      .click();
+      cy.url().should('include', '/?lang=en');
+      cy.contains('h1', 'Hi, Claude');
+    });
+  });
+
+  describe('language local storage', () => {
+    it("changes local storage language to French when FR is clicked", () => {
+      cy.visit('/?lang=en')
+      cy.get('a')
+      .contains('fr')
+      .click()
+      .should(() => {
+        expect(localStorage.getItem('lang')).to.eq('fr')
+      });
+    });
+
+    it("changes local storage language to English when EN is clicked", () => {
+      cy.visit('/?lang=fr')
+      cy.get('a')
+      .contains('en')
+      .click()
+      .should(() => {
+        expect(localStorage.getItem('lang')).to.eq('en')
+      });
+    });
+  }); 
 });
