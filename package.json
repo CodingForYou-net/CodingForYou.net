@@ -12,7 +12,8 @@
     "cy:open": "cypress open",
     "predeploy": "npm run build && npm run test",
     "deploy": "firebase deploy",
-    "test": "run-p --race dev cy:run"
+    "test": "run-p --race dev cy:run",
+    "test:open": "run-p --race dev cy:open"
   },
   "dependencies": {
     "compression": "^1.7.1",
