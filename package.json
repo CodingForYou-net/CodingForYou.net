@@ -4,21 +4,20 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
-    "build": "sapper build --legacy && cp -R ./__sapper__/build ./functions/__sapper__",
-    "prebuild": "rm -rf functions/__sapper__/build && mkdir -p functions/__sapper__/build",
+    "build": "sapper build --legacy",
     "export": "sapper export --legacy",
-    "start": "npm run build && firebase serve",
+    "prestart": "npm run build",
+    "start": "node __sapper__/build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "predeploy": "npm run build && npm run test",
-    "deploy": "firebase deploy",
+    "deploy": "",
     "test": "run-p --race dev cy:run",
     "test:open": "run-p --race dev cy:open"
   },
   "dependencies": {
     "compression": "^1.7.1",
     "express": "^4.17.1",
-    "firebase-tools": "^7.13.0",
     "format-message": "^6.2.3",
     "sirv": "^0.4.0",
     "svelte-intl": "^1.0.5"
