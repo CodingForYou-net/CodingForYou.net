@@ -1,21 +1,22 @@
 <script>
   import { _, locale } from 'svelte-intl';
   import { onMount, onDestroy } from 'svelte';
+  import { getOtherLanguage } from './_translation.helpers.js';
 
   const name = 'Claude';
 
-  let newUrl;
+  let otherLanguageUrl;
   let otherLanguage;
   let unsub;
-  locale.subscribe((val) => (otherLanguage = val === 'en' ? 'fr' : 'en'))();
+  otherLanguage = getOtherLanguage();
   onMount(() => {
-    unsub = locale.subscribe((val) => {
-      otherLanguage = val === 'en' ? 'fr' : 'en';
+    unsub = locale.subscribe((lang) => {
+      otherLanguage = lang === 'en' ? 'fr' : 'en';
       const url = new URL(window.location);
       const searchParams = new URLSearchParams(url.search);
       searchParams.set('lang', otherLanguage);
       url.search = searchParams.toString();
-      newUrl = url.toString();
+      otherLanguageUrl = url.toString();
     });
   });
 
@@ -23,4 +24,4 @@
 </script>
 
 <h1>{$_('hello', { name })}</h1>
-<a href={newUrl}>{otherLanguage}</a>
+<a href={otherLanguageUrl}>{otherLanguage}</a>
