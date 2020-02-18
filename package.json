@@ -10,9 +10,9 @@
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "predeploy": "npm run build && npm run test",
-    "deploy": "",
-    "test": "run-p --race dev cy:run",
+    "predeploy": "npm i && npm run test",
+    "deploy": "pm2 stop codingforyou.net && pm2 start pm2.config.js",
+    "test": "run-p --race start cy:run",
     "test:open": "run-p --race dev cy:open"
   },
   "dependencies": {
