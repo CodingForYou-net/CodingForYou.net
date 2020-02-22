@@ -1,8 +1,8 @@
 export default {
   fr: {
-    hello: 'Bonjour, {name}',
+    hello: 'Bonjour, {name}. Comment ça va?',
   },
   en: {
-    hello: 'Hi, {name}',
+    hello: 'Hi, {name}. How are you?',
   },
 };
