@@ -2,12 +2,15 @@ name: CodingForYou.net
 on: push
 jobs:
   upload-to-server:
+    name: Upload to Server
     runs-on: ubuntu-latest
-    uses: appleboy/ssh-action@master
-    with:
-      username: ${{ secrets.USERNAME }}
-      key: ${{ secrets.KEY }}
-      port: ${{ secrets.PORT }}
-      script: |
-        cd web-server/CodingForYou.net
-        npm run deploy
+    steps:
+      - name: executing commands on codingforyou.net
+        uses: appleboy/ssh-action@master
+        with:
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd web-server/CodingForYou.net
+            npm run deploy
