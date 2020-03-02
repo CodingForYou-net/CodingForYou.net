@@ -3,7 +3,7 @@
   "description": "codingforyou.net - website",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev",
+    "dev": "sapper dev --live false",
     "start:db": "mongod --config /usr/local/etc/mongod.conf --fork",
     "stop:db": "pkill mongod",
     "build": "sapper build --legacy",

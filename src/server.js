@@ -22,7 +22,13 @@ mongoose
   });
 
 express()
-  .use(compression({ threshold: 0 }), sirv('static', { dev }), sapper.middleware())
+  .use(
+    compression({ threshold: 0 }),
+    sirv('static', { dev }),
+    sapper.middleware({
+      session: (req) => ({ lang: req.headers['accept-language'].split(',')[0].split('-')[0] }),
+    }),
+  )
   .listen(PORT, (err) => {
     if (err) console.log('✖ error'.red.bold, `${err}`.red);
     console.log(`✔ server running on port ${PORT}`.green.bold);
