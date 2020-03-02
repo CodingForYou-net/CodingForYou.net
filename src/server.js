@@ -6,11 +6,13 @@ import express from 'express';
 import mongoose from 'mongoose';
 import sirv from 'sirv';
 
+import { mongoURI } from './config/keys';
+
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === 'development';
 
 mongoose
-  .connect('mongodb://localhost/codingforyou-dev', {
+  .connect(mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
