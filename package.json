@@ -4,21 +4,26 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
+    "start:db": "mongod --config /usr/local/etc/mongod.conf --fork",
+    "stop:db": "pkill mongod",
     "build": "sapper build --legacy",
     "export": "sapper export --legacy",
     "prestart": "npm run build",
     "start": "node __sapper__/build",
-    "cy:run": "cypress run",
-    "cy:open": "cypress open",
     "predeploy": "npm i && npm run test",
     "deploy": "pm2 stop codingforyou.net && pm2 start pm2.config.js && pm2 save",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
     "test": "run-p --race start cy:run",
     "test:open": "run-p --race dev cy:open"
   },
   "dependencies": {
+    "clear": "^0.1.0",
+    "colors": "^1.4.0",
     "compression": "^1.7.1",
     "express": "^4.17.1",
     "format-message": "^6.2.3",
+    "mongoose": "^5.9.2",
     "sirv": "^0.4.0",
     "svelte-intl": "^1.0.5"
   },
@@ -34,8 +39,11 @@
     "autoprefixer": "^9.7.4",
     "cssnano": "^4.1.10",
     "cypress": "^4.0.1",
+    "import-sort-style-module": "^6.0.0",
     "node-sass": "^4.13.1",
     "npm-run-all": "^4.1.5",
+    "prettier": "^1.19.1",
+    "prettier-plugin-import-sort": "0.0.3",
     "rollup": "^1.20.0",
     "rollup-plugin-babel": "^4.0.2",
     "rollup-plugin-svelte": "^5.0.1",
@@ -43,5 +51,10 @@
     "sapper": "^0.27.0",
     "svelte": "^3.18.2",
     "svelte-preprocess": "^3.4.0"
+  },
+  "importSort": {
+    ".js": {
+      "style": "module"
+    }
   }
 }
