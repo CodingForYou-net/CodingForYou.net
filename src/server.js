@@ -1,7 +1,6 @@
 import 'colors';
 
 import * as sapper from '@sapper/server';
-import clear from 'clear';
 import compression from 'compression';
 import express from 'express';
 import mongoose from 'mongoose';
@@ -16,15 +15,15 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log('MongoDB connected');
+    console.log('✔ mongodb connected'.green.bold);
   })
   .catch((err) => {
-    console.log('error', err);
+    console.log('✖ error'.red.bold, `${err}`.red);
   });
 
 express()
   .use(compression({ threshold: 0 }), sirv('static', { dev }), sapper.middleware())
   .listen(PORT, (err) => {
-    if (err) console.log('error', err);
-    console.log(`server running on port ${PORT}`);
+    if (err) console.log('✖ error'.red.bold, `${err}`.red);
+    console.log(`✔ server running on port ${PORT}`.green.bold);
   });
