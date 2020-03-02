@@ -1,7 +1,7 @@
 <script>
   import { _, locale } from 'svelte-intl';
   import { onMount, onDestroy } from 'svelte';
-  import { getOtherLanguage } from './_translation.helpers.js';
+  import { getOtherLanguage } from '../helpers/translation.js';
 
   const name = 'Claude';
 

@@ -10,7 +10,7 @@
 
 <script>
   import MetaTags from '../components/MetaTags.svelte';
-  import { getCurrentLanguage } from './_translation.helpers.js';
+  import { getCurrentLanguage } from '../helpers/translation.js';
   import { onMount } from 'svelte';
 
   onMount(() => {
