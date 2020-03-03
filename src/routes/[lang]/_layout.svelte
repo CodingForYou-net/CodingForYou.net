@@ -5,6 +5,7 @@
 </script>
 
 <script>
+  import MetaTags from '../../components/MetaTags.svelte';
   import { locale, translations } from 'svelte-intl';
   import translationsList from './_translations.js';
 
@@ -14,4 +15,5 @@
   locale.set(lang);
 </script>
 
+<MetaTags {lang} />
 <slot />

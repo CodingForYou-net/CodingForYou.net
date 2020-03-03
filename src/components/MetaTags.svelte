@@ -9,6 +9,7 @@
 
 <svelte:head>
   <!-- HTML -->
+  <title>CodingForYou | {lang.charAt(0).toUpperCase() + lang.slice(1)}</title>
   <meta
     name="keywords"
     content="website, cheap, codingforyou, coding, for, you, site web, pour, vous, oncodepourvous,
@@ -16,8 +17,8 @@
   <meta name="description" content={description} />
   <meta name="subject" content={subject} />
   <meta name="copyright" content="CodingForYou, Vu Dang Khoa Chiem & Samuel Martineau" />
-  <meta name="language" content="FR,EN" />
-  <meta name="Classification" content="Business" />
+  <meta name="language" content={lang} />
+  <meta name="classification" content="business" />
   <meta name="author" content="CodingForYou, contact@codingforyou.net" />
   <meta name="designer" content="CodingForYou, Vu Dang Khoa Chiem & Samuel Martineau" />
   <meta name="reply-to" content="contact@codingforyou.net" />
@@ -41,7 +42,7 @@
   <meta name="og:site_name" content="CodingForYou.net" />
   <meta name="og:description" content={description} />
   <meta name="og:email" content="contact@codingforyou.net" />
-  <meta name="og:locality" content="Monréal" />
+  <meta name="og:locality" content="Monreal" />
   <meta name="og:region" content="QC" />
   <meta name="og:country-name" content="CA" />
   <meta property="og:type" content="website" />
