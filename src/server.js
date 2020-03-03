@@ -28,7 +28,14 @@ express()
     compression({ threshold: 0 }),
     sirv('static', { dev }),
     sapper.middleware({
-      session: (req) => ({ lang: req.headers['accept-language'].split(',')[0].split('-')[0] }),
+      session: (req) => {
+        const lang = (req.headers['accept-language'] || '')
+          .split(';')[0]
+          .split(',')
+          .map((l) => l.split('-')[0])
+          .filter((l) => ['fr', 'en'].includes(l))[0];
+        return { lang };
+      },
     }),
   )
   .listen(PORT, (err) => {
