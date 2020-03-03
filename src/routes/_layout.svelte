@@ -1,8 +1,7 @@
 <script context="module">
   export async function preload({ path }, { lang }) {
     lang = ['en', 'fr'].includes(lang) ? lang : 'en';
-    if (!['/global.css'].includes(path) && !/^\/(fr|en)\/?.*$/.test(path))
-      this.redirect(302, `/${lang}${path}`);
+    if (!/^\/(fr|en)\/?.*$/.test(path)) this.redirect(302, `/${lang}${path}`);
   }
 </script>
 
