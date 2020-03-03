@@ -5,14 +5,25 @@
 </script>
 
 <script>
+  import { langStore, translations, translationsList } from '../../helpers/translation.js';
   import MetaTags from '../../components/MetaTags.svelte';
-  import { locale, translations } from 'svelte-intl';
-  import translationsList from './_translations.js';
+  import { onMount, onDestroy } from 'svelte';
+  import { stores } from '@sapper/app';
 
   export let lang;
 
   translations.update(translationsList);
-  locale.set(lang);
+  langStore.set(lang);
+
+  let unsub;
+  onMount(() => {
+    const { page } = stores();
+    unsub = page.subscribe((p) => {
+      lang = p.path.split('/')[1];
+      langStore.set(lang);
+    });
+  });
+  onDestroy(() => unsub && unsub());
 </script>
 
 <MetaTags {lang} />

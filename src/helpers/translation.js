@@ -1,11 +1,6 @@
-import { locale } from 'svelte-intl';
+import { _, translations } from 'svelte-intl';
 
-export function getOtherLanguage(lang = getCurrentLanguage()) {
-  return lang === 'en' ? 'fr' : 'en';
-}
+import langStore from './langStore';
+import translationsList from './translationsList';
 
-export function getCurrentLanguage() {
-  let lang;
-  locale.subscribe((l) => (lang = l))();
-  return lang;
-}
+export { translationsList, langStore, translations, _ };

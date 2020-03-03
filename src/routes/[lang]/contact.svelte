@@ -6,9 +6,5 @@
   $: otherLangPath = $page.path.replace(/^\/(fr|en)/, '/' + $langStore.other);
 </script>
 
-<style>
-
-</style>
-
-<h1>{$_('hello', { name: 'Claude' })}</h1>
+<h1>Contact</h1>
 <a href={otherLangPath}>{$langStore.other}</a>
