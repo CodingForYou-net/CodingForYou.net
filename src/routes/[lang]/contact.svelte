@@ -8,3 +8,4 @@
 
 <h1>Contact</h1>
 <a href={otherLangPath}>{$langStore.other}</a>
+<a href="/{$langStore.current}/">Index</a>

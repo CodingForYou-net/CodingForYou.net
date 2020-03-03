@@ -12,3 +12,4 @@
 
 <h1>{$_('hello', { name: 'Claude' })}</h1>
 <a href={otherLangPath}>{$langStore.other}</a>
+<a href="/{$langStore.current}/contact">Contact</a>
