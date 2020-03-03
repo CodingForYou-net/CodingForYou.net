@@ -3,10 +3,13 @@
   "description": "codingforyou.net - website",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev --live false",
+    "dev": "run-s stop:db start:db build:dev",
     "start:db": "mongod --config /usr/local/etc/mongod.conf --fork",
     "stop:db": "pkill mongod",
-    "build": "sapper build --legacy",
+    "build": "run-p build:sitemap build:sapper",
+    "build:sitemap": "sitemap-generator --filepath ./static/sitemap.xml https://codingforyou.net && sed -i '' 's/http:\\/\\/localhost:3000/https:\\/\\/codingforyou.net/g' static/sitemap.xml",
+    "build:sapper": "sapper build --legacy",
+    "build:dev": "sapper dev --live false",
     "export": "sapper export --legacy",
     "prestart": "npm run build",
     "start": "node __sapper__/build",
@@ -46,6 +49,7 @@
     "rollup-plugin-svelte": "^5.0.1",
     "rollup-plugin-terser": "^5.2.0",
     "sapper": "^0.27.0",
+    "sitemap-generator-cli": "^7.5.0",
     "svelte": "^3.18.2",
     "svelte-preprocess": "^3.4.0"
   },
