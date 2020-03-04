@@ -3,14 +3,14 @@
   "description": "codingforyou.net - website",
   "version": "0.0.1",
   "scripts": {
-    "dev": "npm run stop:db && npm run start:db && sapper dev --live false",
-    "start:db": "mongod --config /usr/local/etc/mongod.conf --fork",
+    "dev": "npm run start:db && sapper dev --live false",
+    "start:db": "if ! (pgrep mongod); then mongod --config /usr/local/etc/mongod.conf --fork; fi",
     "stop:db": "pkill mongod || true",
     "build": "run-s build:sapper build:sitemap",
     "build:sapper": "sapper build --legacy && run-p --race start build:sitemap",
-    "build:sitemap": "sleep 2 && sitemap-generator -f ./static/sitemap.xml http://localhost:3000 && replace-in-files --string 'http://localhost:3000' --replacement 'https://codingforyou.net' ./static/sitemap.xml",
+    "build:sitemap": "sleep 10 && sitemap-generator -f ./static/sitemap.xml http://localhost:3000 && replace-in-files --string 'http://localhost:3000' --replacement 'https://codingforyou.net' ./static/sitemap.xml",
     "export": "sapper export --legacy",
-    "start": " run-p stop:db start:db  && node __sapper__/build",
+    "start": " npm run start:db && node __sapper__/build",
     "predeploy": "npm i && npm run build",
     "deploy": "pm2 stop codingforyou.net && pm2 start pm2.config.js && pm2 save"
   },
