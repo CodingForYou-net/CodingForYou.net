@@ -1,11 +1,11 @@
 <script>
-  import { _, langStore } from '../../helpers/translation.js';
+  import { _, store as lang } from '@helpers/translation.js';
   import { stores } from '@sapper/app';
 
   const { page } = stores();
-  $: otherLangPath = $page.path.replace(/^\/(fr|en)/, '/' + $langStore.other);
+  $: otherLangPath = $page.path.replace(/^\/(fr|en)/, '/' + $lang.other);
 </script>
 
 <h1>Contact</h1>
-<a href={otherLangPath}>{$langStore.other}</a>
-<a href="/{$langStore.current}/">Index</a>
+<a href={otherLangPath}>{$lang.other}</a>
+<a href="/{$lang.current}/">Index</a>

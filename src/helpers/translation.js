@@ -1,6 +1,17 @@
+import store from '@helpers/langStore.js';
+import translationsList from '@helpers/translationsList.js';
 import { _, translations } from 'svelte-intl';
 
-import langStore from './langStore';
-import translationsList from './translationsList';
+function getCurrent() {
+  let lang;
+  langStore.subscribe((l) => (lang = l.current))();
+  return lang;
+}
 
-export { translationsList, langStore, translations, _ };
+function getOther() {
+  let lang;
+  langStore.subscribe((l) => (lang = l.other))();
+  return lang;
+}
+
+export { translationsList, store, translations, _, getCurrent, getOther };

@@ -3,7 +3,7 @@
   "description": "codingforyou.net - website",
   "version": "0.0.1",
   "scripts": {
-    "dev": "run-p stop:db start:db && sapper dev --live false",
+    "dev": "npm run stop:db && npm run start:db && sapper dev --live false",
     "start:db": "mongod --config /usr/local/etc/mongod.conf --fork",
     "stop:db": "pkill mongod || true",
     "build": "run-s build:sapper build:sitemap",
@@ -32,6 +32,7 @@
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-alias": "^3.0.1",
     "@rollup/plugin-commonjs": "^11.0.0",
     "@rollup/plugin-node-resolve": "^7.0.0",
     "@rollup/plugin-replace": "^2.2.0",

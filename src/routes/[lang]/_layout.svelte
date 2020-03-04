@@ -1,30 +1,27 @@
 <script context="module">
-  export async function preload({ params: { lang } }) {
-    return { lang };
+  import { store as lang } from '@helpers/translation.js';
+  export async function preload({ params }) {
+    lang.set(params.lang);
   }
 </script>
 
 <script>
-  import { langStore, translations, translationsList } from '../../helpers/translation.js';
-  import MetaTags from '../../components/MetaTags.svelte';
+  import { translations, translationsList } from '@helpers/translation.js';
+  import MetaTags from '@components/MetaTags.svelte';
   import { onMount, onDestroy } from 'svelte';
   import { stores } from '@sapper/app';
 
-  export let lang;
-
   translations.update(translationsList);
-  langStore.set(lang);
 
   let unsub;
   onMount(() => {
     const { page } = stores();
     unsub = page.subscribe((p) => {
-      lang = p.path.split('/')[1];
-      langStore.set(lang);
+      lang.set(p.path.split('/')[1]);
     });
   });
   onDestroy(() => unsub && unsub());
 </script>
 
-<MetaTags {lang} />
+<MetaTags />
 <slot />
