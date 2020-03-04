@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "format-message": "^6.2.3",
+    "memorystore": "^1.6.2",
     "mongoose": "^5.9.2",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",

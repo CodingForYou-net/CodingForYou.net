@@ -3,11 +3,15 @@ import * as sapper from '@sapper/server';
 import compression from 'compression';
 import express from 'express';
 import session from 'express-session';
+import MemoryStoreFactory from 'memorystore';
+import mongoose from 'mongoose';
 import passport from 'passport';
 import sirv from 'sirv';
 
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === 'development';
+
+const MemoryStore = MemoryStoreFactory(session);
 
 export function start() {
   express()
@@ -18,6 +22,8 @@ export function start() {
         resave: false,
         saveUninitialized: false,
         cookie: { secure: !dev },
+        store: new MemoryStore({ checkPeriod: 86400000 }),
+        cookie: { maxAge: 86400000 },
       }),
       passport.initialize(),
       passport.session(),
