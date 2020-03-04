@@ -11,7 +11,7 @@ export default function(passport) {
       {
         clientID: googleClientID,
         clientSecret: googleClientSecret,
-        callbackURL: `${dev ? '' : 'https://codingoforyou.net'}/auth/google/callback`,
+        callbackURL: `${dev ? '' : 'https://codingforyou.net'}/auth/google/callback`,
       },
       (accessToken, refreshToken, profile, done) => {
         console.log(accessToken, profile);
