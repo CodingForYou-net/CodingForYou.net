@@ -14,5 +14,6 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd web-server/CodingForYou.net
+            git reset --hard HEAD
             git pull
             npm run deploy

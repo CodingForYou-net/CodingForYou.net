@@ -1,17 +1,15 @@
 <script context="module">
-  import { store as lang } from '@helpers/translation.js';
+  import { store as lang, translations, translationsList } from '@helpers/translation.js';
   export async function preload({ params }) {
+    translations.update(translationsList);
     lang.set(params.lang);
   }
 </script>
 
 <script>
-  import { translations, translationsList } from '@helpers/translation.js';
   import MetaTags from '@components/MetaTags.svelte';
   import { onMount, onDestroy } from 'svelte';
   import { stores } from '@sapper/app';
-
-  translations.update(translationsList);
 
   let unsub;
   onMount(() => {

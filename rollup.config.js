@@ -23,6 +23,17 @@ export default {
     input: config.client.input(),
     output: config.client.output(),
     plugins: [
+      alias({
+        entries: [
+          { find: '@components', replacement: 'src/components' },
+          { find: '@config', replacement: 'src/config' },
+          { find: '@helpers', replacement: 'src/helpers' },
+          { find: '@models', replacement: 'src/models' },
+          { find: '@routes', replacement: 'src/routes' },
+          { find: '@styles', replacement: 'src/styles' },
+          { find: '@src', replacement: 'src' },
+        ],
+      }),
       replace({
         'process.browser': true,
         'process.env.NODE_ENV': JSON.stringify(mode),
