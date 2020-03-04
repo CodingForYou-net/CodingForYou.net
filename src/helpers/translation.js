@@ -2,7 +2,7 @@ import store from '@helpers/langStore.js';
 import translationsList from '@helpers/translationsList.js';
 import { _, translations } from 'svelte-intl';
 
-function getCurrent() {
+function getCurrent(path) {
   let lang;
   langStore.subscribe((l) => (lang = l.current))();
   return lang;

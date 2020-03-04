@@ -1,3 +1,5 @@
+import '@models/User.js';
+
 import { mongoURI } from '@config/keys.js';
 import mongoose from 'mongoose';
 

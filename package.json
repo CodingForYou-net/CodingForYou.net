@@ -19,6 +19,7 @@
     "colors": "^1.4.0",
     "compression": "^1.7.1",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "format-message": "^6.2.3",
     "mongoose": "^5.9.2",
     "passport": "^0.4.1",

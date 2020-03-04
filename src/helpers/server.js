@@ -1,7 +1,9 @@
-import { get } from '@routes/[lang]/auth/google/callback.js';
+import { get as googleCallback } from '@routes/[lang]/auth/google/callback.js';
 import * as sapper from '@sapper/server';
 import compression from 'compression';
 import express from 'express';
+import session from 'express-session';
+import passport from 'passport';
 import sirv from 'sirv';
 
 const { PORT, NODE_ENV } = process.env;
@@ -9,9 +11,20 @@ const dev = NODE_ENV === 'development';
 
 export function start() {
   express()
+    // NOTE Passport middlewares
+    .use(
+      session({
+        secret: 'OYU4AUcAJMUyxB7x4bii',
+        resave: false,
+        saveUninitialized: false,
+        cookie: { secure: !dev },
+      }),
+      passport.initialize(),
+      passport.session(),
+    )
     // NOTE Caveat: incompatibility between Sapper and Passport
-    .get('/auth/google/callback', ...get)
-    // NOTE Middlewares
+    .get('/auth/google/callback', googleCallback)
+    // NOTE Sapper middlewares
     .use(
       compression({ threshold: 0 }),
       sirv('static', { dev }),

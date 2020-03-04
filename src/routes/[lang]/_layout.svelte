@@ -1,5 +1,5 @@
 <script context="module">
-  import { store as lang, translations, translationsList } from '@helpers/translation';
+  import { store as lang, translations, translationsList } from '@helpers/translation.js';
   export async function preload({ params }) {
     if (!['fr', 'en'].includes(params.lang)) return;
     translations.update(translationsList);

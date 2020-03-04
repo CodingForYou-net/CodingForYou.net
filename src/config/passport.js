@@ -1,5 +1,5 @@
-import { googleClientID, googleClientSecret } from '@config/keys';
-import { User } from '@helpers/mongoose';
+import { googleClientID, googleClientSecret } from '@config/keys.js';
+import { User } from '@helpers/mongoose.js';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 
 const { NODE_ENV } = process.env;
@@ -13,8 +13,8 @@ export default function(passport) {
         clientSecret: googleClientSecret,
         callbackURL: `${dev ? '' : 'https://codingforyou.net'}/auth/google/callback`,
       },
-      (accessToken, refreshToken, profile, done) => {
-        const newUser = {
+      async (accessToken, refreshToken, profile, done) => {
+        const userInfo = {
           googleID: profile.id,
           firstName: profile.name.givenName,
           lastName: profile.name.familyName,
@@ -22,8 +22,32 @@ export default function(passport) {
           image: profile.photos[0].value,
         };
         // NOTE Check for existing user
-        User.fi;
+        try {
+          let user = await User.findOne({ googleID: profile.id });
+          if (user) {
+            for (const [key, value] of Object.entries(userInfo)) user[key] = value;
+            await user.save();
+          } else {
+            user = await new User(userInfo).save();
+          }
+          done(null, user);
+        } catch (error) {
+          done(error);
+        }
       },
     ),
   );
+
+  passport.serializeUser((user, done) => {
+    done(null, user.id);
+  });
+
+  passport.deserializeUser(async (id, done) => {
+    try {
+      const user = await User.findById(id);
+      done(null, user);
+    } catch (error) {
+      done(error);
+    }
+  });
 }

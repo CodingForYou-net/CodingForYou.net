@@ -25,13 +25,13 @@ export default {
     plugins: [
       alias({
         entries: [
-          { find: /@components\/(.*)/, replacement: 'src/components/$1.js' },
-          { find: /@config\/(.*)/, replacement: 'src/config/$1.js' },
-          { find: /@helpers\/(.*)/, replacement: 'src/helpers/$1.js' },
-          { find: /@models\/(.*)/, replacement: 'src/models/$1.js' },
-          { find: /@routes\/(.*)/, replacement: 'src/routes/$1.js' },
-          { find: /@styles\/(.*)/, replacement: 'src/styles/$1.js' },
-          { find: /@src\/(.*)/, replacement: 'src/$1.js' },
+          { find: /@components\/(.*)\.(.*)/, replacement: 'src/components/$1.$2' },
+          { find: /@config\/(.*)\.(.*)/, replacement: 'src/config/$1.$2' },
+          { find: /@helpers\/(.*)\.(.*)/, replacement: 'src/helpers/$1.$2' },
+          { find: /@models\/(.*)\.(.*)/, replacement: 'src/models/$1.$2' },
+          { find: /@routes\/(.*)\.(.*)/, replacement: 'src/routes/$1.$2' },
+          { find: /@styles\/(.*)\.(.*)/, replacement: 'src/styles/$1.$2' },
+          { find: /@src\/(.*)\.(.*)/, replacement: 'src/$1.$2' },
         ],
       }),
       replace({
@@ -89,13 +89,13 @@ export default {
     plugins: [
       alias({
         entries: [
-          { find: /@components\/(.*)/, replacement: 'src/components/$1.js' },
-          { find: /@config\/(.*)/, replacement: 'src/config/$1.js' },
-          { find: /@helpers\/(.*)/, replacement: 'src/helpers/$1.js' },
-          { find: /@models\/(.*)/, replacement: 'src/models/$1.js' },
-          { find: /@routes\/(.*)/, replacement: 'src/routes/$1.js' },
-          { find: /@styles\/(.*)/, replacement: 'src/styles/$1.js' },
-          { find: /@src\/(.*)/, replacement: 'src/$1.js' },
+          { find: /@components\/(.*)\.(.*)/, replacement: 'src/components/$1.$2' },
+          { find: /@config\/(.*)\.(.*)/, replacement: 'src/config/$1.$2' },
+          { find: /@helpers\/(.*)\.(.*)/, replacement: 'src/helpers/$1.$2' },
+          { find: /@models\/(.*)\.(.*)/, replacement: 'src/models/$1.$2' },
+          { find: /@routes\/(.*)\.(.*)/, replacement: 'src/routes/$1.$2' },
+          { find: /@styles\/(.*)\.(.*)/, replacement: 'src/styles/$1.$2' },
+          { find: /@src\/(.*)\.(.*)/, replacement: 'src/$1.$2' },
         ],
       }),
       replace({
