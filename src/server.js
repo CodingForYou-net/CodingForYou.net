@@ -11,15 +11,12 @@ const dev = NODE_ENV === 'development';
 // NOTE Passport configuration
 configurePassport(passport);
 
-// NOTE Connection to MongoDB
-connectToMongoose();
-
-// NOTE Start server
-startServer();
-
 if (dev) {
+  // NOTE Connection to MongoDB
   connectToMongoose();
+  // NOTE Start server
   startServer();
 } else {
-  connectToMongoose().then(() => startServer());
+  // NOTE Connection to MongoDB
+  connectToMongoose().then(() => /* NOTE Start server */ startServer());
 }
