@@ -1,5 +1,5 @@
-import { googleClientID, googleClientSecret } from '@config/keys.js';
-import mongoose from 'mongoose';
+import { googleClientID, googleClientSecret } from '@config/keys';
+import { User } from '@helpers/mongoose';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 
 const { NODE_ENV } = process.env;
@@ -14,7 +14,15 @@ export default function(passport) {
         callbackURL: `${dev ? '' : 'https://codingforyou.net'}/auth/google/callback`,
       },
       (accessToken, refreshToken, profile, done) => {
-        console.log(accessToken, profile);
+        const newUser = {
+          googleID: profile.id,
+          firstName: profile.name.givenName,
+          lastName: profile.name.familyName,
+          email: profile.emails[0].value,
+          image: profile.photos[0].value,
+        };
+        // NOTE Check for existing user
+        User.fi;
       },
     ),
   );

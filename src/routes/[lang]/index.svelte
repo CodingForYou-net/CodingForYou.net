@@ -1,5 +1,5 @@
 <script>
-  import { _, store as lang } from '@helpers/translation.js';
+  import { _, store as lang } from '@helpers/translation';
   import { stores } from '@sapper/app';
 
   const { page } = stores();

@@ -12,3 +12,5 @@ export async function connect() {
     console.log('✖ error'.red.bold, `${err}`.red);
   }
 }
+
+export const User = mongoose.model('users');

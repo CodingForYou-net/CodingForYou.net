@@ -1,8 +1,8 @@
 import 'colors';
 
-import configurePassport from '@config/passport.js';
-import { connect as connectToMongoose } from '@helpers/mongoose.js';
-import { start as startServer } from '@helpers/server.js';
+import configurePassport from '@config/passport';
+import { connect as connectToMongoose } from '@helpers/mongoose';
+import { start as startServer } from '@helpers/server';
 import passport from 'passport';
 
 const { NODE_ENV } = process.env;
