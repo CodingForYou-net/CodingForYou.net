@@ -1,4 +1,4 @@
-import { get as googleCallback } from '@routes/auth/google/callback.js';
+import { get as googleCallback } from '@routes/[lang]/auth/google/callback.js';
 import * as sapper from '@sapper/server';
 import compression from 'compression';
 import express from 'express';
