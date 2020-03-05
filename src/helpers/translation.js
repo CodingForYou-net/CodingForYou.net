@@ -1,16 +1,16 @@
-import store from '@helpers/langStore.js';
-import translationsList from '@helpers/translationsList.js';
+import store from '@helpers/lang/langStore.js';
+import translationsList from '@helpers/lang/translationsList.js';
 import { _, translations } from 'svelte-intl';
 
 function getCurrent(path) {
   let lang;
-  langStore.subscribe((l) => (lang = l.current))();
+  store.subscribe((l) => (lang = l.current))();
   return lang;
 }
 
 function getOther() {
   let lang;
-  langStore.subscribe((l) => (lang = l.other))();
+  store.subscribe((l) => (lang = l.other))();
   return lang;
 }
 
