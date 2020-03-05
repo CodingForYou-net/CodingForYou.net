@@ -7,6 +7,7 @@
       : 'Chez OnCodePourVous, nous vous créons de magnifiques sites web à bas prix';
   $: subject = $lang.current === 'en' ? 'websites at low cost' : 'sites web à bas prix';
   const dev = process.env.NODE_ENV === 'development';
+
   $: title = `CodingForYou | ${$lang.current.charAt(0).toUpperCase() + $lang.current.slice(1)}${
     dev ? ' [DEV]' : ''
   }`;
