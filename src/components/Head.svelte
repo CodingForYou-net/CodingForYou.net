@@ -40,6 +40,8 @@
   <meta name="rating" content="safe for kids" />
   <meta name="robots" content="archive,follow,imageindex,index,odp,snippet,translate" />
   <meta name="HandheldFriendly" content="True" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- OpenGraph -->
   <meta name="og:title" content="CodingForYou" />
   <meta name="og:type" content="website" />

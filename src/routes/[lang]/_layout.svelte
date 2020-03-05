@@ -8,7 +8,7 @@
 </script>
 
 <script>
-  import MetaTags from '@components/MetaTags.svelte';
+  import Head from '@components/Head.svelte';
   import { onMount, onDestroy } from 'svelte';
   import { stores } from '@sapper/app';
 
@@ -22,5 +22,5 @@
   onDestroy(() => unsub && unsub());
 </script>
 
-<MetaTags />
+<Head />
 <slot />

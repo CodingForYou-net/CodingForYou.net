@@ -15,4 +15,3 @@
 <a rel="prefetch" href="/{$lang.current}/contact">Contact</a>
 <a href="/{$lang.current}/auth/google">Login</a>
 <a href="/{$lang.current}/auth/verify">Verify</a>
-<a href="/{$lang.current}/auth/logout">Logout</a>
