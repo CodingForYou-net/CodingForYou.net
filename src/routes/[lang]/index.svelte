@@ -26,8 +26,7 @@
 
 <a href={otherLangPath}>{$lang.other}</a>
 <a rel="prefetch" href="/{$lang.current}/contact">Contact</a>
-<a href="/{$lang.current}/auth/google">Login</a>
-<a href="/{$lang.current}/auth/verify">Verify</a>
+<a href="/api/auth/google">Login</a>
 
 <div>
   <h1>{$_('hello', { name: 'Claude' })}</h1>
