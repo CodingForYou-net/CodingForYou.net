@@ -9,15 +9,19 @@
 
 <script>
   import Head from '@components/Head.svelte';
+  import { detect as detectBrowser } from 'detect-browser';
   import { onMount, onDestroy } from 'svelte';
   import { stores } from '@sapper/app';
 
   let unsub;
   onMount(() => {
+    console.log(true);
     const { page } = stores();
     unsub = page.subscribe((p) => {
       lang.set(p.path.split('/')[1]);
     });
+    const browser = detectBrowser();
+    console.log(browser);
   });
   onDestroy(() => unsub && unsub());
 </script>
