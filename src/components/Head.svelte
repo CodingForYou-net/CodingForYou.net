@@ -44,6 +44,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- OpenGraph -->
   <meta name="og:title" content="CodingForYou" />
+  <meta name="og:site_name" content="CodingForYou" />
   <meta name="og:type" content="website" />
   <meta name="og:url" content="https://codingforyou.net" />
   <meta name="og:image" content="https://codingforyou.net/opengraph.png" />
@@ -54,4 +55,6 @@
   <meta name="og:region" content="QC" />
   <meta name="og:country-name" content="CA" />
   <meta property="og:type" content="website" />
+  <meta name="og:locale" content={$lang.current} />
+  <meta name="og:locale:alternate" content={$lang.other} />
 </svelte:head>
