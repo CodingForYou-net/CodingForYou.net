@@ -15,6 +15,7 @@
 
   let unsub;
   onMount(() => {
+    console.log(true);
     const { page } = stores();
     unsub = page.subscribe((p) => {
       lang.set(p.path.split('/')[1]);
