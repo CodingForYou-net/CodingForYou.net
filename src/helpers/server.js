@@ -1,10 +1,10 @@
 import { get as googleCallback } from '@routes/[lang]/auth/google/callback.js';
 import * as sapper from '@sapper/server';
+import bodyParser from 'body-parser';
 import compression from 'compression';
 import express from 'express';
 import session from 'express-session';
 import MemoryStoreFactory from 'memorystore';
-import mongoose from 'mongoose';
 import passport from 'passport';
 import sirv from 'sirv';
 
@@ -32,6 +32,11 @@ export function start() {
     .get('/auth/google/callback', googleCallback)
     // NOTE Sapper middlewares
     .use(
+      bodyParser.json({
+        verify: function(req, res, buf) {
+          req.rawBody = buf.toString();
+        },
+      }),
       compression({ threshold: 0 }),
       sirv('static', { dev }),
       sapper.middleware({

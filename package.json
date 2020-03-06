@@ -4,17 +4,19 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "npm run start:db && sapper dev --live false",
+    "start": " npm run start:db && node __sapper__/build",
+    "start:whf": "stripe listen --forward-to localhost:3000/api/stripe/webhook",
     "start:db": "if ! (pgrep mongod); then mongod --config /usr/local/etc/mongod.conf --fork; fi",
     "stop:db": "pkill mongod || true",
     "build": "npm run build:sapper && run-p --race start build:sitemap",
     "build:sapper": "sapper build --legacy",
     "build:sitemap": "sleep 10 && sitemap-generator -f ./static/sitemap.xml http://localhost:3000 && replace-in-files --string 'http://localhost:3000' --replacement 'https://codingforyou.net' ./static/sitemap.xml",
     "export": "sapper export --legacy",
-    "start": " npm run start:db && node __sapper__/build",
     "predeploy": "npm i && npm run build",
     "deploy": "pm2 stop codingforyou.net && pm2 start pm2.config.js && pm2 save"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "clear": "^0.1.0",
     "colors": "^1.4.0",
     "compression": "^1.7.1",
@@ -26,6 +28,7 @@
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "sirv": "^0.4.0",
+    "stripe": "^8.28.1",
     "svelte-intl": "^1.0.5"
   },
   "devDependencies": {

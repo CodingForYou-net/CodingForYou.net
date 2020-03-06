@@ -25,13 +25,13 @@ export default {
     plugins: [
       alias({
         entries: [
-          { find: /@components\/(.*)\.(.*)/, replacement: 'src/components/$1.$2' },
-          { find: /@config\/(.*)\.(.*)/, replacement: 'src/config/$1.$2' },
-          { find: /@helpers\/(.*)\.(.*)/, replacement: 'src/helpers/$1.$2' },
-          { find: /@models\/(.*)\.(.*)/, replacement: 'src/models/$1.$2' },
-          { find: /@routes\/(.*)\.(.*)/, replacement: 'src/routes/$1.$2' },
-          { find: /@styles\/(.*)\.(.*)/, replacement: 'src/styles/$1.$2' },
-          { find: /@src\/(.*)\.(.*)/, replacement: 'src/$1.$2' },
+          { find: /@components\/(.*)\.(.*)/, replacement: __dirname + '/src/components/$1.$2' },
+          { find: /@config\/(.*)\.(.*)/, replacement: __dirname + '/src/config/$1.$2' },
+          { find: /@helpers\/(.*)\.(.*)/, replacement: __dirname + '/src/helpers/$1.$2' },
+          { find: /@models\/(.*)\.(.*)/, replacement: __dirname + '/src/models/$1.$2' },
+          { find: /@routes\/(.*)\.(.*)/, replacement: __dirname + '/src/routes/$1.$2' },
+          { find: /@styles\/(.*)\.(.*)/, replacement: __dirname + '/src/styles/$1.$2' },
+          { find: /@src\/(.*)\.(.*)/, replacement: __dirname + '/src/$1.$2' },
         ],
       }),
       replace({
@@ -89,13 +89,13 @@ export default {
     plugins: [
       alias({
         entries: [
-          { find: /@components\/(.*)\.(.*)/, replacement: 'src/components/$1.$2' },
-          { find: /@config\/(.*)\.(.*)/, replacement: 'src/config/$1.$2' },
-          { find: /@helpers\/(.*)\.(.*)/, replacement: 'src/helpers/$1.$2' },
-          { find: /@models\/(.*)\.(.*)/, replacement: 'src/models/$1.$2' },
-          { find: /@routes\/(.*)\.(.*)/, replacement: 'src/routes/$1.$2' },
-          { find: /@styles\/(.*)\.(.*)/, replacement: 'src/styles/$1.$2' },
-          { find: /@src\/(.*)\.(.*)/, replacement: 'src/$1.$2' },
+          { find: /@components\/(.*)\.(.*)/, replacement: __dirname + '/src/components/$1.$2' },
+          { find: /@config\/(.*)\.(.*)/, replacement: __dirname + '/src/config/$1.$2' },
+          { find: /@helpers\/(.*)\.(.*)/, replacement: __dirname + '/src/helpers/$1.$2' },
+          { find: /@models\/(.*)\.(.*)/, replacement: __dirname + '/src/models/$1.$2' },
+          { find: /@routes\/(.*)\.(.*)/, replacement: __dirname + '/src/routes/$1.$2' },
+          { find: /@styles\/(.*)\.(.*)/, replacement: __dirname + '/src/styles/$1.$2' },
+          { find: /@src\/(.*)\.(.*)/, replacement: __dirname + '/src/$1.$2' },
         ],
       }),
       replace({
