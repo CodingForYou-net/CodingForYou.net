@@ -1,7 +1,116 @@
 @import './_theme.scss';
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-html {
+:root {
   font-family: 'Montserrat', sans-serif;
   color: $theme-black;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  // Scroll bar
+  &::-webkit-scrollbar {
+    width: 0.25rem;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $theme-black;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $theme-green;
+  }
+}
+
+main {
+  margin-left: 5rem;
+}
+
+.navbar {
+  width: 5rem;
+  height: 100vh;
+  position: fixed;
+  background-color: darken($theme-black, 5%);
+  transition: width 0.6s ease;
+  &:hover {
+    width: 16rem;
+    & .link-text {
+      display: block;
+    }
+    & .logo svg {
+      transform: rotate(-180deg);
+      margin-left: 11rem;
+    }
+    & .logo-text {
+      left: 0px;
+    }
+  }
+}
+
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-item {
+  width: 100%;
+}
+
+.nav-item:last-child {
+  margin-top: auto;
+}
+
+.svg-inline--fa {
+  color: $theme-green;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  color: white;
+  text-decoration: none;
+  filter: grayscale(100%) opacity(0.7);
+  transition: 0.3s;
+  &:hover {
+    filter: grayscale(0%) opacity(1);
+    background-color: darken($theme-black, 10%);
+    color: white;
+  }
+  & svg {
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 1.5rem;
+  }
+}
+
+.link-text {
+  display: none;
+  margin-left: 1rem;
+}
+
+.logo {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  background-color: darken($theme-black, 10%);
+  text-align: center;
+  color: white;
+  width: 100%;
+  & svg {
+    transform: rotate(0deg);
+    transition: 0.6s;
+  }
+}
+
+.logo-text {
+  display: inline;
+  position: absolute;
+  left: -999px;
+  transition: 0.6s;
 }

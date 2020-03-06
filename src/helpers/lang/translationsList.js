@@ -1,5 +1,6 @@
 export default {
   fr: {
+    login: 'Connexion',
     welcome: 'Bienvenue!',
     hello: 'Bonjour {name}!',
     aboutUs:
@@ -7,6 +8,7 @@ export default {
     webPackages: 'Forfaits Web',
   },
   en: {
+    login: 'Login',
     welcome: 'Welcome!',
     hello: 'Hello {name}!',
     aboutUs:

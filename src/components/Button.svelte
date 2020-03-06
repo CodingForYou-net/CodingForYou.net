@@ -4,7 +4,7 @@
 </script>
 
 <style lang="scss">
-  @import '../styles/_theme.scss';
+  @import 'src/styles/_theme.scss';
   a {
     padding: 10px;
     text-decoration: none;
