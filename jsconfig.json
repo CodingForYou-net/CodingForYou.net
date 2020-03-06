@@ -7,7 +7,6 @@
       "@helpers/*": ["src/helpers/*"],
       "@models/*": ["src/models/*"],
       "@routes/*": ["src/routes/*"],
-      "@styles/*": ["src/styles/*"],
       "@src/*": ["src/src/*"]
     }
   },

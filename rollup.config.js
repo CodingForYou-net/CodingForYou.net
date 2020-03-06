@@ -8,7 +8,8 @@ import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 
 import pkg from './package.json';
-import preprocess from './svelte.config.js';
+
+const { preprocess } = require('./svelte.config.js');
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
@@ -30,7 +31,6 @@ export default {
           { find: /@helpers\/(.*)\.(.*)/, replacement: __dirname + '/src/helpers/$1.$2' },
           { find: /@models\/(.*)\.(.*)/, replacement: __dirname + '/src/models/$1.$2' },
           { find: /@routes\/(.*)\.(.*)/, replacement: __dirname + '/src/routes/$1.$2' },
-          { find: /@styles\/(.*)\.(.*)/, replacement: __dirname + '/src/styles/$1.$2' },
           { find: /@src\/(.*)\.(.*)/, replacement: __dirname + '/src/$1.$2' },
         ],
       }),
@@ -94,7 +94,6 @@ export default {
           { find: /@helpers\/(.*)\.(.*)/, replacement: __dirname + '/src/helpers/$1.$2' },
           { find: /@models\/(.*)\.(.*)/, replacement: __dirname + '/src/models/$1.$2' },
           { find: /@routes\/(.*)\.(.*)/, replacement: __dirname + '/src/routes/$1.$2' },
-          { find: /@styles\/(.*)\.(.*)/, replacement: __dirname + '/src/styles/$1.$2' },
           { find: /@src\/(.*)\.(.*)/, replacement: __dirname + '/src/$1.$2' },
         ],
       }),

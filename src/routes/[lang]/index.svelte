@@ -7,7 +7,7 @@
 </script>
 
 <style lang="scss">
-  @import '../../../../styles/_theme.scss';
+  @import 'src/styles/_theme.scss';
   a {
     padding: 10px;
     background-color: $theme-green;
@@ -15,10 +15,9 @@
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s;
-  }
-
-  a:hover {
-    background-color: darken($theme-green, 15%);
+    &:hover {
+      background-color: darken($theme-green, 15%);
+    }
   }
 </style>
 

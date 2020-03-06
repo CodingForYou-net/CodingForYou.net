@@ -22,5 +22,9 @@
   onDestroy(() => unsub && unsub());
 </script>
 
+<style global lang="scss">
+  @import 'src/styles/global.scss';
+</style>
+
 <Head />
 <slot />
