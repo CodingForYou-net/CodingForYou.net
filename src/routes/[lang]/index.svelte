@@ -7,18 +7,7 @@
 </script>
 
 <style lang="scss">
-  @import 'src/styles/_theme.scss';
-  a {
-    padding: 10px;
-    background-color: $theme-green;
-    color: $theme-light-green;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    &:hover {
-      background-color: darken($theme-green, 15%);
-    }
-  }
+
 </style>
 
 <!-- TODO if user is logged in : Hello {name}, else welcome -->
