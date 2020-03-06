@@ -27,7 +27,8 @@ export default {
       replace({
         'process.browser': true,
         'process.env.NODE_ENV': JSON.stringify(mode),
-        'process.env.STRIPE_CLI_SIG': process.env.STRIPE_CLI_SIG,
+        'process.env.STRIPE_CLI_SIG': `'${process.env.STRIPE_CLI_SIG}'`,
+        'process.env.PORT': process.env.PORT,
       }),
       alias({
         entries: [
@@ -92,7 +93,8 @@ export default {
       replace({
         'process.browser': false,
         'process.env.NODE_ENV': JSON.stringify(mode),
-        'process.env.STRIPE_CLI_SIG': process.env.STRIPE_CLI_SIG,
+        'process.env.STRIPE_CLI_SIG': `'${process.env.STRIPE_CLI_SIG}'`,
+        'process.env.PORT': process.env.PORT,
       }),
       alias({
         entries: [
@@ -115,7 +117,7 @@ export default {
       commonjs(),
     ],
     external: Object.keys(pkg.dependencies).concat(
-      require('module').builtinModules || Object.keys(process.binding('natives')),
+      require('module').builtinModules || Object.keys(process.binding('natives'))
     ),
     onwarn,
   },

@@ -1,4 +1,4 @@
-import { googleClientID, googleClientSecret } from '@config/keys.js';
+import { googleCallbackURL, googleClientID, googleClientSecret } from '@config/keys.js';
 import { User } from '@helpers/mongoose.js';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 
@@ -11,7 +11,7 @@ export default function(passport) {
       {
         clientID: googleClientID,
         clientSecret: googleClientSecret,
-        callbackURL: `${dev ? '' : 'https://codingforyou.net'}/api/auth/google/callback`,
+        callbackURL: googleCallbackURL,
       },
       async (accessToken, refreshToken, profile, done) => {
         const userInfo = {
@@ -34,8 +34,8 @@ export default function(passport) {
         } catch (error) {
           done(error);
         }
-      },
-    ),
+      }
+    )
   );
 
   passport.serializeUser((user, done) => {

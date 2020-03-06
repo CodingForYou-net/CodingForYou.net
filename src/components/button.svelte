@@ -1,21 +1,25 @@
 <script>
-  let href;
-  let content;
+  export let href;
+  export let style;
 </script>
 
 <style lang="scss">
   @import '../styles/_theme.scss';
   a {
     padding: 10px;
-    background-color: $theme-green;
-    color: $theme-light-green;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s;
-    &:hover {
-      background-color: darken($theme-green, 15%);
+    &.green {
+      background-color: $theme-green;
+      color: $theme-light-green;
+      &:hover {
+        background-color: darken($theme-green, 15%);
+      }
     }
   }
 </style>
 
-<a {href}>{content}</a>
+<a {href} class:green={style === 'green'}>
+  <slot />
+</a>

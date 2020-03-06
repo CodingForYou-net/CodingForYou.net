@@ -1,9 +1,11 @@
 <script>
   import { onMount } from 'svelte';
+  import { stores } from '@sapper/app';
   import products from '@config/products.js';
   import { stripePublic } from '@config/keys.js';
   import axios from 'axios';
 
+  const { page } = stores();
   let stripe;
 
   onMount(() => {
@@ -11,21 +13,17 @@
   });
 
   async function buy(productID) {
-    console.log('test');
     try {
-      console.log('test1');
-      const res = await axios.get('/api/stripe/create-checkout-session');
-      console.log(res);
+      const res = await axios.get(
+        `/api/stripe/create-checkout-session?productID=${productID}&cancelPath=${$page.path}`,
+      );
+      const { error } = await stripe.redirectToCheckout({
+        sessionId: res.data,
+      });
+      if (error) throw error;
     } catch (error) {
-      console.log('test2');
-      console.warn(error);
+      alert('error');
     }
-    // const { error } = await stripe.redirectToCheckout({
-    //   items: [{ sku: 'sku_GrDM0TwVZHIk7N', quantity: 1 }],
-    //   successUrl: 'http://localhost:3000/success',
-    //   cancelUrl: 'http://localhost:3000/canceled',
-    // });
-    // if (error) alert('payment is broken');
   }
 </script>
 
