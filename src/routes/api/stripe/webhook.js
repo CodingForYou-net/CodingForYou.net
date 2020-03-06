@@ -2,7 +2,6 @@ import { stripeSecret, stripeWebhookSecret } from '@config/keys.js';
 import Stripe from 'stripe';
 
 const dev = process.env.NODE_ENV === 'development';
-
 const stripe = Stripe(stripeSecret);
 
 export async function post(req, res) {
