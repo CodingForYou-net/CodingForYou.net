@@ -1,7 +1,7 @@
 <script context="module">
   import { store as lang, translations, translationsList } from '@helpers/translation.js';
   export async function preload({ params }) {
-    if (!['fr', 'en'].includes(params.lang)) return;
+    if (!['fr', 'en'].includes(params.lang)) this.redirect(302, '/');
     translations.update(translationsList);
     lang.set(params.lang);
   }
