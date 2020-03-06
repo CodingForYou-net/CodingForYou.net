@@ -22,6 +22,6 @@ export async function post(req, res) {
     }
   } catch (err) {
     if (dev) console.warn(err);
-    res.status(400).end();
+    res.status(401).send('unauthorized');
   }
 }

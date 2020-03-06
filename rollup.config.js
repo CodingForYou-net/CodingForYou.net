@@ -24,6 +24,11 @@ export default {
     input: config.client.input(),
     output: config.client.output(),
     plugins: [
+      replace({
+        'process.browser': true,
+        'process.env.NODE_ENV': JSON.stringify(mode),
+        'process.env.STRIPE_CLI_SIG': process.env.STRIPE_CLI_SIG,
+      }),
       alias({
         entries: [
           { find: /@components\/(.*)\.(.*)/, replacement: __dirname + '/src/components/$1.$2' },
@@ -34,10 +39,7 @@ export default {
           { find: /@src\/(.*)\.(.*)/, replacement: __dirname + '/src/$1.$2' },
         ],
       }),
-      replace({
-        'process.browser': true,
-        'process.env.NODE_ENV': JSON.stringify(mode),
-      }),
+
       svelte({
         dev,
         hydratable: true,
@@ -87,6 +89,11 @@ export default {
     input: config.server.input(),
     output: config.server.output(),
     plugins: [
+      replace({
+        'process.browser': false,
+        'process.env.NODE_ENV': JSON.stringify(mode),
+        'process.env.STRIPE_CLI_SIG': process.env.STRIPE_CLI_SIG,
+      }),
       alias({
         entries: [
           { find: /@components\/(.*)\.(.*)/, replacement: __dirname + '/src/components/$1.$2' },
@@ -96,10 +103,6 @@ export default {
           { find: /@routes\/(.*)\.(.*)/, replacement: __dirname + '/src/routes/$1.$2' },
           { find: /@src\/(.*)\.(.*)/, replacement: __dirname + '/src/$1.$2' },
         ],
-      }),
-      replace({
-        'process.browser': false,
-        'process.env.NODE_ENV': JSON.stringify(mode),
       }),
       svelte({
         generate: 'ssr',
