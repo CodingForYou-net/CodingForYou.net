@@ -10,10 +10,13 @@
   });
 
   async function buy(productID) {
+    console.log('test');
     try {
+      console.log('test1');
       const res = await fetch('/api/stripe/create-checkout-session');
       console.log(res);
     } catch (error) {
+      console.log('test2');
       console(error);
     }
     // const { error } = await stripe.redirectToCheckout({
