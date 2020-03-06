@@ -9,7 +9,7 @@
 
 <script>
   import Head from '@components/Head.svelte';
-  import detectBrowser from 'detect-browser';
+  import { detect as detectBrowser } from 'detect-browser';
   import { onMount, onDestroy } from 'svelte';
   import { stores } from '@sapper/app';
 
