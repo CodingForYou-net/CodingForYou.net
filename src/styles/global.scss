@@ -1,1 +1,7 @@
 @import './_theme.scss';
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+html {
+  font-family: 'Montserrat', sans-serif;
+  color: $theme-black;
+}
