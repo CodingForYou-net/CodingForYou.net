@@ -1,7 +1,7 @@
 <script>
   import { _, store as lang } from '@helpers/translation.js';
   import { stores } from '@sapper/app';
-  import coolButton from '@components/button.svelte';
+  import coolButton from '@components/Button.svelte';
 
   const { page } = stores();
   $: otherLangPath = $page.path.replace(/^\/(fr|en)/, '/' + $lang.other);
