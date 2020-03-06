@@ -7,6 +7,14 @@
   }
 </script>
 
+<script>
+  import { onMount } from 'svelte';
+  onMount(() => {
+    var isIE = /(MSIE|Trident\/)/i.test(navigator.userAgent);
+    console.log(isIE);
+  });
+</script>
+
 <link rel="alternate" hreflang="en" href="https://codingforyou.net/en/" />
 <link rel="alternate" hreflang="fr" href="https://codingforyou.net/fr/" />
 
