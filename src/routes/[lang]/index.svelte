@@ -1,18 +1,15 @@
 <script>
   import { _, store as lang } from '@helpers/translation.js';
   import { stores } from '@sapper/app';
+  import coolButton from '@components/button.svelte';
 
   const { page } = stores();
   $: otherLangPath = $page.path.replace(/^\/(fr|en)/, '/' + $lang.other);
 </script>
 
-<style lang="scss">
-
-</style>
-
 <!-- TODO if user is logged in : Hello {name}, else welcome -->
 
-<a href={otherLangPath}>{$lang.other}</a>
+<coolButton href={otherLangPath} content={$lang.other} />
 <a rel="prefetch" href="/{$lang.current}/contact">Contact</a>
 <a href="/api/auth/google">Login</a>
 

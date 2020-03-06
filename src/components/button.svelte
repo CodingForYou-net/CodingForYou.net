@@ -1,5 +1,6 @@
 <script>
   let href;
+  let content;
 </script>
 
 <style lang="scss">
@@ -17,4 +18,4 @@
   }
 </style>
 
-<a {href} />
+<a {href}>{content}</a>
