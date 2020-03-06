@@ -6,5 +6,5 @@
   "proseWrap": "never",
   "quoteProps": "consistent",
   "singleQuote": true,
-  "trailingComma": "all"
+  "trailingComma": "es5"
 }

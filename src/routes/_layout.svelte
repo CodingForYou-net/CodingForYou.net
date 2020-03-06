@@ -7,10 +7,6 @@
   }
 </script>
 
-<script>
-  import { onMount } from 'svelte';
-</script>
-
 <link rel="alternate" hreflang="en" href="https://codingforyou.net/en/" />
 <link rel="alternate" hreflang="fr" href="https://codingforyou.net/fr/" />
 
