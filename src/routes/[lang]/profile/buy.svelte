@@ -25,8 +25,11 @@
   }
 </script>
 
-<li>
+<ul>
   {#each Object.entries(products) as product (product[0])}
-    <ul on:click={() => buy(product[0])}>{product[1].name}: {product[1].amount / 100}$CAD</ul>
+    <li>
+      {product[1].name}: {product[1].amount / 100}$CAD
+      <button on:click={() => buy(product[0])}>Buy</button>
+    </li>
   {/each}
-</li>
+</ul>
