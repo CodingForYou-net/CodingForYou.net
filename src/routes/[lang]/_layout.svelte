@@ -8,6 +8,7 @@
 </script>
 
 <script>
+  import Navbar from '@components/Navbar.svelte';
   import Head from '@components/Head.svelte';
   import { onMount, onDestroy } from 'svelte';
   import { stores } from '@sapper/app';
@@ -27,4 +28,5 @@
 </style>
 
 <Head />
+<Navbar />
 <slot />

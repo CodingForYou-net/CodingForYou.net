@@ -104,6 +104,10 @@
     left: -999px;
     transition: 0.6s;
   }
+
+  :global(main) {
+    margin-left: 5rem;
+  }
 </style>
 
 <nav class="navbar">
