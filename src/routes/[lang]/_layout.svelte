@@ -29,4 +29,6 @@
 
 <Head />
 <Navbar />
-<slot />
+<main>
+  <slot />
+</main>

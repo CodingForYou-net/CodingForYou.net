@@ -10,8 +10,7 @@ body {
   margin: 0;
   padding: 0;
 
-  // Scroll bar
-  &::-webkit-scrollbar {
+  Scroll bar &::-webkit-scrollbar {
     width: 0.25rem;
   }
   &::-webkit-scrollbar-track {
@@ -20,4 +19,8 @@ body {
   &::-webkit-scrollbar-thumb {
     background-color: $theme-green;
   }
+}
+
+h1 {
+  margin: 0;
 }

@@ -8,7 +8,15 @@
 </script>
 
 <style lang="scss">
-  @import 'src/styles/global.scss';
+  @import 'src/styles/_theme.scss';
+  @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+  :root {
+    font-family: 'Montserrat', sans-serif;
+    color: $theme-black;
+  }
+  body {
+    margin: 0;
+  }
 </style>
 
 <svelte:head>

@@ -6,8 +6,6 @@
   $: otherLangPath = $page.path.replace(/^\/(fr|en)/, '/' + $lang.other);
 </script>
 
-<main>
-  <h1>Contact</h1>
-  <a href={otherLangPath}>{$lang.other}</a>
-  <a href="/{$lang.current}/">Index</a>
-</main>
+<h1>Contact</h1>
+<a href={otherLangPath}>{$lang.other}</a>
+<a href="/{$lang.current}/">Index</a>

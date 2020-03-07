@@ -12,6 +12,7 @@
 <style lang="scss">
   @import 'src/styles/_theme.scss';
   .navbar {
+    //top: 0;
     width: 5rem;
     height: 100vh;
     position: fixed;
@@ -113,7 +114,7 @@
 <nav class="navbar">
   <ul class="navbar-nav">
     <li class="logo">
-      <a href="index.svelte" class="nav-link">
+      <a href="/" class="nav-link">
         <span class="link-text logo-text">CodingForYou</span>
         <svg
           aria-hidden="true"
