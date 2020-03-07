@@ -25,7 +25,6 @@
   }
 </style>
 
-<<<<<<< HEAD
 <nav class="navbar">
   <ul class="navbar-nav">
     <li class="logo">
@@ -96,9 +95,6 @@
     </li>
   </ul>
 </nav>
-=======
-<Navbar />
->>>>>>> b648da4bc2b0f70a3e6090c3a433ac057f842ba1
 
 <main>
   <div class="container1">
