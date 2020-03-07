@@ -7,7 +7,7 @@
   const dev = process.env.NODE_ENV === 'development';
 </script>
 
-<style lang="scss">
+<style global lang="scss">
   @import 'src/styles/global.scss';
 </style>
 
