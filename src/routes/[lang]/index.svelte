@@ -25,7 +25,7 @@
 </style>
 
 <section class="container1">
-  <Button style="green" href={otherLangPath}>{$lang.other}</Button>
+  <Button class="langBtn" style="green" href={otherLangPath}>{$lang.other}</Button>
 </section>
 
 <section>
