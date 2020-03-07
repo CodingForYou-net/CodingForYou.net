@@ -35,7 +35,9 @@ main {
   &:hover {
     width: 16rem;
     & .link-text {
-      display: block;
+      //display: block;
+      visibility: visible;
+      opacity: 1;
     }
     & .logo svg {
       transform: rotate(-180deg);
@@ -59,10 +61,9 @@ main {
 
 .nav-item {
   width: 100%;
-}
-
-.nav-item:last-child {
-  margin-top: auto;
+  &:last-child {
+    margin-top: auto;
+  }
 }
 
 .svg-inline--fa {
@@ -90,8 +91,12 @@ main {
 }
 
 .link-text {
-  display: none;
+  //display: none;
   margin-left: 1rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s linear;
+  transition-delay: 0.2s;
 }
 
 .logo {
