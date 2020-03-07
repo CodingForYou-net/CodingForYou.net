@@ -15,8 +15,8 @@
   <title>{status}</title>
 </svelte:head>
 <Navbar />
-<main>
 
+<main>
   <h1>{status}</h1>
 
   <p>{error.message}</p>

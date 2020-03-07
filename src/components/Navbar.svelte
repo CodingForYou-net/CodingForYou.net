@@ -1,20 +1,13 @@
-<script context="module">
-  export function preload({}, { isLoggedIn, user }) {
-    return { isLoggedIn, user };
-  }
-</script>
-
 <script>
   import { _, store as lang } from '@helpers/translation.js';
+  import { stores } from '@sapper/app';
 
-  export let isLoggedIn;
-  export let user;
+  const { session } = stores();
 </script>
 
 <style lang="scss">
   @import 'src/styles/_theme.scss';
   .navbar {
-    //top: 0;
     width: 5rem;
     height: 100vh;
     position: fixed;
@@ -23,7 +16,6 @@
     &:hover {
       width: 16rem;
       & .link-text {
-        //display: block;
         visibility: visible;
         opacity: 1;
       }
@@ -79,7 +71,6 @@
   }
 
   .link-text {
-    //display: none;
     margin-left: 1rem;
     visibility: hidden;
     opacity: 0;
@@ -116,7 +107,7 @@
 <nav class="navbar">
   <ul class="navbar-nav">
     <li class="logo">
-      <a href="/" class="nav-link">
+      <a href="/{$lang.current}" class="nav-link">
         <span class="link-text logo-text">CodingForYou</span>
         <svg
           aria-hidden="true"
@@ -179,7 +170,9 @@
             48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" />
         </svg>
         <span class="link-text">
-          {#if isLoggedIn}{user.firstName} {user.lastName}{:else}{$_('login')}{/if}
+          {#if $session.isLoggedIn}
+            {$session.user.firstName} {$session.user.lastName}
+          {:else}{$_('login')}{/if}
         </span>
       </a>
     </li>

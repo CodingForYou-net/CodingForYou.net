@@ -24,6 +24,6 @@
   }
 </style>
 
-<a {href} class:green={style === 'green'}>
+<a {href} class={style}>
   <slot />
 </a>
