@@ -27,7 +27,7 @@
 <nav class="navbar">
   <ul class="navbar-nav">
     <li class="logo">
-      <a href="#" class="nav-link">
+      <a href="/{$lang.current}" class="nav-link">
         <span class="link-text logo-text">CodingForYou</span>
         <svg
           aria-hidden="true"
