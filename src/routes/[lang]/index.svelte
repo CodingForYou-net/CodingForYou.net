@@ -28,18 +28,18 @@
 <Navbar />
 
 <main>
-  <div class="container1">
+  <section class="container1">
     <Button style="green" href={otherLangPath}>{$lang.other}</Button>
-  </div>
+  </section>
 
-  <div>
+  <section>
     {#if isLoggedIn}
       <h1>{$_('hello', { name: `${user.firstName} ${user.lastName}` })}</h1>
     {:else}
       <h1>{$_('welcome')}</h1>
     {/if}
     <p>{$_('aboutUs')}</p>
-  </div>
+  </section>
 
   <h2>{$_('webPackages')}</h2>
 </main>
