@@ -3,6 +3,8 @@
   import { stores } from '@sapper/app';
 
   const { session } = stores();
+
+  let navIsOpen = false;
 </script>
 
 <style lang="scss">
@@ -102,6 +104,31 @@
   :global(main) {
     margin-left: 5rem;
   }
+
+  .login {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+    &:hover {
+      background-color: darken($theme-black, 10%);
+      color: white;
+      & span {
+        filter: grayscale(0%) opacity(1);
+      }
+    }
+    & img {
+      width: 3rem;
+      min-width: 3rem;
+      margin: 0 1rem;
+      border-radius: 1.5rem;
+    }
+    & span {
+      filter: grayscale(100%) opacity(0.7);
+    }
+  }
 </style>
 
 <nav class="navbar">
@@ -152,29 +179,32 @@
       </a>
     </li>
     <li class="nav-item">
-      <a href="/api/auth/google" class="nav-link">
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          data-prefix="fas"
-          data-icon="user"
-          class="svg-inline--fa fa-user fa-w-14"
-          role="img"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 448 512">
-          <path
-            fill="currentColor"
-            d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6
-            32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0
-            422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5
-            48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" />
-        </svg>
-        <span class="link-text">
-          {#if $session.isLoggedIn}
-            {$session.user.firstName} {$session.user.lastName}
-          {:else}{$_('login')}{/if}
-        </span>
-      </a>
+      {#if $session.isLoggedIn}
+        <a href="/api/auth/google" class="login">
+          <img src={$session.user.image} alt="progile-picture" />
+          <span class="link-text">{$session.user.firstName} {$session.user.lastName}</span>
+        </a>
+      {:else}
+        <a href="/api/auth/google" class="nav-link">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            data-icon="user"
+            class="svg-inline--fa fa-user fa-w-14"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512">
+            <path
+              fill="currentColor"
+              d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128
+              128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2
+              0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5
+              48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" />
+          </svg>
+          <span class="link-text">{$_('login')}</span>
+        </a>
+      {/if}
     </li>
   </ul>
 </nav>
