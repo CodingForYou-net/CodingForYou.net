@@ -1,35 +1,115 @@
-<script context="module">
+<script>
+  import { _, store as lang } from '@helpers/translation.js';
+
   export function preload({}, { isLoggedIn, user }) {
     return { isLoggedIn, user };
   }
-</script>
-
-<script>
-  import { _, store as lang } from '@helpers/translation.js';
-  import { stores } from '@sapper/app';
-  import Button from '@components/Button.svelte';
-  import Navbar from '@components/Navbar.svelte';
 
   export let isLoggedIn;
   export let user;
-
-  const { page } = stores();
-  $: otherLangPath = $page.path.replace(/^\/(fr|en)/, '/' + $lang.other);
 </script>
 
 <style lang="scss">
   @import 'src/styles/_theme.scss';
-  .container1 {
+  .navbar {
+    width: 5rem;
     height: 100vh;
-    background-color: $theme-black;
+    position: fixed;
+    background-color: darken($theme-black, 5%);
+    transition: width 0.6s ease;
+    &:hover {
+      width: 16rem;
+      & .link-text {
+        //display: block;
+        visibility: visible;
+        opacity: 1;
+      }
+      & .logo svg {
+        transform: rotate(-180deg);
+        margin-left: 11rem;
+      }
+      & .logo-text {
+        left: 0px;
+      }
+    }
+  }
+
+  .navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+
+  .nav-item {
+    width: 100%;
+    &:last-child {
+      margin-top: auto;
+    }
+  }
+
+  .svg-inline--fa {
+    color: $theme-green;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: white;
+    text-decoration: none;
+    filter: grayscale(100%) opacity(0.7);
+    transition: 0.3s;
+    &:hover {
+      filter: grayscale(0%) opacity(1);
+      background-color: darken($theme-black, 10%);
+      color: white;
+    }
+    & svg {
+      width: 2rem;
+      min-width: 2rem;
+      margin: 0 1.5rem;
+    }
+  }
+
+  .link-text {
+    //display: none;
+    margin-left: 1rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+    transition-delay: 0.2s;
+  }
+
+  .logo {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    background-color: darken($theme-black, 10%);
+    text-align: center;
+    color: white;
+    width: 100%;
+    & svg {
+      transform: rotate(0deg);
+      transition: 0.6s;
+    }
+  }
+
+  .logo-text {
+    display: inline;
+    position: absolute;
+    left: -999px;
+    transition: 0.6s;
   }
 </style>
 
-<<<<<<< HEAD
 <nav class="navbar">
   <ul class="navbar-nav">
     <li class="logo">
-      <a href="/{$lang.current}" class="nav-link">
+      <a href="index.svelte" class="nav-link">
         <span class="link-text logo-text">CodingForYou</span>
         <svg
           aria-hidden="true"
@@ -91,28 +171,10 @@
             422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5
             48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" />
         </svg>
-        <span class="link-text">{$_('login')}</span>
+        <span class="link-text">
+          {#if isLoggedIn}{user.firstName} {user.lastName}{:else}{$_('login')}{/if}
+        </span>
       </a>
     </li>
   </ul>
 </nav>
-=======
-<Navbar />
->>>>>>> b648da4bc2b0f70a3e6090c3a433ac057f842ba1
-
-<main>
-  <div class="container1">
-    <Button style="green" href={otherLangPath}>{$lang.other}</Button>
-  </div>
-
-  <div>
-    {#if isLoggedIn}
-      <h1>{$_('hello', { name: `${user.firstName} ${user.lastName}` })}</h1>
-    {:else}
-      <h1>{$_('welcome')}</h1>
-    {/if}
-    <p>{$_('aboutUs')}</p>
-  </div>
-
-  <h2>{$_('webPackages')}</h2>
-</main>
