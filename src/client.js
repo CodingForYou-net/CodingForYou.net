@@ -5,6 +5,8 @@ if (isIE) {
   alert(
     "This website may not render properly on this browser. Please try with an other one. Ce site web peut mal s'afficher avec ce naviguateur web. Veuillez en essayer un autre."
   );
+} else {
+  console.log('Not IE');
 }
 
 sapper.start({
