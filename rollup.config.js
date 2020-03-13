@@ -40,7 +40,6 @@ export default {
           { find: /@src\/(.*)\.(.*)/, replacement: __dirname + '/src/$1.$2' },
         ],
       }),
-
       svelte({
         dev,
         hydratable: true,
@@ -52,7 +51,6 @@ export default {
         dedupe: ['svelte'],
       }),
       commonjs(),
-
       legacy &&
         babel({
           extensions: ['.js', '.mjs', '.html', '.svelte'],
@@ -85,7 +83,6 @@ export default {
 
     onwarn,
   },
-
   server: {
     input: config.server.input(),
     output: config.server.output(),

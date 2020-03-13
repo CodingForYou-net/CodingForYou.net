@@ -1,32 +1,30 @@
 <script>
   import { _, store as lang } from '@helpers/translation.js';
+  import { createEventDispatcher } from 'svelte';
   import { stores } from '@sapper/app';
 
-  const { session } = stores();
+  const { session, page } = stores();
+  const dispatch = createEventDispatcher();
 
-  let isOpen = false;
-  let forceOpen = false;
-  let logoHovered = false;
+  $: segment = $page.path
+    .split('/')
+    .splice(2)
+    .join('/');
+
+  let isOpen, stayOpen, logoHovered;
 
   function handleHover() {
-    if (forceOpen == false && logoHovered == false) {
-      isOpen = true;
-    }
+    !stayOpen && !logoHovered && (isOpen = true);
   }
 
   function handleLeave() {
-    if (forceOpen == false) {
-      isOpen = false;
-    }
+    !stayOpen && (isOpen = false);
   }
 
   function handleClick() {
-    if (isOpen == false) {
-      forceOpen = true;
-    } else {
-      forceOpen = false;
-    }
     isOpen = !isOpen;
+    stayOpen = isOpen;
+    dispatch('stayopen', isOpen);
   }
 
   function logoHover() {
@@ -41,20 +39,13 @@
 <style lang="scss">
   @import 'src/styles/_theme.scss';
 
-  main {
-    margin-left: 5rem;
-    transition: 0.6s ease;
-    &.open {
-      margin-left: 16rem;
-    }
-  }
-
   .navbar {
     width: 5rem;
     height: 100vh;
     position: fixed;
     background-color: darken($theme-black, 5%);
     transition: width 0.6s ease;
+    z-index: 1000;
     &.open {
       width: 16rem;
       & .link-text {
@@ -100,7 +91,8 @@
     text-decoration: none;
     filter: grayscale(100%) opacity(0.7);
     transition: 0.3s;
-    &:hover {
+    &:hover,
+    &.selected {
       filter: grayscale(0%) opacity(1);
       background-color: darken($theme-black, 10%);
       color: white;
@@ -197,7 +189,11 @@
       </div>
     </li>
     <li class="nav-item">
-      <a rel="prefetch" href="/{$lang.current}/contact" class="nav-link">
+      <a
+        rel="prefetch"
+        href="/{$lang.current}/contact"
+        class="nav-link"
+        class:selected={segment === 'contact'}>
         <svg
           aria-hidden="true"
           focusable="false"
@@ -249,6 +245,3 @@
     </li>
   </ul>
 </nav>
-<main class:open={forceOpen}>
-  <slot />
-</main>
