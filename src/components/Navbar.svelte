@@ -1,21 +1,52 @@
 <script>
   import { _, store as lang } from '@helpers/translation.js';
+  import { createEventDispatcher } from 'svelte';
   import { stores } from '@sapper/app';
 
-  const { session } = stores();
+  const { session, page } = stores();
+  const dispatch = createEventDispatcher();
 
-  let navIsOpen = false;
+  $: segment = $page.path
+    .split('/')
+    .splice(2)
+    .join('/');
+
+  let isOpen, stayOpen, logoHovered;
+
+  function handleHover() {
+    !stayOpen && !logoHovered && (isOpen = true);
+  }
+
+  function handleLeave() {
+    !stayOpen && (isOpen = false);
+  }
+
+  function handleClick() {
+    isOpen = !isOpen;
+    stayOpen = isOpen;
+    dispatch('stayopen', isOpen);
+  }
+
+  function logoHover() {
+    logoHovered = true;
+  }
+
+  function logoLeave() {
+    logoHovered = false;
+  }
 </script>
 
 <style lang="scss">
   @import 'src/styles/_theme.scss';
+
   .navbar {
     width: 5rem;
     height: 100vh;
     position: fixed;
     background-color: darken($theme-black, 5%);
     transition: width 0.6s ease;
-    &:hover {
+    z-index: 1000;
+    &.open {
       width: 16rem;
       & .link-text {
         visibility: visible;
@@ -23,7 +54,7 @@
       }
       & .logo svg {
         transform: rotate(-180deg);
-        margin-left: 11rem;
+        margin-left: 12rem;
       }
       & .logo-text {
         left: 0px;
@@ -60,7 +91,8 @@
     text-decoration: none;
     filter: grayscale(100%) opacity(0.7);
     transition: 0.3s;
-    &:hover {
+    &:hover,
+    &.selected {
       filter: grayscale(0%) opacity(1);
       background-color: darken($theme-black, 10%);
       color: white;
@@ -88,6 +120,7 @@
     text-align: center;
     color: white;
     width: 100%;
+    cursor: pointer;
     & svg {
       transform: rotate(0deg);
       transition: 0.6s;
@@ -99,10 +132,7 @@
     position: absolute;
     left: -999px;
     transition: 0.6s;
-  }
-
-  :global(main) {
-    margin-left: 5rem;
+    letter-spacing: 0.15ch;
   }
 
   .login {
@@ -131,11 +161,14 @@
   }
 </style>
 
-<nav class="navbar">
+<nav class="navbar" on:mouseover={handleHover} on:mouseleave={handleLeave} class:open={isOpen}>
   <ul class="navbar-nav">
-    <li class="logo">
-      <a href="/{$lang.current}" class="nav-link">
-        <span class="link-text logo-text">CodingForYou</span>
+    <li class="logo" on:click={handleClick} on:mouseover={logoHover} on:mouseleave={logoLeave}>
+      <div class="nav-link">
+        <a href="/{$lang.current}" class="nav-link">
+          <span class="link-text logo-text">CodingForYou</span>
+        </a>
+
         <svg
           aria-hidden="true"
           focusable="false"
@@ -153,10 +186,14 @@
             9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6
             9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" />
         </svg>
-      </a>
+      </div>
     </li>
     <li class="nav-item">
-      <a rel="prefetch" href="/{$lang.current}/contact" class="nav-link">
+      <a
+        rel="prefetch"
+        href="/{$lang.current}/contact"
+        class="nav-link"
+        class:selected={segment === 'contact'}>
         <svg
           aria-hidden="true"
           focusable="false"
@@ -180,7 +217,7 @@
     </li>
     <li class="nav-item">
       {#if $session.isLoggedIn}
-        <a href="/api/auth/google" class="login">
+        <a href="/profile" class="login">
           <img src={$session.user.image} alt="progile-picture" />
           <span class="link-text">{$session.user.firstName} {$session.user.lastName}</span>
         </a>
