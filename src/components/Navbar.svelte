@@ -4,7 +4,15 @@
 
   const { session } = stores();
 
-  let navIsOpen = false;
+  let isOpen;
+
+  function handleHover() {
+    isOpen = true;
+  }
+
+  function handleLeave() {
+    isOpen = false;
+  }
 </script>
 
 <style lang="scss">
@@ -15,7 +23,7 @@
     position: fixed;
     background-color: darken($theme-black, 5%);
     transition: width 0.6s ease;
-    &:hover {
+    &.open {
       width: 16rem;
       & .link-text {
         visibility: visible;
@@ -131,7 +139,7 @@
   }
 </style>
 
-<nav class="navbar">
+<nav class="navbar" on:mouseover={handleHover} on:mouseleave={handleLeave} class:open={isOpen}>
   <ul class="navbar-nav">
     <li class="logo">
       <a href="/{$lang.current}" class="nav-link">
@@ -180,7 +188,7 @@
     </li>
     <li class="nav-item">
       {#if $session.isLoggedIn}
-        <a href="/api/auth/google" class="login">
+        <a href="/profile" class="login">
           <img src={$session.user.image} alt="progile-picture" />
           <span class="link-text">{$session.user.firstName} {$session.user.lastName}</span>
         </a>
