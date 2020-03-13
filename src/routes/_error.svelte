@@ -14,9 +14,7 @@
 <svelte:head>
   <title>{status}</title>
 </svelte:head>
-<Navbar />
-
-<main>
+<Navbar>
   <h1>{status}</h1>
 
   <p>{error.message}</p>
@@ -24,4 +22,4 @@
   {#if dev && error.stack}
     <pre>{error.stack}</pre>
   {/if}
-</main>
+</Navbar>

@@ -28,7 +28,6 @@
 </style>
 
 <Head />
-<Navbar />
-<main>
+<Navbar>
   <slot />
-</main>
+</Navbar>

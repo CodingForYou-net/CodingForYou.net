@@ -40,6 +40,15 @@
 
 <style lang="scss">
   @import 'src/styles/_theme.scss';
+
+  main {
+    margin-left: 5rem;
+    transition: 0.6s ease;
+    &.open {
+      margin-left: 16rem;
+    }
+  }
+
   .navbar {
     width: 5rem;
     height: 100vh;
@@ -132,10 +141,6 @@
     left: -999px;
     transition: 0.6s;
     letter-spacing: 0.15ch;
-  }
-
-  :global(main) {
-    margin-left: 5rem;
   }
 
   .login {
@@ -244,3 +249,6 @@
     </li>
   </ul>
 </nav>
+<main class:open={forceOpen}>
+  <slot />
+</main>
