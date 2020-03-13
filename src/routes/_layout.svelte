@@ -16,15 +16,19 @@
   import Navbar from '@components/Navbar.svelte';
   import Head from '@components/Head.svelte';
   import { onMount, onDestroy } from 'svelte';
+  import axios from 'axios';
   import { stores } from '@sapper/app';
+
+  const { page, session } = stores();
 
   let unsub;
   let navStayOpen;
 
   onMount(() => {
-    const { page } = stores();
     unsub = page.subscribe((p) => {
-      lang.set(p.path.split('/')[1]);
+      const l = p.path.split('/')[1];
+      lang.set(l);
+      if ($session.isLoggedIn) axios.post('/api/update-lang', { lang: l, id: $session.user.id });
     });
   });
   onDestroy(() => unsub && unsub());
