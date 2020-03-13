@@ -159,6 +159,10 @@
       filter: grayscale(100%) opacity(0.7);
     }
   }
+
+  .name {
+    margin-right: 1rem;
+  }
 </style>
 
 <nav class="navbar" on:mouseover={handleHover} on:mouseleave={handleLeave} class:open={isOpen}>
@@ -218,8 +222,8 @@
     <li class="nav-item">
       {#if $session.isLoggedIn}
         <a href="/profile" class="login">
-          <img src={$session.user.image} alt="progile-picture" />
-          <span class="link-text">{$session.user.firstName} {$session.user.lastName}</span>
+          <img src={$session.user.image} alt="profile-picture" />
+          <span class="link-text name">{$session.user.firstName} {$session.user.lastName}</span>
         </a>
       {:else}
         <a href="/api/auth/google" class="nav-link">
@@ -239,7 +243,7 @@
               0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5
               48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" />
           </svg>
-          <span class="link-text">{$_('login')}</span>
+          <span class="link-text name">{$_('login')}</span>
         </a>
       {/if}
     </li>

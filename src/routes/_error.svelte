@@ -23,9 +23,6 @@
   .error-message {
     position: relative;
     text-align: center;
-    vertical-align: middle;
-    top: 50px;
-    width: 100%;
   }
   .svg-inline--fa {
     position: relative;
