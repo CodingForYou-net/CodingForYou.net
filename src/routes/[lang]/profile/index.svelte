@@ -1,13 +1,9 @@
-<script context="module">
-  export function preload({}, { user }) {
-    return { user };
-  }
-</script>
-
 <script>
   import { store as lang } from '@helpers/translation.js';
+  import { stores } from '@sapper/app';
 
-  export let user;
+  const { session } = stores();
+  let { user } = $session;
 </script>
 
 <img src={user.image} alt="" />
@@ -15,4 +11,4 @@
 <a href="mailto:{user.email}">{user.email}</a>
 <p>{user.id}</p>
 <a href="/{$lang.current}/profile/buy">Buy</a>
-<a href="/{$lang.current}/auth/logout">Logout</a>
+<a href="/api/auth/logout">Logout</a>

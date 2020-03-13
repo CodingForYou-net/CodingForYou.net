@@ -1,3 +1,4 @@
+import { User } from '@helpers/mongoose.js';
 import { get as googleCallback } from '@routes/api/auth/google/callback.js';
 import * as sapper from '@sapper/server';
 import bodyParser from 'body-parser';
@@ -26,9 +27,9 @@ export function start() {
         cookie: { maxAge: 86400000 },
       }),
       passport.initialize(),
-      passport.session(),
+      passport.session()
     )
-    // NOTE Caveat: incompatibility between Sapper and Passport
+    // NOTE Caveat: incompatibility between Sapper & Passport
     .get('/auth/google/callback', googleCallback)
     // NOTE Sapper middlewares
     .use(
@@ -51,7 +52,7 @@ export function start() {
           const user = { image, firstName, lastName, id, email };
           return { lang, isLoggedIn, user };
         },
-      }),
+      })
     )
     // NOTE Start server
     .listen(PORT, (err) => {

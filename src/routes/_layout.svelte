@@ -15,19 +15,27 @@
 <script>
   import Navbar from '@components/Navbar.svelte';
   import Head from '@components/Head.svelte';
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount } from 'svelte';
+  import axios from 'axios';
   import { stores } from '@sapper/app';
+  import { isLoggedIn, user } from '@helpers/user.js';
 
-  let unsub;
+  const { page, session } = stores();
   let navStayOpen;
 
   onMount(() => {
-    const { page } = stores();
-    unsub = page.subscribe((p) => {
-      lang.set(p.path.split('/')[1]);
-    });
+    const subscritptions = [
+      page.subscribe((p) => {
+        const l = p.path.split('/')[1];
+        $lang = l;
+        if ($session.isLoggedIn) axios.post('/api/update-lang', { lang: l, id: $session.user.id });
+      }),
+      session.subscribe((s) => {
+        $isLoggedIn = s.isLoggedIn;
+        $user = s.user;
+      }),
+    ];
   });
-  onDestroy(() => unsub && unsub());
 </script>
 
 <style global lang="scss">

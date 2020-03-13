@@ -3,6 +3,7 @@
   import { stores } from '@sapper/app';
   import products from '@config/products.js';
   import { stripePublic } from '@config/keys.js';
+  import { store as lang } from '@helpers/translation.js';
   import axios from 'axios';
 
   const { page } = stores();
@@ -14,15 +15,20 @@
 
   async function buy(productID) {
     try {
-      const res = await axios.get(
-        `/api/stripe/create-checkout-session?productID=${productID}&cancelPath=${$page.path}`,
-      );
+      const res = await axios.get(`/api/stripe/create-checkout-session`, {
+        params: {
+          productID,
+          cancelPath: $page.path,
+          lang: $lang.current,
+        },
+      });
       const { error } = await stripe.redirectToCheckout({
         sessionId: res.data,
       });
       if (error) throw error;
     } catch (error) {
       alert('error');
+      console.log(error);
     }
   }
 </script>

@@ -1,5 +1,3 @@
-import fs from 'fs';
-
 import { stripeSecret, stripeWebhookSecret } from '@config/keys.js';
 import Stripe from 'stripe';
 
@@ -15,6 +13,7 @@ export async function post(req, res) {
     const { customer: customerID } = intent;
 
     try {
+      console.log(event.data.object.charges.data[0].metadata);
       const customer = await stripe.customers.retrieve(customerID);
       const { email } = customer;
 
@@ -31,7 +30,9 @@ export async function post(req, res) {
           break;
       }
       return res.status(200).send('ok');
-    } catch (error) {}
+    } catch (error) {
+      // Send mail to me
+    }
   } catch (err) {
     if (dev) console.warn(err);
     return res.status(401).send('unauthorized');

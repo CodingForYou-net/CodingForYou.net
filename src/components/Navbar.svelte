@@ -221,7 +221,7 @@
     </li>
     <li class="nav-item">
       {#if $session.isLoggedIn}
-        <a href="/profile" class="login">
+        <a href="/{$lang.current}/profile" class="login">
           <img src={$session.user.image} alt="profile-picture" />
           <span class="link-text name">{$session.user.firstName} {$session.user.lastName}</span>
         </a>
