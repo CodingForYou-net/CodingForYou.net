@@ -6,7 +6,7 @@
   color: $theme-black;
 }
 
-body {
+:global(body) {
   margin: 0;
   padding: 0;
 
