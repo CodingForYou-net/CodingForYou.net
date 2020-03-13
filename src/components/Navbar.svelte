@@ -4,14 +4,37 @@
 
   const { session } = stores();
 
-  let isOpen;
+  let isOpen = false;
+  let forceOpen = false;
+  let logoHovered = false;
 
   function handleHover() {
-    isOpen = true;
+    if (forceOpen == false && logoHovered == false) {
+      isOpen = true;
+    }
   }
 
   function handleLeave() {
-    isOpen = false;
+    if (forceOpen == false) {
+      isOpen = false;
+    }
+  }
+
+  function handleClick() {
+    if (isOpen == false) {
+      forceOpen = true;
+    } else {
+      forceOpen = false;
+    }
+    isOpen = !isOpen;
+  }
+
+  function logoHover() {
+    logoHovered = true;
+  }
+
+  function logoLeave() {
+    logoHovered = false;
   }
 </script>
 
@@ -31,7 +54,7 @@
       }
       & .logo svg {
         transform: rotate(-180deg);
-        margin-left: 11rem;
+        margin-left: 12rem;
       }
       & .logo-text {
         left: 0px;
@@ -96,6 +119,7 @@
     text-align: center;
     color: white;
     width: 100%;
+    cursor: pointer;
     & svg {
       transform: rotate(0deg);
       transition: 0.6s;
@@ -107,6 +131,7 @@
     position: absolute;
     left: -999px;
     transition: 0.6s;
+    letter-spacing: 0.15ch;
   }
 
   :global(main) {
@@ -141,9 +166,12 @@
 
 <nav class="navbar" on:mouseover={handleHover} on:mouseleave={handleLeave} class:open={isOpen}>
   <ul class="navbar-nav">
-    <li class="logo">
-      <a href="/{$lang.current}" class="nav-link">
-        <span class="link-text logo-text">CodingForYou</span>
+    <li class="logo" on:click={handleClick} on:mouseover={logoHover} on:mouseleave={logoLeave}>
+      <div class="nav-link">
+        <a href="/{$lang.current}" class="nav-link">
+          <span class="link-text logo-text">CodingForYou</span>
+        </a>
+
         <svg
           aria-hidden="true"
           focusable="false"
@@ -161,7 +189,7 @@
             9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6
             9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" />
         </svg>
-      </a>
+      </div>
     </li>
     <li class="nav-item">
       <a rel="prefetch" href="/{$lang.current}/contact" class="nav-link">
