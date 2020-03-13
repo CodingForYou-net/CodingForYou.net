@@ -23,14 +23,14 @@ export default function(passport) {
         };
         // NOTE Check for existing user
         try {
-          let user = await User.findOne({ googleID: profile.id });
-          if (user) {
-            for (const [key, value] of Object.entries(userInfo)) user[key] = value;
-            await user.save();
+          let userDoc = await User.findOne({ googleID: profile.id });
+          if (userDoc) {
+            for (const [key, value] of Object.entries(userInfo)) userDoc[key] = value;
+            await userDoc.save();
           } else {
-            user = await new User(userInfo).save();
+            userDoc = await new User(userInfo).save();
           }
-          done(null, user);
+          done(null, userDoc);
         } catch (error) {
           done(error);
         }

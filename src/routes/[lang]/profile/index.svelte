@@ -15,4 +15,4 @@
 <a href="mailto:{user.email}">{user.email}</a>
 <p>{user.id}</p>
 <a href="/{$lang.current}/profile/buy">Buy</a>
-<a href="/{$lang.current}/auth/logout">Logout</a>
+<a href="/api/auth/logout">Logout</a>

@@ -18,6 +18,9 @@ const UserSchema = new Schema({
   image: {
     type: String,
   },
+  lang: {
+    type: String,
+  },
 });
 
 // NOTE Create collection and add schema
