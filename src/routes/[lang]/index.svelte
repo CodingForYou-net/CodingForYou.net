@@ -29,6 +29,7 @@
     position: relative;
     overflow: hidden;
     background-color: $theme-black;
+    display: inline-block;
   }
   .wave {
     position: absolute;
@@ -47,7 +48,7 @@
     z-index: 800;
     opacity: 1;
     animation-delay: 0s;
-    bottom: 0;
+    bottom: -1px;
   }
 
   .wave.wave2 {
