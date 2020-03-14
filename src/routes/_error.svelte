@@ -11,22 +11,12 @@
 </script>
 
 <style lang="scss">
-  @keyframes MoveUpDown {
-    0%,
-    100% {
-      bottom: 0;
-    }
-    50% {
-      bottom: 5px;
-    }
-  }
-
   svg {
     position: relative;
     min-width: 100px;
     width: 10%;
     max-width: 175px;
-    animation: MoveUpDown 1.5s linear infinite;
+    animation: MoveUpDown 0.5s linear infinite;
   }
 
   .error-message {
