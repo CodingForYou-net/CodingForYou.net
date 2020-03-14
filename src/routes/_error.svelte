@@ -35,7 +35,6 @@
     align-items: center;
     flex-direction: column;
     height: 100vh;
-    overflow: hidden;
   }
 </style>
 
@@ -43,7 +42,7 @@
   <title>{status}</title>
 </svelte:head>
 
-<div class="error-message" scroll="no">
+<div class="error-message">
   <svg
     aria-hidden="true"
     focusable="false"
