@@ -48,6 +48,7 @@
   .navbar {
     width: 5rem;
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     position: fixed;
     background-color: darken($theme-black, 5%);
     transition: width 0.6s ease;
