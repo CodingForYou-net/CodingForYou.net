@@ -46,7 +46,7 @@
     height: -webKit-fill-available;
     position: fixed;
     background-color: darken($theme-black, 5%);
-    transition: width 0.6s height 0.6s ease;
+    transition: width 0.6s ease;
     z-index: 1000;
     &.open {
       width: 16rem;
