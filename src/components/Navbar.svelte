@@ -36,10 +36,10 @@
     logoHovered = false;
   }
 
-  function calculatevh() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }
+  // function calculatevh() {
+  //   let vh = window.innerHeight * 0.01;
+  //   document.documentElement.style.setProperty('--vh', `${vh}px`);
+  // }
 </script>
 
 <style lang="scss">
@@ -47,8 +47,8 @@
 
   .navbar {
     width: 5rem;
-    //height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
+    height: 100vh;
+    height: -webKit-fill-available;
     position: fixed;
     background-color: darken($theme-black, 5%);
     transition: width 0.6s ease;
@@ -166,7 +166,7 @@
   }
 </style>
 
-<svelte:window on:resize={calculatevh} />
+<!-- <svelte:window on:resize={calculatevh} /> -->
 <nav class="navbar" on:mouseover={handleHover} on:mouseleave={handleLeave} class:open={isOpen}>
   <ul class="navbar-nav">
     <li class="logo" on:click={handleClick} on:mouseover={logoHover} on:mouseleave={logoLeave}>
