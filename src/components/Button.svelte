@@ -13,7 +13,6 @@
     border-radius: 5px;
     transition: background-color 0.3s;
     display: inline-block;
-    margin: 10px 10px;
     &.green {
       background-color: $theme-green;
       color: $theme-light-green;

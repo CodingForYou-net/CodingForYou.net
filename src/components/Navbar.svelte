@@ -40,6 +40,14 @@
 <style lang="scss">
   @import 'src/styles/_theme.scss';
 
+  // Small screens
+  @media only screen and (max-width: 600px) {
+  }
+
+  // Large screens
+  @media only screen and (min-width: 600px) {
+  }
+
   .navbar {
     width: 5rem;
     height: 100vh;
@@ -72,47 +80,41 @@
     flex-direction: column;
     align-items: center;
     height: 100%;
-  }
-
-  .nav-item {
-    width: 100%;
-    &:last-child {
-      margin-top: auto;
-    }
-  }
-
-  .nav-link {
-    display: flex;
-    align-items: center;
-    height: 5rem;
-    color: white;
-    text-decoration: none;
-    filter: grayscale(100%) opacity(0.7);
-    transition: 0.3s;
-    &:hover,
-    &.selected {
-      filter: grayscale(0%) opacity(1);
-      background-color: darken($theme-black, 10%);
+    & .nav-link {
+      display: flex;
+      align-items: center;
+      height: 5rem;
       color: white;
+      text-decoration: none;
+      filter: grayscale(100%) opacity(0.7);
+      transition: 0.3s;
+      &:hover {
+        filter: grayscale(0%) opacity(1);
+        background-color: darken($theme-black, 10%);
+        color: white;
+      }
+      &.selected {
+        filter: grayscale(0%) opacity(1);
+        color: white;
+      }
+      & svg {
+        width: 2rem;
+        min-width: 2rem;
+        margin: 0 1.5rem;
+        color: $theme-green;
+      }
     }
-    & svg {
-      width: 2rem;
-      min-width: 2rem;
-      margin: 0 1.5rem;
-      color: $theme-green;
+    & .link-text {
+      margin-left: 1rem;
+      margin-right: 1rem;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.5s linear;
+      transition-delay: 0.2s;
     }
   }
 
-  .link-text {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.5s linear;
-    transition-delay: 0.2s;
-  }
-
-  .logo {
+  li.logo {
     font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 1rem;
@@ -125,38 +127,62 @@
       transform: rotate(0deg);
       transition: 0.6s;
     }
+    & .logo-text {
+      display: inline;
+      position: absolute;
+      left: -999px;
+      transition: 0.6s;
+      letter-spacing: 0.15ch;
+    }
   }
 
-  .logo-text {
-    display: inline;
-    position: absolute;
-    left: -999px;
-    transition: 0.6s;
-    letter-spacing: 0.15ch;
-  }
-
-  .login {
-    display: flex;
-    align-items: center;
-    height: 5rem;
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
-    &:hover {
-      background-color: darken($theme-black, 10%);
+  li.nav-item {
+    width: 100%;
+    &:last-child {
+      margin-top: auto;
+    }
+    & .login {
+      display: flex;
+      align-items: center;
+      height: 5rem;
       color: white;
+      text-decoration: none;
+      transition: 0.3s;
+      &:hover {
+        background-color: darken($theme-black, 10%);
+        color: white;
+        & span {
+          filter: grayscale(0%) opacity(1);
+        }
+      }
+      & img {
+        width: 3rem;
+        min-width: 3rem;
+        margin: 0 1rem;
+        border-radius: 1.5rem;
+      }
       & span {
-        filter: grayscale(0%) opacity(1);
+        filter: grayscale(100%) opacity(0.7);
       }
     }
-    & img {
-      width: 3rem;
-      min-width: 3rem;
-      margin: 0 1rem;
-      border-radius: 1.5rem;
-    }
-    & span {
-      filter: grayscale(100%) opacity(0.7);
+  }
+
+  .overlay {
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.25);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+    &.on {
+      visibility: visible;
+      opacity: 1;
     }
   }
 </style>
@@ -237,3 +263,4 @@
     </li>
   </ul>
 </nav>
+<div class="overlay" class:on={isOpen && !stayOpen} />

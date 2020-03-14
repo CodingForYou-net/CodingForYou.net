@@ -22,19 +22,24 @@
     height: 100vh;
     background-color: $theme-black;
   }
+  .langBtn {
+    position: relative;
+    top: 10px;
+    left: 10px;
+  }
 </style>
 
-<section class="container1">
-  <Button style="green" href={otherLangPath}>{$lang.other}</Button>
-</section>
+<div class="container1">
+  <Button class="langBtn" style="green" href={otherLangPath}>{$lang.other}</Button>
+</div>
 
-<section>
+<div>
   {#if isLoggedIn}
     <h1>{$_('hello', { name: `${user.firstName} ${user.lastName}` })}</h1>
   {:else}
     <h1>{$_('welcome')}</h1>
   {/if}
   <p>{$_('aboutUs')}</p>
-</section>
+</div>
 
 <h2>{$_('webPackages')}</h2>
