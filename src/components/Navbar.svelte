@@ -179,7 +179,7 @@
     bottom: 0;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.5s;
+    transition: visibility 0.3s linear, opacity 0.3s linear;
     &.on {
       visibility: visible;
       opacity: 1;
