@@ -36,10 +36,10 @@
     logoHovered = false;
   }
 
-  window.addEventListener('resize', () => {
+  function calculatevh() {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
-  });
+  }
 </script>
 
 <style lang="scss">
@@ -165,6 +165,7 @@
   }
 </style>
 
+<svelte:window on:resize={calculatevh} />
 <nav class="navbar" on:mouseover={handleHover} on:mouseleave={handleLeave} class:open={isOpen}>
   <ul class="navbar-nav">
     <li class="logo" on:click={handleClick} on:mouseover={logoHover} on:mouseleave={logoLeave}>
