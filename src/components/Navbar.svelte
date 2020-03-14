@@ -47,7 +47,7 @@
 
   .navbar {
     width: 5rem;
-    height: 100vh;
+    //height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
     position: fixed;
     background-color: darken($theme-black, 5%);
