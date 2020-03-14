@@ -109,6 +109,7 @@
 
   .link-text {
     margin-left: 1rem;
+    margin-right: 1rem;
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.5s linear;
@@ -161,10 +162,6 @@
     & span {
       filter: grayscale(100%) opacity(0.7);
     }
-  }
-
-  .name {
-    margin-right: 1rem;
   }
 </style>
 
