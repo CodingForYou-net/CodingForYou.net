@@ -20,16 +20,21 @@
       bottom: 5px;
     }
   }
-  .error-message {
-    position: relative;
-    text-align: center;
-  }
-  .svg-inline--fa {
+
+  svg {
     position: relative;
     min-width: 100px;
     width: 10%;
     max-width: 175px;
     animation: MoveUpDown 1.5s linear infinite;
+  }
+
+  .error-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
   }
 </style>
 
