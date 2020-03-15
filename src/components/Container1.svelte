@@ -24,7 +24,7 @@
     }
   }
 
-  .container1 {
+  #container1 {
     height: 100vh;
     width: 100%;
     position: relative;
@@ -128,7 +128,7 @@
   }
 </style>
 
-<div class="container1">
+<div id="container1">
   <div class="wave wave1" />
   <div class="wave wave2" />
   <div class="wave wave3" />
