@@ -3,6 +3,7 @@
   import { createEventDispatcher } from 'svelte';
   import navRoutes from '@config/navRoutes.js';
   import { stores } from '@sapper/app';
+  import mobile from 'is-mobile';
 
   const { session, page } = stores();
   const dispatch = createEventDispatcher();
@@ -17,11 +18,11 @@
   let isOpen, stayOpen, logoHovered;
 
   function handleHover() {
-    !stayOpen && !logoHovered && (isOpen = true);
+    !stayOpen && !logoHovered && !mobile({ tablet: true }) && (isOpen = true);
   }
 
   function handleLeave() {
-    !stayOpen && (isOpen = false);
+    !stayOpen && !mobile({ tablet: true })((isOpen = false));
   }
 
   function handleLogoClick() {
@@ -111,8 +112,7 @@
       }
     }
     & .link-text {
-      margin-left: 1rem;
-      margin-right: 1rem;
+      margin: 0 1rem;
       visibility: hidden;
       opacity: 0;
       transition: opacity 0.5s linear;
@@ -121,7 +121,7 @@
   }
 
   li.logo {
-    font-weight: bold;
+    font-weight: 500;
     text-transform: uppercase;
     margin-bottom: 1rem;
     background-color: darken($theme-black, 10%);
@@ -162,7 +162,7 @@
         width: 3rem;
         min-width: 3rem;
         margin: 0 1rem;
-        border-radius: 1.5rem;
+        border-radius: 50%;
       }
       & span {
         filter: grayscale(100%) opacity(0.7);

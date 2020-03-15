@@ -19,7 +19,7 @@
     animation: MoveUpDown 0.5s linear infinite;
   }
 
-  .error-message {
+  .content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,7 +32,7 @@
   <title>{status}</title>
 </svelte:head>
 
-<div class="error-message">
+<div class="content">
   <svg
     aria-hidden="true"
     focusable="false"
