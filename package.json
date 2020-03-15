@@ -16,11 +16,11 @@
     "deploy": "pm2 stop codingforyou.net && pm2 start pm2.config.js && pm2 save"
   },
   "dependencies": {
-    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "clear": "^0.1.0",
     "colors": "^1.4.0",
     "compression": "^1.7.1",
+    "es6-promise-polyfill": "^1.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "format-message": "^6.2.3",
@@ -30,9 +30,11 @@
     "nodemailer": "^6.4.4",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
+    "setimmediate": "^1.0.5",
     "sirv": "^0.4.0",
     "stripe": "^8.28.1",
-    "svelte-intl": "^1.0.5"
+    "svelte-intl": "^1.0.5",
+    "unfetch": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

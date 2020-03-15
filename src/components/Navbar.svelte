@@ -4,7 +4,7 @@
   import navRoutes from '@config/navRoutes.js';
   import { stores } from '@sapper/app';
   import mobile from 'is-mobile';
-  import { scrollTo } from '@helpers/other.js';
+  import { scrollToId } from '@helpers/other.js';
 
   const { session, page } = stores();
   const dispatch = createEventDispatcher();
@@ -250,7 +250,7 @@
         rel="prefetch"
         href={otherLangPath}
         class="nav-link"
-        on:click={() => scrollTo('container1')}>
+        on:click={() => !handleNavItemClick() && scrollToId('container1')}>
         <svg
           aria-hidden="true"
           focusable="false"
@@ -281,7 +281,7 @@
     </li>
     <li class="nav-item">
       {#if $session.isLoggedIn}
-        <a href="/{$lang.current}/profile" class="login">
+        <a href="/{$lang.current}/profile" class="login" on:click={handleNavItemClick}>
           <img src={$session.user.image} alt="profile-picture" />
           <span class="link-text name">{$session.user.firstName} {$session.user.lastName}</span>
         </a>

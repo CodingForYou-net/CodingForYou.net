@@ -1,6 +1,6 @@
 <script>
   import { store as lang } from '@helpers/translation.js';
-  import { scrollTo } from '@helpers/other.js';
+  import { scrollToId } from '@helpers/other.js';
 </script>
 
 <style lang="scss">
@@ -153,7 +153,7 @@
   <img class="rocket" src="/rocket.svg" alt="rocket" />
 
   <div class="arrow-down">
-    <span rel="prefetch" on:click={() => scrollTo('container2')}>
+    <span rel="prefetch" on:click={() => scrollToId('container2')}>
       <svg
         aria-hidden="true"
         focusable="false"
