@@ -1,5 +1,8 @@
 <script>
-  export let arrowLink;
+  import { store as lang } from '@helpers/translation.js';
+  function scroll() {
+    document.getElementById('container2').scrollIntoView({ behavior: 'smooth' });
+  }
 </script>
 
 <style lang="scss">
@@ -96,7 +99,6 @@
   <div class="wave wave2" />
   <div class="wave wave3" />
   <div class="wave wave4" />
-
   <svg
     width="719"
     height="669"
@@ -201,7 +203,7 @@
       fill="white" />
   </svg>
   <div class="arrow-down-container">
-    <a href={arrowLink}>
+    <p rel="prefetch" on:click={scroll}>
       <svg
         aria-hidden="true"
         focusable="false"
@@ -216,6 +218,6 @@
           284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373
           24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" />
       </svg>
-    </a>
+    </p>
   </div>
 </div>
