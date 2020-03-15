@@ -31,11 +31,7 @@
     width: 100%;
     position: relative;
     overflow: hidden;
-    //background-color: $theme-black;
-    background-image: url(/space.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-color: $theme-black;
   }
 
   .wave {
