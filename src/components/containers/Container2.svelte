@@ -6,10 +6,6 @@
 
 <script>
   import { _, store as lang } from '@helpers/translation.js';
-  import { stores } from '@sapper/app';
-  import Container1 from '@components/containers/Container1.svelte';
-  import Container2 from '@components/containers/Container2.svelte';
-  import Container3 from '@components/containers/Container3.svelte';
 
   export let isLoggedIn;
   export let user;
@@ -17,10 +13,16 @@
 
 <style lang="scss">
   @import 'src/styles/_theme.scss';
+  .container2 {
+    padding: 50px 10%;
+  }
 </style>
 
-<Container1 />
-
-<Container2 />
-
-<Container3 />
+<div class="container2" id="container2">
+  {#if isLoggedIn}
+    <h1>{$_('hello', { name: `${user.firstName} ${user.lastName}` })}</h1>
+  {:else}
+    <h1>{$_('welcome')}</h1>
+  {/if}
+  <h4>{$_('aboutUs')}</h4>
+</div>

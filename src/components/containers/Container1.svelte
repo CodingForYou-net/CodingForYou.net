@@ -43,28 +43,28 @@
     background-size: 1000px 100px;
   }
 
-  .wave1 {
+  #wave1 {
     animation: moveWave1 30s linear infinite;
     z-index: 800;
     opacity: 1;
     animation-delay: 0s;
     bottom: -1px;
   }
-  .wave2 {
+  #wave2 {
     animation: moveWave2 15s linear infinite;
     z-index: 799;
     opacity: 0.5;
     animation-delay: -5s;
     bottom: 10px;
   }
-  .wave3 {
+  #wave3 {
     animation: moveWave1 30s linear infinite;
     z-index: 798;
     opacity: 0.2;
     animation-delay: -2s;
     bottom: 15px;
   }
-  .wave4 {
+  #wave4 {
     animation: moveWave2 5s linear infinite;
     z-index: 797;
     opacity: 0.7;
@@ -72,7 +72,7 @@
     bottom: 20px;
   }
 
-  .arrow-down {
+  #arrow-down {
     position: absolute;
     width: 40px;
     bottom: 150px;
@@ -90,7 +90,7 @@
     }
   }
 
-  .rocket {
+  #rocket {
     position: absolute;
     width: 35%;
     min-width: 350px;
@@ -100,7 +100,7 @@
     z-index: 10;
   }
 
-  .shape1 {
+  #shape1 {
     position: absolute;
     top: 0;
     left: 0;
@@ -109,7 +109,7 @@
     color: #5643fd;
   }
 
-  .shape2 {
+  #shape2 {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -118,7 +118,7 @@
     color: #7649fe;
   }
 
-  .desktop {
+  #desktop {
     position: absolute;
     z-index: 9;
     bottom: -250px;
@@ -129,30 +129,30 @@
 </style>
 
 <div id="container1">
-  <div class="wave wave1" />
-  <div class="wave wave2" />
-  <div class="wave wave3" />
-  <div class="wave wave4" />
+  <div class="wave" id="wave1" />
+  <div class="wave" id="wave2" />
+  <div class="wave" id="wave3" />
+  <div class="wave" id="wave4" />
 
-  <svg viewBox="0 0 4055 3090" class="shape1" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 4055 3090" id="shape1" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M0 0H4054.5C4054.5 0 3595.5 320 3255 856.5C2914.5 1393 2460.59 1174.31 2156.5 1362C1738.5
       1620 1976 2156 1620 2362.5C1264 2569 934 2324.44 583 2692.5C279.438 3010.82 0 3090 0 3090V0Z"
       fill="currentColor" />
   </svg>
 
-  <svg viewBox="0 0 5127 4431" class="shape2" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 5127 4431" id="shape2" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M2491.5 2156.5C2960.85 1946.17 3428.62 1921.06 3884 1682C4394.5 1414 5127 0.5 5127
       0.5V4431H0C0 4431 1207 3626.5 1625 3229.5C2043 2832.5 2035.24 2360.96 2491.5 2156.5Z"
       fill="currentColor" />
   </svg>
 
-  <img class="desktop" src="/desktop.svg" alt="desktop" />
+  <img id="desktop" src="/desktop.svg" alt="desktop" />
 
-  <img class="rocket" src="/rocket.svg" alt="rocket" />
+  <img id="rocket" src="/rocket.svg" alt="rocket" />
 
-  <div class="arrow-down">
+  <div id="arrow-down">
     <span rel="prefetch" on:click={() => scrollTo('container2')}>
       <svg
         aria-hidden="true"

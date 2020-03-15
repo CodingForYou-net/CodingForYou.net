@@ -9,7 +9,7 @@
     margin: 50px 0;
   }
 
-  .repeating-top {
+  #repeating-top {
     background-image: url(/triangleUp.svg);
     background-size: 20px;
     background-repeat: repeat-x;
@@ -17,7 +17,7 @@
     height: 17px;
   }
 
-  .repeating-bottom {
+  #repeating-bottom {
     background-image: url(/triangleDown.svg);
     background-size: 20px;
     background-repeat: repeat-x;
@@ -26,7 +26,7 @@
     margin-top: -1px;
   }
 
-  .content {
+  #content {
     background-color: $theme-green;
     text-align: center;
     color: $theme-light-green;
@@ -49,7 +49,7 @@
     }
   }
 
-  .learnMore {
+  #learnMore {
     text-decoration: none;
     display: inline-block;
     &::after {
@@ -81,8 +81,8 @@
 </style>
 
 <div id="container3">
-  <div class="repeating-top" />
-  <div class="content">
+  <div id="repeating-top" />
+  <div id="content">
     <h2>{$_('webPackages')}</h2>
     <div class="packages">
       <div class="package">
@@ -154,7 +154,7 @@
         <h3>15$</h3>
       </div>
     </div>
-    <a href="/" class="learnMore">
+    <a href="/" id="learnMore">
       <div>
         <span>Learn more</span>
         <svg
@@ -175,5 +175,5 @@
       </div>
     </a>
   </div>
-  <div class="repeating-bottom" />
+  <div id="repeating-bottom" />
 </div>
