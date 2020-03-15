@@ -22,7 +22,7 @@
   }
 
   function handleLeave() {
-    !stayOpen && && !mobile({ tablet: true }) (isOpen = false);
+    !stayOpen && !mobile({ tablet: true })((isOpen = false));
   }
 
   function handleClick() {
