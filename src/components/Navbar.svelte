@@ -32,7 +32,10 @@
   }
 
   function handleNavItemClick() {
-    isOpen = false;
+    console.log('click');
+    !stayOpen && (isOpen = false);
+    const interval = setInterval(() => !stayOpen && (isOpen = false), 1);
+    setTimeout(() => clearInterval(interval), 250);
   }
 
   function logoHover() {

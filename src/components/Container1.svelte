@@ -41,7 +41,6 @@
     height: 100px;
     background-image: url('/wave.svg');
     background-size: 1000px 100px;
-    user-select: none;
   }
 
   .wave1 {
