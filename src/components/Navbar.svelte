@@ -3,7 +3,7 @@
   import { createEventDispatcher } from 'svelte';
   import navRoutes from '@config/navRoutes.js';
   import { stores } from '@sapper/app';
-  import { isMobile } from '@helpers/other.js';
+  import mobile from 'is-mobile';
 
   const { session, page } = stores();
   const dispatch = createEventDispatcher();
@@ -18,11 +18,11 @@
   let isOpen, stayOpen, logoHovered;
 
   function handleHover() {
-    !stayOpen && !logoHovered && !isMobile() && (isOpen = true);
+    !stayOpen && !logoHovered && !mobile({ tablet: true, featureDetect: true }) && (isOpen = true);
   }
 
   function handleLeave() {
-    !stayOpen && !isMobile() && (isOpen = false);
+    !stayOpen && !mobile({ tablet: true, featureDetect: true }) && (isOpen = false);
   }
 
   function handleLogoClick() {
