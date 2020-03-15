@@ -24,7 +24,7 @@
     }
   }
 
-  .container1 {
+  #container1 {
     height: 100vh;
     width: 100%;
     position: relative;
@@ -100,13 +100,6 @@
     z-index: 10;
   }
 
-  // .star {
-  //   color: white;
-  //   width: 50px;
-  //   position: relative;
-  //   z-index: 10;
-  // }
-
   .shape1 {
     position: absolute;
     top: 0;
@@ -135,7 +128,7 @@
   }
 </style>
 
-<div class="container1">
+<div id="container1">
   <div class="wave wave1" />
   <div class="wave wave2" />
   <div class="wave wave3" />

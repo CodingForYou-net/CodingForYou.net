@@ -5,7 +5,7 @@
 <style lang="scss">
   @import 'src/styles/_theme.scss';
 
-  .container3 {
+  #container3 {
     margin: 50px 0;
   }
 
@@ -80,7 +80,7 @@
   }
 </style>
 
-<div class="container3">
+<div id="container3">
   <div class="repeating-top" />
   <div class="content">
     <h2>{$_('webPackages')}</h2>

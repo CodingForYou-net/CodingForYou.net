@@ -4,6 +4,7 @@
   import navRoutes from '@config/navRoutes.js';
   import { stores } from '@sapper/app';
   import mobile from 'is-mobile';
+  import { scrollTo } from '@helpers/other.js';
 
   const { session, page } = stores();
   const dispatch = createEventDispatcher();
@@ -32,7 +33,6 @@
   }
 
   function handleNavItemClick() {
-    console.log('click');
     !stayOpen && (isOpen = false);
     const interval = setInterval(() => !stayOpen && (isOpen = false), 1);
     setTimeout(() => clearInterval(interval), 250);
@@ -248,7 +248,11 @@
     {/each}
     <div class="bottom" />
     <li class="nav-item">
-      <a rel="prefetch" href={otherLangPath} class="nav-link">
+      <a
+        rel="prefetch"
+        href={otherLangPath}
+        class="nav-link"
+        on:click={() => scrollTo('container1')}>
         <svg
           aria-hidden="true"
           focusable="false"
