@@ -100,13 +100,6 @@
     z-index: 10;
   }
 
-  // .star {
-  //   color: white;
-  //   width: 50px;
-  //   position: relative;
-  //   z-index: 10;
-  // }
-
   .shape1 {
     position: absolute;
     top: 0;
