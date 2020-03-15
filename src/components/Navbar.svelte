@@ -33,7 +33,6 @@
   }
 
   function handleNavItemClick() {
-    console.log('click');
     !stayOpen && (isOpen = false);
     const interval = setInterval(() => !stayOpen && (isOpen = false), 1);
     setTimeout(() => clearInterval(interval), 250);
@@ -251,7 +250,7 @@
         rel="prefetch"
         href={otherLangPath}
         class="nav-link"
-        on:click={() => !handleNavItemClick() && scrollTo('container1')}>
+        on:click={() => scrollTo('container1')}>
         <svg
           aria-hidden="true"
           focusable="false"
