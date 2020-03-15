@@ -1,5 +1,6 @@
 <script>
   import { store as lang } from '@helpers/translation.js';
+  import { scrollTo } from '@helpers/other.js';
 </script>
 
 <style lang="scss">
@@ -140,24 +141,8 @@
   <div class="wave wave2" />
   <div class="wave wave3" />
   <div class="wave wave4" />
-<<<<<<< HEAD
-  <svg class="spaceship" viewBox="0 0 719 669" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M177.458 417.56C219.383 388.204 219.675 413.225 234.294 434.104C248.914 454.983 272.326
-      463.814 230.401 493.17C188.476 522.526 82.4712 540.411 82.4712 540.411C82.4712 540.411 135.534
-      446.916 177.458 417.56Z"
-      fill="#FECA57" />
-=======
-
-  <!-- <svg viewBox="0 0 476 453" class="star" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M238 0L304.126 158.986L475.764 172.746L344.994 284.764L384.946 452.254L238 362.5L91.0537
-      452.254L131.006 284.764L0.23587 172.746L171.874 158.986L238 0Z"
-      fill="currentColor" />
-  </svg> -->
 
   <svg viewBox="0 0 4055 3090" class="shape1" xmlns="http://www.w3.org/2000/svg">
->>>>>>> 65858c3f1342d66ad2161987aaf05a9442e478df
     <path
       d="M0 0H4054.5C4054.5 0 3595.5 320 3255 856.5C2914.5 1393 2460.59 1174.31 2156.5 1362C1738.5
       1620 1976 2156 1620 2362.5C1264 2569 934 2324.44 583 2692.5C279.438 3010.82 0 3090 0 3090V0Z"
@@ -176,7 +161,7 @@
   <img class="rocket" src="/rocket.svg" alt="rocket" />
 
   <div class="arrow-down">
-    <a rel="prefetch" href="/{$lang.current}/#container2">
+    <span rel="prefetch" on:click={() => scrollTo('container2')}>
       <svg
         aria-hidden="true"
         focusable="false"
@@ -191,6 +176,6 @@
           284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373
           24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" />
       </svg>
-    </a>
+    </span>
   </div>
 </div>
