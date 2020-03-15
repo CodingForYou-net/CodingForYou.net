@@ -1,5 +1,5 @@
 import { getLoggedIn } from '@helpers/user.js';
-import axios from 'axios';
+// import axios from 'axios';
 import { locale } from 'svelte-intl';
 
 export default {
@@ -12,7 +12,7 @@ export default {
     );
   },
   set(val) {
-    if (getLoggedIn()) axios.post('/api/update-lang', { lang: val });
+    // if (getLoggedIn()) axios.post('/api/update-lang', { lang: val });
     locale.set(val);
   },
 };

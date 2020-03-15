@@ -4,7 +4,6 @@
   import products from '@config/products.js';
   import { stripePublic } from '@config/keys.js';
   import { store as lang } from '@helpers/translation.js';
-  import axios from 'axios';
 
   const { page } = stores();
   let stripe;
@@ -15,17 +14,18 @@
 
   async function buy(productID) {
     try {
-      const res = await axios.get(`/api/stripe/create-checkout-session`, {
-        params: {
-          productID,
-          cancelPath: $page.path,
-          lang: $lang.current,
-        },
-      });
-      const { error } = await stripe.redirectToCheckout({
-        sessionId: res.data,
-      });
-      if (error) throw error;
+      // const res = await axios.get(`/api/stripe/create-checkout-session`, {
+      //   params: {
+      //     productID,
+      //     cancelPath: $page.path,
+      //     lang: $lang.current,
+      //   },
+      // });
+      // const { error } = await stripe.redirectToCheckout({
+      //   sessionId: res.data,
+      // });
+      // if (error) throw error;
+      // const
     } catch (error) {
       alert('error');
       console.log(error);
