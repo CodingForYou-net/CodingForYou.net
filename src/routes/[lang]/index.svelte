@@ -7,34 +7,32 @@
 <script>
   import { _, store as lang } from '@helpers/translation.js';
   import { stores } from '@sapper/app';
-  import Button from '@components/Button.svelte';
+  import Container1 from '@components/Container1.svelte';
 
   export let isLoggedIn;
   export let user;
 
   const { page } = stores();
-  $: otherLangPath = $page.path.replace(/^\/(fr|en)/, '/' + $lang.other);
 </script>
 
 <style lang="scss">
   @import 'src/styles/_theme.scss';
-  .container1 {
-    height: 100vh;
-    background-color: $theme-black;
+  .langBtn {
+    position: relative;
+    top: 10px;
+    left: 10px;
   }
 </style>
 
-<section class="container1">
-  <Button style="green" href={otherLangPath}>{$lang.other}</Button>
-</section>
+<Container1 arrowLink="#content" />
 
-<section>
+<div id="content">
   {#if isLoggedIn}
     <h1>{$_('hello', { name: `${user.firstName} ${user.lastName}` })}</h1>
   {:else}
     <h1>{$_('welcome')}</h1>
   {/if}
   <p>{$_('aboutUs')}</p>
-</section>
+</div>
 
 <h2>{$_('webPackages')}</h2>
