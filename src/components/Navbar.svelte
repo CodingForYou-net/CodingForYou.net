@@ -283,13 +283,7 @@
     </li>
     <li class="nav-item">
       {#if $session.isLoggedIn}
-<<<<<<< HEAD
-        <a href="/{$lang.current}/profile" class="login" on:click={handleNavItemClick}>
-||||||| merged common ancestors
-        <a href="/{$lang.current}/profile" class="login">
-=======
-        <a href="/{$lang.current}/profile" id="login">
->>>>>>> 3019a6c87f2f423ec94dd72c46630aef8a44c391
+        <a href="/{$lang.current}/profile" id="login" on:click={handleNavItemClick}>
           <img src={$session.user.image} alt="profile-picture" />
           <span class="link-text name">{$session.user.firstName} {$session.user.lastName}</span>
         </a>

@@ -133,35 +133,22 @@
   <div class="wave" id="wave2" />
   <div class="wave" id="wave3" />
   <div class="wave" id="wave4" />
-
   <svg viewBox="0 0 4055 3090" id="shape1" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M0 0H4054.5C4054.5 0 3595.5 320 3255 856.5C2914.5 1393 2460.59 1174.31 2156.5 1362C1738.5
       1620 1976 2156 1620 2362.5C1264 2569 934 2324.44 583 2692.5C279.438 3010.82 0 3090 0 3090V0Z"
       fill="currentColor" />
   </svg>
-
   <svg viewBox="0 0 5127 4431" id="shape2" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M2491.5 2156.5C2960.85 1946.17 3428.62 1921.06 3884 1682C4394.5 1414 5127 0.5 5127
       0.5V4431H0C0 4431 1207 3626.5 1625 3229.5C2043 2832.5 2035.24 2360.96 2491.5 2156.5Z"
       fill="currentColor" />
   </svg>
-
   <img id="desktop" src="/desktop.svg" alt="desktop" />
-
   <img id="rocket" src="/rocket.svg" alt="rocket" />
-
-<<<<<<< HEAD:src/components/Container1.svelte
-  <div class="arrow-down">
-    <span rel="prefetch" on:click={() => scrollToId('container2')}>
-||||||| merged common ancestors:src/components/Container1.svelte
-  <div class="arrow-down">
-    <span rel="prefetch" on:click={() => scrollTo('container2')}>
-=======
   <div id="arrow-down">
-    <span rel="prefetch" on:click={() => scrollTo('container2')}>
->>>>>>> 3019a6c87f2f423ec94dd72c46630aef8a44c391:src/components/containers/Container1.svelte
+    <span rel="prefetch" on:click={() => scrollToId('container2')}>
       <svg
         aria-hidden="true"
         focusable="false"
