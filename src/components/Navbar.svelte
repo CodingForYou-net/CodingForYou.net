@@ -63,6 +63,7 @@
     background-color: darken($theme-black, 5%);
     transition: width 0.6s ease;
     z-index: 1000;
+    top: 0;
     &.open {
       width: 16rem;
       & .link-text {

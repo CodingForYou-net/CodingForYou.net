@@ -8,6 +8,7 @@
   import { _, store as lang } from '@helpers/translation.js';
   import { stores } from '@sapper/app';
   import Container1 from '@components/Container1.svelte';
+  import Container3 from '@components/Container3.svelte';
 
   export let isLoggedIn;
   export let user;
@@ -20,28 +21,6 @@
   .container2 {
     padding: 50px 10%;
   }
-
-  .repeating-top {
-    background-image: url(/triangleUp.svg);
-    background-size: 20px;
-    background-repeat: repeat-x;
-    overflow: hidden;
-    height: 17px;
-  }
-
-  .repeating-bottom {
-    background-image: url(/triangleDown.svg);
-    background-size: 20px;
-    background-repeat: repeat-x;
-    overflow: hidden;
-    height: 17px;
-    margin-top: -1px;
-  }
-
-  .content {
-    background-color: $theme-green;
-    height: 200px;
-  }
 </style>
 
 <Container1 />
@@ -52,13 +31,7 @@
   {:else}
     <h1>{$_('welcome')}</h1>
   {/if}
-  <p>{$_('aboutUs')}</p>
+  <h3>{$_('aboutUs')}</h3>
 </div>
 
-<div class="container3">
-  <div class="repeating-top" />
-  <div class="content">
-    <h2>{$_('webPackages')}</h2>
-  </div>
-  <div class="repeating-bottom" />
-</div>
+<Container3 />
