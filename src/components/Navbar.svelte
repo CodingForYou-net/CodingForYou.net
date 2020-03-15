@@ -18,11 +18,11 @@
   let isOpen, stayOpen, logoHovered;
 
   function handleHover() {
-    !stayOpen && !logoHovered && (isOpen = true);
+    !stayOpen && !logoHovered && !mobile({ tablet: true }) && (isOpen = true);
   }
 
   function handleLeave() {
-    !stayOpen && (isOpen = false);
+    !stayOpen && && !mobile({ tablet: true }) (isOpen = false);
   }
 
   function handleClick() {
@@ -37,10 +37,6 @@
 
   function logoLeave() {
     logoHovered = false;
-  }
-
-  if (mobile({ tablet: true })) {
-    alert('This is a mobile device');
   }
 </script>
 
