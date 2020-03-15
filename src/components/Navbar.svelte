@@ -24,10 +24,14 @@
     !stayOpen && (isOpen = false);
   }
 
-  function handleClick() {
+  function handleLogoClick() {
     isOpen = !isOpen;
     stayOpen = isOpen;
     dispatch('stayopen', isOpen);
+  }
+
+  function handleNavItemClick() {
+    isOpen = false;
   }
 
   function logoHover() {
@@ -192,7 +196,7 @@
 
 <nav class="navbar" on:mouseover={handleHover} on:mouseleave={handleLeave} class:open={isOpen}>
   <ul class="navbar-nav">
-    <li class="logo" on:click={handleClick} on:mouseover={logoHover} on:mouseleave={logoLeave}>
+    <li class="logo" on:click={handleLogoClick} on:mouseover={logoHover} on:mouseleave={logoLeave}>
       <div class="nav-link">
         <a href="/{$lang.current}" class="nav-link">
           <span class="link-text logo-text">CodingForYou</span>
@@ -222,7 +226,8 @@
           rel="prefetch"
           href="/{$lang.current}/{route.path}"
           class="nav-link"
-          class:selected={segment === route.path}>
+          class:selected={segment === route.path}
+          on:click={handleNavItemClick}>
           <svg
             aria-hidden="true"
             focusable="false"

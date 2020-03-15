@@ -109,19 +109,6 @@
   <div class="wave wave2" />
   <div class="wave wave3" />
   <div class="wave wave4" />
-
-  <!-- <svg
-    width="476"
-    height="453"
-    viewBox="0 0 476 453"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M238 0L304.126 158.986L475.764 172.746L344.994 284.764L384.946 452.254L238 362.5L91.0537
-      452.254L131.006 284.764L0.23587 172.746L171.874 158.986L238 0Z"
-      fill="#C4C4C4" />
-  </svg> -->
-
   <svg class="spaceship" viewBox="0 0 719 669" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M177.458 417.56C219.383 388.204 219.675 413.225 234.294 434.104C248.914 454.983 272.326
