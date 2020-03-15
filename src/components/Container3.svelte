@@ -33,7 +33,7 @@
     padding: 20px 10%;
     & .packages {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
       grid-gap: 50px;
       & .package {
         display: flex;
@@ -77,10 +77,6 @@
         width: 1rem;
       }
     }
-  }
-
-  .test {
-    text-decoration: none;
   }
 </style>
 
@@ -158,7 +154,7 @@
         <h3>15$</h3>
       </div>
     </div>
-    <a href="" class="learnMore">
+    <a href="/" class="learnMore">
       <div>
         <span>Learn more</span>
         <svg
