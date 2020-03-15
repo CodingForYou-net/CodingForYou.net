@@ -31,7 +31,7 @@
   {:else}
     <h1>{$_('welcome')}</h1>
   {/if}
-  <h3>{$_('aboutUs')}</h3>
+  <h4>{$_('aboutUs')}</h4>
 </div>
 
 <Container3 />

@@ -25,12 +25,20 @@
     background-color: $theme-green;
     text-align: center;
     color: $theme-light-green;
-    padding: 20px;
+    padding: 20px 10%;
     & .packages {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+      grid-gap: 50px;
       & .package {
+        display: flex;
+        padding: 20px 50px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         svg {
-          height: 10%;
+          width: 100%;
+          max-width: 200px;
         }
       }
     }
@@ -63,7 +71,7 @@
             17c-4.1 7.3-15.6 4-14.9-4.5 3.3-42.1 32.2-71.4 56-71.4s52.7 29.3 56 71.4c.6 8.6-11
             11.9-15.1 4.5z" />
         </svg>
-        <span>5$</span>
+        <h3>5$</h3>
       </div>
       <div class="package">
         <svg
@@ -84,7 +92,7 @@
             0-134.5-38.3-143.8-93.3-2-11.9 9.4-21.6 20.7-17.9C155.1 330.5 200 336 248 336s92.9-5.5
             123.1-15.2c11.5-3.7 22.6 6.2 20.7 17.9-9.3 55-83.2 93.3-143.8 93.3z" />
         </svg>
-        <span>10$</span>
+        <h3>10$</h3>
       </div>
       <div class="package">
         <svg
@@ -108,7 +116,7 @@
             3.1-12-1.7-11-7.9l6-34.9-25.4-24.6c-4.5-4.6-1.9-12.2 4.3-13.2l34.9-5 15.5-31.6c2.9-5.8
             11-5.8 13.9 0l15.5 31.6 34.9 5c6.3.9 9 8.5 4.4 13.1z" />
         </svg>
-        <span>15$</span>
+        <h3>15$</h3>
       </div>
     </div>
   </div>
