@@ -15,15 +15,21 @@
   const { page } = stores();
 </script>
 
+<style lang="scss">
+  .container2 {
+    padding: 50px 10%;
+  }
+</style>
+
 <Container1 />
 
-<div id="container2">
+<div class="container2" id="container2">
   {#if isLoggedIn}
     <h1>{$_('hello', { name: `${user.firstName} ${user.lastName}` })}</h1>
   {:else}
     <h1>{$_('welcome')}</h1>
   {/if}
   <p>{$_('aboutUs')}</p>
-</div>
 
-<h2>{$_('webPackages')}</h2>
+  <h2>{$_('webPackages')}</h2>
+</div>

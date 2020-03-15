@@ -3,6 +3,7 @@
   import { createEventDispatcher } from 'svelte';
   import navRoutes from '@config/navRoutes.js';
   import { stores } from '@sapper/app';
+  import mobile from 'is-mobile';
 
   const { session, page } = stores();
   const dispatch = createEventDispatcher();
@@ -36,6 +37,10 @@
 
   function logoLeave() {
     logoHovered = false;
+  }
+
+  if (mobile({ tablet: true })) {
+    alert('This is a mobile device');
   }
 </script>
 
@@ -117,7 +122,7 @@
   }
 
   li.logo {
-    font-weight: bold;
+    font-weight: 500;
     text-transform: uppercase;
     margin-bottom: 1rem;
     background-color: darken($theme-black, 10%);
