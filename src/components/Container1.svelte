@@ -28,7 +28,11 @@
     width: 100%;
     position: relative;
     overflow: hidden;
-    background-color: $theme-black;
+    //background-color: $theme-black;
+    background-image: url(/space.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
   }
 
   .wave {
@@ -89,6 +93,15 @@
       color: lighten($theme-black, 30%);
     }
   }
+
+  .spaceship {
+    position: absolute;
+    width: 35%;
+    min-width: 350px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 </style>
 
 <div class="container1">
@@ -96,12 +109,20 @@
   <div class="wave wave2" />
   <div class="wave wave3" />
   <div class="wave wave4" />
-  <svg
-    width="719"
-    height="669"
-    viewBox="0 0 719 669"
+
+  <!-- <svg
+    width="476"
+    height="453"
+    viewBox="0 0 476 453"
     fill="none"
     xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M238 0L304.126 158.986L475.764 172.746L344.994 284.764L384.946 452.254L238 362.5L91.0537
+      452.254L131.006 284.764L0.23587 172.746L171.874 158.986L238 0Z"
+      fill="#C4C4C4" />
+  </svg> -->
+
+  <svg class="spaceship" viewBox="0 0 719 669" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M177.458 417.56C219.383 388.204 219.675 413.225 234.294 434.104C248.914 454.983 272.326
       463.814 230.401 493.17C188.476 522.526 82.4712 540.411 82.4712 540.411C82.4712 540.411 135.534
