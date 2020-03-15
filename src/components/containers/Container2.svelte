@@ -1,14 +1,6 @@
-<script context="module">
-  export function preload({}, { isLoggedIn, user }) {
-    return { isLoggedIn, user };
-  }
-</script>
-
 <script>
   import { _, store as lang } from '@helpers/translation.js';
-
-  export let isLoggedIn;
-  export let user;
+  import { user, isLoggedIn } from '@helpers/user.js';
 </script>
 
 <style lang="scss">

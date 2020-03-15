@@ -4,8 +4,9 @@ const dev = process.env.NODE_ENV === 'development';
 
 export async function post(req, res) {
   const user = req.user;
-  const lang = req.body.lang;
+  const lang = req.query.lang;
   if (!lang) return res.status(400).send('please specify a lang');
+  if (!user) return res.status(401, 'unauthorized');
   try {
     const userDoc = await User.findById(user.id);
     userDoc.lang = lang;

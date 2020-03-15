@@ -14,18 +14,14 @@
 
   async function buy(productID) {
     try {
-      // const res = await axios.get(`/api/stripe/create-checkout-session`, {
-      //   params: {
-      //     productID,
-      //     cancelPath: $page.path,
-      //     lang: $lang.current,
-      //   },
-      // });
-      // const { error } = await stripe.redirectToCheckout({
-      //   sessionId: res.data,
-      // });
-      // if (error) throw error;
-      // const
+      const res = await fetch(
+        `/api/stripe/create-checkout-session?productID=${productID}&cancelPath=${$page.path}&lang=${$lang.current}`
+      );
+      if (!res.ok) throw new Error(res.statusText);
+      const { error } = await stripe.redirectToCheckout({
+        sessionId: await res.text(),
+      });
+      if (error) throw error;
     } catch (error) {
       alert('error');
       console.log(error);
