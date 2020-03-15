@@ -156,7 +156,7 @@
     </div>
     <a href="/" id="learnMore">
       <div>
-        <span>Learn more</span>
+        <span>{$_('learnMore')}</span>
         <svg
           aria-hidden="true"
           focusable="false"

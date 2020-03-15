@@ -9,6 +9,8 @@ export default {
     webPackages: 'Forfaits Web',
     accountID: 'Identifiant de compte',
     buy: 'Achat',
+    learnMore: 'En savoir plus',
+    easyFastReliable: 'Facile, Rapide, Fiable!',
   },
   en: {
     login: 'Login',
@@ -20,5 +22,7 @@ export default {
     webPackages: 'Web packages',
     accountID: 'Account ID',
     buy: 'Buy',
+    learnMore: 'Learn more',
+    easyFastReliable: 'Easy, Fast, Reliable!',
   },
 };

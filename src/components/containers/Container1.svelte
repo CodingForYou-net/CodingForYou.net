@@ -84,6 +84,7 @@
       animation: MoveUpDown 1.5s linear infinite;
       color: lighten($theme-black, 60%);
       transition: color 0.3s;
+      cursor: pointer;
       &:hover {
         color: lighten($theme-black, 50%);
       }
