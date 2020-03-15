@@ -197,7 +197,6 @@
         <a href="/{$lang.current}" class="nav-link">
           <span class="link-text logo-text">CodingForYou</span>
         </a>
-
         <svg
           aria-hidden="true"
           focusable="false"
@@ -236,14 +235,12 @@
         </a>
       </li>
     {/each}
-    <li class="nav-item bottom">
+    <div class="bottom" />
+    <li class="nav-item">
       <a rel="prefetch" href={otherLangPath} class="nav-link">
         <svg
           aria-hidden="true"
           focusable="false"
-          data-prefix="fas"
-          data-icon="globe-americas"
-          class="svg-inline--fa fa-globe-americas fa-w-16"
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 496 512">
@@ -266,7 +263,7 @@
             0-26.62l19.59-29.38c2.32-3.47 5.5-6.29 9.24-8.15l12.98-6.49C440.2 193.59 448 223.87 448
             256c0 8.67-.74 17.16-1.82 25.54L417 274.25z" />
         </svg>
-        <span class="link-text" style="text-transform: uppercase;">{$lang.other}</span>
+        <span class="link-text">{$lang.other.toUpperCase()}</span>
       </a>
     </li>
     <li class="nav-item">
