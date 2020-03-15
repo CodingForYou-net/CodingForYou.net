@@ -108,8 +108,7 @@
       }
     }
     & .link-text {
-      margin-left: 1rem;
-      margin-right: 1rem;
+      margin: 0 1rem;
       visibility: hidden;
       opacity: 0;
       transition: opacity 0.5s linear;
@@ -159,7 +158,7 @@
         width: 3rem;
         min-width: 3rem;
         margin: 0 1rem;
-        border-radius: 1.5rem;
+        border-radius: 50%;
       }
       & span {
         filter: grayscale(100%) opacity(0.7);
