@@ -15,18 +15,9 @@
   const { page } = stores();
 </script>
 
-<style lang="scss">
-  @import 'src/styles/_theme.scss';
-  .langBtn {
-    position: relative;
-    top: 10px;
-    left: 10px;
-  }
-</style>
+<Container1 />
 
-<Container1 arrowLink="#content" />
-
-<div id="content">
+<div id="container2">
   {#if isLoggedIn}
     <h1>{$_('hello', { name: `${user.firstName} ${user.lastName}` })}</h1>
   {:else}
