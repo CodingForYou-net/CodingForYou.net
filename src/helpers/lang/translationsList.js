@@ -11,6 +11,7 @@ export default {
     buy: 'Achat',
     learnMore: 'En savoir plus',
     easyFastReliable: 'Facile, Rapide, Fiable!',
+    copyright: '© 2020 CodingForYou. Tous droits réservés.',
   },
   en: {
     login: 'Login',
@@ -24,5 +25,6 @@ export default {
     buy: 'Buy',
     learnMore: 'Learn more',
     easyFastReliable: 'Easy, Fast, Reliable!',
+    copyright: '© 2020 CodingForYou. All rights reserved.',
   },
 };
