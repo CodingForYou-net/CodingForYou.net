@@ -58,7 +58,7 @@
   @media only screen and (min-width: 600px) {
   }
 
-  .navbar {
+  nav {
     width: 5rem;
     height: 100vh;
     height: -webKit-fill-available;
@@ -73,108 +73,113 @@
         visibility: visible;
         opacity: 1;
       }
-      & .logo svg {
-        transform: rotate(-180deg);
-        margin-left: 12rem;
-      }
-      & .logo-text {
-        left: 0px;
-      }
     }
-  }
-
-  .navbar-nav {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    & .nav-link {
+    & ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      height: 5rem;
-      color: white;
-      text-decoration: none;
-      filter: grayscale(100%) opacity(0.7);
-      transition: 0.3s;
-      &:hover {
-        filter: grayscale(0%) opacity(1);
-        background-color: darken($theme-black, 10%);
-        color: white;
-      }
-      &.selected {
-        filter: grayscale(0%) opacity(1);
-        color: white;
-      }
-      & svg {
-        width: 2rem;
-        min-width: 2rem;
-        margin: 0 1.5rem;
-        color: $theme-green;
-      }
-    }
-    & .link-text {
-      margin: 0 1rem;
-      visibility: hidden;
-      opacity: 0;
-      transition: opacity 0.5s linear;
-      transition-delay: 0.2s;
-    }
-  }
+      height: 100%;
 
-  li.logo {
-    font-weight: 500;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    background-color: darken($theme-black, 10%);
-    text-align: center;
-    color: white;
-    width: 100%;
-    cursor: pointer;
-    & svg {
-      transform: rotate(0deg);
-      transition: 0.6s;
-    }
-    & .logo-text {
-      display: inline;
-      position: absolute;
-      left: -999px;
-      transition: 0.6s;
-      letter-spacing: 0.15ch;
-    }
-  }
+      .bottom {
+        margin-top: auto;
+      }
 
-  li.nav-item {
-    width: 100%;
-    & .login {
-      display: flex;
-      align-items: center;
-      height: 5rem;
-      color: white;
-      text-decoration: none;
-      transition: 0.3s;
-      &:hover {
+      & #logo {
+        font-weight: 500;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
         background-color: darken($theme-black, 10%);
+        text-align: center;
         color: white;
-        & span {
-          filter: grayscale(0%) opacity(1);
+        width: 100%;
+        cursor: pointer;
+        & svg {
+          transform: rotate(0deg);
+          transition: 0.6s;
+          &.open {
+            transform: rotate(-180deg);
+            margin-left: 12rem;
+          }
+        }
+        & #logo-text {
+          display: inline;
+          position: absolute;
+          left: -999px;
+          transition: 0.6s;
+          letter-spacing: 0.15ch;
+          &.open {
+            left: 0;
+          }
         }
       }
-      & img {
-        width: 3rem;
-        min-width: 3rem;
-        margin: 0 1rem;
-        border-radius: 50%;
+
+      & .nav-item {
+        width: 100%;
+        & #login {
+          display: flex;
+          align-items: center;
+          height: 5rem;
+          color: white;
+          text-decoration: none;
+          transition: 0.3s;
+          &:hover {
+            background-color: darken($theme-black, 10%);
+            color: white;
+            & span {
+              filter: grayscale(0%) opacity(1);
+            }
+          }
+          & img {
+            width: 3rem;
+            min-width: 3rem;
+            margin: 0 1rem;
+            border-radius: 50%;
+          }
+          & span {
+            filter: grayscale(100%) opacity(0.7);
+          }
+        }
       }
-      & span {
+
+      & .nav-link {
+        display: flex;
+        align-items: center;
+        height: 5rem;
+        color: white;
+        text-decoration: none;
         filter: grayscale(100%) opacity(0.7);
+        transition: 0.3s;
+        &:hover {
+          filter: grayscale(0%) opacity(1);
+          background-color: darken($theme-black, 10%);
+          color: white;
+        }
+        &.selected {
+          filter: grayscale(0%) opacity(1);
+          color: white;
+        }
+        & svg {
+          width: 2rem;
+          min-width: 2rem;
+          margin: 0 1.5rem;
+          color: $theme-green;
+        }
+      }
+
+      & .link-text {
+        margin: 0 1rem;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.5s linear;
+        transition-delay: 0.2s;
       }
     }
   }
 
-  .overlay {
+  #overlay {
     z-index: 999;
     background-color: rgba(0, 0, 0, 0.25);
     position: fixed;
@@ -192,18 +197,14 @@
       opacity: 1;
     }
   }
-
-  .bottom {
-    margin-top: auto;
-  }
 </style>
 
 <nav class="navbar" on:mouseover={handleHover} on:mouseleave={handleLeave} class:open={isOpen}>
   <ul class="navbar-nav">
-    <li class="logo" on:click={handleLogoClick} on:mouseover={logoHover} on:mouseleave={logoLeave}>
+    <li id="logo" on:click={handleLogoClick} on:mouseover={logoHover} on:mouseleave={logoLeave}>
       <div class="nav-link">
         <a href="/{$lang.current}" class="nav-link">
-          <span class="link-text logo-text">CodingForYou</span>
+          <span class="link-text" id="logo-text" class:open={isOpen}>CodingForYou</span>
         </a>
         <svg
           aria-hidden="true"
@@ -213,7 +214,8 @@
           class="svg-inline--fa fa-angle-double-right fa-w-14"
           role="img"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 448 512">
+          viewBox="0 0 448 512"
+          class:open={isOpen}>
           <path
             fill="currentColor"
             d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6
@@ -281,7 +283,13 @@
     </li>
     <li class="nav-item">
       {#if $session.isLoggedIn}
+<<<<<<< HEAD
         <a href="/{$lang.current}/profile" class="login" on:click={handleNavItemClick}>
+||||||| merged common ancestors
+        <a href="/{$lang.current}/profile" class="login">
+=======
+        <a href="/{$lang.current}/profile" id="login">
+>>>>>>> 3019a6c87f2f423ec94dd72c46630aef8a44c391
           <img src={$session.user.image} alt="profile-picture" />
           <span class="link-text name">{$session.user.firstName} {$session.user.lastName}</span>
         </a>
@@ -309,4 +317,4 @@
     </li>
   </ul>
 </nav>
-<div class="overlay" class:on={isOpen && !stayOpen} />
+<div id="overlay" class:on={isOpen && !stayOpen} />
