@@ -112,15 +112,6 @@
     min-width: 500px;
   }
 
-  #desktop {
-    position: absolute;
-    z-index: 9;
-    bottom: -250px;
-    left: -10%;
-    width: 50%;
-    min-width: 500px;
-  }
-
   #rocket {
     position: absolute;
     width: 35%;
@@ -147,7 +138,6 @@
       alt="shape"
       data-rellax-speed="-5"
       data-rellax-percentage="0.3" />
-    <!-- <img id="desktop" class="rellax" src="/desktop.svg" alt="desktop" /> -->
     <img
       id="rocket"
       class="rellax"
