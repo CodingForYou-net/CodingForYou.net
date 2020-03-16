@@ -75,6 +75,8 @@
       }
       & svg {
         width: 1rem;
+        height: 100%;
+        margin: auto 0;
       }
     }
   }
