@@ -1,9 +1,7 @@
-import { files, timestamp } from '@sapper/service-worker';
-
-const version = 2;
+import { files, shell, timestamp } from '@sapper/service-worker';
 
 const cacheName = `cache-${timestamp}-v${version}`;
-const urlsToCache = [...files]
+const urlsToCache = [...files, ...shell]
   .map((url) => `/${url}`)
   .filter((url) => url !== '/service-worker-index.html');
 
