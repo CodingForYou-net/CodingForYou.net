@@ -16,10 +16,10 @@
     min-width: 100px;
     width: 10%;
     max-width: 175px;
-    animation: MoveUpDown 0.5s linear infinite;
+    animation: MoveUpDown 1s linear infinite;
   }
 
-  .content {
+  #content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,7 +32,7 @@
   <title>{status}</title>
 </svelte:head>
 
-<div class="content">
+<div id="content">
   <svg
     aria-hidden="true"
     focusable="false"

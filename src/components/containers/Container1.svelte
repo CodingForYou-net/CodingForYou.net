@@ -1,6 +1,11 @@
 <script>
   import { store as lang } from '@helpers/translation.js';
   import { scrollToId } from '@helpers/other.js';
+  import Rellax from 'rellax';
+  import { onMount } from 'svelte';
+  onMount(() => {
+    var rellax = new Rellax('.rellax');
+  });
 </script>
 
 <style lang="scss">
@@ -84,20 +89,11 @@
       animation: MoveUpDown 1.5s linear infinite;
       color: lighten($theme-black, 60%);
       transition: color 0.3s;
+      cursor: pointer;
       &:hover {
         color: lighten($theme-black, 50%);
       }
     }
-  }
-
-  #rocket {
-    position: absolute;
-    width: 35%;
-    min-width: 350px;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
   }
 
   #shape1 {
@@ -106,7 +102,6 @@
     left: 0;
     width: 50%;
     min-width: 500px;
-    color: #5643fd;
   }
 
   #shape2 {
@@ -115,7 +110,6 @@
     right: 0;
     width: 50%;
     min-width: 500px;
-    color: #7649fe;
   }
 
   #desktop {
@@ -126,6 +120,16 @@
     width: 50%;
     min-width: 500px;
   }
+
+  #rocket {
+    position: absolute;
+    width: 35%;
+    min-width: 350px;
+    top: 40%;
+    left: 50%;
+    // transform: translate(-50%, -50%);
+    z-index: 10;
+  }
 </style>
 
 <div id="container1">
@@ -133,20 +137,26 @@
   <div class="wave" id="wave2" />
   <div class="wave" id="wave3" />
   <div class="wave" id="wave4" />
-  <svg viewBox="0 0 4055 3090" id="shape1" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M0 0H4054.5C4054.5 0 3595.5 320 3255 856.5C2914.5 1393 2460.59 1174.31 2156.5 1362C1738.5
-      1620 1976 2156 1620 2362.5C1264 2569 934 2324.44 583 2692.5C279.438 3010.82 0 3090 0 3090V0Z"
-      fill="currentColor" />
-  </svg>
-  <svg viewBox="0 0 5127 4431" id="shape2" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M2491.5 2156.5C2960.85 1946.17 3428.62 1921.06 3884 1682C4394.5 1414 5127 0.5 5127
-      0.5V4431H0C0 4431 1207 3626.5 1625 3229.5C2043 2832.5 2035.24 2360.96 2491.5 2156.5Z"
-      fill="currentColor" />
-  </svg>
-  <img id="desktop" src="/desktop.svg" alt="desktop" />
-  <img id="rocket" src="/rocket.svg" alt="rocket" />
+
+  <div>
+    <img id="shape1" class="rellax" src="/shape1.svg" alt="shape" data-rellax-speed="-5" />
+    <img
+      id="shape2"
+      class="rellax"
+      src="/shape2.svg"
+      alt="shape"
+      data-rellax-speed="-5"
+      data-rellax-percentage="0.3" />
+    <!-- <img id="desktop" class="rellax" src="/desktop.svg" alt="desktop" /> -->
+    <img
+      id="rocket"
+      class="rellax"
+      src="/rocket.svg"
+      alt="rocket"
+      data-rellax-speed="10"
+      data-rellax-percentage="0.5" />
+  </div>
+
   <div id="arrow-down">
     <span rel="prefetch" on:click={() => scrollToId('container2')}>
       <svg
