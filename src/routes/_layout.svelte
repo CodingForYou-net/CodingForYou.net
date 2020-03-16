@@ -8,11 +8,7 @@
 
   export async function preload({ path }, params) {
     // NOTE Redirect user to good language when no language specified in URL
-    if (
-      !path.startsWith('/api') &&
-      path !== '/service-worker-index.html' &&
-      !validPathRegex.test(path)
-    ) {
+    if (!path.startsWith('/api') && !validPathRegex.test(path)) {
       let lang = ['en', 'fr'].includes(params.lang) ? params.lang : 'en';
       return this.redirect(302, `/${lang}${path}`);
     }
