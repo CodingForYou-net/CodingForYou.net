@@ -130,7 +130,6 @@ export default {
       commonjs(),
       !dev && terser(),
     ],
-
     onwarn,
   },
 };

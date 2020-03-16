@@ -1,4 +1,3 @@
-import { User } from '@helpers/mongoose.js';
 import { get as googleCallback } from '@routes/api/auth/google/callback.js';
 import * as sapper from '@sapper/server';
 import bodyParser from 'body-parser';

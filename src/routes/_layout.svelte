@@ -1,14 +1,25 @@
 <script context="module">
-  import { store as lang, translations, translationsList } from '@helpers/translation.js';
+  import {
+    store as lang,
+    translations,
+    translationsList,
+    validPathRegex,
+  } from '@helpers/translation.js';
 
   export async function preload({ path }, params) {
     // NOTE Redirect user to good language when no language specified in URL
-    if (!path.startsWith('/api') && !/^\/(fr|en)\/?.*$/.test(path)) {
+    if (
+      !path.startsWith('/api') &&
+      path !== '/service-worker-index.html' &&
+      !validPathRegex.test(path)
+    ) {
       let lang = ['en', 'fr'].includes(params.lang) ? params.lang : 'en';
       return this.redirect(302, `/${lang}${path}`);
     }
-    translations.update(translationsList);
-    lang.set(params.lang);
+    if (validPathRegex.test(path)) {
+      translations.update(translationsList);
+      lang.set(params.lang);
+    }
   }
 </script>
 
@@ -25,7 +36,7 @@
   onMount(() => {
     const subscritptions = [
       page.subscribe((p) => {
-        $lang = p.path.split('/')[1];
+        if (validPathRegex.test(p.path)) $lang = p.path.split('/')[1];
       }),
       session.subscribe((s) => {
         $isLoggedIn = s.isLoggedIn;

@@ -1,18 +1,9 @@
-<script context="module">
-  export function preload({}, { isLoggedIn, user }) {
-    return { isLoggedIn, user };
-  }
-</script>
-
 <script>
   import { _, store as lang } from '@helpers/translation.js';
   import { stores } from '@sapper/app';
   import Container1 from '@components/containers/Container1.svelte';
   import Container2 from '@components/containers/Container2.svelte';
   import Container3 from '@components/containers/Container3.svelte';
-
-  export let isLoggedIn;
-  export let user;
 </script>
 
 <style lang="scss">

@@ -14,4 +14,6 @@ function getOther() {
   return lang;
 }
 
-export { translationsList, store, translations, _, getCurrent, getOther };
+const validPathRegex = /^\/(fr|en)\/?.*$/;
+
+export { translationsList, store, translations, _, getCurrent, getOther, validPathRegex };
