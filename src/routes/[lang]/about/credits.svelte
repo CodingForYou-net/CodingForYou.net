@@ -4,13 +4,11 @@
 
 <style lang="scss">
   .content {
-    position: relative;
-    top: 0;
-    left: 0;
+    padding: 50px;
   }
 </style>
 
 <div class="content">
-  <h1>Contact</h1>
-  <a href="/{$lang.current}/">Index</a>
+  <h1>Credits</h1>
+  <h3>The following tools and material were used to make this siet and our logo.</h3>
 </div>
