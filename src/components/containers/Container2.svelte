@@ -11,8 +11,8 @@
 </style>
 
 <div id="container2">
-  {#if isLoggedIn}
-    <h1>{$_('hello', { name: `${user.firstName} ${user.lastName}` })}</h1>
+  {#if $isLoggedIn}
+    <h1>{$_('hello', { name: `${$user.firstName} ${$user.lastName}` })}</h1>
   {:else}
     <h1>{$_('welcome')}</h1>
   {/if}
