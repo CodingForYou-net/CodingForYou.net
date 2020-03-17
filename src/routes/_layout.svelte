@@ -14,7 +14,7 @@
     }
     if (validPathRegex.test(path)) {
       translations.update(translationsList);
-      lang.set(params.lang);
+      lang.set(validPathRegex.exec(path)[1]);
     }
   }
 </script>

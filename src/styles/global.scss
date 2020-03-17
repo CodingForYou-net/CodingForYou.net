@@ -78,3 +78,8 @@ h4 {
 h5 {
   font-size: 1rem;
 }
+
+svg,
+img {
+  user-select: none;
+}
