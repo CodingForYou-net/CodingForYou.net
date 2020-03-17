@@ -12,8 +12,6 @@ const urlsToCache = [...files, ...shell]
   .map((url) => `/${url}`)
   .filter((url) => !urlsToIgnore.find((regex) => url.match(regex)));
 
-console.log(urlsToCache);
-
 self.addEventListener('install', (e) =>
   e.waitUntil(caches.open(cacheName).then((cache) => cache.addAll(urlsToCache)))
 );
