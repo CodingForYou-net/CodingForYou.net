@@ -124,28 +124,4 @@ export default {
     ),
     onwarn,
   },
-  serviceworker: {
-    input: config.serviceworker.input(),
-    output: config.serviceworker.output(),
-    plugins: [
-      resolve(),
-      replace({
-        'process.browser': true,
-        'process.env.NODE_ENV': JSON.stringify(mode),
-      }),
-      alias({
-        entries: [
-          { find: /@components\/(.*)\.(.*)/, replacement: __dirname + '/src/components/$1.$2' },
-          { find: /@config\/(.*)\.(.*)/, replacement: __dirname + '/src/config/$1.$2' },
-          { find: /@helpers\/(.*)\.(.*)/, replacement: __dirname + '/src/helpers/$1.$2' },
-          { find: /@models\/(.*)\.(.*)/, replacement: __dirname + '/src/models/$1.$2' },
-          { find: /@routes\/(.*)\.(.*)/, replacement: __dirname + '/src/routes/$1.$2' },
-          { find: /@src\/(.*)\.(.*)/, replacement: __dirname + '/src/$1.$2' },
-        ],
-      }),
-      commonjs(),
-      !dev && terser(),
-    ],
-    onwarn,
-  },
 };
