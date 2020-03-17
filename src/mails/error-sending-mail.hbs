@@ -1,0 +1,14 @@
+<p>
+  Une erreur est survenue lors de l'envoi d'un courriel à 
+  {{#each receivers}}
+    <b>{{this}}</b>
+    {{#unless (compare @index '===' (math @root.receivers.length '-' 1))}}
+      et
+    {{/unless}}
+  {{/each}}
+</p>
+
+<h2>Erreur</h2>
+<pre>{{error}}</pre>
+<h2>Arguments</h2>
+<pre>{{arguments}}</pre>

@@ -5,8 +5,10 @@ import {
   mailAuthSales,
   mailServer,
 } from '@config/keys.js';
+import { translationsList } from '@helpers/translation.js';
 import { createTransport } from 'nodemailer';
 import hbs from 'nodemailer-express-handlebars';
+import format from 'string-template';
 
 const transporters = {
   main: createTransport({
@@ -27,78 +29,117 @@ const transporters = {
   }),
 };
 
-const hbsViewsPath = `${__dirname}/../../../src/mails/`;
-for (const key in transporters)
-  transporters[key].use(
-    'compile',
-    hbs({
-      viewEngine: {
-        extname: '.hbs',
-        partialsDir: hbsViewsPath + 'partials',
-        layoutsDir: hbsViewsPath + 'layouts',
+const hbsViewsPath = `${__dirname}/mails/`;
+const hbsConfig = {
+  viewEngine: {
+    extname: '.hbs',
+    partialsDir: hbsViewsPath + 'partials',
+    layoutsDir: hbsViewsPath + 'layouts',
+    helpers: {
+      translate(textId, data) {
+        return format(translationsList[this.lang][textId], { ...this, ...data.hash });
       },
-      viewPath: hbsViewsPath,
-      extName: '.hbs',
-    })
-  );
+      compare(v1, operator, v2) {
+        switch (operator) {
+          case '==':
+            return v1 == v2;
+          case '!=':
+            return v1 != v2;
+          case '===':
+            return v1 === v2;
+          case '<':
+            return v1 < v2;
+          case '<=':
+            return v1 <= v2;
+          case '>':
+            return v1 > v2;
+          case '>=':
+            return v1 >= v2;
+          case '&&':
+            return !!(v1 && v2);
+          case '||':
+            return !!(v1 || v2);
+          default:
+            return false;
+        }
+      },
+      math(v1, operator, v2) {
+        switch (operator) {
+          case '+':
+            return v1 + v2;
+          case '-':
+            return v1 - v2;
+          case '*':
+            return v1 * v2;
+          case '/':
+            return v1 / v2;
+          case '%':
+            return v1 % v2;
+        }
+      },
+    },
+  },
+  viewPath: hbsViewsPath,
+  extName: '.hbs',
+};
+
+for (const key in transporters) transporters[key].use('compile', hbs(hbsConfig));
 
 /**
  * @param {'main' | 'sales' | 'contact' | 'codingTeam'} account
  * @param {String} from
  * @param {String[]} receivers
  * @param {String} subject
- * @param {String} html
+ * @param {String} template
+ * @param {Object?} context
  * @param {Boolean?} sendOnError
- * @example await sendMail(
-    'sales',
-    'Ventes CodingForYou <sales#codingforyou.net>',
-    ['samumartineau#gmail.com', 'cvdkhoa#gmail.com'],
-    'test',
-    '<b>this is bold</b>'
-  );
  */
-export async function sendMail(account, from, receivers, subject, html, sendOnError = true) {
-  await transporters[account].sendMail({
-    from,
-    to: receivers.join(', '),
-    template: 'error',
-    subject,
-  });
-  // try {
-  //   await transporters[account].sendMail({
-  //     from,
-  //     to: receivers.join(', '),
-  //     html,
-  //     subject,
-  //   });
-  // } catch (error) {
-  //   if (error.code && sendOnError) {
-  //     console.log(error);
-  //     sendMail(
-  //       'main',
-  //       'Erreur CodingForYou <errorcodingforyou.net>',
-  //       ['samumartineau@gmail.com', 'cvdkhoa@gmail.com'],
-  //       'Une erreur est survenue',
-  //       `Une erreur est survenue lors de l'envoi d'un courriel à ${receivers
-  //         .map((r) => `<b>${r}</b>`)
-  //         .join(' et ')}.
-  //       <h1>Erreur</h1>
-  //       <pre>${JSON.stringify(error, null, 2)}</pre>
-  //       <h1>Arguments</h1>
-  //       <pre>${JSON.stringify(
-  //         {
-  //           account,
-  //           from,
-  //           receivers,
-  //           subject,
-  //           html: html.replace(/</g, '&lt;').replace(/>/g, '&gt;'),
-  //           sendOnError,
-  //         },
-  //         null,
-  //         2
-  //       )}</pre>`,
-  //       false
-  //     );
-  //   }
-  // }
+export async function sendMail(
+  account,
+  from,
+  receivers,
+  subject,
+  template,
+  context = {},
+  sendOnError = true
+) {
+  try {
+    await transporters[account].sendMail({
+      from,
+      to: receivers.join(', '),
+      subject,
+      template,
+      context,
+    });
+  } catch (error) {
+    if (!error.receivers) {
+      if (sendOnError)
+        sendMail(
+          'main',
+          'Erreur CodingForYou <error@codingforyou.net>',
+          ['samumartineau@gmail.com', 'cvdkhoa@gmail.com'],
+          'Une erreur est survenue',
+          'error-sending-mail',
+          {
+            receivers,
+            error: JSON.stringify(error, null, 2),
+            arguments: JSON.stringify(
+              {
+                account,
+                from,
+                receivers,
+                subject,
+                template,
+                context,
+                sendOnError,
+              },
+              null,
+              2
+            ),
+          },
+          false
+        );
+      else console.log(error);
+    }
+  }
 }

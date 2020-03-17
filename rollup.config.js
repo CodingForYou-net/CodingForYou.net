@@ -4,6 +4,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import babel from 'rollup-plugin-babel';
 import copy from 'rollup-plugin-copy';
+import del from 'rollup-plugin-delete';
 import svelte from 'rollup-plugin-svelte';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
@@ -114,9 +115,9 @@ export default {
       }),
       commonjs(),
       copy({
-        src: 'src/mails/*',
-        dest: `${config.server.output().dir}/mails`,
+        targets: [{ src: 'src/mails/*', dest: config.server.output().dir + '/mails' }],
       }),
+      del({ targets: config.server.output().dir + '/mails' }),
     ],
     external: Object.keys(pkg.dependencies).concat(
       require('module').builtinModules || Object.keys(process.binding('natives'))
