@@ -112,14 +112,13 @@
     min-width: 500px;
   }
 
-  #rocket {
-    position: absolute;
-    width: 35%;
-    min-width: 350px;
-    top: 40%;
-    left: 50%;
-    // transform: translate(-50%, -50%);
-    z-index: 10;
+  // #rocket {
+  //   width: 20%;
+  // }
+
+  #desktop {
+    width: 50%;
+    z-index: 9;
   }
 </style>
 
@@ -130,20 +129,29 @@
   <div class="wave" id="wave4" />
 
   <div>
-    <img id="shape1" class="rellax" src="/shape1.svg" alt="shape" data-rellax-speed="-5" />
+    <img
+      id="shape1"
+      class="rellax"
+      src="/shape1.svg"
+      alt="shape"
+      data-rellax-speed="-5"
+      data-rellax-zindex="0" />
     <img
       id="shape2"
       class="rellax"
       src="/shape2.svg"
       alt="shape"
       data-rellax-speed="-5"
-      data-rellax-percentage="0.3" />
+      data-rellax-percentage="0.3"
+      data-rellax-zindex="0" />
+    <img src="/desktop.svg" alt="desktop" data-rellax-speed="-2" />
     <img
       id="rocket"
       class="rellax"
       src="/rocket.svg"
       alt="rocket"
-      data-rellax-speed="10"
+      data-rellax-speed="7"
+      data-rellax-zindex="2"
       data-rellax-percentage="0.5" />
   </div>
 

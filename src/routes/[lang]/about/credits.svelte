@@ -10,5 +10,10 @@
 
 <div class="content">
   <h1>Credits</h1>
-  <h3>The following tools and material were used to make this siet and our logo.</h3>
+  <h4>The following tools and materials were used in the making of this site and of our logo.</h4>
+  <ul>
+    <li>https://fontawesome.com/license</li>
+    <li>https://undraw.co/</li>
+    <li>https://www.figma.com/</li>
+  </ul>
 </div>

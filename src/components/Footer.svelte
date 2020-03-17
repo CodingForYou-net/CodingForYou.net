@@ -9,11 +9,13 @@
     background-color: $theme-black;
     color: white;
     padding: 35px 10% 0;
+    margin-top: 50px;
   }
 
   #about {
     font-size: 0.9rem;
     text-align: center;
+    margin: 10px 0;
     & div {
       display: inline-block;
       margin: 0 auto;
