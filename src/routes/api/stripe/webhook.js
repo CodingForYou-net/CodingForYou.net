@@ -13,22 +13,15 @@ export async function post(req, res) {
     const { customer: customerID } = intent;
 
     try {
-      console.log(event.data.object.charges.data[0].metadata);
       const customer = await stripe.customers.retrieve(customerID);
       const { email } = customer;
 
-      switch (event.type) {
-        case 'payment_intent.succeeded':
-          console.log('succeeded'.white.bgGreen);
-          console.log(email);
-          // Add order to the DB
-          break;
-        case 'payment_intent.payment_failed':
-          console.log('failed'.white.bgRed);
-          console.log(email);
-          // Send mail to client
-          break;
+      if (event.type === 'checkout.session.completed') {
+        console.log('succeeded'.white.bgGreen);
+        console.log(email);
+        console.log(event.data.object.metadata);
       }
+
       return res.status(200).send('ok');
     } catch (error) {
       // Send mail to me

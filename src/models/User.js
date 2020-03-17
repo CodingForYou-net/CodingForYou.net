@@ -23,5 +23,4 @@ const UserSchema = new Schema({
   },
 });
 
-// NOTE Create collection and add schema
 model('users', UserSchema);

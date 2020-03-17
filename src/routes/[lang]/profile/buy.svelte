@@ -3,7 +3,6 @@
   import { stores } from '@sapper/app';
   import products from '@config/products.js';
   import { stripePublic } from '@config/keys.js';
-  import { store as lang } from '@helpers/translation.js';
 
   const { page } = stores();
   let stripe;
@@ -15,7 +14,7 @@
   async function buy(productID) {
     try {
       const res = await fetch(
-        `/api/stripe/create-checkout-session?productID=${productID}&cancelPath=${$page.path}&lang=${$lang.current}`
+        `/api/stripe/create-checkout-session?productID=${productID}&cancelPath=${$page.path}`
       );
       if (!res.ok) throw new Error(res.statusText);
       const { error } = await stripe.redirectToCheckout({
