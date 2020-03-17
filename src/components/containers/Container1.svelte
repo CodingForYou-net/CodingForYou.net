@@ -112,13 +112,22 @@
     min-width: 500px;
   }
 
-  // #rocket {
-  //   width: 20%;
-  // }
+  #rocket {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    bottom: 250px;
+  }
 
   #desktop {
     width: 50%;
-    z-index: 9;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, 0);
   }
 </style>
 
@@ -144,7 +153,7 @@
       data-rellax-speed="-5"
       data-rellax-percentage="0.3"
       data-rellax-zindex="0" />
-    <img src="/desktop.svg" alt="desktop" data-rellax-speed="-2" />
+    <img src="/desktop.svg" id="desktop" alt="desktop" data-rellax-speed="-10" />
     <img
       id="rocket"
       class="rellax"
