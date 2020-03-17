@@ -3,6 +3,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import babel from 'rollup-plugin-babel';
+import copy from 'rollup-plugin-copy';
 import svelte from 'rollup-plugin-svelte';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
@@ -112,6 +113,10 @@ export default {
         dedupe: ['svelte'],
       }),
       commonjs(),
+      copy({
+        src: 'src/mails/*',
+        dest: `${config.server.output().dir}/mails`,
+      }),
     ],
     external: Object.keys(pkg.dependencies).concat(
       require('module').builtinModules || Object.keys(process.binding('natives'))
@@ -126,6 +131,16 @@ export default {
       replace({
         'process.browser': true,
         'process.env.NODE_ENV': JSON.stringify(mode),
+      }),
+      alias({
+        entries: [
+          { find: /@components\/(.*)\.(.*)/, replacement: __dirname + '/src/components/$1.$2' },
+          { find: /@config\/(.*)\.(.*)/, replacement: __dirname + '/src/config/$1.$2' },
+          { find: /@helpers\/(.*)\.(.*)/, replacement: __dirname + '/src/helpers/$1.$2' },
+          { find: /@models\/(.*)\.(.*)/, replacement: __dirname + '/src/models/$1.$2' },
+          { find: /@routes\/(.*)\.(.*)/, replacement: __dirname + '/src/routes/$1.$2' },
+          { find: /@src\/(.*)\.(.*)/, replacement: __dirname + '/src/$1.$2' },
+        ],
       }),
       commonjs(),
       !dev && terser(),
