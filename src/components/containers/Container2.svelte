@@ -16,5 +16,5 @@
   {:else}
     <h1>{$_('welcome')}</h1>
   {/if}
-  <h4>{$_('aboutUs')}</h4>
+  <h5>{$_('aboutUs')}</h5>
 </div>

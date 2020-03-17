@@ -27,7 +27,7 @@
 <div class="content">
   <img class="profile-picture" src={user.image} alt="profile-picture" />
   <h1>{user.firstName} {user.lastName}</h1>
-  <p>{user.email}</p>
+  <h4>{user.email}</h4>
   <hr />
   <p>{$_('accountID')}: {user.id}</p>
   <br />
