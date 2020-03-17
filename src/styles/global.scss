@@ -51,10 +51,6 @@ hr {
   background-color: #a7a7a7;
 }
 
-svg {
-  user-select: none;
-}
-
 h1 {
   margin: 20px 0;
   font-size: 3rem;
@@ -72,4 +68,9 @@ h3 {
 
 h4 {
   font-size: 1rem;
+}
+
+svg,
+img {
+  user-select: none;
 }

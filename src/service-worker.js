@@ -15,7 +15,8 @@ self.addEventListener('fetch', (e) =>
       return (
         res ||
         fetch(e.request).then((res) => {
-          if (!res || res.status !== 200 || res.type !== 'basic') return res;
+          if (!res || res.status !== 200 || res.type !== 'basic' || res.url.includes('api'))
+            return res;
           const resToCache = res.clone();
           caches.open(cacheName).then((cache) => {
             cache.put(e.request, resToCache);
