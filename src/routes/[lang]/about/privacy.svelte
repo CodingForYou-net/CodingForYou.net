@@ -4,13 +4,18 @@
 
 <style lang="scss">
   .content {
-    position: relative;
-    top: 0;
-    left: 0;
+    padding: 50px;
   }
 </style>
 
 <div class="content">
-  <h1>Contact</h1>
-  <a href="/{$lang.current}/">Index</a>
+  <h1>Politique de confidentialité</h1>
+  <ol>
+    <h3>
+      <li>Hello</li>
+    </h3>
+
+  </ol>
+
+  <p />
 </div>

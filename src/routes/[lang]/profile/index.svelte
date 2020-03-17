@@ -19,6 +19,9 @@
     max-width: 250px;
     margin: 20px;
   }
+  hr {
+    margin: 20px 0;
+  }
 </style>
 
 <div class="content">

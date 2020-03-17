@@ -9,8 +9,8 @@ export default {
     webPackages: 'Forfaits Web',
     accountID: 'Identifiant de compte',
     buy: 'Achat',
-    learnMore: 'En savoir plus',
     easyFastReliable: 'Facile, Rapide, Fiable!',
+    learnMore: 'En savoir plus',
     copyright: '© 2020 CodingForYou. Tous droits réservés.',
   },
   en: {
@@ -23,8 +23,8 @@ export default {
     webPackages: 'Web packages',
     accountID: 'Account ID',
     buy: 'Buy',
-    learnMore: 'Learn more',
     easyFastReliable: 'Easy, Fast, Reliable!',
+    learnMore: 'Learn more',
     copyright: '© 2020 CodingForYou. All rights reserved.',
   },
 };
