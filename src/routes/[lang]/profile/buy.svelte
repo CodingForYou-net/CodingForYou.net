@@ -3,6 +3,7 @@
   import { stores } from '@sapper/app';
   import products from '@config/products.js';
   import { stripePublic } from '@config/keys.js';
+  import Swal from 'sweetalert2';
 
   const { page } = stores();
   let stripe;
@@ -12,9 +13,22 @@
   });
 
   async function buy(productID) {
+    const { value: comments } = await Swal.fire({
+      title: 'Enter a text',
+      input: 'text',
+      showCancelButton: false,
+    });
     try {
       const res = await fetch(
-        `/api/stripe/create-checkout-session?productID=${productID}&cancelPath=${$page.path}`
+        `/api/stripe/create-checkout-session
+        ?productID=${productID}
+        &cancelPath=${$page.path}
+        &comments=${encodeURIComponent(comments)}`
+          .replace(/\s/gm, '')
+          .replace(/\n/gm, ''),
+        {
+          credentials: 'include',
+        }
       );
       if (!res.ok) throw new Error(res.statusText);
       const { error } = await stripe.redirectToCheckout({

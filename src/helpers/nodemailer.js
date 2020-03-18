@@ -4,11 +4,14 @@ import {
   mailAuthMain,
   mailAuthSales,
   mailServer,
+  ourEmails,
 } from '@config/keys.js';
 import { translationsList } from '@helpers/translation.js';
 import { createTransport } from 'nodemailer';
 import hbs from 'nodemailer-express-handlebars';
 import format from 'string-template';
+
+const dev = process.env.NODE_ENV === 'development';
 
 const transporters = {
   main: createTransport({
@@ -117,8 +120,8 @@ export async function sendMail(
         sendMail(
           'main',
           'Erreur CodingForYou <error@codingforyou.net>',
-          ['samumartineau@gmail.com', 'cvdkhoa@gmail.com'],
-          'Une erreur est survenue',
+          ourEmails,
+          (dev ? '[DEV] ' : ' ') + 'Une erreur est survenue',
           'error-sending-mail',
           {
             receivers,
@@ -136,6 +139,7 @@ export async function sendMail(
               null,
               2
             ),
+            dev,
           },
           false
         );

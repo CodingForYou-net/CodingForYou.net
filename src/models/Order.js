@@ -5,7 +5,7 @@ const OrderSchema = new Schema({
     type: String,
     required: true,
   },
-  description: {
+  comments: {
     type: String,
   },
   date: {
