@@ -9,7 +9,7 @@
     background-color: $theme-black;
     color: white;
     padding: 35px 10% 0;
-    margin-top: 50px;
+    // margin-top: 50px;
   }
 
   #about {

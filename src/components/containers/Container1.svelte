@@ -95,16 +95,6 @@
     bottom: 20px;
   }
 
-  #wave5 {
-    animation: moveWave1 5s linear infinite;
-    z-index: 800;
-    opacity: 1;
-    animation-delay: 0s;
-    top: 100px;
-    left: -30px;
-    transform: rotate(-45deg) scale(1, -1);
-  }
-
   #arrow-down {
     position: absolute;
     width: 40px;
@@ -165,8 +155,6 @@
   <div class="wave" id="wave2" />
   <div class="wave" id="wave3" />
   <div class="wave" id="wave4" />
-
-  <div class="wave" id="wave5" />
 
   <div>
     <img
