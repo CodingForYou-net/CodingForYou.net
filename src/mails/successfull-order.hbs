@@ -1,0 +1,73 @@
+<head>
+  <style>
+    table {
+      width: 100%;
+      text-align: left;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #eee;
+    }
+
+    table tr:nth-child(odd) {
+      background-color: #fff;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
+</head>
+
+<body>
+  {{#if dev}}
+  {{> devBanner}}
+  {{/if}}
+  <p>
+    <b>{{customer_email}}</b> a passé une commande
+  </p>
+  <h2>Commande:</h2>
+  <table style="">
+    <tr>
+      <th>Élément</th>
+      <th>Valeur</th>
+    </tr>
+    <tr>
+      <th>ID de produit</th>
+      <td>{{productID}}</td>
+    </tr>
+    <tr>
+      <th>ID de commande</th>
+      <td>{{orderID}}</td>
+    </tr>
+    <tr>
+      <th>Nom</th>
+      <td>{{product.name}}</td>
+    </tr>
+    <tr>
+      <th>Description</th>
+      <td>{{product.description}}</td>
+    </tr>
+    {{#each product.images}}
+    <tr>
+      <th>Image {{@index}}</th>
+      <td><a style="color: #2980b9" href="{{this}}">{{this}}</a></td>
+    </tr>
+    {{/each}}
+    <tr>
+      <th>Prix</th>
+      <td>{{math product.amount '/' 100}} $ {{product.currency}}</td>
+    </tr>
+    <tr>
+      <th>Quantité</th>
+      <td>{{product.quantity}}</td>
+    </tr>
+    <tr>
+      <th>Commentaires</th>
+      <td>{{comments}}</td>
+    </tr>
+  </table>
+</body>

@@ -1,0 +1,12 @@
+<body>
+  {{#if dev}}
+  {{> devBanner}}
+  {{/if}}
+  <p>
+    Une erreur est survenue lors du paiement de <b>{{customer_email}}</b>
+  </p>
+  <h2>Erreur</h2>
+  <pre>{{error}}</pre>
+  <h2>Évènement Stripe</h2>
+  <pre>{{event}}</pre>
+</body>
