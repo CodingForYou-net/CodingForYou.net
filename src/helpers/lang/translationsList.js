@@ -11,6 +11,11 @@ export default {
     buy: 'Achat',
     easyFastReliable: 'Facile, Rapide, Fiable!',
     learnMore: 'En savoir plus',
+    fullname: 'Nom et Prénom',
+    email: 'Adresse courriel',
+    title: 'Titre',
+    body: 'Corps',
+    send: 'Envoyer',
     copyright: '© 2020 CodingForYou. Tous droits réservés.',
   },
   en: {
@@ -25,6 +30,11 @@ export default {
     buy: 'Buy',
     easyFastReliable: 'Easy, Fast, Reliable!',
     learnMore: 'Learn more',
+    fullname: 'Full name',
+    email: 'Email address',
+    title: 'Title',
+    body: 'Body',
+    send: 'Send',
     copyright: '© 2020 CodingForYou. All rights reserved.',
   },
 };

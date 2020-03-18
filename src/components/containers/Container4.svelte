@@ -2,7 +2,7 @@
   import { _, store as lang } from '@helpers/translation.js';
 </script>
 
-<style>
+<style lang="scss">
   #container4 {
     padding: 25px 10%;
   }
