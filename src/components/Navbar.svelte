@@ -95,23 +95,38 @@
         text-align: center;
         color: white;
         width: 100%;
-        cursor: pointer;
-        & svg {
-          transform: rotate(0deg);
-          transition: 0.6s;
-          &.open {
-            transform: rotate(-180deg);
-            margin-left: 12rem;
+        & #logo-container {
+          display: flex;
+          align-items: center;
+          height: 5rem;
+          color: white;
+          text-decoration: none;
+          & svg {
+            transform: rotate(0deg);
+            transition: filter 0.3s, transform 0.6s, margin-left 0.6s;
+            width: 2rem;
+            min-width: 2rem;
+            margin: 0 1.5rem;
+            color: $theme-green;
+            filter: grayscale(100%) opacity(0.7);
+            cursor: pointer;
+            &:hover {
+              filter: grayscale(0%) opacity(1);
+            }
+            &.open {
+              transform: rotate(-180deg);
+              margin-left: 12rem;
+            }
           }
-        }
-        & #logo-text {
-          display: inline;
-          position: absolute;
-          left: -999px;
-          transition: 0.6s;
-          letter-spacing: 0.15ch;
-          &.open {
-            left: 0;
+          & #logo-text {
+            display: inline;
+            position: absolute;
+            left: -999px;
+            transition: 0.6s;
+            letter-spacing: 0.15ch;
+            &.open {
+              left: 0;
+            }
           }
         }
       }
@@ -201,12 +216,13 @@
 
 <nav class="navbar" on:mouseover={handleHover} on:mouseleave={handleLeave} class:open={isOpen}>
   <ul class="navbar-nav">
-    <li id="logo" on:click={handleLogoClick} on:mouseover={logoHover} on:mouseleave={logoLeave}>
-      <div class="nav-link">
+    <li id="logo" on:mouseover={logoHover} on:mouseleave={logoLeave}>
+      <div id="logo-container">
         <a href="/{$lang.current}" class="nav-link">
           <span class="link-text" id="logo-text" class:open={isOpen}>CodingForYou</span>
         </a>
         <svg
+          on:click={handleLogoClick}
           aria-hidden="true"
           focusable="false"
           data-prefix="fas"

@@ -1,29 +1,29 @@
 <script>
   import { store as lang } from '@helpers/translation.js';
   import { scrollToId } from '@helpers/other.js';
-  import { TweenLite, Power1 } from 'gsap';
-  import { scrollMagicLoaded } from '@helpers/other.js';
-  // import Rellax from 'rellax';
+  // import { TweenLite, Power1 } from 'gsap';
+  // import { scrollMagicLoaded } from '@helpers/other.js';
+  import Rellax from 'rellax';
   import { onMount } from 'svelte';
-  // onMount(() => {
-  //   const rellax = new Rellax('.rellax');
-  // });
-  scrollMagicLoaded.subscribe((state) => {
-    if (!state) return;
-    const tween = TweenLite.to('#rocket', 1, {
-      y: -300,
-      ease: Power1.easeIn,
-    });
-    const controller = new ScrollMagic.Controller();
-    const scene = new ScrollMagic.Scene({
-      triggerElement: '#container1',
-      duration: 250,
-      triggerHook: 0,
-    })
-      .setTween(tween)
-      .setPin('#container1')
-      .addTo(controller);
+  onMount(() => {
+    const rellax = new Rellax('.rellax');
   });
+  // scrollMagicLoaded.subscribe((state) => {
+  //   if (!state) return;
+  //   const tween = TweenLite.to('#rocket', 1, {
+  //     y: -300,
+  //     ease: Power1.easeIn,
+  //   });
+  //   const controller = new ScrollMagic.Controller();
+  //   const scene = new ScrollMagic.Scene({
+  //     triggerElement: '#container1',
+  //     duration: 250,
+  //     triggerHook: 0,
+  //   })
+  //     .setTween(tween)
+  //     .setPin('#container1')
+  //     .addTo(controller);
+  // });
 </script>
 
 <style lang="scss">
