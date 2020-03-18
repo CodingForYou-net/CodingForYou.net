@@ -25,11 +25,13 @@
   import { onMount } from 'svelte';
   import { stores } from '@sapper/app';
   import { isLoggedIn, user } from '@helpers/user.js';
-
+  import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap';
+  import { CSSPlugin, gsap, TimelineLite, TweenLite } from 'gsap';
+  import { scrollMagicLoaded } from '@helpers/other.js';
   const { page, session } = stores();
   let navStayOpen;
 
-  onMount(() => {
+  onMount(async () => {
     const subscritptions = [
       page.subscribe((p) => {
         if (validPathRegex.test(p.path)) $lang = p.path.split('/')[1];
@@ -39,6 +41,11 @@
         $user = s.user;
       }),
     ];
+    gsap.registerPlugin(CSSPlugin);
+    window.ScrollMagic = (await import('scrollmagic')).default;
+    ScrollMagicPluginGsap(ScrollMagic, TweenLite, TimelineLite);
+    scrollMagicLoaded.set(true);
+    return () => subscritptions.forEach((unsub) => unsub && unsub());
   });
 </script>
 
