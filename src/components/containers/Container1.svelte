@@ -11,14 +11,13 @@
   scrollMagicLoaded.subscribe((state) => {
     if (!state) return;
     const tween = TweenLite.to('#rocket', 1, {
-      // backgroundColor: '#ffff00',
-      y: -600,
-      ease: Power1.easeInOut,
+      y: -300,
+      ease: Power1.easeIn,
     });
     const controller = new ScrollMagic.Controller();
     const scene = new ScrollMagic.Scene({
       triggerElement: '#container1',
-      duration: 500,
+      duration: 250,
       triggerHook: 0,
     })
       .setTween(tween)
@@ -96,6 +95,16 @@
     bottom: 20px;
   }
 
+  #wave5 {
+    animation: moveWave1 5s linear infinite;
+    z-index: 800;
+    opacity: 1;
+    animation-delay: 0s;
+    top: 100px;
+    left: -30px;
+    transform: rotate(-45deg) scale(1, -1);
+  }
+
   #arrow-down {
     position: absolute;
     width: 40px;
@@ -116,6 +125,7 @@
   }
 
   #shape1 {
+    animation: moveShape1 5s linear infinite;
     position: absolute;
     top: 0;
     left: 0;
@@ -155,6 +165,8 @@
   <div class="wave" id="wave2" />
   <div class="wave" id="wave3" />
   <div class="wave" id="wave4" />
+
+  <div class="wave" id="wave5" />
 
   <div>
     <img
