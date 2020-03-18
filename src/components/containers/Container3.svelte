@@ -15,6 +15,7 @@
     background-repeat: repeat-x;
     overflow: hidden;
     height: 17px;
+    margin-bottom: -0.5px;
   }
 
   #repeating-bottom {
