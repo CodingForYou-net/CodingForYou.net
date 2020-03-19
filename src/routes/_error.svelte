@@ -1,5 +1,5 @@
 <script>
-  import { store as lang, translations, translationsList } from '@helpers/translation.js';
+  import { _, translations, translationsList } from '@helpers/translation.js';
   import Navbar from '@components/Navbar.svelte';
 
   export let status;
@@ -54,7 +54,7 @@
 
   <h1>{status}</h1>
 
-  <p>{error.message}</p>
+  <p>{$_('errorMessage')} (<code>{error.message}</code>)</p>
 
   {#if dev && error.stack}
     <pre>{error.stack}</pre>

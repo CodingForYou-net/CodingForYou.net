@@ -20,6 +20,7 @@ export default {
     isAdminLinkP1: 'Vous êtes un administrateur. Cliquez',
     here: 'ici',
     isAdminLinkP2: 'pour accéder au panneau de contrôle administrateur.',
+    errorMessage: 'Une erreur inattendue est survenue',
   },
   en: {
     login: 'Login',
@@ -42,5 +43,6 @@ export default {
     isAdminLinkP1: 'You are an administrator. Click',
     here: 'here',
     isAdminLinkP2: 'to go to the admin dashboard.',
+    errorMessage: 'An unexpected error occured',
   },
 };

@@ -1,4 +1,3 @@
-import { get as googleCallback } from '@routes/api/auth/google/callback.js';
 import * as sapper from '@sapper/server';
 import bodyParser from 'body-parser';
 import compression from 'compression';
@@ -28,8 +27,6 @@ export function start() {
       passport.initialize(),
       passport.session()
     )
-    // NOTE Caveat: incompatibility between Sapper & Passport
-    .get('/auth/google/callback', googleCallback)
     // NOTE Sapper middlewares
     .use(
       bodyParser.json({
@@ -41,16 +38,16 @@ export function start() {
       sirv('static', { dev }),
       sapper.middleware({
         session: (req) => {
-          const lang = (req.headers['accept-language'] || '')
+          const browserLang = (req.headers['accept-language'] || '')
             .split(';')[0]
             .split(',')
             .map((l) => l.split('-')[0])
             .filter((l) => ['fr', 'en'].includes(l))[0];
           const isLoggedIn = !!req.user;
           const isAdmin = !!(req.user || {}).admin;
-          const { image, firstName, lastName, id, email } = req.user || {};
-          const user = { image, firstName, lastName, id, email };
-          return { lang, isLoggedIn, isAdmin, user };
+          const { image, firstName, lastName, id, email, lang } = req.user || {};
+          const user = { image, firstName, lastName, id, email, lang };
+          return { browserLang, isLoggedIn, isAdmin, user };
         },
       })
     )
