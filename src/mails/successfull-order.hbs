@@ -44,6 +44,10 @@
       <td>{{orderID}}</td>
     </tr>
     <tr>
+      <th>ID d'utilisateur</th>
+      <td>{{userID}}</td>
+    </tr>
+    <tr>
       <th>Nom</th>
       <td>{{product.name}}</td>
     </tr>
@@ -53,7 +57,7 @@
     </tr>
     {{#each product.images}}
     <tr>
-      <th>Image {{@index}}</th>
+      <th>Image [{{@index}}]</th>
       <td><a style="color: #2980b9" href="{{this}}">{{this}}</a></td>
     </tr>
     {{/each}}

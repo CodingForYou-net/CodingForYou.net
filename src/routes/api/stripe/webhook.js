@@ -41,6 +41,7 @@ export async function post(req, res) {
             comments,
             dev,
             orderID: order.id,
+            userID,
           }
         );
         return res.status(200).send('ok');

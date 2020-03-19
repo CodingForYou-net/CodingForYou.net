@@ -1,5 +1,6 @@
 import '@models/User.js';
 import '@models/Order.js';
+import '@models/Product.js';
 
 import { mongoURI } from '@config/keys.js';
 import mongoose from 'mongoose';
@@ -16,5 +17,6 @@ export async function connect() {
   }
 }
 
-export const User = mongoose.model('users');
-export const Order = mongoose.model('orders');
+export const User = mongoose.model('User');
+export const Order = mongoose.model('Order');
+export const Product = mongoose.model('Product');
