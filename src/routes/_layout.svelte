@@ -22,10 +22,24 @@
 <script>
   import Navbar from '@components/Navbar.svelte';
   import Head from '@components/Head.svelte';
+  import { onMount } from 'svelte';
   import { stores } from '@sapper/app';
   import { isLoggedIn, user } from '@helpers/user.js';
   const { page, session } = stores();
   let navStayOpen;
+
+  onMount(async () => {
+    const subscritptions = [
+      page.subscribe((p) => {
+        if (validPathRegex.test(p.path)) $lang = p.path.split('/')[1];
+      }),
+      session.subscribe((s) => {
+        $isLoggedIn = s.isLoggedIn;
+        $user = s.user;
+      }),
+    ];
+    return () => subscritptions.forEach((unsub) => unsub && unsub());
+  });
 </script>
 
 <style global lang="scss">

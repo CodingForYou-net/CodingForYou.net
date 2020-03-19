@@ -114,17 +114,19 @@
   }
 
   #rocket {
-    height: 500px;
+    height: 50%;
+    min-height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     position: absolute;
-    bottom: 250px;
+    bottom: 25%;
   }
 
   #desktop {
     width: 50%;
+    min-width: 500px;
     position: absolute;
     top: 70%;
     left: 50%;

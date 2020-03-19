@@ -2,8 +2,18 @@
   import { _, store as lang } from '@helpers/translation.js';
   import { user, isLoggedIn } from '@helpers/user.js';
 
+  let name = $isLoggedIn ? `${$user.firstName} ${$user.lastName}` : '';
+  let email = $isLoggedIn ? $user.email : '';
+  let title = '';
+  let body = '';
+
+  // [name, email, title, body]
+
   function sendMail() {
-    console.log('Send button pressed');
+    const res = fetch('/api/send-mail', {
+      method: 'POST',
+      body: name,
+    });
   }
 </script>
 
@@ -81,20 +91,20 @@
       <input
         type="text"
         class="form-element"
-        value={$isLoggedIn ? `${$user.firstName} ${$user.lastName}` : ''}
+        bind:value={name}
         placeholder={$_('fullname')}
         readonly={$isLoggedIn}
         class:readonly={$isLoggedIn} />
       <input
         class="form-element"
         type="email"
-        value={$isLoggedIn ? $user.email : ''}
+        bind:value={email}
         placeholder={$_('email')}
         readonly={$isLoggedIn}
         class:readonly={$isLoggedIn} />
-      <input class="form-element" type="text" value="" placeholder={$_('title')} />
-      <textarea class="form-element" rows="8" placeholder={$_('body')} />
-      <button id="send" type="submit" on:click={sendMail}>{$_('send')}</button>
+      <input class="form-element" type="text" bind:value={title} placeholder={$_('title')} />
+      <textarea class="form-element" rows="8" bind:value={body} placeholder={$_('body')} />
+      <button id="send" type="button" on:click={sendMail}>{$_('send')}</button>
     </form>
   </div>
 </div>
