@@ -2,16 +2,14 @@
   import { _, store as lang } from '@helpers/translation.js';
   import { stores } from '@sapper/app';
   import Button from '@components/Button.svelte';
-
-  const { session } = stores();
-  let { user } = $session;
+  import { user, isAdmin } from '@helpers/user.js';
 </script>
 
 <style>
-  .content {
+  #content {
     padding: 50px 10%;
   }
-  .profile-picture {
+  #profile-picture {
     border-radius: 50%;
     float: left;
     width: 20%;
@@ -22,14 +20,25 @@
   hr {
     margin: 20px 0;
   }
+
+  p {
+    margin: 10px 0;
+  }
 </style>
 
-<div class="content">
-  <img class="profile-picture" src={user.image} alt="profile-picture" />
-  <h1>{user.firstName} {user.lastName}</h1>
-  <h4>{user.email}</h4>
+<div id="content">
+  <img id="profile-picture" src={$user.image} alt="profile-picture" />
+  <h1>{$user.firstName} {$user.lastName}</h1>
+  <h4>{$user.email}</h4>
   <hr />
-  <p>{$_('accountID')}: {user.id}</p>
+  <p>{$_('accountID')}: {$user.id}</p>
+  {#if $isAdmin}
+    <p>
+      {$_('isAdminLinkP1')}
+      <a href="/{$lang.current}/admin-dashboard">{$_('here')}</a>
+      {$_('isAdminLinkP2')}
+    </p>
+  {/if}
   <br />
   <Button href="/{$lang.current}/profile/buy" style="green">{$_('buy')}</Button>
   <Button href="/api/auth/logout" style="green">{$_('logout')}</Button>

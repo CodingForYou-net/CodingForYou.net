@@ -1,3 +1,6 @@
+// NOTE CHANGED, THIS FILE SHALL NOT BE
+// NOTE BY MODIFYING IT, YOU'RE MAKING AN END TO YOUR LIFE
+
 export default {
   't-shirt': {
     name: 'T-shirt',

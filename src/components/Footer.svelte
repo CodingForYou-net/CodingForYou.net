@@ -88,6 +88,6 @@
 
   <hr />
   <div id="copyright">
-    <span>{$_('copyright')}</span>
+    <span>&copy; 2020 Samuel Martineau & Vu Dang Khoa Chiem. {$_('copyright')}</span>
   </div>
 </footer>

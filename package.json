@@ -24,6 +24,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "format-message": "^6.2.3",
+    "fuzzy-search": "^3.2.1",
     "gsap": "^3.2.4",
     "is-mobile": "^2.2.1",
     "memorystore": "^1.6.2",

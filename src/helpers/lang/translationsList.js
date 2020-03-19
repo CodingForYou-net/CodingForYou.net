@@ -16,7 +16,10 @@ export default {
     title: 'Titre',
     body: 'Corps',
     send: 'Envoyer',
-    copyright: '© 2020 CodingForYou. Tous droits réservés.',
+    copyright: 'Tous droits réservés.',
+    isAdminLinkP1: 'Vous êtes un administrateur. Cliquez',
+    here: 'ici',
+    isAdminLinkP2: 'pour accéder au panneau de contrôle administrateur.',
   },
   en: {
     login: 'Login',
@@ -35,6 +38,9 @@ export default {
     title: 'Title',
     body: 'Body',
     send: 'Send',
-    copyright: '© 2020 CodingForYou. All rights reserved.',
+    copyright: 'All rights reserved.',
+    isAdminLinkP1: 'You are an administrator. Click',
+    here: 'here',
+    isAdminLinkP2: 'to go to the admin dashboard.',
   },
 };

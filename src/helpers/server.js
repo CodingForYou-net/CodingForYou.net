@@ -47,9 +47,10 @@ export function start() {
             .map((l) => l.split('-')[0])
             .filter((l) => ['fr', 'en'].includes(l))[0];
           const isLoggedIn = !!req.user;
+          const isAdmin = !!(req.user || {}).admin;
           const { image, firstName, lastName, id, email } = req.user || {};
           const user = { image, firstName, lastName, id, email };
-          return { lang, isLoggedIn, user };
+          return { lang, isLoggedIn, isAdmin, user };
         },
       })
     )

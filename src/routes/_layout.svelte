@@ -24,7 +24,7 @@
   import Head from '@components/Head.svelte';
   import { onMount } from 'svelte';
   import { stores } from '@sapper/app';
-  import { isLoggedIn, user } from '@helpers/user.js';
+  import { isLoggedIn, user, isAdmin } from '@helpers/user.js';
   import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap';
   import { CSSPlugin, gsap, TimelineLite, TweenLite } from 'gsap';
   import { scrollMagicLoaded } from '@helpers/other.js';
@@ -39,6 +39,7 @@
       session.subscribe((s) => {
         $isLoggedIn = s.isLoggedIn;
         $user = s.user;
+        $isAdmin = s.isAdmin;
       }),
     ];
     gsap.registerPlugin(CSSPlugin);
