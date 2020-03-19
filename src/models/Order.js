@@ -22,4 +22,4 @@ const OrderSchema = new Schema({
   },
 });
 
-model('orders', OrderSchema);
+model('Order', OrderSchema, 'orders');
