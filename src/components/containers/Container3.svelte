@@ -5,7 +5,7 @@
 <style lang="scss">
   @import 'src/styles/_theme.scss';
 
-  #container3 {
+  section {
     margin: 50px 0;
   }
 
@@ -16,6 +16,7 @@
     overflow: hidden;
     height: 17px;
     margin-bottom: -0.5px;
+    margin-left: -1px;
   }
 
   #repeating-bottom {
@@ -25,6 +26,7 @@
     overflow: hidden;
     height: 17px;
     margin-top: -0.5px;
+    margin-left: -1px;
   }
 
   #content {
@@ -83,7 +85,7 @@
   }
 </style>
 
-<div id="container3">
+<section id="container3">
   <div id="repeating-top" />
   <div id="content">
     <h2>{$_('webPackages')}</h2>
@@ -179,4 +181,4 @@
     </a>
   </div>
   <div id="repeating-bottom" />
-</div>
+</section>

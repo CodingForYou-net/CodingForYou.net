@@ -19,7 +19,7 @@
     animation: MoveUpDown 1s linear infinite;
   }
 
-  #content {
+  section {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,7 +32,7 @@
   <title>{status}</title>
 </svelte:head>
 
-<div id="content">
+<section>
   <svg
     aria-hidden="true"
     focusable="false"
@@ -54,9 +54,13 @@
 
   <h1>{status}</h1>
 
-  <p>{$_('errorMessage')} (<code>{error.message}</code>)</p>
+  <p>
+    {$_('errorMessage')} (
+    <code>{error.message}</code>
+    )
+  </p>
 
   {#if dev && error.stack}
     <pre>{error.stack}</pre>
   {/if}
-</div>
+</section>

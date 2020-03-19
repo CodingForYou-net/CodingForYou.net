@@ -3,12 +3,12 @@
 </script>
 
 <style lang="scss">
-  .content {
+  section {
     padding: 50px;
   }
 </style>
 
-<div class="content">
+<section>
   <h1>Politique de confidentialité</h1>
   <ol>
     <h3>
@@ -18,4 +18,4 @@
   </ol>
 
   <p />
-</div>
+</section>

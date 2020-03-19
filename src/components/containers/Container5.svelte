@@ -27,7 +27,7 @@
 <style lang="scss">
   @import 'src/styles/_theme.scss';
 
-  #container5 {
+  section {
     margin-top: 50px;
   }
 
@@ -87,10 +87,11 @@
     overflow: hidden;
     height: 17px;
     margin-bottom: -0.5px;
+    margin-left: -1px;
   }
 </style>
 
-<div id="container5">
+<section id="container5">
   <div id="repeating-top" />
   <div id="content">
     <h2>Contact</h2>
@@ -114,4 +115,4 @@
       <button id="send" type="button" on:click={sendMail}>{$_('send')}</button>
     </form>
   </div>
-</div>
+</section>
