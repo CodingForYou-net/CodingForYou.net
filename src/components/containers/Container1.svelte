@@ -1,29 +1,11 @@
 <script>
   import { store as lang } from '@helpers/translation.js';
   import { scrollToId } from '@helpers/other.js';
-  import { TweenLite, Power1 } from 'gsap';
-  import { scrollMagicLoaded } from '@helpers/other.js';
   // import Rellax from 'rellax';
-  import { onMount } from 'svelte';
+  // import { onMount } from 'svelte';
   // onMount(() => {
   //   const rellax = new Rellax('.rellax');
   // });
-  scrollMagicLoaded.subscribe((state) => {
-    if (!state) return;
-    const tween = TweenLite.to('#rocket', 1, {
-      y: -300,
-      ease: Power1.easeIn,
-    });
-    const controller = new ScrollMagic.Controller();
-    const scene = new ScrollMagic.Scene({
-      triggerElement: '#container1',
-      duration: 250,
-      triggerHook: 0,
-    })
-      .setTween(tween)
-      .setPin('#container1')
-      .addTo(controller);
-  });
 </script>
 
 <style lang="scss">
@@ -132,17 +114,19 @@
   }
 
   #rocket {
-    height: 500px;
+    height: 50%;
+    min-height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     position: absolute;
-    bottom: 250px;
+    bottom: 25%;
   }
 
   #desktop {
     width: 50%;
+    min-width: 500px;
     position: absolute;
     top: 70%;
     left: 50%;

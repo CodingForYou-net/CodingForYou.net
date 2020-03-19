@@ -25,9 +25,7 @@
   import { onMount } from 'svelte';
   import { stores } from '@sapper/app';
   import { isLoggedIn, user, isAdmin } from '@helpers/user.js';
-  import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap';
-  import { CSSPlugin, gsap, TimelineLite, TweenLite } from 'gsap';
-  import { scrollMagicLoaded } from '@helpers/other.js';
+
   const { page, session } = stores();
   let navStayOpen;
 
@@ -42,10 +40,6 @@
         $isAdmin = s.isAdmin;
       }),
     ];
-    gsap.registerPlugin(CSSPlugin);
-    window.ScrollMagic = (await import('scrollmagic')).default;
-    ScrollMagicPluginGsap(ScrollMagic, TweenLite, TimelineLite);
-    scrollMagicLoaded.set(true);
     return () => subscritptions.forEach((unsub) => unsub && unsub());
   });
 </script>
