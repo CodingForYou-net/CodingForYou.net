@@ -7,13 +7,20 @@
   let title = '';
   let body = '';
 
-  // [name, email, title, body]
-
-  function sendMail() {
-    const res = fetch('/api/send-mail', {
-      method: 'POST',
-      body: name,
-    });
+  async function sendMail() {
+    try {
+      const res = await fetch('/api/send-mail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: name, email: email, title: title, body: body }),
+      });
+      if (!res.ok) throw new Error(res.statusText);
+      // Success
+    } catch (error) {
+      // Error
+    }
   }
 </script>
 
@@ -56,7 +63,7 @@
       }
     }
     & #send {
-      background-color: lighten($theme-blue, 10%);
+      background-color: darken($theme-blue, 10%);
       border: none;
       border-radius: 5px 15px 5px;
       color: white;
@@ -68,7 +75,7 @@
       margin: 0 auto;
       cursor: pointer;
       &:hover {
-        background-color: darken($theme-blue, 10%);
+        background-color: darken($theme-blue, 15%);
       }
     }
   }

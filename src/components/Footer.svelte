@@ -70,16 +70,16 @@
     <div>
       <ul>
         <li>
-          <a href="/{$lang.current}/about/privacy">Privacy Policy</a>
+          <a href="/{$lang.current}/about/privacy">{$_('privacy')}</a>
         </li>
         <li>
-          <a href="/{$lang.current}/about/contract">Contract</a>
+          <a href="/{$lang.current}/about/contract">{$_('contract')}</a>
         </li>
         <li>
-          <a href="/{$lang.current}/about/sales-refunds">Sales and Refunds</a>
+          <a href="/{$lang.current}/about/sales-refunds">{$_('salesRefunds')}</a>
         </li>
         <li>
-          <a href="/{$lang.current}/about/credits">Credits</a>
+          <a href="/{$lang.current}/about/credits">{$_('credits')}</a>
         </li>
       </ul>
     </div>
