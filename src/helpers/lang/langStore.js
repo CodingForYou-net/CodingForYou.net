@@ -12,7 +12,14 @@ export default {
   },
   set(val) {
     if (getLoggedIn())
-      fetch(`/api/update-lang?lang=${val}`, { method: 'POST', credentials: 'include' });
+      fetch(`/api/lang`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({ lang: val }),
+      });
     locale.set(val);
   },
 };

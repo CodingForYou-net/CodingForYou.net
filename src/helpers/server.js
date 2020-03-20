@@ -34,6 +34,8 @@ export function start() {
           req.rawBody = buf.toString();
         },
       }),
+      bodyParser.raw(),
+      bodyParser.text(),
       compression({ threshold: 0 }),
       sirv('static', { dev }),
       sapper.middleware({

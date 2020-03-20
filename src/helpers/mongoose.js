@@ -10,6 +10,7 @@ export async function connect() {
     await mongoose.connect(mongoURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useFindAndModify: false,
     });
     console.log('✔ mongodb connected'.green.bold);
   } catch (err) {

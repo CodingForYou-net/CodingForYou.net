@@ -4,7 +4,6 @@
   import navRoutes from '@config/navRoutes.js';
   import { stores } from '@sapper/app';
   import mobile from 'is-mobile';
-  import { scrollToId } from '@helpers/other.js';
 
   const { session, page } = stores();
   const dispatch = createEventDispatcher();
@@ -218,7 +217,7 @@
   <ul class="navbar-nav">
     <li id="logo" on:mouseover={logoHover} on:mouseleave={logoLeave}>
       <div id="logo-container">
-        <a href="/{$lang.current}" class="nav-link">
+        <a href="/{$lang.current}" class="nav-link" on:click={handleNavItemClick}>
           <span class="link-text" id="logo-text" class:open={isOpen}>CodingForYou</span>
         </a>
         <svg
@@ -264,11 +263,7 @@
     {/each}
     <div class="bottom" />
     <li class="nav-item">
-      <a
-        rel="prefetch"
-        href={otherLangPath}
-        class="nav-link"
-        on:click={() => !handleNavItemClick() && scrollToId('container1')}>
+      <a rel="prefetch" href={otherLangPath} class="nav-link" on:click={handleNavItemClick}>
         <svg
           aria-hidden="true"
           focusable="false"

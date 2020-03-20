@@ -1,11 +1,5 @@
 <script>
   import { store as lang } from '@helpers/translation.js';
-  import { scrollToId } from '@helpers/other.js';
-  // import Rellax from 'rellax';
-  // import { onMount } from 'svelte';
-  // onMount(() => {
-  //   const rellax = new Rellax('.rellax');
-  // });
 </script>
 
 <style lang="scss">
@@ -93,24 +87,24 @@
   //   bottom: -1px;
   // }
 
-  #arrow-down {
-    position: absolute;
-    width: 40px;
-    bottom: 150px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    z-index: 20;
-    & .arrow {
-      position: relative;
-      animation: MoveUpDown 1.5s linear infinite;
-      color: lighten($theme-black, 60%);
-      transition: color 0.3s;
-      cursor: pointer;
-      &:hover {
-        color: lighten($theme-black, 50%);
-      }
-    }
-  }
+  // #arrow-down {
+  //   position: absolute;
+  //   width: 40px;
+  //   bottom: 150px;
+  //   left: 50%;
+  //   transform: translate(-50%, 0);
+  //   z-index: 20;
+  //   & .arrow {
+  //     position: relative;
+  //     animation: MoveUpDown 1.5s linear infinite;
+  //     color: lighten($theme-black, 60%);
+  //     transition: color 0.3s;
+  //     cursor: pointer;
+  //     &:hover {
+  //       color: lighten($theme-black, 50%);
+  //     }
+  //   }
+  // }
 
   #shape1 {
     animation: moveShape1 5s linear infinite;
@@ -183,9 +177,8 @@
       data-rellax-zindex="2"
       data-rellax-percentage="0.5" />
   </div>
-
-  <div id="arrow-down">
-    <span rel="prefetch" on:click={() => scrollToId('container2')}>
+  <!-- <div id="arrow-down">
+    <span rel="prefetch" on:click={() => {}}>
       <svg
         aria-hidden="true"
         focusable="false"
@@ -201,5 +194,5 @@
           24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" />
       </svg>
     </span>
-  </div>
+  </div> -->
 </section>

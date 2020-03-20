@@ -6,10 +6,9 @@
     validPathRegex,
   } from '@helpers/translation.js';
 
-  export async function preload({ path }, {browserLang, isLoggedIn, user}) {
-    // NOTE Redirect user to good language when no language specified in URL
+  export async function preload({ path }, { browserLang, isLoggedIn, user }) {
     if (!path.startsWith('/api') && !validPathRegex.test(path)) {
-      if(isLoggedIn) return this.redirect(302, `/${user.lang}${path}`)
+      if (isLoggedIn) return this.redirect(302, `/${user.lang}${path}`);
       let lang = ['en', 'fr'].includes(browserLang) ? browserLang : 'en';
       return this.redirect(302, `/${lang}${path}`);
     }
@@ -23,6 +22,7 @@
 <script>
   import Navbar from '@components/Navbar.svelte';
   import Head from '@components/Head.svelte';
+  import Footer from '@components/Footer.svelte';
   import { onMount } from 'svelte';
   import { stores } from '@sapper/app';
   import { isLoggedIn, user, isAdmin } from '@helpers/user.js';
@@ -41,6 +41,7 @@
         $isAdmin = s.isAdmin;
       }),
     ];
+    window.Quill = (await import('quill')).default;
     return () => subscritptions.forEach((unsub) => unsub && unsub());
   });
 </script>
@@ -50,7 +51,8 @@
 </style>
 
 <Head />
-<Navbar on:stayopen={({ detail }) => (navStayOpen = detail)} />
+<Navbar on:stayopen={({ detail: newState }) => (navStayOpen = newState)} />
 <main class:open={navStayOpen}>
   <slot />
 </main>
+<Footer />

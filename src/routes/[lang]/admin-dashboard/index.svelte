@@ -1,37 +1,159 @@
 <script>
   import FuzzySearch from 'fuzzy-search';
   import { onMount } from 'svelte';
+  import { flip } from 'svelte/animate';
+  import { fade } from 'svelte/transition';
+  import OrderCard from '@components/OrderCard.svelte';
+  import Swal from 'sweetalert2';
+  import { quillHtml } from '@helpers/other.js';
+  import { _, getTranslation } from '@helpers/translation.js';
 
-  let searchTerms;
-  let orders = [];
+  let searchTerms = '';
+  let searchCategories = ['product.name', 'user.firstName', 'user.lastName', 'user.email'];
+  let allOrders = [];
   let searcher;
-  let results;
+  let filter = 'not-completed';
+  let error = false;
 
-  $: searcher = new FuzzySearch(orders, ['productID', 'user.email', 'user.lastName'], {
+  $: orders = allOrders
+    .filter((o) => (filter === 'completed' ? o.completed : true))
+    .filter((o) => (filter === 'not-completed' ? !o.completed : true))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  $: searcher = new FuzzySearch(orders, searchCategories, {
     sort: true,
   });
-  $: results = searcher.search(searchTerms);
+  $: searchResults = searcher ? searcher.search(searchTerms) : [];
 
-  onMount(async () => (orders = await fetchOrders()));
+  onMount(async () => {
+    allOrders = await fetchOrders();
+  });
 
   async function fetchOrders() {
     try {
-      const res = await fetch('/api/get-orders', { credentials: 'include' });
-      if (!res.ok) throw 'err';
+      const res = await fetch('/api/orders', { credentials: 'include' });
+      if (!res.ok) throw res.statusText;
       const json = await res.json();
-      console.log(json);
       return json;
-    } catch (error) {
-      console.log(error);
-      alert('error');
+    } catch (err) {
+      error = err;
     }
+  }
+
+  async function updateOrderStatus(orderID) {
+    const order = allOrders.find((o) => o._id === orderID);
+    const res = await fetch('/api/update-order', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: orderID,
+        update: { completed: !order.completed },
+      }),
+    });
+    if (!res.ok) return alert(getTranslation('errorUpdatingOrder'));
+    order.completed = !order.completed;
+    allOrders = allOrders;
+  }
+
+  async function updateOrderComments(orderID) {
+    const order = allOrders.find((o) => o._id === orderID);
+    let editor;
+    setTimeout(() => {
+      editor = new Quill('#editor', {
+        modules: { toolbar: '#toolbar' },
+        theme: 'snow',
+        placeholder: getTranslation('editCommentsPlaceholder'),
+      });
+      editor.container.firstChild.innerHTML = order.comments;
+    }, 0);
+    const sa = await Swal.fire({
+      title: getTranslation('editComments'),
+      html: quillHtml,
+      width: 1500,
+    });
+    if (sa.dismiss) return;
+    const comments = editor.container.firstChild.innerHTML;
+    const res = await fetch('/api/update-order', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: orderID,
+        update: { comments },
+      }),
+    });
+    if (!res.ok) return alert(getTranslation('errorUpdatingOrder'));
+    order.comments = comments;
+    allOrders = allOrders;
   }
 </script>
 
-<h1>Commandes</h1>
-<input type="text" bind:value={searchTerms} />
-<ol>
-  {#each results as result}
-    <li>{result.product.name} => {result.user.firstName} {result.user.lastName}</li>
+<style>
+  #error {
+    color: red;
+  }
+  #input {
+    width: 99%;
+  }
+</style>
+
+<h1>{$_('orders')}</h1>
+
+{#if error}
+  <p id="error">
+    {$_('errorMessage')}
+    <b>({error})</b>
+  </p>
+{:else}
+  <b>{$_('filterBy')}</b>
+  <label>
+    <input type="radio" bind:group={filter} value={'completed'} />
+    {$_('completed')}
+  </label>
+  <label>
+    <input type="radio" bind:group={filter} value={'not-completed'} />
+    {$_('notCompleted')}
+  </label>
+  <label>
+    <input type="radio" bind:group={filter} value={false} />
+    {$_('noFilter')}
+  </label>
+  <br />
+
+  <b>{$_('searchBy')}</b>
+  <label>
+    <input type="checkbox" bind:group={searchCategories} value={'product.name'} />
+    {$_('productName')}
+  </label>
+  <label>
+    <input type="checkbox" bind:group={searchCategories} value={'user.firstName'} />
+    {$_('clientFirstName')}
+  </label>
+  <label>
+    <input type="checkbox" bind:group={searchCategories} value={'user.lastName'} />
+    {$_('clientLastName')}
+  </label>
+  <label>
+    <input type="checkbox" bind:group={searchCategories} value={'user.email'} />
+    {$_('clientEmail')}
+  </label>
+  <label>
+    <input type="checkbox" bind:group={searchCategories} value={'comments'} />
+    {$_('comments')}
+  </label>
+  <br />
+
+  <input id="input" type="text" bind:value={searchTerms} placeholder={$_('searchTerms')} />
+  {#each searchResults as searchResult (searchResult._id)}
+    <div transition:fade={{ delay: 0, duration: 250 }} animate:flip={{ delay: 0, duration: 250 }}>
+      <OrderCard
+        {...searchResult}
+        on:ordercommentsupdate={() => updateOrderComments(searchResult._id)}
+        on:orderstatusupdate={() => updateOrderStatus(searchResult._id)} />
+    </div>
   {/each}
-</ol>
+{/if}

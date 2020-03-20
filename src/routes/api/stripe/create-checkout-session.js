@@ -1,5 +1,6 @@
 import { baseURL, stripeSecret, stripeSuccessURL } from '@config/keys.js';
-import products from '@config/products.js';
+import { Product } from '@helpers/mongoose.js';
+import { xssFilter } from '@helpers/other.js';
 import Stripe from 'stripe';
 
 const stripe = Stripe(stripeSecret);
@@ -8,11 +9,13 @@ export async function get(req, res) {
   if (!req.user) return res.status(401).send('unauthorized');
 
   const { productID, cancelPath, comments } = req.query;
-  const product = products[productID];
-  if (!product) return res.status(400).send('please specify a product');
   if (!cancelPath) return res.status(400).send('please specify a cancel path');
   if (!comments) return res.status(400).send('please specify a comments');
-
+  if (!productID) return res.status(400).send('please specify a productID');
+  const product = await (await Product.findById(productID)).toObject();
+  delete product._id;
+  delete product.features;
+  if (!product) return res.status(400).send('please specify a valid productID');
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
     line_items: [product],
@@ -20,7 +23,7 @@ export async function get(req, res) {
     cancel_url: `${baseURL}${cancelPath}`,
     customer_email: req.user.email,
     metadata: {
-      comments,
+      comments: xssFilter.process(comments),
       userID: req.user.id,
       productID,
     },

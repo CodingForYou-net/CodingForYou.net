@@ -40,7 +40,7 @@
     </p>
   {/if}
   <br />
-  <Button href="/api/auth/logout" style="green">{$_('logout')}</Button>
-  <Button href="/{$lang.current}/profile/buy" style="green">{$_('buy')}</Button>
+  <Button href="/{$lang.current}/#container3" style="green">{$_('buy')}</Button>
   <Button href="/{$lang.current}/profile/orders" style="green">{$_('orders')}</Button>
+  <Button href="/api/auth/logout" style="green">{$_('logout')}</Button>
 </section>
