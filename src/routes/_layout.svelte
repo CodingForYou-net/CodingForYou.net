@@ -6,10 +6,10 @@
     validPathRegex,
   } from '@helpers/translation.js';
 
-  export async function preload({ path }, {browserLang, isLoggedIn, user}) {
+  export async function preload({ path }, { browserLang, isLoggedIn, user }) {
     // NOTE Redirect user to good language when no language specified in URL
     if (!path.startsWith('/api') && !validPathRegex.test(path)) {
-      if(isLoggedIn) return this.redirect(302, `/${user.lang}${path}`)
+      if (isLoggedIn) return this.redirect(302, `/${user.lang}${path}`);
       let lang = ['en', 'fr'].includes(browserLang) ? browserLang : 'en';
       return this.redirect(302, `/${lang}${path}`);
     }
@@ -41,6 +41,7 @@
         $isAdmin = s.isAdmin;
       }),
     ];
+    window.Quill = (await import('quill')).default;
     return () => subscritptions.forEach((unsub) => unsub && unsub());
   });
 </script>

@@ -1,7 +1,6 @@
 import { stripeSecret, stripeWebhookSecret } from '@config/keys.js';
 import { ourEmails } from '@config/keys.js';
-import products from '@config/products.js';
-import { Order } from '@helpers/mongoose.js';
+import { Order, Product } from '@helpers/mongoose.js';
 import { sendMail } from '@helpers/nodemailer.js';
 import Stripe from 'stripe';
 
@@ -23,11 +22,12 @@ export async function post(req, res) {
         if (!userID) throw new Error('userID is missing');
         if (!productID) throw new Error('productID is missing');
         const order = new Order({
-          productID,
+          product: productID,
           comments,
           user: userID,
         });
         await order.save();
+        const product = await (await Product.findById(productID)).toObject();
         sendMail(
           'main',
           'Succès CodingForYou <success@codingforyou.net>',
@@ -36,7 +36,7 @@ export async function post(req, res) {
           'successfull-order',
           {
             customer_email,
-            product: products[productID],
+            product,
             productID,
             comments,
             dev,

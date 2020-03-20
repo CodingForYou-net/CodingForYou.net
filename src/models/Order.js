@@ -1,9 +1,9 @@
 import { Schema, model } from 'mongoose';
 
 const OrderSchema = new Schema({
-  productID: {
-    type: String,
-    required: true,
+  product: {
+    type: Schema.Types.ObjectId,
+    ref: 'Product',
   },
   comments: {
     type: String,

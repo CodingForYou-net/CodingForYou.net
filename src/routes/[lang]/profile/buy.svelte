@@ -1,23 +1,36 @@
 <script>
   import { onMount } from 'svelte';
   import { stores } from '@sapper/app';
-  import products from '@config/products.js';
   import { stripePublic } from '@config/keys.js';
   import Swal from 'sweetalert2';
+  import { quillHtml } from '@helpers/other.js';
 
+  let products = [];
   const { page } = stores();
   let stripe;
 
-  onMount(() => {
+  onMount(async () => {
     stripe = Stripe(stripePublic);
+    products = await (await fetch('/api/products')).json();
   });
 
   async function buy(productID) {
-    const { value: comments } = await Swal.fire({
-      title: 'Enter a text',
-      input: 'text',
-      showCancelButton: false,
+    let editor;
+    setTimeout(() => {
+      editor = new Quill('#editor', {
+        modules: { toolbar: '#toolbar' },
+        theme: 'snow',
+        placeholder: 'placeholder',
+      });
+    }, 0);
+    const sa = await Swal.fire({
+      title: 'cOmMeNtAiReS',
+      html: quillHtml,
+      width: 1500,
     });
+    if (sa.dismiss) return;
+    const comments = editor.container.firstChild.innerHTML;
+    console.log(comments);
     try {
       const res = await fetch(
         `/api/stripe/create-checkout-session
@@ -43,10 +56,9 @@
 </script>
 
 <ul>
-  {#each Object.entries(products) as product (product[0])}
-    <li>
-      {product[1].name}: {product[1].amount / 100}$CAD
-      <button on:click={() => buy(product[0])}>Buy</button>
+  {#each products as product (product._id)}
+    <li on:click={() => buy(product._id)}>
+      {product.name} ${product.amount / 100} {product.currency}
     </li>
   {/each}
 </ul>
