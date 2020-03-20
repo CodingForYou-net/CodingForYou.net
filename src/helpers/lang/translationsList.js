@@ -20,6 +20,8 @@ export default {
     contract: 'Contrat',
     salesRefunds: 'Ventes et remboursements',
     credits: 'Crédits',
+    toolsMaterials:
+      'Les outils et matériaux suivants ont été utilisés pour la réalisation de ce site et de notre logo.',
     copyright: 'Tous droits réservés.',
     isAdminLinkP1: 'Vous êtes un administrateur. Cliquez',
     here: 'ici',
@@ -70,6 +72,8 @@ export default {
     contract: 'Contract',
     salesRefunds: 'Sales & Refunds',
     credits: 'Credits',
+    toolsMaterials:
+      'The following tools and materials were used in the making of this site and of our logo.',
     copyright: 'All rights reserved.',
     isAdminLinkP1: 'You are an administrator. Click',
     here: 'here',

@@ -125,6 +125,7 @@
         background-color: white;
         border-radius: 10px;
         transition: transform 0.3s;
+        cursor: pointer;
         img {
           width: 25%;
           min-width: 75px;
