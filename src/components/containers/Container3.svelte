@@ -140,6 +140,7 @@
 
   #learnMore {
     display: inline-block;
+    cursor: pointer;
     &::after {
       content: '';
       display: block;

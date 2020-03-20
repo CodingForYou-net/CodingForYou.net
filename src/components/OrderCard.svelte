@@ -15,9 +15,10 @@
 
 <style lang="scss">
   div#content {
-    border: 1px solid #000;
     margin: 5px;
     padding: 5px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
     small {
       color: gray;
       span {

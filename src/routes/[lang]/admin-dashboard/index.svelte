@@ -93,6 +93,9 @@
 </script>
 
 <style>
+  section {
+    padding: 50px 10%;
+  }
   #error {
     color: red;
   }
@@ -101,59 +104,61 @@
   }
 </style>
 
-<h1>{$_('orders')}</h1>
+<section>
+  <h1>{$_('orders')}</h1>
 
-{#if error}
-  <p id="error">
-    {$_('errorMessage')}
-    <b>({error})</b>
-  </p>
-{:else}
-  <b>{$_('filterBy')}</b>
-  <label>
-    <input type="radio" bind:group={filter} value={'completed'} />
-    {$_('completed')}
-  </label>
-  <label>
-    <input type="radio" bind:group={filter} value={'not-completed'} />
-    {$_('notCompleted')}
-  </label>
-  <label>
-    <input type="radio" bind:group={filter} value={false} />
-    {$_('noFilter')}
-  </label>
-  <br />
+  {#if error}
+    <p id="error">
+      {$_('errorMessage')}
+      <b>({error})</b>
+    </p>
+  {:else}
+    <b>{$_('filterBy')}</b>
+    <label>
+      <input type="radio" bind:group={filter} value={'completed'} />
+      {$_('completed')}
+    </label>
+    <label>
+      <input type="radio" bind:group={filter} value={'not-completed'} />
+      {$_('notCompleted')}
+    </label>
+    <label>
+      <input type="radio" bind:group={filter} value={false} />
+      {$_('noFilter')}
+    </label>
+    <br />
 
-  <b>{$_('searchBy')}</b>
-  <label>
-    <input type="checkbox" bind:group={searchCategories} value={'product.name'} />
-    {$_('productName')}
-  </label>
-  <label>
-    <input type="checkbox" bind:group={searchCategories} value={'user.firstName'} />
-    {$_('clientFirstName')}
-  </label>
-  <label>
-    <input type="checkbox" bind:group={searchCategories} value={'user.lastName'} />
-    {$_('clientLastName')}
-  </label>
-  <label>
-    <input type="checkbox" bind:group={searchCategories} value={'user.email'} />
-    {$_('clientEmail')}
-  </label>
-  <label>
-    <input type="checkbox" bind:group={searchCategories} value={'comments'} />
-    {$_('comments')}
-  </label>
-  <br />
+    <b>{$_('searchBy')}</b>
+    <label>
+      <input type="checkbox" bind:group={searchCategories} value={'product.name'} />
+      {$_('productName')}
+    </label>
+    <label>
+      <input type="checkbox" bind:group={searchCategories} value={'user.firstName'} />
+      {$_('clientFirstName')}
+    </label>
+    <label>
+      <input type="checkbox" bind:group={searchCategories} value={'user.lastName'} />
+      {$_('clientLastName')}
+    </label>
+    <label>
+      <input type="checkbox" bind:group={searchCategories} value={'user.email'} />
+      {$_('clientEmail')}
+    </label>
+    <label>
+      <input type="checkbox" bind:group={searchCategories} value={'comments'} />
+      {$_('comments')}
+    </label>
+    <br />
 
-  <input id="input" type="text" bind:value={searchTerms} placeholder={$_('searchTerms')} />
-  {#each searchResults as searchResult (searchResult._id)}
-    <div transition:fade={{ delay: 0, duration: 250 }} animate:flip={{ delay: 0, duration: 250 }}>
-      <OrderCard
-        {...searchResult}
-        on:ordercommentsupdate={() => updateOrderComments(searchResult._id)}
-        on:orderstatusupdate={() => updateOrderStatus(searchResult._id)} />
-    </div>
-  {/each}
-{/if}
+    <input id="input" type="text" bind:value={searchTerms} placeholder={$_('searchTerms')} />
+    {#each searchResults as searchResult (searchResult._id)}
+      <div transition:fade={{ delay: 0, duration: 250 }} animate:flip={{ delay: 0, duration: 250 }}>
+        <OrderCard
+          {...searchResult}
+          on:ordercommentsupdate={() => updateOrderComments(searchResult._id)}
+          on:orderstatusupdate={() => updateOrderStatus(searchResult._id)} />
+      </div>
+    {/each}
+  {/if}
+</section>
