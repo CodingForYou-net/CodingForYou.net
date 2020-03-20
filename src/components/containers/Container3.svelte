@@ -16,7 +16,7 @@
 
   async function buy(productID) {
     if (!$isLoggedIn) {
-      const { value: comments } = await Swal.fire({
+      Swal.fire({
         title: 'Please login',
         text: 'Login in order to buy a site from us!',
         icon: 'warning',

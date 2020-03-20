@@ -1,11 +1,12 @@
 <script>
   import { _, store as lang } from '@helpers/translation.js';
   import { user, isLoggedIn } from '@helpers/user.js';
+  import Swal from 'sweetalert2';
 
   let name = $isLoggedIn ? `${$user.firstName} ${$user.lastName}` : '';
   let email = $isLoggedIn ? $user.email : '';
   let title = '';
-  let body = '';
+  let message = '';
 
   async function sendMail() {
     try {
@@ -14,12 +15,21 @@
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name: name, email: email, title: title, body: body }),
+        body: JSON.stringify({ name: name, email: email, title: title, message: message }),
       });
       if (!res.ok) throw new Error(res.statusText);
-      // Success
+      Swal.fire({
+        title: 'Success sending message',
+        text: 'We will review your message and respond to you as soon as possible!',
+        icon: 'success',
+      });
     } catch (error) {
-      // Error
+      console.log(error);
+      Swal.fire({
+        title: 'Error sending message',
+        text: 'Please try again later...',
+        icon: 'error',
+      });
     }
   }
 </script>
@@ -111,7 +121,7 @@
         readonly={$isLoggedIn}
         class:readonly={$isLoggedIn} />
       <input class="form-element" type="text" bind:value={title} placeholder={$_('title')} />
-      <textarea class="form-element" rows="8" bind:value={body} placeholder={$_('body')} />
+      <textarea class="form-element" rows="8" bind:value={message} placeholder="Message" />
       <button id="send" type="button" on:click={sendMail}>{$_('send')}</button>
     </form>
   </div>
