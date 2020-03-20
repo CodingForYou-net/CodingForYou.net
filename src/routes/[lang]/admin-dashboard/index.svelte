@@ -6,12 +6,14 @@
   import OrderCard from '@components/OrderCard.svelte';
   import Swal from 'sweetalert2';
   import { quillHtml } from '@helpers/other.js';
+  import { _, getTranslation } from '@helpers/translation.js';
 
   let searchTerms = '';
   let searchCategories = ['product.name', 'user.firstName', 'user.lastName', 'user.email'];
   let allOrders = [];
   let searcher;
   let filter = 'not-completed';
+  let error = false;
 
   $: orders = allOrders
     .filter((o) => (filter === 'completed' ? o.completed : true))
@@ -29,11 +31,11 @@
   async function fetchOrders() {
     try {
       const res = await fetch('/api/orders', { credentials: 'include' });
-      if (!res.ok) throw 'err';
+      if (!res.ok) throw res.statusText;
       const json = await res.json();
       return json;
-    } catch (error) {
-      alert('error');
+    } catch (err) {
+      error = err;
     }
   }
 
@@ -50,7 +52,7 @@
         update: { completed: !order.completed },
       }),
     });
-    if (!res.ok) return alert('error');
+    if (!res.ok) return alert(getTranslation('errorUpdatingOrder'));
     order.completed = !order.completed;
     allOrders = allOrders;
   }
@@ -62,12 +64,12 @@
       editor = new Quill('#editor', {
         modules: { toolbar: '#toolbar' },
         theme: 'snow',
-        placeholder: 'placeholder',
+        placeholder: getTranslation('editCommentsPlaceholder'),
       });
       editor.container.firstChild.innerHTML = order.comments;
     }, 0);
     const sa = await Swal.fire({
-      title: 'cOmMeNtAiReS',
+      title: getTranslation('editComments'),
       html: quillHtml,
       width: 1500,
     });
@@ -84,58 +86,74 @@
         update: { comments },
       }),
     });
-    if (!res.ok) return alert('error');
+    if (!res.ok) return alert(getTranslation('errorUpdatingOrder'));
     order.comments = comments;
     allOrders = allOrders;
   }
 </script>
 
-<h1>Commandes</h1>
+<style>
+  #error {
+    color: red;
+  }
+  #input {
+    width: 99%;
+  }
+</style>
 
-<b>Filtrer par</b>
-<label>
-  <input type="radio" bind:group={filter} value={'completed'} />
-  Complété
-</label>
-<label>
-  <input type="radio" bind:group={filter} value={'not-completed'} />
-  Non complété
-</label>
-<label>
-  <input type="radio" bind:group={filter} value={false} />
-  Aucun filtre
-</label>
-<br />
+<h1>{$_('orders')}</h1>
 
-<b>Chercher par</b>
-<label>
-  <input type="checkbox" bind:group={searchCategories} value={'product.name'} />
-  Nom du produit
-</label>
-<label>
-  <input type="checkbox" bind:group={searchCategories} value={'user.firstName'} />
-  Prénom du client
-</label>
-<label>
-  <input type="checkbox" bind:group={searchCategories} value={'user.lastName'} />
-  Nom de famille du client
-</label>
-<label>
-  <input type="checkbox" bind:group={searchCategories} value={'user.email'} />
-  Courriel du client
-</label>
-<label>
-  <input type="checkbox" bind:group={searchCategories} value={'comments'} />
-  Commentaires
-</label>
-<br />
+{#if error}
+  <p id="error">
+    {$_('errorMessage')}
+    <b>({error})</b>
+  </p>
+{:else}
+  <b>{$_('filterBy')}</b>
+  <label>
+    <input type="radio" bind:group={filter} value={'completed'} />
+    {$_('completed')}
+  </label>
+  <label>
+    <input type="radio" bind:group={filter} value={'not-completed'} />
+    {$_('notCompleted')}
+  </label>
+  <label>
+    <input type="radio" bind:group={filter} value={false} />
+    {$_('noFilter')}
+  </label>
+  <br />
 
-<input style="width: 99%;" type="text" bind:value={searchTerms} placeholder="Termes de recherche" />
-{#each searchResults as searchResult (searchResult._id)}
-  <div transition:fade={{ delay: 0, duration: 250 }} animate:flip={{ delay: 0, duration: 250 }}>
-    <OrderCard
-      {...searchResult}
-      on:ordercommentsupdate={() => updateOrderComments(searchResult._id)}
-      on:orderstatusupdate={() => updateOrderStatus(searchResult._id)} />
-  </div>
-{/each}
+  <b>{$_('searchBy')}</b>
+  <label>
+    <input type="checkbox" bind:group={searchCategories} value={'product.name'} />
+    {$_('productName')}
+  </label>
+  <label>
+    <input type="checkbox" bind:group={searchCategories} value={'user.firstName'} />
+    {$_('clientFirstName')}
+  </label>
+  <label>
+    <input type="checkbox" bind:group={searchCategories} value={'user.lastName'} />
+    {$_('clientLastName')}
+  </label>
+  <label>
+    <input type="checkbox" bind:group={searchCategories} value={'user.email'} />
+    {$_('clientEmail')}
+  </label>
+  <label>
+    <input type="checkbox" bind:group={searchCategories} value={'comments'} />
+    {$_('comments')}
+  </label>
+  <br />
+
+  <input id="input" type="text" bind:value={searchTerms} placeholder={$_('searchTerms')} />
+  {#each searchResults as searchResult (searchResult._id)}
+    <div transition:fade={{ delay: 0, duration: 250 }} animate:flip={{ delay: 0, duration: 250 }}>
+      <OrderCard
+        {...searchResult}
+        on:ordercommentsupdate={() => updateOrderComments(searchResult._id)}
+        on:orderstatusupdate={() => updateOrderStatus(searchResult._id)} />
+    </div>
+  {/each}
+{/if}

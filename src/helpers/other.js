@@ -1,8 +1,4 @@
-import { writable } from 'svelte/store';
-
-export function scrollToId(anchor) {
-  // document.getElementById(anchor).scrollIntoView({ behavior: 'smooth' });
-}
+import xss from 'xss';
 
 export const quillHtml = `
 <div id="toolbar">
@@ -35,4 +31,27 @@ export const quillHtml = `
 <button class="ql-clean"></button>
 </span>
 </div>
-<div id="editor"></div>`.replace(/\n/gm, '');
+<div id="editor" style="min-height: 100px;"></div>`.replace(/\n/gm, '');
+
+export const xssFilter = new xss.FilterXSS({
+  css: {
+    whiteList: {
+      'color': true,
+      'background-color': true,
+    },
+  },
+  whiteList: {
+    span: ['style'],
+    strong: ['style'],
+    u: ['style'],
+    i: ['style'],
+    s: ['style'],
+    a: ['href', 'rel', 'target', 'style'],
+    h1: ['style'],
+    h2: ['style'],
+    ul: ['style'],
+    ol: ['style'],
+    li: ['style'],
+    p: [],
+  },
+});

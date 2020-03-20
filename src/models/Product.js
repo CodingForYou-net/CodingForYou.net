@@ -22,6 +22,10 @@ const OrderSchema = new Schema({
     type: String,
     required: true,
   },
+  features: {
+    type: [String],
+    required: true,
+  },
   quantity: {
     type: Number,
     default: 1,

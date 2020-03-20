@@ -7,9 +7,9 @@ import {
   ourEmails,
 } from '@config/keys.js';
 import { translationsList } from '@helpers/translation.js';
+import { getTranslation } from '@helpers/translation.js';
 import { createTransport } from 'nodemailer';
 import hbs from 'nodemailer-express-handlebars';
-import format from 'string-template';
 
 const dev = process.env.NODE_ENV === 'development';
 
@@ -40,7 +40,7 @@ const hbsConfig = {
     layoutsDir: hbsViewsPath + 'layouts',
     helpers: {
       translate(textId, data) {
-        return format(translationsList[this.lang][textId], { ...this, ...data.hash });
+        return getTranslation(textId, { ...this, ...data.hash }, this.lang);
       },
       compare(v1, operator, v2) {
         switch (operator) {
@@ -96,6 +96,7 @@ for (const key in transporters) transporters[key].use('compile', hbs(hbsConfig))
  * @param {String} template
  * @param {Object?} context
  * @param {Boolean?} sendOnError
+ * @returns {Promise<Boolean>} error
  */
 export async function sendMail(
   account,
@@ -106,6 +107,7 @@ export async function sendMail(
   context = {},
   sendOnError = true
 ) {
+  let err = false;
   try {
     await transporters[account].sendMail({
       from,
@@ -115,6 +117,7 @@ export async function sendMail(
       context,
     });
   } catch (error) {
+    err = error;
     if (!error.receivers) {
       if (sendOnError)
         sendMail(
@@ -146,4 +149,5 @@ export async function sendMail(
       else console.log(error);
     }
   }
+  return err;
 }

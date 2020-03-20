@@ -13,7 +13,7 @@ export async function post(req, res) {
     await userDoc.save();
     res.status(200).send('lang saved');
   } catch (error) {
-    if (dev) console.warn(error);
+    if (dev) console.log(error);
     res.status(501).send('an error occured');
   }
 }
