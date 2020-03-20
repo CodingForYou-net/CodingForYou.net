@@ -48,7 +48,7 @@
   </small>
   <br />
   <button on:click={() => dispatch('orderstatusupdate')}>
-    {$_('setAs')} {completed ? $_('completed').toLowerCase() : $_('notCompleted').toLowerCase()}
+    {$_('setAs')} {completed ? $_('notCompleted').toLowerCase() : $_('completed').toLowerCase()}
   </button>
   <button on:click={() => dispatch('ordercommentsupdate')}>{$_('editComments')}</button>
 </div>
