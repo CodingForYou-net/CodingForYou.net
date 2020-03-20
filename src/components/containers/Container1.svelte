@@ -29,7 +29,7 @@
     }
   }
 
-  #container1 {
+  section {
     height: 100vh;
     width: 100%;
     position: relative;
@@ -76,6 +76,22 @@
     animation-delay: -5s;
     bottom: 20px;
   }
+
+  // #test {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   width: 100%;
+  //   height: 100px;
+  //   background-image: url('/test.svg');
+  //   background-size: 1000px 100px;
+  //   animation: moveWave1 30s linear infinite;
+  //   z-index: 800;
+  //   opacity: 1;
+  //   animation-delay: 0s;
+  //   bottom: -1px;
+  // }
 
   #arrow-down {
     position: absolute;
@@ -134,13 +150,14 @@
   }
 </style>
 
-<div id="container1">
+<section id="container1">
   <div class="wave" id="wave1" />
   <div class="wave" id="wave2" />
   <div class="wave" id="wave3" />
   <div class="wave" id="wave4" />
 
   <div>
+    <!-- <div class="wave" id="test" /> -->
     <img
       id="shape1"
       class="rellax"
@@ -185,4 +202,4 @@
       </svg>
     </span>
   </div>
-</div>
+</section>

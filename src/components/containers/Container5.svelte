@@ -1,26 +1,47 @@
 <script>
   import { _, store as lang } from '@helpers/translation.js';
   import { user, isLoggedIn } from '@helpers/user.js';
+  import Swal from 'sweetalert2';
 
   let name = $isLoggedIn ? `${$user.firstName} ${$user.lastName}` : '';
   let email = $isLoggedIn ? $user.email : '';
   let title = '';
-  let body = '';
+  let message = '';
 
-  // [name, email, title, body]
-
-  function sendMail() {
-    const res = fetch('/api/send-mail', {
-      method: 'POST',
-      body: name,
-    });
+  async function sendMail() {
+    try {
+      const res = await fetch('/api/send-mail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: name, email: email, title: title, message: message }),
+      });
+      if (!res.ok) throw new Error(res.statusText);
+      Swal.fire({
+        title: 'Success sending message',
+        text: 'We will review your message and respond to you as soon as possible!',
+        icon: 'success',
+      });
+      name = $isLoggedIn ? `${$user.firstName} ${$user.lastName}` : '';
+      email = $isLoggedIn ? $user.email : '';
+      title = '';
+      message = '';
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: 'Error sending message',
+        text: 'Please try again later...',
+        icon: 'error',
+      });
+    }
   }
 </script>
 
 <style lang="scss">
   @import 'src/styles/_theme.scss';
 
-  #container5 {
+  section {
     margin-top: 50px;
   }
 
@@ -56,7 +77,7 @@
       }
     }
     & #send {
-      background-color: lighten($theme-blue, 10%);
+      background-color: darken($theme-blue, 10%);
       border: none;
       border-radius: 5px 15px 5px;
       color: white;
@@ -68,7 +89,7 @@
       margin: 0 auto;
       cursor: pointer;
       &:hover {
-        background-color: darken($theme-blue, 10%);
+        background-color: darken($theme-blue, 15%);
       }
     }
   }
@@ -80,10 +101,11 @@
     overflow: hidden;
     height: 17px;
     margin-bottom: -0.5px;
+    margin-left: -1px;
   }
 </style>
 
-<div id="container5">
+<section id="container5">
   <div id="repeating-top" />
   <div id="content">
     <h2>Contact</h2>
@@ -103,8 +125,8 @@
         readonly={$isLoggedIn}
         class:readonly={$isLoggedIn} />
       <input class="form-element" type="text" bind:value={title} placeholder={$_('title')} />
-      <textarea class="form-element" rows="8" bind:value={body} placeholder={$_('body')} />
+      <textarea class="form-element" rows="8" bind:value={message} placeholder="Message" />
       <button id="send" type="button" on:click={sendMail}>{$_('send')}</button>
     </form>
   </div>
-</div>
+</section>

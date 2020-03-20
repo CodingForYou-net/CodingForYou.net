@@ -3,7 +3,7 @@
 </script>
 
 <style lang="scss">
-  #container4 {
+  section {
     padding: 25px 10%;
   }
 
@@ -12,7 +12,7 @@
   }
 </style>
 
-<div id="container4">
+<section id="container4">
   <h2>{$_('easyFastReliable')}</h2>
   <h3>Avanced Animations</h3>
   <p>
@@ -34,4 +34,4 @@
   </p>
   <h3>Anything is possible...</h3>
   <p>We can do anything for you!</p>
-</div>
+</section>

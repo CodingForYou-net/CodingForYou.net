@@ -6,7 +6,7 @@
 </script>
 
 <style>
-  #content {
+  section {
     padding: 50px 10%;
   }
   #profile-picture {
@@ -26,7 +26,7 @@
   }
 </style>
 
-<div id="content">
+<section>
   <img id="profile-picture" src={$user.image} alt="profile-picture" />
   <h1>{$user.firstName} {$user.lastName}</h1>
   <h4>{$user.email}</h4>
@@ -40,6 +40,7 @@
     </p>
   {/if}
   <br />
-  <Button href="/{$lang.current}/profile/buy" style="green">{$_('buy')}</Button>
   <Button href="/api/auth/logout" style="green">{$_('logout')}</Button>
-</div>
+  <Button href="/{$lang.current}/profile/buy" style="green">{$_('buy')}</Button>
+  <Button href="/{$lang.current}/profile/orders" style="green">{$_('orders')}</Button>
+</section>

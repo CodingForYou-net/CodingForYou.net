@@ -5,16 +5,16 @@
 
 <style lang="scss">
   @import 'src/styles/_theme.scss';
-  #container2 {
+  section {
     padding: 50px 10%;
   }
 </style>
 
-<div id="container2">
+<section id="container2">
   {#if $isLoggedIn}
     <h1>{$_('hello', { name: `${$user.firstName} ${$user.lastName}` })}</h1>
   {:else}
     <h1>{$_('welcome')}</h1>
   {/if}
   <h5>{$_('aboutUs')}</h5>
-</div>
+</section>

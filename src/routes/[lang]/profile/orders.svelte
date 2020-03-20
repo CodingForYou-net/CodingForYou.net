@@ -2,15 +2,12 @@
   import { _, store as lang } from '@helpers/translation.js';
 </script>
 
-<style lang="scss">
+<style>
   section {
-    position: relative;
-    top: 0;
-    left: 0;
+    padding: 50px 10%;
   }
 </style>
 
 <section>
-  <h1>Contact</h1>
-  <a href="/{$lang.current}/">Index</a>
+  <h1>{$_('orders')}</h1>
 </section>

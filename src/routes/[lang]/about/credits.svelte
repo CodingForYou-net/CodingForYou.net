@@ -3,12 +3,12 @@
 </script>
 
 <style lang="scss">
-  .content {
+  section {
     padding: 50px;
   }
 </style>
 
-<div class="content">
+<section>
   <h1>Credits</h1>
   <h4>The following tools and materials were used in the making of this site and of our logo.</h4>
   <ul>
@@ -16,4 +16,4 @@
     <li>https://undraw.co/</li>
     <li>https://www.figma.com/</li>
   </ul>
-</div>
+</section>
