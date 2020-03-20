@@ -23,6 +23,10 @@
         text: 'We will review your message and respond to you as soon as possible!',
         icon: 'success',
       });
+      name = $isLoggedIn ? `${$user.firstName} ${$user.lastName}` : '';
+      email = $isLoggedIn ? $user.email : '';
+      title = '';
+      message = '';
     } catch (error) {
       console.log(error);
       Swal.fire({
