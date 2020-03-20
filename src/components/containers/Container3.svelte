@@ -179,7 +179,7 @@
       {#each products as product (product._id)}
         <div class="package" on:click={() => buy(product._id)}>
           <h3>{product.name}</h3>
-          <img src={product.images[0]} alt="aLt" />
+          <img src={product.images[0]} alt={product._id} />
           <div class="price">
             <h1>{product.amount / 100}$</h1>
             <h3>{product.currency.toUpperCase()}</h3>
