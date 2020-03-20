@@ -8,6 +8,7 @@
 
   export async function preload({ path }, { browserLang, isLoggedIn, user }) {
     if (!path.startsWith('/api') && !validPathRegex.test(path)) {
+      console.log({ browserLang, isLoggedIn, user });
       if (isLoggedIn) return this.redirect(302, `/${user.lang}${path}`);
       let lang = ['en', 'fr'].includes(browserLang) ? browserLang : 'en';
       return this.redirect(302, `/${lang}${path}`);

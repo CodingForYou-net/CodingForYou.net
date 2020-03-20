@@ -3,7 +3,7 @@
 </script>
 
 <style lang="scss">
-  section {
-    padding: 50px 10%;
-  }
+  // section {
+  //   padding: 50px 10%;
+  // }
 </style>
