@@ -1,8 +1,15 @@
 <script>
   import { _, store as lang } from '@helpers/translation.js';
+  import { user, isLoggedIn, isAdmin } from '@helpers/user.js';
   import { stores } from '@sapper/app';
   import Button from '@components/Button.svelte';
-  import { user, isAdmin } from '@helpers/user.js';
+
+  function logout() {
+    $user = {};
+    $isLoggedIn = false;
+    $isAdmin = false;
+    window.location.href = '/api/auth/logout';
+  }
 </script>
 
 <style>
@@ -42,5 +49,5 @@
   <br />
   <Button href="/{$lang.current}/#container3" style="green">{$_('buy')}</Button>
   <Button href="/{$lang.current}/profile/orders" style="green">{$_('orders')}</Button>
-  <Button href="/api/auth/logout" style="green">{$_('logout')}</Button>
+  <Button on:click={logout} style="green">{$_('logout')}</Button>
 </section>

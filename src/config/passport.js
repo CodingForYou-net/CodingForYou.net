@@ -44,7 +44,7 @@ export default function(passport) {
 
   passport.deserializeUser(async (id, done) => {
     try {
-      const user = await User.findById(id);
+      const user = await User.findById(id).lean();
       done(null, user);
     } catch (error) {
       done(error);

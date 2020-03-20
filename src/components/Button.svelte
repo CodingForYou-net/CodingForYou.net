@@ -5,7 +5,8 @@
 
 <style lang="scss">
   @import 'src/styles/_theme.scss';
-  a {
+  a,
+  div {
     padding: 15px;
     text-decoration: none;
     text-transform: uppercase;
@@ -13,6 +14,7 @@
     border-radius: 5px;
     transition: background-color 0.3s;
     display: inline-block;
+    cursor: pointer;
     &.green {
       background-color: $theme-green;
       color: $theme-light-green;
@@ -23,6 +25,12 @@
   }
 </style>
 
-<a {href} class={style}>
-  <slot />
-</a>
+{#if href}
+  <a {href} class={style}>
+    <slot />
+  </a>
+{:else}
+  <div on:click class={style}>
+    <slot />
+  </div>
+{/if}

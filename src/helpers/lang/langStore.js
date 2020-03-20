@@ -21,10 +21,5 @@ export default {
         body: JSON.stringify({ lang: val }),
       });
     locale.set(val);
-    user.update((u) => {
-      if (!getLoggedIn()) return u;
-      const _u = Object.assign({}, u, { lang: val });
-      return _u;
-    });
   },
 };
