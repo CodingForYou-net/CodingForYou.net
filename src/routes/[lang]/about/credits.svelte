@@ -4,16 +4,24 @@
 
 <style lang="scss">
   section {
-    padding: 50px;
+    padding: 50px 10%;
+    & h4 {
+      margin-bottom: 20px;
+    }
+    & ul {
+      & li {
+        margin-bottom: 10px;
+      }
+    }
   }
 </style>
 
 <section>
-  <h1>Credits</h1>
-  <h4>The following tools and materials were used in the making of this site and of our logo.</h4>
+  <h1>{$_('credits')}</h1>
+  <h4>{$_('toolsMaterials')}</h4>
   <ul>
-    <li>https://fontawesome.com/license</li>
+    <li>https://colorhunt.co/palette/167040</li>
+    <li>https://fontawesome.com/license/free</li>
     <li>https://undraw.co/</li>
-    <li>https://www.figma.com/</li>
   </ul>
 </section>
