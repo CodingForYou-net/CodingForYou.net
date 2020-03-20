@@ -1,4 +1,4 @@
-import { getLoggedIn } from '@helpers/user.js';
+import { getLoggedIn, user } from '@helpers/user.js';
 import { locale } from 'svelte-intl';
 
 export default {
@@ -21,5 +21,10 @@ export default {
         body: JSON.stringify({ lang: val }),
       });
     locale.set(val);
+    user.update((u) => {
+      if (!getLoggedIn()) return u;
+      const _u = Object.assign({}, u, { lang: val });
+      return _u;
+    });
   },
 };
