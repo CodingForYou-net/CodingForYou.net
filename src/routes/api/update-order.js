@@ -10,6 +10,6 @@ export async function post(req, res) {
     res.status(200).send('success');
   } catch (error) {
     if (dev) console.log(error);
-    res.status(501).send('internal server error');
+    res.status(500).send('internal server error');
   }
 }

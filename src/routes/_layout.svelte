@@ -5,12 +5,17 @@
     translationsList,
     validPathRegex,
   } from '@helpers/translation.js';
+  import { isLoggedIn, user, isAdmin, getLoggedIn } from '@helpers/user.js';
 
-  export async function preload({ path }, { browserLang, isLoggedIn, user }) {
+  export async function preload({ path }, {browserLang}) {
+    const { isLoggedIn:_isLoggedIn, isAdmin:_isAdmin, user:_user } = await (await this.fetch(`/api/auth/user`, {credentials: 'include'})).json()
+    isLoggedIn.set(_isLoggedIn)
+    isAdmin.set(_isAdmin)
+    user.set(_user)
     if (!path.startsWith('/api') && !validPathRegex.test(path)) {
-      if (isLoggedIn) return this.redirect(302, `/${user.lang}${path}`);
-      let lang = ['en', 'fr'].includes(browserLang) ? browserLang : 'en';
-      return this.redirect(302, `/${lang}${path}`);
+      if (_isLoggedIn && _user.lang) return this.redirect(303, `/${_user.lang}${path}`);
+      const lang = ['en', 'fr'].includes(browserLang) ? browserLang : 'en';
+      return this.redirect(303, `/${lang}${path}`);
     }
     if (validPathRegex.test(path)) {
       translations.update(translationsList);
@@ -25,7 +30,6 @@
   import Footer from '@components/Footer.svelte';
   import { onMount } from 'svelte';
   import { stores } from '@sapper/app';
-  import { isLoggedIn, user, isAdmin } from '@helpers/user.js';
 
   const { page, session } = stores();
   let navStayOpen;
@@ -34,12 +38,7 @@
     const subscritptions = [
       page.subscribe((p) => {
         if (validPathRegex.test(p.path)) $lang = p.path.split('/')[1];
-      }),
-      session.subscribe((s) => {
-        $isLoggedIn = s.isLoggedIn;
-        $user = s.user;
-        $isAdmin = s.isAdmin;
-      }),
+      })
     ];
     window.Quill = (await import('quill')).default;
     return () => subscritptions.forEach((unsub) => unsub && unsub());

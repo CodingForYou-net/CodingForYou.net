@@ -22,7 +22,7 @@
     if (!$isLoggedIn) {
       const { dismiss } = await Swal.fire({
         title: getTranslation('plsLoginTitle'),
-        text: getTranslation('plsLoginText'),
+        text: getTranslation('plsLoginToBuy'),
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: getTranslation('login'),

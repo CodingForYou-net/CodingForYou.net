@@ -21,6 +21,6 @@ export function post(req, res) {
   if (!error) return res.status(200).send('ok');
   else {
     if (dev) console.log(error);
-    res.status(501).send('internal server error');
+    res.status(500).send('internal server error');
   }
 }

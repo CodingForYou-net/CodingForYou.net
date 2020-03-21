@@ -1,8 +1,10 @@
-<script context="module">
-  import { getCurrent as getCurrentLang } from '@helpers/translation.js';
-  export async function preload({}, { isLoggedIn, isAdmin }) {
-    if (!(isLoggedIn && isAdmin)) this.error(404, 'Not found');
-  }
+<script>
+  import { _ } from '@helpers/translation.js';
+  import { isLoggedIn, isAdmin } from '@helpers/user.js';
 </script>
 
+{#if $isLoggedIn && $isLoggedIn}
 <slot />
+{:else}
+<p>{$_('plsLoginProfileP1')} <a href="/api/google">{$_('here')}</a> {$_('plsLoginAdminP2')}</p>
+{/if}
