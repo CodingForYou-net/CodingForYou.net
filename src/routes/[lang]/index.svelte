@@ -10,6 +10,7 @@
   onMount(() => {
     ScrollOut({
       threshold: 0.5,
+      once: true,
     });
   });
 </script>

@@ -97,7 +97,7 @@
     background-repeat: repeat-x;
     overflow: hidden;
     height: 17px;
-    margin-bottom: -0.5px;
+    margin-bottom: -1px;
     margin-left: -1px;
   }
 
@@ -143,32 +143,16 @@
         bind:value={name}
         placeholder={$_('fullname')}
         readonly={$isLoggedIn}
-        class:readonly={$isLoggedIn}
-        data-scroll
-        data-type="2" />
+        class:readonly={$isLoggedIn} />
       <input
         class="form-element"
         type="email"
         bind:value={email}
         placeholder={$_('email')}
         readonly={$isLoggedIn}
-        class:readonly={$isLoggedIn}
-        data-scroll
-        data-type="2" />
-      <input
-        class="form-element"
-        type="text"
-        bind:value={title}
-        placeholder={$_('title')}
-        data-scroll
-        data-type="2" />
-      <textarea
-        class="form-element"
-        rows="8"
-        bind:value={message}
-        placeholder="Message"
-        data-scroll
-        data-type="2" />
+        class:readonly={$isLoggedIn} />
+      <input class="form-element" type="text" bind:value={title} placeholder={$_('title')} />
+      <textarea class="form-element" rows="8" bind:value={message} placeholder="Message" />
       <button id="send" type="button" on:click={sendMail}>{$_('send')}</button>
     </form>
   </div>

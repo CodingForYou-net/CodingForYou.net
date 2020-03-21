@@ -7,11 +7,14 @@
   } from '@helpers/translation.js';
   import { isLoggedIn, user, isAdmin, getLoggedIn } from '@helpers/user.js';
 
-  export async function preload({ path }, {browserLang}) {
-    const { isLoggedIn:_isLoggedIn, isAdmin:_isAdmin, user:_user } = await (await this.fetch(`/api/auth/user`, {credentials: 'include'})).json()
-    isLoggedIn.set(_isLoggedIn)
-    isAdmin.set(_isAdmin)
-    user.set(_user)
+  export async function preload({ path }, { browserLang }) {
+    const { isLoggedIn: _isLoggedIn, isAdmin: _isAdmin, user: _user } = await (await this.fetch(
+      `/api/auth/user`,
+      { credentials: 'include' }
+    )).json();
+    isLoggedIn.set(_isLoggedIn);
+    isAdmin.set(_isAdmin);
+    user.set(_user);
     if (!path.startsWith('/api') && !validPathRegex.test(path)) {
       if (_isLoggedIn && _user.lang) return this.redirect(303, `/${_user.lang}${path}`);
       const lang = ['en', 'fr'].includes(browserLang) ? browserLang : 'en';
@@ -38,7 +41,7 @@
     const subscritptions = [
       page.subscribe((p) => {
         if (validPathRegex.test(p.path)) $lang = p.path.split('/')[1];
-      })
+      }),
     ];
     window.Quill = (await import('quill')).default;
     return () => subscritptions.forEach((unsub) => unsub && unsub());
@@ -52,6 +55,8 @@
 <Head />
 <Navbar on:stayopen={({ detail: newState }) => (navStayOpen = newState)} />
 <main class:open={navStayOpen}>
-  <slot />
+  <div id="main">
+    <slot />
+  </div>
   <Footer />
 </main>
