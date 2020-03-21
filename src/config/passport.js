@@ -5,7 +5,7 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 const { NODE_ENV } = process.env;
 const dev = NODE_ENV === 'development';
 
-export default function(passport) {
+export default function (passport) {
   passport.use(
     new GoogleStrategy(
       {
@@ -44,7 +44,7 @@ export default function(passport) {
 
   passport.deserializeUser(async (id, done) => {
     try {
-      const user = await User.findById(id).lean();
+      const user = await User.findById(id);
       done(null, user);
     } catch (error) {
       done(error);

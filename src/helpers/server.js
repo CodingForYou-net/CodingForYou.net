@@ -30,7 +30,7 @@ export function start() {
     // NOTE Sapper middlewares
     .use(
       bodyParser.json({
-        verify: function(req, res, buf) {
+        verify: function (req, res, buf) {
           req.rawBody = buf.toString();
         },
       }),
@@ -45,11 +45,7 @@ export function start() {
             .split(',')
             .map((l) => l.split('-')[0])
             .filter((l) => ['fr', 'en'].includes(l))[0];
-          const isLoggedIn = !!req.user;
-          const isAdmin = !!(req.user || {}).admin;
-          const { image, firstName, lastName, id, email, lang } = req.user || {};
-          const user = { image, firstName, lastName, id, email, lang };
-          return { browserLang, isLoggedIn, isAdmin, user };
+          return { browserLang };
         },
       })
     )

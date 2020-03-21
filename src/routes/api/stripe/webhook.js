@@ -59,7 +59,7 @@ export async function post(req, res) {
             dev,
           }
         );
-        return res.status(501).send('internal server error');
+        return res.status(500).send('internal server error');
       }
     }
   } catch (err) {

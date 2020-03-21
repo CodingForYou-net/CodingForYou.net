@@ -1,4 +1,4 @@
-import { getLoggedIn, user } from '@helpers/user.js';
+import { getLoggedIn } from '@helpers/user.js';
 import { locale } from 'svelte-intl';
 
 export default {
@@ -11,7 +11,7 @@ export default {
     );
   },
   set(val) {
-    if (getLoggedIn())
+    if (getLoggedIn() && process.browser)
       fetch(`/api/lang`, {
         method: 'POST',
         credentials: 'include',

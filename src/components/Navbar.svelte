@@ -3,9 +3,10 @@
   import { createEventDispatcher } from 'svelte';
   import navRoutes from '@config/navRoutes.js';
   import { stores } from '@sapper/app';
+  import { isLoggedIn, user } from '@helpers/user.js';
   import mobile from 'is-mobile';
 
-  const { session, page } = stores();
+  const { page } = stores();
   const dispatch = createEventDispatcher();
 
   $: otherLangPath = $page.path.replace(/^\/(fr|en)/, '/' + $lang.other);
@@ -293,10 +294,10 @@
       </a>
     </li>
     <li class="nav-item">
-      {#if $session.isLoggedIn}
+      {#if $isLoggedIn}
         <a href="/{$lang.current}/profile" id="login" on:click={handleNavItemClick}>
-          <img src={$session.user.image} alt="profile-picture" />
-          <span class="link-text name">{$session.user.firstName} {$session.user.lastName}</span>
+          <img src={$user.image} alt="profile-picture" />
+          <span class="link-text name">{$user.firstName} {$user.lastName}</span>
         </a>
       {:else}
         <a href="/api/auth/google" class="nav-link">
