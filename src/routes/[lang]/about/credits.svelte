@@ -21,7 +21,12 @@
   <h4>{$_('toolsMaterials')}</h4>
   <ul>
     <li>https://colorhunt.co/palette/167040</li>
-    <li>https://fontawesome.com/license/free</li>
-    <li>https://undraw.co/</li>
+    <li>
+      The icons on the navigation bar, the web packages and the error page are licensed under a
+      <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 Licence</a>
+      . It is attributed to
+      <a href="https://fontawesome.com/">Font Awesome</a>
+      .
+    </li>
   </ul>
 </section>

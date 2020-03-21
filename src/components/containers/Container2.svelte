@@ -7,10 +7,11 @@
   @import 'src/styles/_theme.scss';
   section {
     padding: 50px 10%;
+    margin-top: 50px;
   }
 </style>
 
-<section id="container2">
+<section id="container2" data-scroll data-type="1">
   {#if $isLoggedIn}
     <h1>{$_('hello', { name: `${$user.firstName} ${$user.lastName}` })}</h1>
   {:else}

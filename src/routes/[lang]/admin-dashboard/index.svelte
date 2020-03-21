@@ -94,7 +94,7 @@
 
 <style>
   section {
-    padding: 50px 10%;
+    padding: 50px 5%;
   }
   #error {
     color: red;

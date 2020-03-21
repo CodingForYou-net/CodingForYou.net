@@ -33,6 +33,7 @@
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "quill": "^1.3.7",
+    "scroll-out": "^2.2.8",
     "setimmediate": "^1.0.5",
     "sirv": "^0.4.0",
     "string-template": "^1.0.0",

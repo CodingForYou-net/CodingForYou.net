@@ -17,7 +17,7 @@
     cursor: pointer;
     &.green {
       background-color: $theme-green;
-      color: $theme-light-green;
+      color: white;
       &:hover {
         background-color: darken($theme-green, 15%);
       }

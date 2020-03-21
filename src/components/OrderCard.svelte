@@ -14,10 +14,13 @@
 </script>
 
 <style lang="scss">
+  @import 'src/styles/_theme.scss';
+
   div#content {
     margin: 5px;
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
+    border: 1px solid $theme-black;
     background-color: #f2f2f2;
     small {
       color: gray;

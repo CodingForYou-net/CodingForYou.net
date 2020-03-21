@@ -44,14 +44,13 @@
   }
 
   #content {
-    padding: 25px 10%;
+    padding: 50px 10%;
     background-color: $theme-blue;
     color: white;
   }
 
   h2 {
     text-align: center;
-    margin-bottom: 20px;
   }
 
   #contact-form {
@@ -101,12 +100,42 @@
     margin-bottom: -0.5px;
     margin-left: -1px;
   }
+
+  #contactInfo {
+    margin: 20px 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    &::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: white;
+      transition: width 0.3s;
+    }
+    &:hover::after {
+      width: 100%;
+      transition: width 0.3s;
+    }
+  }
 </style>
 
 <section id="container5">
   <div id="repeating-top" />
   <div id="content">
-    <h2>Contact</h2>
+    <h2 data-scroll data-type="2">Contact</h2>
+    <p id="contactInfo" data-scroll data-type="1">
+      {$_('contactInfo')}
+      <strong>
+        <a href="mailto:contact@codingforyou.net">contact@codingforyou.net</a>
+      </strong>
+      !
+    </p>
     <form id="contact-form" enctype="text/plain">
       <input
         type="text"
@@ -114,16 +143,32 @@
         bind:value={name}
         placeholder={$_('fullname')}
         readonly={$isLoggedIn}
-        class:readonly={$isLoggedIn} />
+        class:readonly={$isLoggedIn}
+        data-scroll
+        data-type="2" />
       <input
         class="form-element"
         type="email"
         bind:value={email}
         placeholder={$_('email')}
         readonly={$isLoggedIn}
-        class:readonly={$isLoggedIn} />
-      <input class="form-element" type="text" bind:value={title} placeholder={$_('title')} />
-      <textarea class="form-element" rows="8" bind:value={message} placeholder="Message" />
+        class:readonly={$isLoggedIn}
+        data-scroll
+        data-type="2" />
+      <input
+        class="form-element"
+        type="text"
+        bind:value={title}
+        placeholder={$_('title')}
+        data-scroll
+        data-type="2" />
+      <textarea
+        class="form-element"
+        rows="8"
+        bind:value={message}
+        placeholder="Message"
+        data-scroll
+        data-type="2" />
       <button id="send" type="button" on:click={sendMail}>{$_('send')}</button>
     </form>
   </div>

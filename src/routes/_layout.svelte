@@ -54,5 +54,5 @@
 <Navbar on:stayopen={({ detail: newState }) => (navStayOpen = newState)} />
 <main class:open={navStayOpen}>
   <slot />
+  <Footer />
 </main>
-<Footer />

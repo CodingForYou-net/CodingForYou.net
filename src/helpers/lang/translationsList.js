@@ -7,11 +7,13 @@ export default {
     aboutUs:
       "Nous sommes une équipe de développeurs et de designers talentueux, expérimentés et créatifs. Nous créerons n'importe quel site internet que vous souhaitez à un coût très bas! La procédure est très simple. Vous nous donnez une idée générale de ce que vous souhaitez avoir et notre groupe fera de votre rêve magique une réalité!",
     webPackages: 'Forfaits web',
+    webPackagesInstructions: "Cliquez sur un des forfaits suivants pour l'acheter.",
     accountID: 'Identifiant de compte',
     buy: 'Achat',
     orders: 'Commandes',
     easyFastReliable: 'Facile, rapide, fiable!',
     learnMore: 'En savoir plus',
+    learnLess: 'En savoir moins',
     fullname: 'Nom et prénom',
     email: 'Adresse courriel',
     title: 'Titre',
@@ -50,6 +52,8 @@ export default {
     login: 'Connexion',
     later: 'Plus tard',
     cancel: 'Annuler',
+    contactInfo:
+      "Si vous avez des questions, des commentaires ou des suggestions, n'hésitez pas à nous envoyer un e-mail à",
   },
   en: {
     login: 'Login',
@@ -59,11 +63,13 @@ export default {
     aboutUs:
       'We are a team of talented, experienced and creative developers and designers. We will create any website you wish at a very low cost! The procedure is very simple. You give us a general idea of what you want and our group will make your magical dream come true! ',
     webPackages: 'Web Packages',
+    webPackagesInstructions: 'Click on one of the packages in order to purchase it.',
     accountID: 'Account ID',
     buy: 'Buy',
     orders: 'Orders',
     easyFastReliable: 'Easy, Fast, Reliable!',
     learnMore: 'Learn more',
+    learnLess: 'Learn less',
     fullname: 'Full name',
     email: 'Email address',
     title: 'Title',
@@ -101,5 +107,6 @@ export default {
     login: 'Login',
     later: 'Later',
     cancel: 'Cancel',
+    contactInfo: 'If you have any questions, comments or suggestions, feel free to email us at',
   },
 };

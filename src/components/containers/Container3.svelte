@@ -109,10 +109,10 @@
     background-color: $theme-green;
     text-align: center;
     color: white;
-    padding: 20px 10%;
+    padding: 50px 10%;
     & .packages {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
       grid-gap: 50px;
       color: $theme-green;
       margin: 40px 0;
@@ -125,11 +125,15 @@
         background-color: white;
         border-radius: 10px;
         transition: transform 0.3s;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         cursor: pointer;
-        img {
+        #image {
           width: 25%;
           min-width: 75px;
           float: right;
+          img {
+            width: 100%;
+          }
         }
         &:hover {
           transform: translateY(-10px);
@@ -140,6 +144,7 @@
 
   #learnMore {
     display: inline-block;
+    font-size: 1.25rem;
     cursor: pointer;
     &::after {
       content: '';
@@ -152,13 +157,6 @@
     &:hover::after {
       width: 100%;
       transition: width 0.3s;
-    }
-    div {
-      font-size: 1.25rem;
-      vertical-align: middle;
-      display: flex;
-      color: white;
-      margin-bottom: 2px;
     }
   }
 
@@ -176,12 +174,15 @@
 <section id="container3">
   <div id="repeating-top" />
   <div id="content">
-    <h2>{$_('webPackages')}</h2>
+    <h2 data-scroll data-type="2">{$_('webPackages')}</h2>
+    <h4 data-scroll data-type="1">{$_('webPackagesInstructions')}</h4>
     <div class="packages">
       {#each products as product (product._id)}
         <div class="package" on:click={() => buy(product._id)}>
           <h3>{product.name}</h3>
-          <img src={product.images[0]} alt={product._id} />
+          <div id="image">
+            <img src={product.images[0]} alt={product._id} />
+          </div>
           <div class="price">
             <h1>{product.amount / 100}$</h1>
             <h3>{product.currency.toUpperCase()}</h3>
@@ -197,10 +198,10 @@
         </div>
       {/each}
     </div>
-    <div id="learnMore">
-      <div>
-        <span on:click={() => (showDetails = !showDetails)}>{$_('learnMore')}</span>
-      </div>
+    <div id="learnMore" data-scroll data-type="2">
+      <span on:click={() => (showDetails = !showDetails)}>
+        {showDetails ? $_('learnLess') + ' -' : $_('learnMore') + ' +'}
+      </span>
     </div>
   </div>
   <div id="repeating-bottom" />
