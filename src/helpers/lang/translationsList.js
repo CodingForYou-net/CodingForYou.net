@@ -113,9 +113,9 @@ export default {
     later: 'Later',
     cancel: 'Cancel',
     contactInfo: 'If you have any questions, comments or suggestions, feel free to email us at',
-    plsLoginProfileP1: 'You must be logged in to access to this page. Click',
+    plsLoginProfileP1: 'You must be logged in to access this page. Click',
     plsLoginProfileP2: 'to log in.',
-    plsLoginAdminP1: 'You must be logged in and be an administrator to access to this page. Click',
+    plsLoginAdminP1: 'You must be logged in and be an administrator to access this page. Click',
     plsLoginAdminP2: 'to log in.',
   },
 };
