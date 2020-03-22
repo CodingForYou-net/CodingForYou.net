@@ -47,7 +47,7 @@
 
     <p>
       {$_('plsLoginProfileP1')}
-      <a href="/api/google">{$_('here')}</a>
+      <a href="/api/auth/google">{$_('here')}</a>
       {$_('plsLoginProfileP2')}
     </p>
   </section>

@@ -1,8 +1,22 @@
 <script>
-  import { _, store as lang } from '@helpers/translation.js';
+  import { _, store as lang, getTranslation } from '@helpers/translation.js';
   import { user, isLoggedIn, isAdmin } from '@helpers/user.js';
   import { stores } from '@sapper/app';
   import Button from '@components/Button.svelte';
+  import Swal from 'sweetalert2';
+
+  function logout() {
+    Swal.fire({
+      title: getTranslation('logoutTitle'),
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: getTranslation('logout'),
+      cancelButtonText: getTranslation('cancel'),
+      width: 600,
+    }).then(() => {
+      window.location = '/api/auth/logout';
+    });
+  }
 </script>
 
 <style>
@@ -42,5 +56,5 @@
   <br />
   <Button href="/{$lang.current}/#container3" style="green">{$_('buy')}</Button>
   <Button href="/{$lang.current}/profile/orders" style="green">{$_('orders')}</Button>
-  <Button href="/api/auth/logout" style="green">{$_('logout')}</Button>
+  <Button style="green" on:click={logout}>{$_('logout')}</Button>
 </section>

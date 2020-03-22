@@ -59,6 +59,7 @@ export default {
     plsLoginAdminP1:
       'Vous devez être connecté et être un administrateur pour accéder à cette page. Cliquez',
     plsLoginAdminP2: 'pour vous connecter.',
+    logoutTitle: 'Êtes-vous sûr de vouloir vous déconnecter?',
   },
   en: {
     login: 'Login',
@@ -117,5 +118,6 @@ export default {
     plsLoginProfileP2: 'to log in.',
     plsLoginAdminP1: 'You must be logged in and be an administrator to access this page. Click',
     plsLoginAdminP2: 'to log in.',
+    logoutTitle: 'Are you sure you want to logout?',
   },
 };

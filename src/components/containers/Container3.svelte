@@ -160,7 +160,7 @@
     }
   }
 
-  .price {
+  #price {
     display: flex;
     position: relative;
     margin: 10px 0;
@@ -168,6 +168,10 @@
     h3 {
       margin: auto 0;
     }
+  }
+
+  #features {
+    margin: 10px 0;
   }
 </style>
 
@@ -183,13 +187,13 @@
           <div id="image">
             <img src={product.images[0]} alt={product._id} />
           </div>
-          <div class="price">
+          <div id="price">
             <h1>{product.amount / 100}$</h1>
             <h3>{product.currency.toUpperCase()}</h3>
           </div>
           <p>{product.description}</p>
           {#if product.features.length > 0 && showDetails}
-            <ul transition:slide>
+            <ul transition:slide id="features">
               {#each product.features as feature}
                 <li>{feature}</li>
               {/each}
