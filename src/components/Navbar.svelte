@@ -258,7 +258,7 @@
             viewBox={route.icon.viewBox}>
             <path fill="currentColor" d={route.icon.path} />
           </svg>
-          <span class="link-text">{route.name}</span>
+          <span class="link-text">{$_(route.name)}</span>
         </a>
       </li>
     {/each}
