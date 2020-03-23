@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from 'svelte';
-  import { _ } from '@helpers/translation.js';
+  import { _, store as lang } from '@helpers/translation.js';
   import { xssFilter } from '@helpers/other.js';
   import xss from 'xss';
 
@@ -9,6 +9,11 @@
   export let date;
   export let completed;
   export let user;
+
+  $: price =
+    $lang.current === 'en'
+      ? `${product.currency.toUpperCase()}$ ${product.amount / 100}`
+      : `${product.amount / 100}$ ${product.currency.toUpperCase()}`;
 
   const dispatch = createEventDispatcher();
 </script>
@@ -28,6 +33,7 @@
         margin: -3px;
         color: darkgoldenrod;
         text-decoration: underline;
+        cursor: pointer;
       }
     }
   }
@@ -39,14 +45,14 @@
 <div id="content">
   <h3>{completed ? '✅' : '❌'} {product.name}</h3>
   <p>
-    <samp>{product.description}</samp>
+    <samp>{product.description} ({price}})</samp>
   </p>
   <div id="comments">
     {@html xssFilter.process(comments)}
   </div>
   <small>
     {user.firstName} {user.lastName} &lt;
-    <span>{user.email}</span>
+    <span on:click={() => dispatch('sendmailtoclient')}>{user.email}</span>
     &gt; [{user.lang}] ({new Date(date).toLocaleDateString()})
   </small>
   <br />

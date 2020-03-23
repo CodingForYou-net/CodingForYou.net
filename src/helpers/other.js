@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import xss from 'xss';
 
 export const quillHtml = `
@@ -54,4 +55,12 @@ export const xssFilter = new xss.FilterXSS({
     li: ['style'],
     p: [],
   },
+});
+
+export const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: false,
 });

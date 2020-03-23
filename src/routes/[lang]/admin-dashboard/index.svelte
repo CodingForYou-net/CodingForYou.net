@@ -5,6 +5,7 @@
   import { fade } from 'svelte/transition';
   import OrderCard from '@components/OrderCard.svelte';
   import Swal from 'sweetalert2';
+  import { Toast } from '@helpers/other.js';
   import { quillHtml } from '@helpers/other.js';
   import { _, getTranslation } from '@helpers/translation.js';
 
@@ -52,9 +53,17 @@
         update: { completed: !order.completed },
       }),
     });
-    if (!res.ok) return alert(getTranslation('errorUpdatingOrder'));
+    if (!res.ok)
+      return Toast.fire({
+        icon: 'error',
+        title: getTranslation('errorUpdatingOrder'),
+      });
     order.completed = !order.completed;
     allOrders = allOrders;
+    Toast.fire({
+      icon: 'success',
+      title: getTranslation('successUpdateOrder'),
+    });
   }
 
   async function updateOrderComments(orderID) {
@@ -72,6 +81,8 @@
       title: getTranslation('editComments'),
       html: quillHtml,
       width: 1500,
+      showCancelButton: true,
+      cancelButtonText: getTranslation('cancel'),
     });
     if (sa.dismiss) return;
     const comments = editor.container.firstChild.innerHTML;
@@ -86,9 +97,84 @@
         update: { comments },
       }),
     });
-    if (!res.ok) return alert(getTranslation('errorUpdatingOrder'));
+    if (!res.ok)
+      return Toast.fire({
+        icon: 'error',
+        title: getTranslation('errorUpdatingOrder'),
+      });
     order.comments = comments;
     allOrders = allOrders;
+    Toast.fire({
+      icon: 'success',
+      title: getTranslation('successUpdateOrder'),
+    });
+  }
+
+  async function sendMailToClient(orderID) {
+    const order = allOrders.find((o) => o._id === orderID);
+    let editor;
+    const sa = await Swal.mixin({
+      title: getTranslation('mailToClient'),
+      showCancelButton: true,
+      cancelButtonText: getTranslation('cancel'),
+      progressSteps: ['1', '2', '3'],
+    }).queue([
+      {
+        input: 'select',
+        inputOptions: {
+          main: 'Codingforyou.net@gmail.com',
+          codingTeam: 'CodingTeam@codingforyou.net',
+          sales: 'Sales@codingforyou.net',
+          contact: 'Contact@codingforyou.net',
+        },
+        inputPlaceholder: getTranslation('sendFrom'),
+        inputValidator(val) {
+          return val ? false : getTranslation('selectEmail');
+        },
+      },
+      {
+        input: 'text',
+        inputPlaceholder: getTranslation('subject'),
+      },
+      {
+        html: quillHtml,
+        width: 1500,
+        onBeforeOpen() {
+          editor = new Quill('#editor', {
+            modules: { toolbar: '#toolbar' },
+            theme: 'snow',
+            placeholder: getTranslation('messageToClient'),
+          });
+        },
+        preConfirm() {
+          return editor.container.firstChild.innerHTML;
+        },
+      },
+    ]);
+    if (sa.dismiss) return;
+    const [accountFrom, subject, message] = sa.value;
+    const res = await fetch('/api/send-mail-to-client', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        accountFrom,
+        message,
+        subject,
+        user: order.user,
+      }),
+    });
+    if (!res.ok)
+      return Toast.fire({
+        icon: 'error',
+        title: getTranslation('errorSendingMail'),
+      });
+    Toast.fire({
+      icon: 'success',
+      title: getTranslation('successSendingMail'),
+    });
   }
 </script>
 
@@ -157,7 +243,8 @@
         <OrderCard
           {...searchResult}
           on:ordercommentsupdate={() => updateOrderComments(searchResult._id)}
-          on:orderstatusupdate={() => updateOrderStatus(searchResult._id)} />
+          on:orderstatusupdate={() => updateOrderStatus(searchResult._id)}
+          on:sendmailtoclient={() => sendMailToClient(searchResult._id)} />
       </div>
     {/each}
   {/if}

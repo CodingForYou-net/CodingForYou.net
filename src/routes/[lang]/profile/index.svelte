@@ -8,13 +8,13 @@
   function logout() {
     Swal.fire({
       title: getTranslation('logoutTitle'),
-      icon: 'warning',
+      icon: 'question',
       showCancelButton: true,
       confirmButtonText: getTranslation('logout'),
       cancelButtonText: getTranslation('cancel'),
       width: 600,
-    }).then(() => {
-      window.location = '/api/auth/logout';
+    }).then((res) => {
+      if (!res.dismiss) window.location = '/api/auth/logout';
     });
   }
 </script>
