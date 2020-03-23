@@ -64,6 +64,7 @@
     mobileOpen = false;
     isOpen = false;
     stayOpen = false;
+    dispatch('stayopen', isOpen);
   }
 </script>
 
