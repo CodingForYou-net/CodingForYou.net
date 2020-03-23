@@ -18,39 +18,52 @@
 
   let isOpen, stayOpen, logoHovered, mobileOpen;
 
-  function handleHover() {
+  // Navbar hover
+  function navbarHover() {
     !stayOpen && !logoHovered && !mobile({ tablet: true, featureDetect: true }) && (isOpen = true);
   }
 
-  function handleLeave() {
+  // Navbar leave
+  function navbarLeave() {
     !stayOpen && !mobile({ tablet: true, featureDetect: true }) && (isOpen = false);
   }
 
-  function handleLogoClick() {
-    mobileOpen && isOpen && (mobileOpen = false);
-    console.log(mobileOpen);
-    isOpen = !isOpen;
-    stayOpen = isOpen;
-    dispatch('stayopen', isOpen);
-  }
-
-  function handleNavItemClick() {
+  // nav-item clicked
+  function navItemClicked() {
     !stayOpen && (isOpen = false);
     const interval = setInterval(() => !stayOpen && (isOpen = false), 1);
     setTimeout(() => clearInterval(interval), 250);
   }
 
-  function logoHover() {
-    logoHovered = true;
+  // Logo item clicked
+  function logoClicked() {
+    mobileOpen && isOpen && (mobileOpen = false);
+    isOpen = !isOpen;
+    stayOpen = isOpen;
+    dispatch('stayopen', isOpen);
   }
 
+  // Lover hover
+  function logoHover() {
+    !isOpen && (logoHovered = true);
+  }
+
+  //Logo leave
   function logoLeave() {
     logoHovered = false;
   }
 
+  // Mobile navbar clicked
   function mobileClick() {
-    handleLogoClick();
+    logoClicked();
     mobileOpen = true;
+  }
+
+  // Overlay clicked
+  function overlayClicked() {
+    mobileOpen = false;
+    isOpen = false;
+    stayOpen = false;
   }
 </script>
 
@@ -270,15 +283,15 @@
   </svg>
 </div>
 
-<nav class="navbar" on:mouseover={handleHover} on:mouseleave={handleLeave} class:open={isOpen}>
+<nav class="navbar" on:mouseover={navbarHover} on:mouseleave={navbarLeave} class:open={isOpen}>
   <ul class="navbar-nav">
     <li id="logo" on:mouseover={logoHover} on:mouseleave={logoLeave}>
       <div id="logo-container">
-        <a href="/{$lang.current}" class="nav-link" on:click={handleNavItemClick}>
+        <a href="/{$lang.current}" class="nav-link" on:click={navItemClicked}>
           <span class="link-text" id="logo-text" class:open={isOpen}>CodingForYou</span>
         </a>
         <svg
-          on:click={handleLogoClick}
+          on:click={logoClicked}
           aria-hidden="true"
           focusable="false"
           data-prefix="fas"
@@ -306,7 +319,7 @@
           href="/{$lang.current}/{route.path}"
           class="nav-link"
           class:selected={segment === route.path}
-          on:click={handleNavItemClick}>
+          on:click={navItemClicked}>
           <svg
             aria-hidden="true"
             focusable="false"
@@ -321,7 +334,7 @@
     {/each}
     <div id="bottom" />
     <li class="nav-item">
-      <a rel="prefetch" href={otherLangPath} class="nav-link" on:click={handleNavItemClick}>
+      <a rel="prefetch" href={otherLangPath} class="nav-link" on:click={navItemClicked}>
         <svg
           aria-hidden="true"
           focusable="false"
@@ -352,7 +365,7 @@
     </li>
     <li class="nav-item">
       {#if $isLoggedIn}
-        <a href="/{$lang.current}/profile" id="login" on:click={handleNavItemClick}>
+        <a href="/{$lang.current}/profile" id="login" on:click={navItemClicked}>
           <img src={$user.image} alt="profile-picture" id="profile-picture" />
           <span class="link-text">{$user.firstName} {$user.lastName}</span>
         </a>
@@ -380,4 +393,4 @@
     </li>
   </ul>
 </nav>
-<div id="overlay" class:on={(isOpen && !stayOpen) || mobileOpen} />
+<div id="overlay" class:on={(isOpen && !stayOpen) || mobileOpen} on:click={overlayClicked} />
