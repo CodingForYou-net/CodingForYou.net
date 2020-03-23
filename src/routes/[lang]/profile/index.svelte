@@ -1,21 +1,22 @@
 <script>
   import { _, store as lang, getTranslation } from '@helpers/translation.js';
   import { user, isLoggedIn, isAdmin } from '@helpers/user.js';
-  import { stores } from '@sapper/app';
+  import { stores, goto } from '@sapper/app';
   import Button from '@components/Button.svelte';
   import Swal from 'sweetalert2';
 
-  function logout() {
-    Swal.fire({
+  async function logout() {
+    const { dismiss } = await Swal.fire({
       title: getTranslation('logoutTitle'),
       icon: 'question',
       showCancelButton: true,
       confirmButtonText: getTranslation('logout'),
       cancelButtonText: getTranslation('cancel'),
       width: 600,
-    }).then((res) => {
-      if (!res.dismiss) window.location = '/api/auth/logout';
     });
+    if (!dismiss) {
+      goto('/api/auth/logout');
+    }
   }
 </script>
 

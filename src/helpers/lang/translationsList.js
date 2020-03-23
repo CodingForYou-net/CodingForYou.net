@@ -74,6 +74,8 @@ export default {
     webPackages: 'Forfaits web',
     webPackagesInstructions: "Cliquez sur un des forfaits suivants pour l'acheter.",
     welcome: 'Bienvenue!',
+    logoutTitle: 'Êtes-vous sûr de vouloir vous déconnecter?',
+    features: 'Caractéristiques',
   },
   en: {
     aboutUs:
@@ -93,6 +95,8 @@ export default {
     copyright: 'All rights reserved.',
     credits: 'Credits',
     easyFastReliable: 'Easy, Fast, Reliable!',
+    searchTerms: 'Search terms',
+    errorUpdatingOrder: "Couldn't update the order",
     editComments: 'Edit comments',
     editCommentsPlaceholder: 'What are your comments?',
     email: 'Email address',
@@ -147,5 +151,7 @@ export default {
     webPackages: 'Web Packages',
     webPackagesInstructions: 'Click on one of the packages in order to purchase it.',
     welcome: 'Welcome!',
+    logoutTitle: 'Are you sure you want to logout?',
+    features: 'Features',
   },
 };
