@@ -27,10 +27,11 @@
   }
 
   function handleLogoClick() {
+    mobileOpen && isOpen && (mobileOpen = false);
+    console.log(mobileOpen);
     isOpen = !isOpen;
     stayOpen = isOpen;
     dispatch('stayopen', isOpen);
-    mobileOpen && isOpen && (mobileOpen = false);
   }
 
   function handleNavItemClick() {
@@ -48,8 +49,8 @@
   }
 
   function mobileClick() {
-    mobileOpen = !mobileOpen;
     handleLogoClick();
+    mobileOpen = true;
   }
 </script>
 
@@ -217,7 +218,7 @@
     transition: visibility 0.3s linear, opacity 0.3s linear;
     visibility: hidden;
     width: 100%;
-    z-index: 999;
+    z-index: 998;
     &.on {
       opacity: 1;
       visibility: visible;
@@ -235,9 +236,9 @@
     position: fixed;
     top: 0;
     transition: width 0.6s ease;
-    z-index: 998;
-    cursor: pointer;
+    z-index: 999;
     svg {
+      cursor: pointer;
       filter: grayscale(100%);
       transition: filter 0.3s;
       &:hover {
@@ -249,6 +250,7 @@
 
 <div id="mobile-button">
   <svg
+    on:click={mobileClick}
     aria-hidden="true"
     focusable="false"
     data-prefix="fas"
