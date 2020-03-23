@@ -31,6 +31,7 @@
   // nav-item clicked
   function navItemClicked() {
     !stayOpen && (isOpen = false);
+    mobileOpen && mobileClose();
     const interval = setInterval(() => !stayOpen && (isOpen = false), 1);
     setTimeout(() => clearInterval(interval), 250);
   }
@@ -60,7 +61,7 @@
   }
 
   // Overlay clicked
-  function overlayClicked() {
+  function mobileClose() {
     mobileOpen = false;
     isOpen = false;
     stayOpen = false;
@@ -394,4 +395,4 @@
     </li>
   </ul>
 </nav>
-<div id="overlay" class:on={(isOpen && !stayOpen) || mobileOpen} on:click={overlayClicked} />
+<div id="overlay" class:on={(isOpen && !stayOpen) || mobileOpen} on:click={mobileClose} />
