@@ -16,7 +16,7 @@
     .splice(2)
     .join('/');
 
-  let isOpen, stayOpen, logoHovered;
+  let isOpen, stayOpen, logoHovered, mobileOpen;
 
   function handleHover() {
     !stayOpen && !logoHovered && !mobile({ tablet: true, featureDetect: true }) && (isOpen = true);
@@ -30,6 +30,7 @@
     isOpen = !isOpen;
     stayOpen = isOpen;
     dispatch('stayopen', isOpen);
+    mobileOpen && isOpen && (mobileOpen = false);
   }
 
   function handleNavItemClick() {
@@ -45,6 +46,11 @@
   function logoLeave() {
     logoHovered = false;
   }
+
+  function mobileClick() {
+    mobileOpen = !mobileOpen;
+    handleLogoClick();
+  }
 </script>
 
 <style lang="scss">
@@ -55,12 +61,18 @@
     nav {
       width: 0;
     }
+    #mobile-button {
+      width: 5rem;
+    }
   }
 
   // Large screens
   @media only screen and (min-width: 600px) {
     nav {
       width: 5rem;
+    }
+    #mobile-button {
+      width: 0;
     }
   }
 
@@ -212,21 +224,21 @@
     }
   }
 
-  #logo-button {
+  #mobile-button {
     align-items: center;
+    background-color: darken($theme-black, 10%);
     display: flex;
     height: 5rem;
     left: 0;
+    opacity: 0.75;
+    overflow: none;
     position: fixed;
     top: 0;
-    width: 5rem;
+    transition: width 0.6s ease;
     z-index: 998;
-    background-color: darken($theme-black, 10%);
-    opacity: 0.75;
+    cursor: pointer;
     svg {
-      cursor: pointer;
       filter: grayscale(100%);
-      transform: rotate(0deg);
       transition: filter 0.3s;
       &:hover {
         filter: grayscale(0%);
@@ -235,9 +247,8 @@
   }
 </style>
 
-<div id="logo-button">
+<div id="mobile-button">
   <svg
-    on:click={handleLogoClick}
     aria-hidden="true"
     focusable="false"
     data-prefix="fas"
@@ -367,4 +378,4 @@
     </li>
   </ul>
 </nav>
-<div id="overlay" class:on={isOpen && !stayOpen} />
+<div id="overlay" class:on={(isOpen && !stayOpen) || mobileOpen} />
