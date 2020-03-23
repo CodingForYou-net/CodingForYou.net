@@ -104,7 +104,7 @@ export default {
     clientEmail: 'Client email',
     comments: 'Comments',
     searchTerms: 'Search terms',
-    errorUpdatingOrder: "Could'nt update the order",
+    errorUpdatingOrder: "Couldn't update the order",
     editComments: 'Edit comments',
     editCommentsPlaceholder: 'What are your comments?',
     setAs: 'Set as',

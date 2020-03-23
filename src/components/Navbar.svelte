@@ -52,78 +52,85 @@
 
   // Small screens
   @media only screen and (max-width: 600px) {
+    nav {
+      width: 0;
+    }
   }
 
   // Large screens
   @media only screen and (min-width: 600px) {
+    nav {
+      width: 5rem;
+    }
+  }
+
+  svg {
+    color: $theme-green;
+    margin: 0 1.5rem;
+    min-width: 2rem;
+    width: 2rem;
   }
 
   nav {
-    width: 5rem;
-    height: 100vh;
-    height: -webKit-fill-available;
-    position: fixed;
     background-color: darken($theme-black, 5%);
+    height: -webKit-fill-available;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
     transition: width 0.6s ease;
     z-index: 1000;
-    top: 0;
     &.open {
       width: 16rem;
       & .link-text {
-        visibility: visible;
         opacity: 1;
+        visibility: visible;
       }
     }
     & ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+      align-items: center;
       display: flex;
       flex-direction: column;
-      align-items: center;
       height: 100%;
-
-      .bottom {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      transition: 0.3s;
+      #bottom {
         margin-top: auto;
       }
 
-      & #logo {
-        font-weight: 500;
-        text-transform: uppercase;
-        margin-bottom: 1rem;
+      & li#logo {
         background-color: darken($theme-black, 10%);
+        font-weight: 500;
+        margin-bottom: 1rem;
         text-align: center;
-        color: white;
+        text-transform: uppercase;
         width: 100%;
         & #logo-container {
-          display: flex;
           align-items: center;
+          display: flex;
           height: 5rem;
-          color: white;
           text-decoration: none;
-          & svg {
+          & #double-arrow {
+            cursor: pointer;
+            filter: grayscale(100%) opacity(0.7);
             transform: rotate(0deg);
             transition: filter 0.3s, transform 0.6s, margin-left 0.6s;
-            width: 2rem;
-            min-width: 2rem;
-            margin: 0 1.5rem;
-            color: $theme-green;
-            filter: grayscale(100%) opacity(0.7);
-            cursor: pointer;
             &:hover {
               filter: grayscale(0%) opacity(1);
             }
             &.open {
-              transform: rotate(-180deg);
               margin-left: 12rem;
+              transform: rotate(-180deg);
             }
           }
           & #logo-text {
             display: inline;
-            position: absolute;
             left: -999px;
-            transition: 0.6s;
             letter-spacing: 0.15ch;
+            position: absolute;
+            transition: 0.6s;
             &.open {
               left: 0;
             }
@@ -131,88 +138,124 @@
         }
       }
 
-      & .nav-item {
+      & li.nav-item {
         width: 100%;
         & #login {
-          display: flex;
           align-items: center;
-          height: 5rem;
           color: white;
+          display: flex;
+          height: 5rem;
           text-decoration: none;
-          transition: 0.3s;
+          transition: background-color 0.3s;
           &:hover {
             background-color: darken($theme-black, 10%);
-            color: white;
             & span {
               filter: grayscale(0%) opacity(1);
             }
           }
-          & img {
-            width: 3rem;
-            min-width: 3rem;
-            margin: 0 1rem;
+          & #profile-picture {
             border-radius: 50%;
+            margin: 0 1rem;
+            min-width: 3rem;
+            width: 3rem;
           }
           & span {
+            transition: filter 0.3s;
             filter: grayscale(100%) opacity(0.7);
           }
         }
       }
 
-      & .nav-link {
-        display: flex;
+      & a.nav-link {
         align-items: center;
-        height: 5rem;
         color: white;
-        text-decoration: none;
+        display: flex;
         filter: grayscale(100%) opacity(0.7);
+        height: 5rem;
+        text-decoration: none;
         transition: 0.3s;
         &:hover {
-          filter: grayscale(0%) opacity(1);
           background-color: darken($theme-black, 10%);
-          color: white;
+          filter: grayscale(0%) opacity(1);
         }
         &.selected {
           filter: grayscale(0%) opacity(1);
-          color: white;
-        }
-        & svg {
-          width: 2rem;
-          min-width: 2rem;
-          margin: 0 1.5rem;
-          color: $theme-green;
         }
       }
 
       & .link-text {
         margin: 0 1rem;
-        visibility: hidden;
         opacity: 0;
-        transition: opacity 0.5s linear;
         transition-delay: 0.2s;
+        transition: opacity 0.5s linear;
+        visibility: hidden;
       }
     }
   }
 
   #overlay {
-    z-index: 999;
     background-color: rgba(0, 0, 0, 0.25);
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
     bottom: 0;
-    visibility: hidden;
+    height: 100%;
+    left: 0;
     opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
     transition: visibility 0.3s linear, opacity 0.3s linear;
+    visibility: hidden;
+    width: 100%;
+    z-index: 999;
     &.on {
-      visibility: visible;
       opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  #logo-button {
+    align-items: center;
+    display: flex;
+    height: 5rem;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 5rem;
+    z-index: 998;
+    background-color: darken($theme-black, 10%);
+    opacity: 0.75;
+    svg {
+      cursor: pointer;
+      filter: grayscale(100%);
+      transform: rotate(0deg);
+      transition: filter 0.3s;
+      &:hover {
+        filter: grayscale(0%);
+      }
     }
   }
 </style>
+
+<div id="logo-button">
+  <svg
+    on:click={handleLogoClick}
+    aria-hidden="true"
+    focusable="false"
+    data-prefix="fas"
+    data-icon="angle-double-right"
+    class="svg-inline--fa fa-angle-double-right fa-w-14"
+    role="img"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 448 512"
+    class:open={isOpen}>
+    <path
+      fill="currentColor"
+      d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6
+      0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136
+      136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4
+      24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9
+      0l136-136c9.4-9.2 9.4-24.4 0-33.8z" />
+  </svg>
+</div>
 
 <nav class="navbar" on:mouseover={handleHover} on:mouseleave={handleLeave} class:open={isOpen}>
   <ul class="navbar-nav">
@@ -231,7 +274,8 @@
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512"
-          class:open={isOpen}>
+          class:open={isOpen}
+          id="double-arrow">
           <path
             fill="currentColor"
             d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6
@@ -262,7 +306,7 @@
         </a>
       </li>
     {/each}
-    <div class="bottom" />
+    <div id="bottom" />
     <li class="nav-item">
       <a rel="prefetch" href={otherLangPath} class="nav-link" on:click={handleNavItemClick}>
         <svg
@@ -296,8 +340,8 @@
     <li class="nav-item">
       {#if $isLoggedIn}
         <a href="/{$lang.current}/profile" id="login" on:click={handleNavItemClick}>
-          <img src={$user.image} alt="profile-picture" />
-          <span class="link-text name">{$user.firstName} {$user.lastName}</span>
+          <img src={$user.image} alt="profile-picture" id="profile-picture" />
+          <span class="link-text">{$user.firstName} {$user.lastName}</span>
         </a>
       {:else}
         <a href="/api/auth/google" class="nav-link">
@@ -317,7 +361,7 @@
               0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5
               48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" />
           </svg>
-          <span class="link-text name">{$_('login')}</span>
+          <span class="link-text">{$_('login')}</span>
         </a>
       {/if}
     </li>
