@@ -3,8 +3,8 @@ import { sendMail } from '@helpers/nodemailer.js';
 
 const dev = process.env.NODE_ENV === 'development';
 
-export function post(req, res) {
-  const error = sendMail(
+export async function post(req, res) {
+  const error = await sendMail(
     'contact',
     'Contact CodingForYou <contact@codingforyou.net>',
     ourEmails,

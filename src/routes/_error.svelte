@@ -25,6 +25,7 @@
     align-items: center;
     flex-direction: column;
     height: 100vh;
+    text-align: center;
   }
 </style>
 
@@ -32,7 +33,7 @@
   <title>{status}</title>
 </svelte:head>
 
-<section>
+<section class="page">
   <svg
     aria-hidden="true"
     focusable="false"

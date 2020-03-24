@@ -3,12 +3,10 @@
 </script>
 
 <style lang="scss">
-  section {
-    padding: 50px 10%;
-  }
+
 </style>
 
-<section>
+<section class="page">
   <h1>Politique de confidentialité</h1>
   <ol>
     <h3>

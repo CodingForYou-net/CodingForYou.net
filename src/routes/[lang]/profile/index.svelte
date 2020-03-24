@@ -20,10 +20,22 @@
   }
 </script>
 
-<style>
-  section {
-    padding: 50px 10%;
+<style lang="scss">
+  // Small screens
+  @media only screen and (max-width: 600px) {
+    #buttons-container {
+      flex-direction: column;
+      text-align: center;
+    }
   }
+
+  // Large screens
+  @media only screen and (min-width: 600px) {
+    #buttons-container {
+      flex-direction: row;
+    }
+  }
+
   #profile-picture {
     border-radius: 50%;
     float: left;
@@ -39,9 +51,13 @@
   p {
     margin: 10px 0;
   }
+
+  #buttons-container {
+    display: flex;
+  }
 </style>
 
-<section>
+<section class="page">
   <img id="profile-picture" src={$user.image} alt="profile-picture" />
   <h1>{$user.firstName} {$user.lastName}</h1>
   <h4>{$user.email}</h4>
@@ -55,7 +71,9 @@
     </p>
   {/if}
   <br />
-  <Button href="/{$lang.current}/#container3" style="green">{$_('buy')}</Button>
-  <Button href="/{$lang.current}/profile/orders" style="green">{$_('orders')}</Button>
-  <Button style="green" on:click={logout}>{$_('logout')}</Button>
+  <div id="buttons-container">
+    <Button href="/{$lang.current}/#buy" style="green">{$_('buy')}</Button>
+    <Button href="/{$lang.current}/profile/orders" style="green">{$_('orders')}</Button>
+    <Button style="green" on:click={logout}>{$_('logout')}</Button>
+  </div>
 </section>

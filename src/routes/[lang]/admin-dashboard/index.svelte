@@ -8,7 +8,9 @@
   import { Toast } from '@helpers/other.js';
   import { quillHtml } from '@helpers/other.js';
   import { _, getTranslation } from '@helpers/translation.js';
+  import Spinner from 'svelte-spinner';
 
+  let promise;
   let searchTerms = '';
   let searchCategories = ['product.name', 'user.firstName', 'user.lastName', 'user.email'];
   let allOrders = [];
@@ -26,7 +28,7 @@
   $: searchResults = searcher ? searcher.search(searchTerms) : [];
 
   onMount(async () => {
-    allOrders = await fetchOrders();
+    promise = fetchOrders();
   });
 
   async function fetchOrders() {
@@ -34,7 +36,7 @@
       const res = await fetch('/api/orders', { credentials: 'include' });
       if (!res.ok) throw res.statusText;
       const json = await res.json();
-      return json;
+      allOrders = json;
     } catch (err) {
       error = err;
     }
@@ -179,75 +181,89 @@
 </script>
 
 <style>
-  section {
-    padding: 50px 5%;
-  }
   #error {
     color: red;
   }
   #input {
     width: 99%;
   }
+  #spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  section {
+    position: relative;
+    height: 100vh;
+  }
 </style>
 
-<section>
+<section class="page">
   <h1>{$_('orders')}</h1>
+  <b>{$_('filterBy')}</b>
+  <label>
+    <input type="radio" bind:group={filter} value={'completed'} />
+    {$_('completed')}
+  </label>
+  <label>
+    <input type="radio" bind:group={filter} value={'not-completed'} />
+    {$_('notCompleted')}
+  </label>
+  <label>
+    <input type="radio" bind:group={filter} value={false} />
+    {$_('noFilter')}
+  </label>
+  <br />
 
-  {#if error}
-    <p id="error">
-      {$_('errorMessage')}
-      <b>({error})</b>
-    </p>
-  {:else}
-    <b>{$_('filterBy')}</b>
-    <label>
-      <input type="radio" bind:group={filter} value={'completed'} />
-      {$_('completed')}
-    </label>
-    <label>
-      <input type="radio" bind:group={filter} value={'not-completed'} />
-      {$_('notCompleted')}
-    </label>
-    <label>
-      <input type="radio" bind:group={filter} value={false} />
-      {$_('noFilter')}
-    </label>
-    <br />
+  <b>{$_('searchBy')}</b>
+  <label>
+    <input type="checkbox" bind:group={searchCategories} value={'product.name'} />
+    {$_('productName')}
+  </label>
+  <label>
+    <input type="checkbox" bind:group={searchCategories} value={'user.firstName'} />
+    {$_('clientFirstName')}
+  </label>
+  <label>
+    <input type="checkbox" bind:group={searchCategories} value={'user.lastName'} />
+    {$_('clientLastName')}
+  </label>
+  <label>
+    <input type="checkbox" bind:group={searchCategories} value={'user.email'} />
+    {$_('clientEmail')}
+  </label>
+  <label>
+    <input type="checkbox" bind:group={searchCategories} value={'comments'} />
+    {$_('comments')}
+  </label>
+  <br />
 
-    <b>{$_('searchBy')}</b>
-    <label>
-      <input type="checkbox" bind:group={searchCategories} value={'product.name'} />
-      {$_('productName')}
-    </label>
-    <label>
-      <input type="checkbox" bind:group={searchCategories} value={'user.firstName'} />
-      {$_('clientFirstName')}
-    </label>
-    <label>
-      <input type="checkbox" bind:group={searchCategories} value={'user.lastName'} />
-      {$_('clientLastName')}
-    </label>
-    <label>
-      <input type="checkbox" bind:group={searchCategories} value={'user.email'} />
-      {$_('clientEmail')}
-    </label>
-    <label>
-      <input type="checkbox" bind:group={searchCategories} value={'comments'} />
-      {$_('comments')}
-    </label>
-    <br />
-
-    <input id="input" type="text" bind:value={searchTerms} placeholder={$_('searchTerms')} />
-    {#each searchResults as searchResult (searchResult._id)}
-      <div
-        transition:fade|local={{ delay: 0, duration: 250 }}
-        animate:flip={{ delay: 0, duration: 250 }}>
-        <OrderCard
-          {...searchResult}
-          on:ordercommentsupdate={() => updateOrderComments(searchResult._id)}
-          on:orderstatusupdate={() => updateOrderStatus(searchResult._id)}
-          on:sendmailtoclient={() => sendMailToClient(searchResult._id)} />
+  <input id="input" type="text" bind:value={searchTerms} placeholder={$_('searchTerms')} />
+  {#await promise}
+    <div id="spinner">
+      <Spinner size="60" speed="750" color="#272727" thickness="3" gap="40" />
+    </div>
+  {:then}
+    {#if error}
+      <p id="error">
+        {$_('errorMessage')}
+        <b>({error})</b>
+      </p>
+    {:else}
+      <div in:fade={{ duration: 250 }}>
+        {#each searchResults as searchResult (searchResult._id)}
+          <div
+            transition:fade|local={{ delay: 0, duration: 250 }}
+            animate:flip={{ delay: 0, duration: 250 }}>
+            <OrderCard
+              {...searchResult}
+              on:ordercommentsupdate={() => updateOrderComments(searchResult._id)}
+              on:orderstatusupdate={() => updateOrderStatus(searchResult._id)}
+              on:sendmailtoclient={() => sendMailToClient(searchResult._id)} />
+          </div>
+        {/each}
       </div>
-    {/each}
-  {/if}
+    {/if}
+  {/await}
 </section>

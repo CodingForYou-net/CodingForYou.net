@@ -40,6 +40,7 @@
     "string-template": "^1.0.0",
     "stripe": "^8.32.0",
     "svelte-intl": "^1.1.0",
+    "svelte-spinner": "^2.0.2",
     "sweetalert2": "^9.10.2",
     "unfetch": "^4.1.0",
     "xss": "^1.0.6"

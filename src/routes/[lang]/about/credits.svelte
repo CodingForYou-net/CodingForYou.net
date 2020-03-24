@@ -4,7 +4,6 @@
 
 <style lang="scss">
   section {
-    padding: 50px 10%;
     & h4 {
       margin-bottom: 20px;
     }
@@ -16,7 +15,7 @@
   }
 </style>
 
-<section>
+<section class="page">
   <h1>{$_('credits')}</h1>
   <h4>{$_('toolsMaterials')}</h4>
   <ul>

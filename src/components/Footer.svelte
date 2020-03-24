@@ -75,9 +75,6 @@
           <a href="/{$lang.current}/about/contract">{$_('contract')}</a>
         </li>
         <li>
-          <a href="/{$lang.current}/about/sales-refunds">{$_('salesRefunds')}</a>
-        </li>
-        <li>
           <a href="/{$lang.current}/about/credits">{$_('credits')}</a>
         </li>
       </ul>

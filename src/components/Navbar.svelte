@@ -7,41 +7,12 @@
   import { onMount } from 'svelte';
   import mobile from 'is-mobile';
 
-  const { page } = stores();
+  const { page, preloading } = stores();
   const dispatch = createEventDispatcher();
   let isOpen, stayOpen, logoHovered, mobileOpen;
   let selectedRoute;
 
   $: otherLangPath = $page.path.replace(/^\/(fr|en)/, '/' + $lang.other);
-
-  onMount(() => {
-    // const o = new IntersectionObserver(
-    //   (entries) => entries[0].isIntersecting && (selectedRoute = null),
-    //   { threshold: 1.0, rootMargin: '0px' }
-    // );
-    // o.observe(document.getElementById('container1'));
-    // navRoutes.forEach((route) => {
-    //   const observer = new IntersectionObserver(
-    //     (entries) => entries[0].isIntersecting && (selectedRoute = route.name),
-    //     { threshold: 1.0, rootMargin: '0px' }
-    //   );
-    //   document.getElementById(route.elementID) &&
-    //     observer.observe(document.getElementById(route.elementID));
-    // });
-    // navRoutes.forEach((route) => {
-    //   const observer = new IntersectionObserver(
-    //     (entries) => {
-    //       console.log(route.name);
-    //       console.table(entries);
-    //     },
-    //     { threshold: 0 }
-    //   );
-    //   const element = document.getElementById(route.elementID);
-    //   element && observer.observe(element);
-    // });
-  });
-
-  
 
   // Navbar hover
   function navbarHover() {
@@ -54,7 +25,7 @@
   }
 
   // nav-item clicked
-  function navItemClicked() {
+  function handleNavItemClick() {
     !stayOpen && (isOpen = false);
     mobileOpen && mobileClose();
     const interval = setInterval(() => !stayOpen && (isOpen = false), 1);
@@ -314,7 +285,7 @@
   <ul class="navbar-nav">
     <li id="logo" on:mouseover={logoHover} on:mouseleave={logoLeave}>
       <div id="logo-container">
-        <a href="/{$lang.current}" class="nav-link" on:click={navItemClicked}>
+        <a href="/{$lang.current}" class="nav-link" on:click={handleNavItemClick}>
           <span class="link-text" id="logo-text" class:open={isOpen}>CodingForYou</span>
         </a>
         <svg
@@ -345,16 +316,8 @@
           rel="prefetch"
           href="/{$lang.current}/{route.path}"
           class="nav-link"
-<<<<<<< HEAD
           class:selected={selectedRoute === route.name}
           on:click={handleNavItemClick}>
-||||||| merged common ancestors
-          class:selected={segment === route.path}
-          on:click={handleNavItemClick}>
-=======
-          class:selected={segment === route.path}
-          on:click={navItemClicked}>
->>>>>>> cf7b22931420751551a126192ca885f380cf2148
           <svg
             aria-hidden="true"
             focusable="false"
@@ -369,13 +332,7 @@
     {/each}
     <div id="bottom" />
     <li class="nav-item">
-<<<<<<< HEAD
       <a rel="prefetch" href="{otherLangPath}#top" class="nav-link" on:click={handleNavItemClick}>
-||||||| merged common ancestors
-      <a rel="prefetch" href={otherLangPath} class="nav-link" on:click={handleNavItemClick}>
-=======
-      <a rel="prefetch" href={otherLangPath} class="nav-link" on:click={navItemClicked}>
->>>>>>> cf7b22931420751551a126192ca885f380cf2148
         <svg
           aria-hidden="true"
           focusable="false"
@@ -406,13 +363,7 @@
     </li>
     <li class="nav-item">
       {#if $isLoggedIn}
-<<<<<<< HEAD
         <a href="/{$lang.current}/profile#top" id="login" on:click={handleNavItemClick}>
-||||||| merged common ancestors
-        <a href="/{$lang.current}/profile" id="login" on:click={handleNavItemClick}>
-=======
-        <a href="/{$lang.current}/profile" id="login" on:click={navItemClicked}>
->>>>>>> cf7b22931420751551a126192ca885f380cf2148
           <img src={$user.image} alt="profile-picture" id="profile-picture" />
           <span class="link-text">{$user.firstName} {$user.lastName}</span>
         </a>
