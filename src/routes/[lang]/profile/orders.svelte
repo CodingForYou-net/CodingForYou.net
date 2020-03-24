@@ -4,7 +4,7 @@
   import { onMount } from 'svelte';
   import { Toast } from '@helpers/other.js';
 
-  let orders;
+  let orders = [];
 
   onMount(async () => {
     orders = await fetchOrders();
@@ -34,3 +34,7 @@
 <section>
   <h1>{$_('orders')}</h1>
 </section>
+
+{#each orders as order}
+  <h1>{order.product.name}</h1>
+{/each}

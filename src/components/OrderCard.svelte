@@ -45,7 +45,7 @@
 <div id="content">
   <h3>{completed ? '✅' : '❌'} {product.name}</h3>
   <p>
-    <samp>{product.description} ({price}})</samp>
+    <samp>{product.description} ({price})</samp>
   </p>
   <div id="comments">
     {@html xssFilter.process(comments)}

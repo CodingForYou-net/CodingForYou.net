@@ -175,7 +175,7 @@
   }
 </style>
 
-<section id="container3">
+<section id="buy">
   <div id="repeating-top" />
   <div id="content">
     <h2 data-scroll data-type="2">{$_('webPackages')}</h2>
@@ -193,7 +193,7 @@
           </div>
           <p>{product.description}</p>
           {#if product.features.length > 0 && showDetails}
-            <ul transition:slide id="features">
+            <ul transition:slide|local id="features">
               {#each product.features as feature}
                 <li>{feature}</li>
               {/each}

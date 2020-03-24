@@ -16,7 +16,7 @@
   }
 </style>
 
-<section id="container4">
+<section id="features">
   <h2>{$_('easyFastReliable')}</h2>
   <div>
     <h3>Avanced Animations</h3>

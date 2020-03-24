@@ -125,7 +125,7 @@
   }
 </style>
 
-<section id="container5">
+<section id="contact">
   <div id="repeating-top" />
   <div id="content">
     <h2 data-scroll data-type="2">Contact</h2>

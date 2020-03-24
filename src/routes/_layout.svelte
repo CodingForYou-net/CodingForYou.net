@@ -32,18 +32,19 @@
   import Head from '@components/Head.svelte';
   import Footer from '@components/Footer.svelte';
   import { onMount } from 'svelte';
-  import { stores } from '@sapper/app';
+  import { stores, goto } from '@sapper/app';
 
   const { page, session } = stores();
   let navStayOpen;
+  let main;
 
-  onMount(async () => {
+  onMount(() => {
+    import('quill').then((module) => (window.Quill = module.default));
     const subscritptions = [
       page.subscribe((p) => {
         if (validPathRegex.test(p.path)) $lang = p.path.split('/')[1];
       }),
     ];
-    window.Quill = (await import('quill')).default;
     return () => subscritptions.forEach((unsub) => unsub && unsub());
   });
 </script>
@@ -52,6 +53,7 @@
   @import 'src/styles/global.scss';
 </style>
 
+<div id="top" />
 <Head />
 <Navbar on:stayopen={({ detail: newState }) => (navStayOpen = newState)} />
 <main class:navOpen={navStayOpen}>

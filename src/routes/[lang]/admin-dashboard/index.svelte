@@ -122,10 +122,10 @@
       {
         input: 'select',
         inputOptions: {
-          main: 'Codingforyou.net@gmail.com',
-          codingTeam: 'CodingTeam@codingforyou.net',
-          sales: 'Sales@codingforyou.net',
-          contact: 'Contact@codingforyou.net',
+          main: 'codingforyou.net@gmail.com',
+          codingTeam: 'codingteam@codingforyou.net',
+          sales: 'sales@codingforyou.net',
+          contact: 'contact@codingforyou.net',
         },
         inputPlaceholder: getTranslation('sendFrom'),
         inputValidator(val) {
@@ -239,7 +239,9 @@
 
     <input id="input" type="text" bind:value={searchTerms} placeholder={$_('searchTerms')} />
     {#each searchResults as searchResult (searchResult._id)}
-      <div transition:fade={{ delay: 0, duration: 250 }} animate:flip={{ delay: 0, duration: 250 }}>
+      <div
+        transition:fade|local={{ delay: 0, duration: 250 }}
+        animate:flip={{ delay: 0, duration: 250 }}>
         <OrderCard
           {...searchResult}
           on:ordercommentsupdate={() => updateOrderComments(searchResult._id)}

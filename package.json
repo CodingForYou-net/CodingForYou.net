@@ -25,6 +25,7 @@
     "express-session": "^1.17.0",
     "format-message": "^6.2.3",
     "fuzzy-search": "^3.2.1",
+    "intersection-observer": "^0.7.0",
     "is-mobile": "^2.2.1",
     "memorystore": "^1.6.2",
     "mongoose": "^5.9.4",

@@ -11,7 +11,7 @@
   }
 </style>
 
-<section id="container2" data-scroll data-type="1">
+<section data-scroll data-type="1">
   {#if $isLoggedIn}
     <h1>{$_('hello', { name: `${$user.firstName} ${$user.lastName}` })}</h1>
   {:else}

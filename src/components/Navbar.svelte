@@ -4,19 +4,42 @@
   import navRoutes from '@config/navRoutes.js';
   import { stores } from '@sapper/app';
   import { isLoggedIn, user } from '@helpers/user.js';
+  import { onMount } from 'svelte';
   import mobile from 'is-mobile';
 
   const { page } = stores();
   const dispatch = createEventDispatcher();
+  let isOpen, stayOpen, logoHovered;
+  let selectedRoute;
+
+  onMount(() => {
+    // const o = new IntersectionObserver(
+    //   (entries) => entries[0].isIntersecting && (selectedRoute = null),
+    //   { threshold: 1.0, rootMargin: '0px' }
+    // );
+    // o.observe(document.getElementById('container1'));
+    // navRoutes.forEach((route) => {
+    //   const observer = new IntersectionObserver(
+    //     (entries) => entries[0].isIntersecting && (selectedRoute = route.name),
+    //     { threshold: 1.0, rootMargin: '0px' }
+    //   );
+    //   document.getElementById(route.elementID) &&
+    //     observer.observe(document.getElementById(route.elementID));
+    // });
+    navRoutes.forEach((route) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          console.log(route.name);
+          console.table(entries);
+        },
+        { threshold: 0 }
+      );
+      const element = document.getElementById(route.elementID);
+      element && observer.observe(element);
+    });
+  });
 
   $: otherLangPath = $page.path.replace(/^\/(fr|en)/, '/' + $lang.other);
-
-  $: segment = $page.path
-    .split('/')
-    .splice(2)
-    .join('/');
-
-  let isOpen, stayOpen, logoHovered;
 
   function handleHover() {
     !stayOpen && !logoHovered && !mobile({ tablet: true, featureDetect: true }) && (isOpen = true);
@@ -292,7 +315,7 @@
           rel="prefetch"
           href="/{$lang.current}/{route.path}"
           class="nav-link"
-          class:selected={segment === route.path}
+          class:selected={selectedRoute === route.name}
           on:click={handleNavItemClick}>
           <svg
             aria-hidden="true"
@@ -308,7 +331,7 @@
     {/each}
     <div id="bottom" />
     <li class="nav-item">
-      <a rel="prefetch" href={otherLangPath} class="nav-link" on:click={handleNavItemClick}>
+      <a rel="prefetch" href="{otherLangPath}#top" class="nav-link" on:click={handleNavItemClick}>
         <svg
           aria-hidden="true"
           focusable="false"
@@ -339,7 +362,7 @@
     </li>
     <li class="nav-item">
       {#if $isLoggedIn}
-        <a href="/{$lang.current}/profile" id="login" on:click={handleNavItemClick}>
+        <a href="/{$lang.current}/profile#top" id="login" on:click={handleNavItemClick}>
           <img src={$user.image} alt="profile-picture" id="profile-picture" />
           <span class="link-text">{$user.firstName} {$user.lastName}</span>
         </a>

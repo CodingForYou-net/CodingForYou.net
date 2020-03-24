@@ -1,6 +1,7 @@
 export default [
   {
-    path: '#container3',
+    path: '#buy',
+    elementID: 'buy',
     name: 'buy',
     icon: {
       path:
@@ -9,7 +10,8 @@ export default [
     },
   },
   {
-    path: '#container4',
+    path: '#features',
+    elementID: 'features',
     name: 'features',
     icon: {
       path:
@@ -18,7 +20,8 @@ export default [
     },
   },
   {
-    path: '#container5',
+    path: '#contact',
+    elementID: 'contact',
     name: 'Contact',
     icon: {
       path:
