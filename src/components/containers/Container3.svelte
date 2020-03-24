@@ -81,6 +81,20 @@
 <style lang="scss">
   @import 'src/styles/_theme.scss';
 
+  // Small screens
+  @media only screen and (max-width: 600px) {
+    #learnMore {
+      display: none;
+    }
+  }
+
+  // Large screens
+  @media only screen and (min-width: 600px) {
+    #learnMore {
+      display: inline-block;
+    }
+  }
+
   section {
     margin: 50px 0;
   }
@@ -143,7 +157,6 @@
   }
 
   #learnMore {
-    display: inline-block;
     font-size: 1.25rem;
     cursor: pointer;
     &::after {
