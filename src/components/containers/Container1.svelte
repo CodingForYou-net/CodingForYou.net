@@ -115,28 +115,28 @@
   }
 
   #shape1 {
+    left: 0;
+    min-width: 250px;
     position: absolute;
     top: 0;
-    left: 0;
     width: 50%;
-    min-width: 250px;
   }
 
   #shape2 {
-    position: absolute;
     bottom: 0;
+    min-width: 250px;
+    position: absolute;
     right: 0;
     width: 50%;
-    min-width: 250px;
   }
 
   #desktop {
-    width: 50%;
+    left: 50%;
     min-width: 500px;
     position: absolute;
     top: 70%;
-    left: 50%;
     transform: translate(-50%, 0);
+    width: 50%;
   }
 
   #text {
@@ -152,15 +152,15 @@
   }
 
   #rocket {
-    height: 50%;
-    min-height: 300px;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    width: 100%;
-    position: absolute;
     bottom: 25%;
+    display: flex;
     fill: transparent;
+    height: 50%;
+    justify-content: center;
+    min-height: 300px;
+    position: absolute;
+    width: 100%;
     path {
       transition: fill 0.5s ease;
     }
@@ -171,8 +171,8 @@
   }
 
   #outer-fire {
-    animation: FireMoveUpDown 0.4s linear infinite;
     animation-delay: -0.2s;
+    animation: FireMoveUpDown 0.4s linear infinite;
   }
 
   #inner-fire {
