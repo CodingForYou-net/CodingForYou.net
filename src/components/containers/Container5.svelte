@@ -41,8 +41,7 @@
       });
       if (!res.ok) throw new Error(res.statusText);
       Toast.fire({
-        title: 'Success sending message',
-        text: 'We will review your message and respond to you as soon as possible!',
+        title: getTranslation('successSendingMail'),
         icon: 'success',
       });
       title = '';
@@ -50,8 +49,7 @@
     } catch (error) {
       console.log(error);
       Toast.fire({
-        title: 'Error sending message',
-        text: 'Please try again later...',
+        title: getTranslation('errorSendingMail'),
         icon: 'error',
       });
     }

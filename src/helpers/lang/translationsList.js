@@ -73,13 +73,13 @@ export default {
     title: 'Titre',
     toolsMaterials:
       'Les outils et matériaux suivants ont été utilisés pour la réalisation de ce site et de notre logo.',
+    validEmail: 'Veuillez entrer une adresse courriel valide',
+    validMessage: 'Veuillez entrer un message',
+    validName: 'Veuillez entrer un nom',
+    validTitle: 'Veuillez entrer un titre',
     webPackages: 'Forfaits web',
     webPackagesInstructions: "Cliquez sur un des forfaits suivants pour l'acheter.",
     welcome: 'Bienvenue!',
-    validEmail: 'Veuillez entrer une adresse courriel valide',
-    validName: 'Veuillez entrer un nom',
-    validTitle: 'Veuillez entrer un titre',
-    validMessage: 'Veuillez entrer un message',
   },
   en: {
     aboutUs:
@@ -152,12 +152,12 @@ export default {
     title: 'Title',
     toolsMaterials:
       'The following tools and materials were used in the making of this site and of our logo.',
+    validEmail: 'Please enter a valid email adress',
+    validMessage: 'Please enter a message',
+    validName: 'Please enter a name',
+    validTitle: 'Please enter a title',
     webPackages: 'Web Packages',
     webPackagesInstructions: 'Click on one of the packages in order to purchase it.',
     welcome: 'Welcome!',
-    validEmail: 'Please enter a valid email adress',
-    validName: 'Please enter a name',
-    validTitle: 'Please enter a title',
-    validMessage: 'Please enter a message',
   },
 };

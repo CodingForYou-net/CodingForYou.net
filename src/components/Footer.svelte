@@ -20,9 +20,9 @@
       margin: 0 auto;
       text-align: left;
       & ul {
-        list-style: none;
         & li {
-          margin-bottom: 0.9rem;
+          display: inline;
+          margin: 0 5px;
           & a {
             text-decoration: none;
             color: white;
@@ -52,7 +52,7 @@
 
   hr {
     background-color: lighten($theme-black, 20%);
-    margin: 0;
+    margin: 39px 0 0;
   }
 
   #twitter {
@@ -63,27 +63,22 @@
 
 <footer>
   <div id="about">
-    <a href="https://twitter.com/team_cfy">
-      <img id="twitter" src="twitterLogo.svg" alt="twitter" />
-    </a>
     <div>
       <ul>
         <li>
-          <a href="/{$lang.current}/about/privacy">{$_('privacy')}</a>
+          <a href="/{$lang.current}/about/privacy">&diams; {$_('privacy')}</a>
         </li>
         <li>
-          <a href="/{$lang.current}/about/contract">{$_('contract')}</a>
+          <a href="/{$lang.current}/about/contract">&diams; {$_('contract')}</a>
         </li>
         <li>
-          <a href="/{$lang.current}/about/credits">{$_('credits')}</a>
+          <a href="/{$lang.current}/about/credits">&diams; {$_('credits')}</a>
         </li>
       </ul>
     </div>
-
   </div>
-
   <hr />
   <div id="copyright">
-    <span>&copy; 2020 Samuel Martineau & Vu Dang Khoa Chiem. {$_('copyright')}</span>
+    <span>&copy; 2020 CodingForYou, Vu Dang Khoa Chiem & Samuel Martineau. {$_('copyright')}</span>
   </div>
 </footer>
