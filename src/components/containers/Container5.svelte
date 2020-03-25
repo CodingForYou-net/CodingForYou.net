@@ -1,15 +1,37 @@
 <script>
-  import { _, store as lang } from '@helpers/translation.js';
+  import { _, store as lang, getTranslation } from '@helpers/translation.js';
   import { user, isLoggedIn } from '@helpers/user.js';
-  import Swal from 'sweetalert2';
+  import { emailRegex } from '@helpers/other.js';
+  import { Toast } from '@helpers/other.js';
+  import { fade } from 'svelte/transition';
+  import Spinner from 'svelte-spinner';
 
   let name = $isLoggedIn ? `${$user.firstName} ${$user.lastName}` : '';
   let email = $isLoggedIn ? $user.email : '';
   let title = '';
   let message = '';
+  let sending = false;
 
   async function sendMail() {
+    if (sending) return;
     try {
+      sending = true;
+      if (!name.trim()) {
+        Toast.fire({ icon: 'warning', title: getTranslation('validName') });
+        return (sending = false);
+      }
+      if (!emailRegex.test(email)) {
+        Toast.fire({ icon: 'warning', title: getTranslation('validEmail') });
+        return (sending = false);
+      }
+      if (!title.trim()) {
+        Toast.fire({ icon: 'warning', title: getTranslation('validTitle') });
+        return (sending = false);
+      }
+      if (!message.trim()) {
+        Toast.fire({ icon: 'warning', title: getTranslation('validMessage') });
+        return (sending = false);
+      }
       const res = await fetch('/api/send-mail', {
         method: 'POST',
         headers: {
@@ -18,7 +40,7 @@
         body: JSON.stringify({ name: name, email: email, title: title, message: message }),
       });
       if (!res.ok) throw new Error(res.statusText);
-      Swal.fire({
+      Toast.fire({
         title: 'Success sending message',
         text: 'We will review your message and respond to you as soon as possible!',
         icon: 'success',
@@ -27,20 +49,40 @@
       message = '';
     } catch (error) {
       console.log(error);
-      Swal.fire({
+      Toast.fire({
         title: 'Error sending message',
         text: 'Please try again later...',
         icon: 'error',
       });
     }
+    sending = false;
   }
 </script>
 
 <style lang="scss">
   @import 'src/styles/_theme.scss';
+  #container {
+    position: relative;
+  }
+
+  #spinner {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
   section {
     margin-top: 50px;
+    transition: opacity 750ms ease;
+    &.sending {
+      opacity: 0.7;
+      * {
+        cursor: default;
+      }
+    }
   }
 
   #content {
@@ -56,10 +98,10 @@
   #contact-form {
     display: flex;
     flex-direction: column;
-    & textarea {
+    textarea {
       resize: vertical;
     }
-    & .form-element {
+    .form-element {
       box-sizing: border-box;
       margin-bottom: 20px;
       width: 100%;
@@ -68,12 +110,13 @@
       border: none;
       font-size: 1rem;
       font-family: 'Montserrat', sans-serif;
-      &.readonly {
+      &[readonly] {
         background: #e8e8e8;
         color: #a1a1a1;
       }
     }
-    & #send {
+
+    #send {
       background-color: darken($theme-blue, 10%);
       border: none;
       border-radius: 5px 15px 5px;
@@ -87,6 +130,9 @@
       cursor: pointer;
       &:hover {
         background-color: darken($theme-blue, 15%);
+      }
+      &:disabled:hover {
+        background-color: darken($theme-blue, 10%);
       }
     }
   }
@@ -104,56 +150,49 @@
   #contactInfo {
     margin: 20px 0;
   }
-
-  a {
-    text-decoration: none;
-    color: white;
-    text-decoration: none;
-    display: inline-block;
-    &::after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 2px;
-      background: white;
-      transition: width 0.3s;
-    }
-    &:hover::after {
-      width: 100%;
-      transition: width 0.3s;
-    }
-  }
 </style>
 
-<section id="contact">
-  <div id="repeating-top" />
-  <div id="content">
-    <h2 data-scroll data-type="2">Contact</h2>
-    <p id="contactInfo" data-scroll data-type="1">
-      {$_('contactInfo')}
-      <strong>
-        <a href="mailto:contact@codingforyou.net">contact@codingforyou.net</a>
-      </strong>
-      !
-    </p>
-    <form id="contact-form" enctype="text/plain">
-      <input
-        type="text"
-        class="form-element"
-        bind:value={name}
-        placeholder={$_('fullname')}
-        readonly={$isLoggedIn}
-        class:readonly={$isLoggedIn} />
-      <input
-        class="form-element"
-        type="email"
-        bind:value={email}
-        placeholder={$_('email')}
-        readonly={$isLoggedIn}
-        class:readonly={$isLoggedIn} />
-      <input class="form-element" type="text" bind:value={title} placeholder={$_('title')} />
-      <textarea class="form-element" rows="8" bind:value={message} placeholder="Message" />
-      <button id="send" type="button" on:click={sendMail}>{$_('send')}</button>
-    </form>
-  </div>
-</section>
+<div id="container">
+  {#if sending}
+    <div id="spinner" transition:fade={{ duration: 750 }}>
+      <Spinner size="65" speed="750" color="#4f98ca" thickness="3" gap="40" />
+    </div>
+  {/if}
+  <section id="contact" class:sending>
+    <div id="repeating-top" />
+    <div id="content">
+      <h2 data-scroll data-type="2">Contact</h2>
+      <p id="contactInfo" data-scroll data-type="1">
+        {$_('contactInfo')}
+        <strong>contact@codingforyou.net</strong>
+        !
+      </p>
+      <form id="contact-form" enctype="text/plain">
+        <input
+          type="text"
+          class="form-element"
+          bind:value={name}
+          placeholder={$_('fullname')}
+          readonly={$isLoggedIn || sending} />
+        <input
+          class="form-element"
+          bind:value={email}
+          placeholder={$_('email')}
+          readonly={$isLoggedIn || sending} />
+        <input
+          class="form-element"
+          type="text"
+          bind:value={title}
+          placeholder={$_('title')}
+          readonly={sending} />
+        <textarea
+          class="form-element"
+          rows="8"
+          bind:value={message}
+          placeholder="Message"
+          readonly={sending} />
+        <button id="send" type="button" on:click={sendMail} disabled={sending}>{$_('send')}</button>
+      </form>
+    </div>
+  </section>
+</div>

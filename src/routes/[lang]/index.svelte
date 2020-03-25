@@ -1,3 +1,11 @@
+<script context="module">
+  export async function preload() {
+    return {
+      products: await (await this.fetch('/api/products')).json(),
+    };
+  }
+</script>
+
 <script>
   import Container1 from '@components/containers/Container1.svelte';
   import Container2 from '@components/containers/Container2.svelte';
@@ -6,6 +14,8 @@
   import Container5 from '@components/containers/Container5.svelte';
   import { onMount } from 'svelte';
   import ScrollOut from 'scroll-out';
+
+  export let products;
 
   onMount(() => {
     ScrollOut({
@@ -46,7 +56,7 @@
 
 <Container2 />
 
-<Container3 />
+<Container3 {products} />
 
 <Container4 />
 

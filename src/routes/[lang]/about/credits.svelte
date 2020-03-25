@@ -29,3 +29,4 @@
     </li>
   </ul>
 </section>
+http://emailregex.com/

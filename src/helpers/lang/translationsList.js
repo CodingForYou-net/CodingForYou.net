@@ -76,6 +76,10 @@ export default {
     webPackages: 'Forfaits web',
     webPackagesInstructions: "Cliquez sur un des forfaits suivants pour l'acheter.",
     welcome: 'Bienvenue!',
+    validEmail: 'Veuillez entrer une adresse courriel valide',
+    validName: 'Veuillez entrer un nom',
+    validTitle: 'Veuillez entrer un titre',
+    validMessage: 'Veuillez entrer un message',
   },
   en: {
     aboutUs:
@@ -151,5 +155,9 @@ export default {
     webPackages: 'Web Packages',
     webPackagesInstructions: 'Click on one of the packages in order to purchase it.',
     welcome: 'Welcome!',
+    validEmail: 'Please enter a valid email adress',
+    validName: 'Please enter a name',
+    validTitle: 'Please enter a title',
+    validMessage: 'Please enter a message',
   },
 };

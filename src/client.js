@@ -1,6 +1,5 @@
 import 'setimmediate';
 import 'unfetch/polyfill';
-import 'intersection-observer';
 
 import * as sapper from '@sapper/app';
 import { Promise } from 'es6-promise-polyfill';

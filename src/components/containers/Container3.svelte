@@ -8,17 +8,16 @@
   import { slide } from 'svelte/transition';
   import { onMount } from 'svelte';
   import Swal from 'sweetalert2';
-  import Spinner from 'svelte-spinner';
   import { fade } from 'svelte/transition';
+
+  export let products;
 
   const { page } = stores();
   let showDetails = false;
-  let productsPromise;
   let stripe;
 
   onMount(() => {
     stripe = Stripe(stripePublic);
-    productsPromise = loadProducts();
   });
 
   async function buy(productID) {
@@ -79,10 +78,6 @@
       }
     }
   }
-
-  async function loadProducts() {
-    return await (await fetch('/api/products')).json();
-  }
 </script>
 
 <style lang="scss">
@@ -142,10 +137,6 @@
       width: 100%;
     }
   }
-
-  #spinner {
-    margin-top: 20px;
-  }
 </style>
 
 <section id="buy">
@@ -153,24 +144,16 @@
   <div id="content">
     <h2 data-scroll data-type="2">{$_('webPackages')}</h2>
     <h4 data-scroll data-type="1">{$_('webPackagesInstructions')}</h4>
-    {#await productsPromise}
-      <div id="spinner">
-        <Spinner size="60" speed="750" color="white" thickness="3" gap="40" />
-      </div>
-    {:then products}
-      {#if products}
-        <div id="packages" in:fade={{ duration: 250 }}>
-          {#each products as product (product._id)}
-            <ProductCard {...product} {showDetails} on:click={() => buy(product._id)} />
-          {/each}
-        </div>
-        <div id="learnMore" data-scroll data-type="2">
-          <span on:click={() => (showDetails = !showDetails)}>
-            {showDetails ? $_('learnLess') + ' -' : $_('learnMore') + ' +'}
-          </span>
-        </div>
-      {/if}
-    {/await}
+    <div id="packages" in:fade={{ duration: 250 }}>
+      {#each products as product (product._id)}
+        <ProductCard {...product} {showDetails} on:click={() => buy(product._id)} />
+      {/each}
+    </div>
+    <div id="learnMore" data-scroll data-type="2">
+      <span on:click={() => (showDetails = !showDetails)}>
+        {showDetails ? $_('learnLess') + ' -' : $_('learnMore') + ' +'}
+      </span>
+    </div>
   </div>
   <div id="repeating-bottom" />
 </section>
