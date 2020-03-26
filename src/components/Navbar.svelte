@@ -106,12 +106,12 @@
     z-index: 1000;
     &.open {
       width: 16rem;
-      & .link-text {
+      .link-text {
         opacity: 1;
         visibility: visible;
       }
     }
-    & ul {
+    ul {
       align-items: center;
       display: flex;
       flex-direction: column;
@@ -124,19 +124,19 @@
         margin-top: auto;
       }
 
-      & li#logo {
+      li#logo {
         background-color: darken($theme-black, 10%);
         font-weight: 500;
         margin-bottom: 1rem;
         text-align: center;
         text-transform: uppercase;
         width: 100%;
-        & #logo-container {
+        #logo-container {
           align-items: center;
           display: flex;
           height: 5rem;
           text-decoration: none;
-          & #double-arrow {
+          #double-arrow {
             cursor: pointer;
             filter: grayscale(100%) opacity(0.7);
             transform: rotate(0deg);
@@ -149,7 +149,7 @@
               transform: rotate(-180deg);
             }
           }
-          & #logo-text {
+          #logo-text {
             display: inline;
             left: -999px;
             letter-spacing: 0.15ch;
@@ -162,9 +162,9 @@
         }
       }
 
-      & li.nav-item {
+      li.nav-item {
         width: 100%;
-        & #login {
+        #login {
           align-items: center;
           color: white;
           display: flex;
@@ -177,13 +177,13 @@
               filter: grayscale(0%) opacity(1);
             }
           }
-          & #profile-picture {
+          #profile-picture {
             border-radius: 50%;
             margin: 0 1rem;
             min-width: 3rem;
             width: 3rem;
           }
-          & span {
+          span {
             transition: filter 0.3s;
             filter: grayscale(100%) opacity(0.7);
           }
@@ -207,7 +207,7 @@
         }
       }
 
-      & .link-text {
+      .link-text {
         margin: 0 1rem;
         opacity: 0;
         transition-delay: 0.2s;

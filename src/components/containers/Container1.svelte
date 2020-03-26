@@ -6,7 +6,7 @@
 
   let displayRocket = false;
   let transitionDuration = 4000;
-  let transitionDelay = 1000;
+  let transitionDelay = 500;
   onMount(() => {
     displayRocket = true;
     setTimeout(() => {
@@ -39,13 +39,24 @@
     }
   }
 
-  @keyframes FireMoveUpDown {
+  @keyframes fireMoveUpDown {
     0%,
     100% {
       transform: translateY(0);
     }
     50% {
       transform: translateY(-5px);
+    }
+  }
+
+  @keyframes animateIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
@@ -114,69 +125,71 @@
     z-index: 797;
   }
 
-  #shape1 {
-    left: 0;
-    min-width: 250px;
-    position: absolute;
-    top: 0;
-    width: 50%;
-  }
-
-  #shape2 {
-    bottom: 0;
-    min-width: 250px;
-    position: absolute;
-    right: 0;
-    width: 50%;
-  }
-
-  #desktop {
-    left: 50%;
-    min-width: 500px;
-    position: absolute;
-    top: 70%;
-    transform: translate(-50%, 0);
-    width: 50%;
-  }
-
-  #text {
-    color: white;
-    left: 100px;
-    position: absolute;
-    text-transform: uppercase;
-    top: 50px;
-    z-index: 796;
-    & h1 {
-      font-size: 4rem;
-    }
-  }
-
-  #rocket {
-    align-items: center;
-    bottom: 25%;
-    display: flex;
-    fill: transparent;
-    height: 50%;
-    justify-content: center;
-    min-height: 300px;
-    position: absolute;
-    width: 100%;
-    path {
-      transition: fill 0.5s ease;
-    }
-  }
-
   #content {
     height: 100%;
+
+    #text {
+      color: white;
+      left: 10%;
+      position: absolute;
+      text-transform: uppercase;
+      top: 5%;
+      z-index: 796;
+      & h1 {
+        opacity: 0;
+        font-size: 4rem;
+        animation: animateIn 2s forwards;
+        animation-delay: 0.5s;
+      }
+    }
+    #shape1 {
+      left: 0;
+      min-width: 600px;
+      position: absolute;
+      top: 0;
+      width: 50%;
+    }
+
+    #shape2 {
+      bottom: 0;
+      min-width: 600px;
+      position: absolute;
+      right: 0;
+      width: 50%;
+    }
+
+    #desktop {
+      left: 50%;
+      min-width: 500px;
+      position: absolute;
+      top: 70%;
+      transform: translate(-50%, 0);
+      width: 50%;
+    }
+
+    #rocket {
+      align-items: center;
+      bottom: 25%;
+      display: flex;
+      fill: transparent;
+      height: 50%;
+      justify-content: center;
+      min-height: 300px;
+      position: absolute;
+      width: 100%;
+      path {
+        transition: fill 0.5s ease;
+      }
+    }
   }
 
   #outer-fire {
-    animation-delay: -0.2s;
-    animation: FireMoveUpDown 0.4s linear infinite;
+    animation: fireMoveUpDown 0.4s linear infinite;
   }
 
   #inner-fire {
-    animation: FireMoveUpDown 0.4s linear infinite;
+    animation: fireMoveUpDown 0.4s linear infinite;
+    animation-delay: -0.2s;
   }
 </style>
 

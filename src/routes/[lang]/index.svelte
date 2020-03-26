@@ -39,6 +39,7 @@
     transform: translateX(-200px);
   }
 
+  // Slide in top, fade in
   [data-scroll][data-type='2'] {
     transition: 1s;
   }
