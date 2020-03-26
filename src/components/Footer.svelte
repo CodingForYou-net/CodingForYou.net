@@ -54,11 +54,6 @@
     background-color: lighten($theme-black, 20%);
     margin: 39px 0 0;
   }
-
-  #twitter {
-    width: 40px;
-    margin: 30px;
-  }
 </style>
 
 <footer>
@@ -66,13 +61,13 @@
     <div>
       <ul>
         <li>
-          <a href="/{$lang.current}/about/privacy">&diams; {$_('privacy')}</a>
+          <a href="/{$lang.current}/about/privacy">&rarr; {$_('privacy')}</a>
         </li>
         <li>
-          <a href="/{$lang.current}/about/contract">&diams; {$_('contract')}</a>
+          <a href="/{$lang.current}/about/contract">&rarr; {$_('contract')}</a>
         </li>
         <li>
-          <a href="/{$lang.current}/about/credits">&diams; {$_('credits')}</a>
+          <a href="/{$lang.current}/about/credits">&rarr; {$_('credits')}</a>
         </li>
       </ul>
     </div>

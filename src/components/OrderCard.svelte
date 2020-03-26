@@ -5,7 +5,6 @@
   export let comments;
   export let date;
   export let completed;
-  export let user;
 </script>
 
 <style>

@@ -1,5 +1,86 @@
 <head>
-    <style>
+  <style>
+    footer {
+      text-align: center;
+      background-color: #272727;
+      color: white;
+      padding: 35px 10% 0;
+      padding-top: 2px;
+    }
 
-    </style>
+    #about {
+      font-size: 0.9rem;
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    #about ul {
+      padding: 0;
+    }
+
+    #about div {
+      display: inline-block;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    #about div ul li {
+      display: inline;
+      margin: 0 5px;
+    }
+
+    #about div ul li a {
+      text-decoration: none;
+      color: white;
+      display: inline-block;
+    }
+
+    #about div ul li a::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 1px;
+      background: white;
+      transition: width 0.3s;
+    }
+
+    #about div ul li a:hover::after {
+      width: 100%;
+      transition: width 0.3s;
+    }
+
+    #copyright {
+      font-size: 0.75rem;
+      padding: 20px 0;
+    }
+
+    hr {
+      margin: 2px 0 0;
+      border: none;
+      height: 1px;
+      background-color: #a7a7a7;
+    }
+  </style>
 </head>
+
+<footer>
+  <div id="about">
+    <div>
+      <ul>
+        <li>
+          <a href="https://codingforyou.net/{{lang}}/about/privacy">&rarr; {{translate 'privacy'}}</a>
+        </li>
+        <li>
+          <a href="https://codingforyou.net/{{lang}}/about/contract">&rarr; {{translate 'contract'}}</a>
+        </li>
+        <li>
+          <a href="https://codingforyou.net/{{lang}}/about/credits">&rarr; {{translate 'credits'}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr />
+  <div id="copyright">
+    <span>&copy; 2020 CodingForYou, Vu Dang Khoa Chiem & Samuel Martineau. {{translate 'copyright'}}</span>
+  </div>
+</footer>

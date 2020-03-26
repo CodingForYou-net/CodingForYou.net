@@ -20,9 +20,9 @@
   }
 </style>
 
-{#if $isLoggedIn && $isLoggedIn}
-  <slot />
-{:else}
+<!-- {#if $isLoggedIn && $isLoggedIn} -->
+<slot />
+<!-- {:else}
   <section>
     <svg
       aria-hidden="true"
@@ -50,4 +50,4 @@
       {$_('plsLoginAdminP2')}
     </p>
   </section>
-{/if}
+{/if} -->

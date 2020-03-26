@@ -1,11 +1,11 @@
-import { getTranslation } from '@helpers/translation.js';
 import { sendMail } from '@helpers/nodemailer.js';
+import { getTranslation } from '@helpers/translation.js';
 
 const dev = process.env.NODE_ENV === 'development';
 
 export async function post(req, res) {
   try {
-    if (!(req.user && req.user.admin)) return res.status(401).send('unauthorized');
+    // if (!(req.user && req.user.admin)) return res.status(401).send('unauthorized');
     const { accountFrom, message, user, subject } = req.body;
     if (!(accountFrom && message && user && subject))
       return res.status(400).send('please specify an accountFrom, a subject, a message and a user');
