@@ -1,63 +1,44 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
-  import { _, store as lang } from '@helpers/translation.js';
   import { xssFilter } from '@helpers/other.js';
-  import xss from 'xss';
-
+  import { _, store as lang } from '@helpers/translation.js';
   export let product;
   export let comments;
   export let date;
   export let completed;
   export let user;
-
-  $: price =
-    $lang.current === 'en'
-      ? `${product.currency.toUpperCase()}$ ${product.amount / 100}`
-      : `${product.amount / 100}$ ${product.currency.toUpperCase()}`;
-
-  const dispatch = createEventDispatcher();
 </script>
 
-<style lang="scss">
-  @import 'src/styles/_theme.scss';
-
-  div#content {
-    margin: 5px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid $theme-black;
+<style>
+  .order {
     background-color: #f2f2f2;
-    small {
-      color: gray;
-      span {
-        margin: -3px;
-        color: darkgoldenrod;
-        text-decoration: underline;
-        cursor: pointer;
-      }
-    }
+    border-radius: 5px;
+    padding: 20px;
+    margin: 5px;
   }
-  :global(ol) {
-    padding-left: 1rem;
+
+  h2 {
+    margin: 0;
+  }
+  hr {
+    margin: 10px 0;
   }
 </style>
 
-<div id="content">
-  <h3>{completed ? '✅' : '❌'} {product.name}</h3>
+<div class="order">
+  <h2>{product.name}</h2>
+  <h5>{product.description}</h5>
+  <hr />
   <p>
-    <samp>{product.description} ({price})</samp>
+    <strong>{$_('completed')}:</strong>
+    {completed ? '✅' : '❌'}
   </p>
-  <div id="comments">
-    {@html xssFilter.process(comments)}
-  </div>
-  <small>
-    {user.firstName} {user.lastName} &lt;
-    <span on:click={() => dispatch('sendmailtoclient')}>{user.email}</span>
-    &gt; [{user.lang}] ({new Date(date).toLocaleDateString()})
-  </small>
-  <br />
-  <button on:click={() => dispatch('orderstatusupdate')}>
-    {$_('setAs')} {completed ? $_('notCompleted').toLowerCase() : $_('completed').toLowerCase()}
-  </button>
-  <button on:click={() => dispatch('ordercommentsupdate')}>{$_('editComments')}</button>
+  <p>
+    <strong>Date:</strong>
+    {date}
+  </p>
+  <p>
+    <strong>{$_('comments')}:</strong>
+    (Please email us in order to give more detail on your order)
+  </p>
+  {@html xssFilter.process(comments)}
 </div>

@@ -6,8 +6,8 @@ import {
   mailServer,
   ourEmails,
 } from '@config/keys.js';
-import { translationsList } from '@helpers/translation.js';
 import { getTranslation } from '@helpers/translation.js';
+import { translationsList } from '@helpers/translation.js';
 import { createTransport } from 'nodemailer';
 import hbs from 'nodemailer-express-handlebars';
 

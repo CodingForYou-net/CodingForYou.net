@@ -3,6 +3,8 @@ export default {
     aboutUs:
       "Nous sommes une équipe de développeurs et de designers talentueux, expérimentés et créatifs. Nous créerons n'importe quel site internet que vous souhaitez à un coût très bas! La procédure est très simple. Vous nous donnez une idée générale de ce que vous souhaitez avoir et notre groupe fera de votre rêve magique une réalité!",
     accountID: 'Identifiant de compte',
+    addOrderDetails:
+      'Si nécessaire, veuillez nous contacter pour donner plus de détails sur votre commande',
     buy: 'Achat',
     cancel: 'Annuler',
     clientEmail: 'Courriel du client',
@@ -44,6 +46,7 @@ export default {
     logoutTitle: 'Êtes-vous sûr de vouloir vous déconnecter?',
     mailToClient: "Envoi d'un courriel à un client",
     mainCFY: 'CodingForYou <codingforyou.net@gmail.com>',
+    messageFromCFY: 'Nouveau message de CodingForYou',
     messageToClient: 'Message...',
     noFilter: 'Aucun filtre',
     notCompleted: 'Non-complété',
@@ -85,6 +88,7 @@ export default {
     aboutUs:
       'We are a team of talented, experienced and creative developers and designers. We will create any website you wish at a very low cost! The procedure is very simple. You give us a general idea of what you want and our group will make your magical dream come true! ',
     accountID: 'Account ID',
+    addOrderDetails: 'If necessary, please contact us to give more details on your order',
     buy: 'Buy',
     cancel: 'Cancel',
     clientEmail: 'Client email',
@@ -124,6 +128,7 @@ export default {
     logoutTitle: 'Are you sure you want to logout?',
     mailToClient: 'Send mail to client',
     mainCFY: 'CodingForYou <codingforyou.net@gmail.com>',
+    messageFromCFY: 'New Message From CodingForYou',
     messageToClient: 'Message...',
     noFilter: 'No filter',
     notCompleted: 'Not completed',

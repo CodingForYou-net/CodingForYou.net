@@ -5,6 +5,7 @@
   import { onMount } from 'svelte';
   import { Toast } from '@helpers/other.js';
   import { fade } from 'svelte/transition';
+  import OrderCard from '@components/OrderCard.svelte';
 
   let orders;
 
@@ -42,6 +43,11 @@
 
 <section class="page">
   <h1>{$_('orders')}</h1>
+  {#if !orders}
+    <div id="spinner">
+      <Spinner size="60" speed="750" color="#272727" thickness="3" gap="40" />
+    </div>
+  {/if}
   {#await orders}
     <div id="spinner">
       <Spinner size="60" speed="750" color="#272727" thickness="3" gap="40" />
@@ -50,7 +56,7 @@
     <div in:fade={{ duration: 250 }}>
       {#if orders}
         {#each orders as order}
-          <h1>{order.product.name}</h1>
+          <OrderCard {...order} />
         {/each}
       {/if}
     </div>

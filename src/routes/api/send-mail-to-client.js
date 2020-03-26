@@ -1,5 +1,5 @@
-import { sendMail } from '@helpers/nodemailer.js';
 import { getTranslation } from '@helpers/translation.js';
+import { sendMail } from '@helpers/nodemailer.js';
 
 const dev = process.env.NODE_ENV === 'development';
 
@@ -14,10 +14,12 @@ export async function post(req, res) {
       accountFrom,
       emailFrom,
       [user.email],
-      subject,
+      getTranslation('messageFromCFY', {}, user.lang),
       'message-to-client',
       {
         message,
+        lang: user.lang,
+        subject,
       }
     );
     if (!error) return res.status(200).send('ok');

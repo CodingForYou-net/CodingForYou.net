@@ -3,7 +3,7 @@
   import { onMount } from 'svelte';
   import { flip } from 'svelte/animate';
   import { fade } from 'svelte/transition';
-  import OrderCard from '@components/OrderCard.svelte';
+  import OrderCardAdmin from '@components/OrderCardAdmin.svelte';
   import Swal from 'sweetalert2';
   import { Toast } from '@helpers/other.js';
   import { quillHtml } from '@helpers/other.js';
@@ -256,7 +256,7 @@
           <div
             transition:fade|local={{ delay: 0, duration: 250 }}
             animate:flip={{ delay: 0, duration: 250 }}>
-            <OrderCard
+            <OrderCardAdmin
               {...searchResult}
               on:ordercommentsupdate={() => updateOrderComments(searchResult._id)}
               on:orderstatusupdate={() => updateOrderStatus(searchResult._id)}

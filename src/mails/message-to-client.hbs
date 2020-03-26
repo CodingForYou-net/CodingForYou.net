@@ -1,6 +1,30 @@
-{{> header}}
+<head>
+    <style>
+        section {
+            background-color: white;
+            border-radius: 10px;
+            border: 1px solid #e8e8e8;
+            overflow: hidden;
+            position: relative;
+        }
 
-<h1>CodingForYou vous a écrit!</h1>
-{{{message}}}
+        #content {
+            padding: 20px 10%;
+        }
+    </style>
+</head>
 
-{{> footer}}
+{{> header title="test"}}
+
+<body>
+    <section>
+
+
+        <div id="content">
+            <h1>{{translate 'comments'}}</h1>
+            <p>{{{message}}}</p>
+        </div>
+
+        {{> footer}}
+    </section>
+</body>
