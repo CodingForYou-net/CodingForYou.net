@@ -37,9 +37,6 @@
       }
     }
   }
-  :global(ol) {
-    padding-left: 1rem;
-  }
 </style>
 
 <div id="content">

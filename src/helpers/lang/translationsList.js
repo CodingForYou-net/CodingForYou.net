@@ -72,7 +72,7 @@ export default {
     privacyP1:
       'Dès votre connexion sur le site web « codingforyou.net », votre nom complet, votre adresse de courriel, la référence à votre image de profil et votre identifiant numérique seront extraits de votre compte Google pour être sauvegardés, en plus de la langue de votre navigateur web, sur la base de donnée du site web « codingforyou.net ». Ces informations pourraient être mises à jour subséquemment. La société en participation « CodingForYou », administratrice du site web « codingforyou.net », s’engage à ne partager lesdites informations à des tiers sauf pour les exceptions suivantes :',
     privacyP2:
-      'Vos informations personnelles sauvegardées dans la base de données du site web « codingforyou.net » pourraient être envoyées dans des courriels, soit pour communiquer avec vous, ou pour communiquer à l’interne, à l’aide de la plateforme GMail.',
+      'Vos informations personnelles sauvegardées dans la base de données du site web « codingforyou.net » pourraient être envoyées dans des courriels, soit pour communiquer avec vous, ou pour communiquer à l’interne, à l’aide de la plateforme Gmail.',
     privacyP3:
       'Afin de vous assurer une expérience de paiement agréable, certaines de vos informations personnelles sauvegardées dans la base de données du site web « codingforyou.net » pourrait être partagée avec la plateforme de paiements Stripe.',
     privacyP4:
@@ -92,7 +92,7 @@ export default {
     successUpdateOrder: 'La commande a été mise à jour',
     title: 'Titre',
     toolsMaterials:
-      'Les outils et matériaux suivants ont été utilisés pour la réalisation de ce site et de notre logo.',
+      'Les outils et matériaux suivants ont été utilisés pour la réalisation de ce site et de notre logo :',
     validEmail: 'Veuillez entrer une adresse courriel valide',
     validMessage: 'Veuillez entrer un message',
     validName: 'Veuillez entrer un nom',
@@ -103,6 +103,11 @@ export default {
     websiteOptimizationDescription:
       'Nous utilisons des techniques et des outils spéciaux dans le processus de création de votre site dans le but de le rendre aussi rapide que possible pour les utilisateurs. Il est minutieusement ajouté au site afin que la navigation et le chargement soient de manière rapide et agréable.',
     welcome: 'Bienvenue!',
+    iconsLicense:
+      "Les icônes dans le barre de navigation, les forfaits web et la page d'erreur sont licensés sous une ",
+    ccLicense: 'license CC BY 4.0',
+    faAttriution: 'Ils sont attribués à',
+    usedLibraries: 'Les librairies suivantes ont été utilisés pour la réalisation de ce site :',
   },
   en: {
     aboutUs:
@@ -172,7 +177,7 @@ export default {
     privacyP1:
       'As soon as you connect to the “codingforyou.net” website, your full name, your email address, the reference to your profile picture and your digital identifier will be extracted from your Google account to be saved, in addition to your language web browser, on the database of the “codingforyou.net” website. This information may be updated later. The joint venture “CodingForYou,” administrator of the “codingforyou.net” website, undertakes not to share said information with third parties except for the following exceptions :',
     privacyP2:
-      'Your personal information saved in the database of the “codingforyou.net” website could be sent by email, either to communicate with you, or to communicate internally, using the GMail platform.',
+      'Your personal information saved in the database of the “codingforyou.net” website could be sent by email, either to communicate with you, or to communicate internally, using the Gmail platform.',
     privacyP3:
       'In order to ensure a pleasant payment experience, some of your personal information saved in the database of the “codingforyou.net” website could be shared with the Stripe payment platform.',
     privacyP4:
@@ -193,7 +198,7 @@ export default {
     successUpdateOrder: 'Successfully updated the order',
     title: 'Title',
     toolsMaterials:
-      'The following tools and materials were used in the making of this site and of our logo.',
+      'The following tools and materials were used in the making of this site and of our logo :',
     validEmail: 'Please enter a valid email adress',
     validMessage: 'Please enter a message',
     validName: 'Please enter a name',
@@ -204,5 +209,10 @@ export default {
     websiteOptimizationDescription:
       'We use special techniques and tools in the process of your site’s creation in order to make it as fast as possible for the users. It’s thoroughly added to the site so that navigation and loading is swiftly and pleasant.',
     welcome: 'Welcome!',
+    iconsLicense:
+      'The icons on the navigation bar, the web packages and the error page are licensed under a ',
+    ccLicense: 'CC BY 4.0 Licence',
+    faAttriution: "They're attributed to",
+    usedLibraries: 'The following libraries were used in the making of this site :',
   },
 };

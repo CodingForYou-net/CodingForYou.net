@@ -16,7 +16,7 @@
   </p>
   <br />
   <p>{$_('privacyP1')}</p>
-  <h4 class="indent">GMail</h4>
+  <h4 class="indent">Gmail</h4>
   <p class="indent">{$_('privacyP2')}</p>
   <h4 class="indent">Stripe</h4>
   <p class="indent">{$_('privacyP3')}</p>

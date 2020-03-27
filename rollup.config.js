@@ -21,6 +21,15 @@ const onwarn = (warning, onwarn) =>
   (warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
   onwarn(warning);
 
+const allDependencies = { ...pkg.dependencies, ...pkg.devDependencies };
+const dependenciesURL = Object.entries(allDependencies).map(
+  (dependency) =>
+    `['${dependency[0]}','https://www.npmjs.com/package/${dependency[0]}/v/${dependency[1].replace(
+      /(\^|~)/,
+      ''
+    )}']`
+);
+
 export default {
   client: {
     input: config.client.input(),
@@ -31,6 +40,7 @@ export default {
         'process.env.NODE_ENV': JSON.stringify(mode),
         'process.env.STRIPE_CLI_SIG': `'${process.env.STRIPE_CLI_SIG}'`,
         'process.env.PORT': process.env.PORT,
+        'process.libraries': `[${dependenciesURL}]`,
       }),
       alias({
         entries: [
@@ -93,6 +103,7 @@ export default {
         'process.browser': false,
         'process.env.NODE_ENV': JSON.stringify(mode),
         'process.env.STRIPE_CLI_SIG': `'${process.env.STRIPE_CLI_SIG}'`,
+        'process.libraries': `[${dependenciesURL}]`,
       }),
       alias({
         entries: [
