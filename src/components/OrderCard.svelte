@@ -33,11 +33,11 @@
   </p>
   <p>
     <strong>Date:</strong>
-    {date}
+    {new Date(date).toLocaleDateString()}
   </p>
   <p>
     <strong>{$_('comments')}:</strong>
-    (Please email us in order to give more detail on your order)
+    ({$_('addOrderDetails')})
   </p>
   {@html xssFilter.process(comments)}
 </div>

@@ -2,8 +2,14 @@ import { Schema, model } from 'mongoose';
 
 const OrderSchema = new Schema({
   name: {
-    type: String,
-    required: true,
+    fr: {
+      type: String,
+      required: true,
+    },
+    en: {
+      type: String,
+      required: true,
+    },
   },
   images: {
     type: [String],
@@ -19,16 +25,38 @@ const OrderSchema = new Schema({
     required: true,
   },
   description: {
-    type: String,
-    required: true,
+    fr: {
+      type: String,
+      required: true,
+    },
+    en: {
+      type: String,
+      required: true,
+    },
   },
   features: {
-    type: [String],
+    type: [
+      {
+        fr: {
+          type: String,
+          required: true,
+        },
+        en: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
     required: true,
+    minlength: 0,
   },
   quantity: {
     type: Number,
     default: 1,
+  },
+  archived: {
+    type: Boolean,
+    default: false,
   },
 });
 

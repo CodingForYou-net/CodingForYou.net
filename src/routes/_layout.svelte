@@ -4,6 +4,7 @@
     translations,
     translationsList,
     validPathRegex,
+    getTranslation,
   } from '@helpers/translation.js';
   import { isLoggedIn, user, isAdmin, getLoggedIn } from '@helpers/user.js';
 
@@ -33,10 +34,14 @@
   import Footer from '@components/Footer.svelte';
   import { onMount } from 'svelte';
   import { stores, goto } from '@sapper/app';
+  import Swal from 'sweetalert2';
+  import mobile from 'is-mobile';
 
   const { page, session } = stores();
   let navStayOpen;
   let main;
+  let landscapeAsked;
+  $: console.log(landscapeAsked);
 
   onMount(() => {
     import('quill').then((module) => (window.Quill = module.default));
@@ -45,13 +50,33 @@
         if (validPathRegex.test(p.path)) $lang = p.path.split('/')[1];
       }),
     ];
+    handleResize();
     return () => subscritptions.forEach((unsub) => unsub && unsub());
   });
+
+  function handleResize() {
+    if (!mobile({ tablet: false, featureDetect: true })) return;
+    const isLandscape = window.matchMedia('(orientation: landscape)').matches;
+    if (isLandscape) {
+      if (!landscapeAsked) {
+        landscapeAsked = true;
+        Swal.fire({
+          title: getTranslation('plsTurnDevice'),
+          width: 600,
+        });
+      }
+    } else {
+      Swal.close();
+      landscapeAsked = false;
+    }
+  }
 </script>
 
 <style global lang="scss">
   @import 'src/styles/global.scss';
 </style>
+
+<svelte:window on:resize={handleResize} />
 
 <div id="top" />
 <Head />

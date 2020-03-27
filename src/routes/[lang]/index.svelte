@@ -28,7 +28,7 @@
 <style global lang="scss">
   // Slide in right, fade in
   [data-scroll][data-type='1'] {
-    transition: 2s;
+    transition: 1s;
   }
   [data-scroll='in'][data-type='1'] {
     opacity: 1;

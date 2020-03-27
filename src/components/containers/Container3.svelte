@@ -12,7 +12,6 @@
 
   export let products;
 
-  const { page } = stores();
   let showDetails = false;
   let stripe;
 
@@ -56,7 +55,7 @@
         const res = await fetch(
           `/api/stripe/create-checkout-session
         ?productID=${productID}
-        &cancelPath=${$page.path}
+        &cancelPath=%23buy
         &comments=${encodeURIComponent(comments)}`
             .replace(/\s/gm, '')
             .replace(/\n/gm, ''),

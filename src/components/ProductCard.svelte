@@ -54,7 +54,7 @@
 </style>
 
 <div id="package" on:click>
-  <h3>{name}</h3>
+  <h3>{name[$lang.current]}</h3>
   <div id="image">
     <img src={images[0]} alt={_id} />
   </div>
@@ -67,11 +67,11 @@
       <h3>{currency.toUpperCase()}</h3>
     {/if}
   </div>
-  <p>{description}</p>
+  <p>{description[$lang.current]}</p>
   {#if features.length > 0 && showDetails}
     <ul transition:slide|local id="features">
       {#each features as feature}
-        <li>{feature}</li>
+        <li>{feature[$lang.current]}</li>
       {/each}
     </ul>
   {/if}

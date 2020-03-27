@@ -63,9 +63,17 @@
   // Small screens
   @media only screen and (max-width: 600px) {
     #shape1 {
-      display: none;
+      width: 100%;
+      min-width: 270px;
+      max-width: 400px;
     }
+
     #shape2 {
+      width: 100%;
+      min-width: 270px;
+      max-width: 400px;
+    }
+    #text {
       display: none;
     }
     #desktop {
@@ -75,6 +83,15 @@
 
   // Large screens
   @media only screen and (min-width: 600px) {
+    #shape1 {
+      min-width: 600px;
+      width: 50%;
+    }
+
+    #shape2 {
+      min-width: 600px;
+      width: 50%;
+    }
   }
 
   section {
@@ -144,18 +161,14 @@
     }
     #shape1 {
       left: 0;
-      min-width: 600px;
       position: absolute;
       top: 0;
-      width: 50%;
     }
 
     #shape2 {
       bottom: 0;
-      min-width: 600px;
       position: absolute;
       right: 0;
-      width: 50%;
     }
 
     #desktop {
@@ -177,6 +190,7 @@
       min-height: 300px;
       position: absolute;
       width: 100%;
+      transition: 1s;
       path {
         transition: fill 0.5s ease;
       }

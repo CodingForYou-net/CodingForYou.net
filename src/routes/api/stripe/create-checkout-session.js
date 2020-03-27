@@ -13,12 +13,23 @@ export async function get(req, res) {
   if (!comments) return res.status(400).send('please specify a comments');
   if (!productID) return res.status(400).send('please specify a productID');
   const product = await (await Product.findById(productID)).toObject();
-  delete product._id;
-  delete product.features;
-  if (!product) return res.status(400).send('please specify a valid productID');
+  if (!product || product.archived) return res.status(400).send('please specify a valid productID');
+
+  const { lang } = req.user;
+  const { name, images, amount, currency, description, quantity } = product;
+
+  let stripeProduct = {
+    name: name[lang],
+    images,
+    amount,
+    currency,
+    description: description[lang],
+    quantity,
+  };
+
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
-    line_items: [product],
+    line_items: [stripeProduct],
     success_url: stripeSuccessURL,
     cancel_url: `${baseURL}${cancelPath}`,
     customer_email: req.user.email,

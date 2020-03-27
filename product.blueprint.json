@@ -1,0 +1,21 @@
+{
+  "name": {
+    "fr": "",
+    "en": ""
+  },
+  "images": [""],
+  "amount": 0,
+  "currency": "cad",
+  "description": {
+    "fr": "",
+    "en": ""
+  },
+  "features": [
+    {
+      "fr": "",
+      "en": ""
+    }
+  ],
+  "quantity": 1,
+  "archived": false
+}
