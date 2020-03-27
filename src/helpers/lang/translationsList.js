@@ -84,6 +84,15 @@ export default {
     webPackages: 'Forfaits web',
     webPackagesInstructions: "Cliquez sur un des forfaits suivants pour l'acheter.",
     welcome: 'Bienvenue!',
+    advancedAnimation: 'Animations avancées',
+    advancedAnimationDescription:
+      "Nous incorporons des animations époustouflantes afin d'impressionner votre public! Nos animations sont réactives, magnifiques et soigneusement créées par notre équipe de designers. Si vous avez une idée d'animation, nous pouvons certainement le réaliser pour vous!",
+    nextLevelUI: 'Interface utilisateur de niveau supérieur',
+    nextLevelUIDescription:
+      "Nos développeurs peuvent produire des interfaces utilisateur de niveau supérieur en intégrant de la réactivité, en dressant une palette de couleurs spectaculaire et en apportant des animations impressionnantes à votre site. Nous intégrons tous les éléments nécessaires afin d'assembler une page web exceptionnelle et professionelle pour vous!",
+    websiteOptimization: 'Optimisation de sites web',
+    websiteOptimizationDescription:
+      'Nous utilisons des techniques et des outils spéciaux dans le processus de création de votre site dans le but de le rendre aussi rapide que possible pour les utilisateurs. Il est minutieusement ajouté au site afin que la navigation et le chargement soient de manière rapide et agréable.',
   },
   en: {
     aboutUs:
@@ -166,5 +175,14 @@ export default {
     webPackages: 'Web Packages',
     webPackagesInstructions: 'Click on one of the packages in order to purchase it.',
     welcome: 'Welcome!',
+    advancedAnimation: 'Avanced Animations',
+    advancedAnimationDescription:
+      'We incorporate breathtaking animations to impress your audience! Our animations are responsive, stunning and carefully created by our team of designers. If you have an animation idea, we can definitely make it come true!',
+    nextLevelUI: 'Next Level UI',
+    nextLevelUIDescription:
+      'Our developers can produce next level user interfaces by integrating reactiveness, buiding an amazing color palette and bringing impressive animations to your site. We integrate all the necessary elements to assemble an exceptional and professional web page for you!',
+    websiteOptimization: 'Website optimization',
+    websiteOptimizationDescription:
+      'We use special techniques and tools in the process of your site’s creation in order to make it as fast as possible for the users. It’s thoroughly added to the site so that navigation and loading is swiftly and pleasant.',
   },
 };
