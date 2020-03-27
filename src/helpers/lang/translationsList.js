@@ -5,6 +5,9 @@ export default {
     accountID: 'Identifiant de compte',
     addOrderDetails:
       'Si nécessaire, veuillez nous contacter pour donner plus de détails sur votre commande',
+    advancedAnimation: 'Animations avancées',
+    advancedAnimationDescription:
+      "Nous incorporons des animations époustouflantes afin d'impressionner votre public! Nos animations sont réactives, magnifiques et soigneusement créées par notre équipe de designers. Si vous avez une idée d'animation, nous pouvons certainement le réaliser pour vous!",
     buy: 'Achat',
     cancel: 'Annuler',
     clientEmail: 'Courriel du client',
@@ -23,6 +26,8 @@ export default {
     editComments: 'Modifier les commentaires',
     editCommentsPlaceholder: 'Quels sont vos commentaires?',
     email: 'Adresse courriel',
+    enNotLegallyBinding:
+      'Veuillez noter que seule la version française de la politique de respect de la vie privée a valeur légale',
     errorLoadingOrders: 'Une erreur est survenue lors du chargements des commandes',
     errorMessage: 'Une erreur inattendue est survenue',
     errorRedirectingCheckout: 'Une erreur est survenue lors de la redirection du paiment',
@@ -48,6 +53,9 @@ export default {
     mainCFY: 'CodingForYou <codingforyou.net@gmail.com>',
     messageFromCFY: 'Nouveau message de CodingForYou',
     messageToClient: 'Message...',
+    nextLevelUI: 'Interface utilisateur de niveau supérieur',
+    nextLevelUIDescription:
+      "Nos développeurs peuvent produire des interfaces utilisateur de niveau supérieur en intégrant de la réactivité, en dressant une palette de couleurs spectaculaire et en apportant des animations impressionnantes à votre site. Nous intégrons tous les éléments nécessaires afin d'assembler une page web exceptionnelle et professionelle pour vous!",
     noFilter: 'Aucun filtre',
     notCompleted: 'Non-complété',
     orders: 'Commandes',
@@ -61,6 +69,14 @@ export default {
     plsLoginToBuy: 'Vous devez être connecter pour nous acheter un site !',
     plsTurnDevice: 'Veuillez tourner votre appareil en mode portrait',
     privacy: 'Politique de confidentialité',
+    privacyP1:
+      'Dès votre connexion sur le site web « codingforyou.net », votre nom complet, votre adresse de courriel, la référence à votre image de profil et votre identifiant numérique seront extraits de votre compte Google pour être sauvegardés, en plus de la langue de votre navigateur web, sur la base de donnée du site web « codingforyou.net ». Ces informations pourraient être mises à jour subséquemment. La société en participation « CodingForYou », administratrice du site web « codingforyou.net », s’engage à ne partager lesdites informations à des tiers sauf pour les exceptions suivantes :',
+    privacyP2:
+      'Vos informations personnelles sauvegardées dans la base de données du site web « codingforyou.net » pourraient être envoyées dans des courriels, soit pour communiquer avec vous, ou pour communiquer à l’interne, à l’aide de la plateforme GMail.',
+    privacyP3:
+      'Afin de vous assurer une expérience de paiement agréable, certaines de vos informations personnelles sauvegardées dans la base de données du site web « codingforyou.net » pourrait être partagée avec la plateforme de paiements Stripe.',
+    privacyP4:
+      'Nous nous engageons aussi à n’utiliser l’adresse de courriel que vous nous donnez dans le formulaire de contact du site web « codingforyou.net » que pour communiquer avec vous.',
     productName: 'Nom du produit',
     salesCFY: 'Ventes CodingForYou <sales@codingforyou.net>',
     salesRefunds: 'Ventes et remboursements',
@@ -83,23 +99,19 @@ export default {
     validTitle: 'Veuillez entrer un titre',
     webPackages: 'Forfaits web',
     webPackagesInstructions: "Cliquez sur un des forfaits suivants pour l'acheter.",
+    websiteOptimization: 'Optimisation de sites web',
+    websiteOptimizationDescription:
+      'Nous utilisons des techniques et des outils spéciaux dans le processus de création de votre site dans le but de le rendre aussi rapide que possible pour les utilisateurs. Il est minutieusement ajouté au site afin que la navigation et le chargement soient de manière rapide et agréable.',
     welcome: 'Bienvenue!',
-    enNotLegallyBinding:
-      'Veuillez noter que seule la version française de la politique de respect de la vie privée a valeur légale',
-    privacyP1:
-      'Dès votre connexion sur le site web « codingforyou.net », votre nom complet, votre adresse de courriel, la référence à votre image de profil et votre identifiant numérique seront extraits de votre compte Google pour être sauvegardés, en plus de la langue de votre navigateur web, sur la base de donnée du site web « codingforyou.net ». Ces informations pourraient être mises à jour subséquemment. La société en participation « CodingForYou », administratrice du site web « codingforyou.net », s’engage à ne partager lesdites informations à des tiers sauf pour les exceptions suivantes :',
-    privacyP2:
-      'Vos informations personnelles sauvegardées dans la base de données du site web « codingforyou.net » pourraient être envoyées dans des courriels, soit pour communiquer avec vous, ou pour communiquer à l’interne, à l’aide de la plateforme GMail.',
-    privacyP3:
-      'Afin de vous assurer une expérience de paiement agréable, certaines de vos informations personnelles sauvegardées dans la base de données du site web « codingforyou.net » pourrait être partagée avec la plateforme de paiements Stripe.',
-    privacyP4:
-      'Nous nous engageons aussi à n’utiliser l’adresse de courriel que vous nous donnez dans le formulaire de contact du site web « codingforyou.net » que pour communiquer avec vous.',
   },
   en: {
     aboutUs:
       'We are a team of talented, experienced and creative developers and designers. We will create any website you wish at a very low cost! The procedure is very simple. You give us a general idea of what you want and our group will make your magical dream come true! ',
     accountID: 'Account ID',
     addOrderDetails: 'If necessary, please contact us to give more details on your order',
+    advancedAnimation: 'Avanced Animations',
+    advancedAnimationDescription:
+      'We incorporate breathtaking animations to impress your audience! Our animations are responsive, stunning and carefully created by our team of designers. If you have an animation idea, we can definitely make it come true!',
     buy: 'Buy',
     cancel: 'Cancel',
     clientEmail: 'Client email',
@@ -117,6 +129,8 @@ export default {
     editComments: 'Edit comments',
     editCommentsPlaceholder: 'What are your comments?',
     email: 'Email address',
+    enNotLegallyBinding:
+      'Please note that only the French version of the privacy policy is legally binding',
     errorLoadingOrders: 'An error occured while loading the orders',
     errorMessage: 'An unexpected error occured',
     errorSendingMail: 'An error occured while sending the email',
@@ -141,6 +155,9 @@ export default {
     mainCFY: 'CodingForYou <codingforyou.net@gmail.com>',
     messageFromCFY: 'New Message From CodingForYou',
     messageToClient: 'Message...',
+    nextLevelUI: 'Next Level UI',
+    nextLevelUIDescription:
+      'Our developers can produce next level user interfaces by integrating reactiveness, buiding an amazing color palette and bringing impressive animations to your site. We integrate all the necessary elements to assemble an exceptional and professional web page for you!',
     noFilter: 'No filter',
     notCompleted: 'Not completed',
     orders: 'Orders',
@@ -152,6 +169,14 @@ export default {
     plsLoginToBuy: 'You must be logged in to buy a site from us!',
     plsTurnDevice: 'Please turn your device to portrait mode',
     privacy: 'Privacy Policy',
+    privacyP1:
+      'As soon as you connect to the “codingforyou.net” website, your full name, your email address, the reference to your profile picture and your digital identifier will be extracted from your Google account to be saved, in addition to your language web browser, on the database of the “codingforyou.net” website. This information may be updated later. The joint venture “CodingForYou,” administrator of the “codingforyou.net” website, undertakes not to share said information with third parties except for the following exceptions :',
+    privacyP2:
+      'Your personal information saved in the database of the “codingforyou.net” website could be sent by email, either to communicate with you, or to communicate internally, using the GMail platform.',
+    privacyP3:
+      'In order to ensure a pleasant payment experience, some of your personal information saved in the database of the “codingforyou.net” website could be shared with the Stripe payment platform.',
+    privacyP4:
+      'We also undertake to use the email address you give us in the contact form of the “codingforyou.net” website only to communicate with you.',
     productName: 'Product name',
     salesCFY: 'Sales CodingForYou <sales@codingforyou.net>',
     salesRefunds: 'Sales & Refunds',
@@ -175,16 +200,9 @@ export default {
     validTitle: 'Please enter a title',
     webPackages: 'Web Packages',
     webPackagesInstructions: 'Click on one of the packages in order to purchase it.',
+    websiteOptimization: 'Website optimization',
+    websiteOptimizationDescription:
+      'We use special techniques and tools in the process of your site’s creation in order to make it as fast as possible for the users. It’s thoroughly added to the site so that navigation and loading is swiftly and pleasant.',
     welcome: 'Welcome!',
-    enNotLegallyBinding:
-      'Please note that only the French version of the privacy policy is legally binding',
-    privacyP1:
-      'As soon as you connect to the “codingforyou.net” website, your full name, your email address, the reference to your profile picture and your digital identifier will be extracted from your Google account to be saved, in addition to your language web browser, on the database of the “codingforyou.net” website. This information may be updated later. The joint venture “CodingForYou,” administrator of the “codingforyou.net” website, undertakes not to share said information with third parties except for the following exceptions :',
-    privacyP2:
-      'Your personal information saved in the database of the “codingforyou.net” website could be sent by email, either to communicate with you, or to communicate internally, using the GMail platform.',
-    privacyP3:
-      'In order to ensure a pleasant payment experience, some of your personal information saved in the database of the “codingforyou.net” website could be shared with the Stripe payment platform.',
-    privacyP4:
-      'We also undertake to use the email address you give us in the contact form of the “codingforyou.net” website only to communicate with you.',
   },
 };
