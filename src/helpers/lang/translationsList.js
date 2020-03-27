@@ -84,6 +84,16 @@ export default {
     webPackages: 'Forfaits web',
     webPackagesInstructions: "Cliquez sur un des forfaits suivants pour l'acheter.",
     welcome: 'Bienvenue!',
+    enNotLegallyBinding:
+      'Veuillez noter que seule la version française de la politique de respect de la vie privée a valeur légale',
+    privacyP1:
+      'Dès votre connexion sur le site web « codingforyou.net », votre nom complet, votre adresse de courriel, la référence à votre image de profil et votre identifiant numérique seront extraits de votre compte Google pour être sauvegardés, en plus de la langue de votre navigateur web, sur la base de donnée du site web « codingforyou.net ». Ces informations pourraient être mises à jour subséquemment. La société en participation « CodingForYou », administratrice du site web « codingforyou.net », s’engage à ne partager lesdites informations à des tiers sauf pour les exceptions suivantes :',
+    privacyP2:
+      'Vos informations personnelles sauvegardées dans la base de données du site web « codingforyou.net » pourraient être envoyées dans des courriels, soit pour communiquer avec vous, ou pour communiquer à l’interne, à l’aide de la plateforme GMail.',
+    privacyP3:
+      'Afin de vous assurer une expérience de paiement agréable, certaines de vos informations personnelles sauvegardées dans la base de données du site web « codingforyou.net » pourrait être partagée avec la plateforme de paiements Stripe.',
+    privacyP4:
+      'Nous nous engageons aussi à n’utiliser l’adresse de courriel que vous nous donnez dans le formulaire de contact du site web « codingforyou.net » que pour communiquer avec vous.',
   },
   en: {
     aboutUs:
@@ -166,5 +176,15 @@ export default {
     webPackages: 'Web Packages',
     webPackagesInstructions: 'Click on one of the packages in order to purchase it.',
     welcome: 'Welcome!',
+    enNotLegallyBinding:
+      'Please note that only the French version of the privacy policy is legally binding',
+    privacyP1:
+      'As soon as you connect to the “codingforyou.net” website, your full name, your email address, the reference to your profile picture and your digital identifier will be extracted from your Google account to be saved, in addition to your language web browser, on the database of the “codingforyou.net” website. This information may be updated later. The joint venture “CodingForYou,” administrator of the “codingforyou.net” website, undertakes not to share said information with third parties except for the following exceptions :',
+    privacyP2:
+      'Your personal information saved in the database of the “codingforyou.net” website could be sent by email, either to communicate with you, or to communicate internally, using the GMail platform.',
+    privacyP3:
+      'In order to ensure a pleasant payment experience, some of your personal information saved in the database of the “codingforyou.net” website could be shared with the Stripe payment platform.',
+    privacyP4:
+      'We also undertake to use the email address you give us in the contact form of the “codingforyou.net” website only to communicate with you.',
   },
 };
