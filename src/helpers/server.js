@@ -1,3 +1,4 @@
+import { dev } from '@helpers/other.js';
 import * as sapper from '@sapper/server';
 import bodyParser from 'body-parser';
 import compression from 'compression';
@@ -7,8 +8,7 @@ import MemoryStoreFactory from 'memorystore';
 import passport from 'passport';
 import sirv from 'sirv';
 
-const { PORT, NODE_ENV } = process.env;
-const dev = NODE_ENV === 'development';
+const { PORT } = process.env;
 
 const MemoryStore = MemoryStoreFactory(session);
 
@@ -30,7 +30,7 @@ export function start() {
     // NOTE Sapper middlewares
     .use(
       bodyParser.json({
-        verify: function (req, res, buf) {
+        verify: function(req, res, buf) {
           req.rawBody = buf.toString();
         },
       }),

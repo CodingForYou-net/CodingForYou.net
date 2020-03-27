@@ -1,6 +1,5 @@
 import { User } from '@helpers/mongoose.js';
-
-const dev = process.env.NODE_ENV === 'development';
+import { dev } from '@helpers/other.js';
 
 export async function post(req, res) {
   const user = req.user;
@@ -13,8 +12,7 @@ export async function post(req, res) {
     await userDoc.save();
     res.status(200).send('lang saved');
   } catch (error) {
-    if (dev)
-      console.log(error);
+    if (dev) console.log(error);
     res.status(500).send('an error occured');
   }
 }

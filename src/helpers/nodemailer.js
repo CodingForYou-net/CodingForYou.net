@@ -6,12 +6,10 @@ import {
   mailServer,
   ourEmails,
 } from '@config/keys.js';
+import { dev } from '@helpers/other.js';
 import { getTranslation } from '@helpers/translation.js';
-import { translationsList } from '@helpers/translation.js';
 import { createTransport } from 'nodemailer';
 import hbs from 'nodemailer-express-handlebars';
-
-const dev = process.env.NODE_ENV === 'development';
 
 const transporters = {
   main: createTransport({

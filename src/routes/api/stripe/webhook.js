@@ -2,9 +2,9 @@ import { stripeSecret, stripeWebhookSecret } from '@config/keys.js';
 import { ourEmails } from '@config/keys.js';
 import { Order, Product } from '@helpers/mongoose.js';
 import { sendMail } from '@helpers/nodemailer.js';
+import { dev } from '@helpers/other.js';
 import Stripe from 'stripe';
 
-const dev = process.env.NODE_ENV === 'development';
 const stripe = Stripe(stripeSecret);
 
 export async function post(req, res) {

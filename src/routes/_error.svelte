@@ -1,11 +1,10 @@
 <script>
   import { _, translations, translationsList } from '@helpers/translation.js';
   import Navbar from '@components/Navbar.svelte';
+  import { dev } from '@helpers/other.js';
 
   export let status;
   export let error;
-
-  const dev = process.env.NODE_ENV === 'development';
 
   translations.update(translationsList);
 </script>

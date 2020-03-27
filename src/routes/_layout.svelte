@@ -41,7 +41,6 @@
   let navStayOpen;
   let main;
   let landscapeAsked;
-  $: console.log(landscapeAsked);
 
   onMount(() => {
     import('quill').then((module) => (window.Quill = module.default));
@@ -55,6 +54,8 @@
   });
 
   function handleResize() {
+    const screenHeight = `${window.innerHeight}px`;
+    document.documentElement.style.setProperty('--screen-height', screenHeight);
     if (!mobile({ tablet: false, featureDetect: true })) return;
     const isLandscape = window.matchMedia('(orientation: landscape)').matches;
     if (isLandscape) {

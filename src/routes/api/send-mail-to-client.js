@@ -1,7 +1,6 @@
 import { sendMail } from '@helpers/nodemailer.js';
+import { dev } from '@helpers/other.js';
 import { getTranslation } from '@helpers/translation.js';
-
-const dev = process.env.NODE_ENV === 'development';
 
 export async function post(req, res) {
   try {

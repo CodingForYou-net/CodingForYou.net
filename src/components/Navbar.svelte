@@ -97,11 +97,8 @@
 
   nav {
     background-color: darken($theme-black, 5%);
-    height: 100vh;
-    height: -webkit-fill-available;
-    height: -moz-available;
-    height: fill-available;
-    height: stretch;
+    height: var(--screen-height, 100vh);
+    overflow: hidden;
     position: fixed;
     top: 0;
     transition: width 0.6s ease;

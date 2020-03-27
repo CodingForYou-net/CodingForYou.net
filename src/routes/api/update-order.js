@@ -1,6 +1,5 @@
 import { Order } from '@helpers/mongoose.js';
-
-const dev = process.env.NODE_ENV === 'development';
+import { dev } from '@helpers/other.js';
 
 export async function post(req, res) {
   if (!(req.user && req.user.admin)) return res.status(401).send('unauthorized');

@@ -2,10 +2,7 @@ import { googleCallbackURL, googleClientID, googleClientSecret } from '@config/k
 import { User } from '@helpers/mongoose.js';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 
-const { NODE_ENV } = process.env;
-const dev = NODE_ENV === 'development';
-
-export default function (passport) {
+export default function(passport) {
   passport.use(
     new GoogleStrategy(
       {

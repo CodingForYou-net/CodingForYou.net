@@ -1,8 +1,6 @@
 import { ourEmails } from '@config/keys.js';
 import { sendMail } from '@helpers/nodemailer.js';
-import { emailRegex } from '@helpers/other.js';
-
-const dev = process.env.NODE_ENV === 'development';
+import { dev, emailRegex } from '@helpers/other.js';
 
 export async function post(req, res) {
   const { name, email, title, message } = req.body;

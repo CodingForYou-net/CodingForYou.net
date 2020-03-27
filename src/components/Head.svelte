@@ -1,12 +1,12 @@
 <script>
   import { store as lang } from '@helpers/translation.js';
+  import { dev } from '@helpers/other.js';
 
   $: description =
     $lang.current === 'en'
       ? 'At CodingForYou, we create beautiful websites at a low cost'
       : 'Chez OnCodePourVous, nous vous créons de magnifiques sites web à bas prix';
   $: subject = $lang.current === 'en' ? 'websites at low cost' : 'sites web à bas prix';
-  const dev = process.env.NODE_ENV === 'development';
 
   $: title = `CodingForYou | ${$lang.current.charAt(0).toUpperCase() + $lang.current.slice(1)}${
     dev ? ' [DEV]' : ''
