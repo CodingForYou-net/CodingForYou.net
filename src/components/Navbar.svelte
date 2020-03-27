@@ -97,6 +97,7 @@
 
   nav {
     background-color: darken($theme-black, 5%);
+    height: 100vh;
     height: var(--screen-height, 100vh);
     overflow: hidden;
     position: fixed;
