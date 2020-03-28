@@ -368,7 +368,7 @@
           <span class="link-text">{$user.firstName} {$user.lastName}</span>
         </a>
       {:else}
-        <a href="/{$lang.current}/login" class="nav-link">
+        <a href="/{$lang.current}/login#top" class="nav-link">
           <svg
             aria-hidden="true"
             focusable="false"
