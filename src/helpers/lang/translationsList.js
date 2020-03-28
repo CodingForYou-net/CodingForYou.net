@@ -108,6 +108,7 @@ export default {
     ccLicense: 'license CC BY 4.0',
     faAttriution: 'Ils sont attribués à',
     usedLibraries: 'Les librairies suivantes ont été utilisés pour la réalisation de ce site :',
+    signInGoogle: 'Se connecter avec Google',
   },
   en: {
     aboutUs:
@@ -214,5 +215,6 @@ export default {
     ccLicense: 'CC BY 4.0 Licence',
     faAttriution: "They're attributed to",
     usedLibraries: 'The following libraries were used in the making of this site :',
+    signInGoogle: 'Sign in with Google',
   },
 };
