@@ -103,7 +103,7 @@ export default {
     validMessage: 'Veuillez entrer un message',
     validName: 'Veuillez entrer un nom',
     validTitle: 'Veuillez entrer un titre',
-    webPackages: 'Forfaits web',
+    webPackages: 'Forfaits de site Web',
     webPackagesInstructions: "Cliquez sur un des forfaits suivants pour l'acheter.",
     websiteOptimization: 'Optimisation de sites web',
     websiteOptimizationDescription:
@@ -115,6 +115,7 @@ export default {
     faAttriution: 'Ils sont attribués à',
     usedLibraries: 'Les librairies suivantes ont été utilisés pour la réalisation de ce site :',
     signInGoogle: 'Se connecter avec Google',
+    noOrders: 'Pas de commandes',
   },
   en: {
     aboutUs:
@@ -216,9 +217,9 @@ export default {
     validMessage: 'Please enter a message',
     validName: 'Please enter a name',
     validTitle: 'Please enter a title',
-    webPackages: 'Web Packages',
+    webPackages: 'Website Packages',
     webPackagesInstructions: 'Click on one of the packages in order to purchase it.',
-    websiteOptimization: 'Website optimization',
+    websiteOptimization: 'Website Optimization',
     websiteOptimizationDescription:
       'We use special techniques and tools in the process of your site’s creation in order to make it as fast as possible for the users. It’s thoroughly added to the site so that navigation and loading is swiftly and pleasant.',
     welcome: 'Welcome!',
@@ -228,5 +229,6 @@ export default {
     faAttriution: "They're attributed to",
     usedLibraries: 'The following libraries were used in the making of this site :',
     signInGoogle: 'Sign in with Google',
+    noOrders: 'No orders',
   },
 };
