@@ -49,12 +49,16 @@
     </tr>
     <tr>
       <th>Nom</th>
-      <td>{{product.name}}</td>
+      <td>{{product.name.fr}}</td>
     </tr>
     <tr>
       <th>Description</th>
-      <td>{{product.description}}</td>
+      <td>{{product.description.fr}}</td>
     </tr>
+    {{#each product.features}}
+    <th>Caractéristique [{{@index}}]</th>
+    <td>{{this.fr}}</td>
+    {{/each}}
     {{#each product.images}}
     <tr>
       <th>Image [{{@index}}]</th>

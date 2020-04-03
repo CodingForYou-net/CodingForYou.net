@@ -10,6 +10,7 @@ export default {
       "Nous incorporons des animations époustouflantes afin d'impressionner votre public! Nos animations sont réactives, magnifiques et soigneusement créées par notre équipe de designers. Si vous avez une idée d'animation, nous pouvons certainement le réaliser pour vous!",
     buy: 'Achat',
     cancel: 'Annuler',
+    ccLicense: 'license CC BY 4.0',
     clientEmail: 'Courriel du client',
     clientFirstName: 'Prénom du client',
     clientLastName: 'Nom de famille du client',
@@ -19,7 +20,7 @@ export default {
     contactCFY: 'Contact CodingForYou <contact@codingforyou.net>',
     contactInfo:
       "Si vous avez des questions, des commentaires ou des suggestions, n'hésitez pas à nous envoyer un e-mail à",
-    contract: 'Contrat',
+    contract: 'Contrat de vente',
     copyright: 'Tous droits réservés.',
     credits: 'Crédits',
     easyFastReliable: 'Facile, rapide, fiable!',
@@ -33,12 +34,15 @@ export default {
     errorRedirectingCheckout: 'Une erreur est survenue lors de la redirection du paiment',
     errorSendingMail: "Une erreur est surevnue lors de l'envoi du courriel",
     errorUpdatingOrder: 'Erreur lors de la mise à jour de la commande',
+    faAttriution: 'Ils sont attribués à',
     features: 'Caractéristiques',
     filterBy: 'Filtrer par',
     fullname: 'Nom et prénom',
     haveComments: 'Décrivez le site web dont vous rêvez',
     hello: 'Bonjour {name}!',
     here: 'ici',
+    iconsLicense:
+      "Les icônes dans le barre de navigation, les forfaits web et la page d'erreur sont licensés sous une ",
     isAdminLinkP1: 'Vous êtes un administrateur. Cliquez',
     isAdminLinkP2: 'pour accéder au panneau de contrôle administrateur.',
     later: 'Plus tard',
@@ -76,7 +80,7 @@ export default {
     privacyP3:
       'Afin de vous assurer une expérience de paiement agréable, certaines de vos informations personnelles sauvegardées dans la base de données du site web « codingforyou.net » pourrait être partagée avec la plateforme de paiements Stripe.',
     privacyP4:
-      'Nous nous engageons aussi à n’utiliser l’adresse de courriel que vous nous donnez dans le formulaire de contact du site web « codingforyou.net » que pour communiquer avec vous.',
+      'Nous nous engageons aussi à n’utiliser l’adresse de courriel que vous nous donnez dans le formulaire de contact du site web « codingforyou.net » que pour communiquer avec vous. De plus, nous nous engageons à ne pas garder les informations et les médias que vous nous donnez pour la création de votre produit après la conception dudit produit.',
     productName: 'Nom du produit',
     salesCFY: 'Ventes CodingForYou <sales@codingforyou.net>',
     salesRefunds: 'Ventes et remboursements',
@@ -93,6 +97,8 @@ export default {
     title: 'Titre',
     toolsMaterials:
       'Les outils et matériaux suivants ont été utilisés pour la réalisation de ce site et de notre logo :',
+    usedLibraries:
+      'Les librairies suivantes ont été utilisés durant la réalisation de ce site ou sont utilisés dans ce site :',
     validEmail: 'Veuillez entrer une adresse courriel valide',
     validMessage: 'Veuillez entrer un message',
     validName: 'Veuillez entrer un nom',
@@ -103,11 +109,6 @@ export default {
     websiteOptimizationDescription:
       'Nous utilisons des techniques et des outils spéciaux dans le processus de création de votre site dans le but de le rendre aussi rapide que possible pour les utilisateurs. Il est minutieusement ajouté au site afin que la navigation et le chargement soient de manière rapide et agréable.',
     welcome: 'Bienvenue!',
-    iconsLicense:
-      "Les icônes dans le barre de navigation, les forfaits web et la page d'erreur sont licensés sous une ",
-    ccLicense: 'license CC BY 4.0',
-    faAttriution: 'Ils sont attribués à',
-    usedLibraries: 'Les librairies suivantes ont été utilisés pour la réalisation de ce site :',
   },
   en: {
     aboutUs:
@@ -119,6 +120,7 @@ export default {
       'We incorporate breathtaking animations to impress your audience! Our animations are responsive, stunning and carefully created by our team of designers. If you have an animation idea, we can definitely make it come true!',
     buy: 'Buy',
     cancel: 'Cancel',
+    ccLicense: 'CC BY 4.0 Licence',
     clientEmail: 'Client email',
     clientFirstName: 'Client fisrt name',
     clientLastName: 'Client last name',
@@ -127,7 +129,7 @@ export default {
     completed: 'Completed',
     contactCFY: 'Contact CodingForYou <contact@codingforyou.net>',
     contactInfo: 'If you have any questions, comments or suggestions, feel free to email us at',
-    contract: 'Contract',
+    contract: 'Sales agreement',
     copyright: 'All rights reserved.',
     credits: 'Credits',
     easyFastReliable: 'Easy, Fast, Reliable!',
@@ -141,12 +143,15 @@ export default {
     errorSendingMail: 'An error occured while sending the email',
     errorUpdatingOrder: "Could'nt update the order",
     errorUpdatingOrder: "Couldn't update the order",
+    faAttriution: "They're attributed to",
     features: 'Features',
     filterBy: 'Filter by',
     fullname: 'Full name',
     haveComments: "Describe the website you're dreaming of",
     hello: 'Hello {name}!',
     here: 'here',
+    iconsLicense:
+      'The icons on the navigation bar, the web packages and the error page are licensed under a ',
     isAdminLinkP1: 'You are an administrator. Click',
     isAdminLinkP2: 'to go to the admin dashboard.',
     later: 'Later',
@@ -181,7 +186,7 @@ export default {
     privacyP3:
       'In order to ensure a pleasant payment experience, some of your personal information saved in the database of the “codingforyou.net” website could be shared with the Stripe payment platform.',
     privacyP4:
-      'We also undertake to use the email address you give us in the contact form of the “codingforyou.net” website only to communicate with you.',
+      'We also undertake to use the email address you give us in the contact form of the “codingforyou.net” website only to communicate with you. Furthermore, we undertake not to keep the information and the media that you give us for the creation of your product after the creation of said product.',
     productName: 'Product name',
     salesCFY: 'Sales CodingForYou <sales@codingforyou.net>',
     salesRefunds: 'Sales & Refunds',
@@ -199,6 +204,8 @@ export default {
     title: 'Title',
     toolsMaterials:
       'The following tools and materials were used in the making of this site and of our logo :',
+    usedLibraries:
+      'The following libraries were used in the making of this site or are used in this site :',
     validEmail: 'Please enter a valid email adress',
     validMessage: 'Please enter a message',
     validName: 'Please enter a name',
@@ -209,10 +216,5 @@ export default {
     websiteOptimizationDescription:
       'We use special techniques and tools in the process of your site’s creation in order to make it as fast as possible for the users. It’s thoroughly added to the site so that navigation and loading is swiftly and pleasant.',
     welcome: 'Welcome!',
-    iconsLicense:
-      'The icons on the navigation bar, the web packages and the error page are licensed under a ',
-    ccLicense: 'CC BY 4.0 Licence',
-    faAttriution: "They're attributed to",
-    usedLibraries: 'The following libraries were used in the making of this site :',
   },
 };

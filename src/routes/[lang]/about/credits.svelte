@@ -33,6 +33,9 @@
       <a href="https://figma.com">Figma</a>
     </li>
     <li>
+      <a href="https://fonts.google.com/">Google Fonts</a>
+    </li>
+    <li>
       {$_('iconsLicense')}
       <a href="https://creativecommons.org/licenses/by/4.0/">{$_('ccLicense')}</a>
       . {$_('faAttriution')}
@@ -47,5 +50,8 @@
         <a href={library[1]}>{library[0]}</a>
       </li>
     {/each}
+    <li>
+      <a href="https://stripe.com/">Stripe</a>
+    </li>
   </ul>
 </section>
