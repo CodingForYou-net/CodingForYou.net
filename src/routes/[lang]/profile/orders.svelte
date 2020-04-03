@@ -53,6 +53,9 @@
       <Spinner size="60" speed="750" color="#272727" thickness="3" gap="40" />
     </div>
   {:then orders}
+    {#if orders}
+      <h3>{$_('noOrders')}</h3>
+    {/if}
     <div in:fade={{ duration: 250 }}>
       {#if orders}
         {#each orders as order}
