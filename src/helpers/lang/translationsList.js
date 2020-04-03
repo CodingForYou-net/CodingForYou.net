@@ -109,6 +109,12 @@ export default {
     websiteOptimizationDescription:
       'Nous utilisons des techniques et des outils spéciaux dans le processus de création de votre site dans le but de le rendre aussi rapide que possible pour les utilisateurs. Il est minutieusement ajouté au site afin que la navigation et le chargement soient de manière rapide et agréable.',
     welcome: 'Bienvenue!',
+    iconsLicense:
+      "Les icônes dans le barre de navigation, les forfaits web et la page d'erreur sont licensés sous une ",
+    ccLicense: 'license CC BY 4.0',
+    faAttriution: 'Ils sont attribués à',
+    usedLibraries: 'Les librairies suivantes ont été utilisés pour la réalisation de ce site :',
+    signInGoogle: 'Se connecter avec Google',
   },
   en: {
     aboutUs:
@@ -216,5 +222,11 @@ export default {
     websiteOptimizationDescription:
       'We use special techniques and tools in the process of your site’s creation in order to make it as fast as possible for the users. It’s thoroughly added to the site so that navigation and loading is swiftly and pleasant.',
     welcome: 'Welcome!',
+    iconsLicense:
+      'The icons on the navigation bar, the web packages and the error page are licensed under a ',
+    ccLicense: 'CC BY 4.0 Licence',
+    faAttriution: "They're attributed to",
+    usedLibraries: 'The following libraries were used in the making of this site :',
+    signInGoogle: 'Sign in with Google',
   },
 };
