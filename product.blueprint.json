@@ -17,5 +17,6 @@
     }
   ],
   "quantity": 1,
-  "archived": false
+  "archived": false,
+  "specificUser": false
 }

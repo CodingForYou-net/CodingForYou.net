@@ -3,7 +3,7 @@
   import { isLoggedIn, isAdmin } from '@helpers/user.js';
 </script>
 
-<style>
+<style lang="scss">
   svg {
     position: relative;
     min-width: 100px;
@@ -17,13 +17,14 @@
     align-items: center;
     flex-direction: column;
     height: 100vh;
+    text-align: center;
   }
 </style>
 
 {#if $isLoggedIn && $isLoggedIn}
   <slot />
 {:else}
-  <section>
+  <section class="page">
     <svg
       aria-hidden="true"
       focusable="false"

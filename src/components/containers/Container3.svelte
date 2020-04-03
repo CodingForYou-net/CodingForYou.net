@@ -44,9 +44,10 @@
       }, 0);
       const { dismiss } = await Swal.fire({
         title: getTranslation('haveComments'),
-        html: quillHtml,
+        html: `${quillHtml}<br><small>${getTranslation('acceptSalesAgreement')}</small>`,
         width: 1500,
         showCancelButton: true,
+        confirmButtonText: getTranslation('toBuy'),
         cancelButtonText: getTranslation('cancel'),
       });
       if (dismiss) return;

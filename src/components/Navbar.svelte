@@ -45,7 +45,7 @@
     !isOpen && (logoHovered = true);
   }
 
-  //Logo leave
+  // Logo leave
   function logoLeave() {
     logoHovered = false;
   }
@@ -368,7 +368,7 @@
           <span class="link-text">{$user.firstName} {$user.lastName}</span>
         </a>
       {:else}
-        <a href="/{$lang.current}/login#top" class="nav-link">
+        <a href="/{$lang.current}/login#top" class="nav-link" on:click={handleNavItemClick}>
           <svg
             aria-hidden="true"
             focusable="false"

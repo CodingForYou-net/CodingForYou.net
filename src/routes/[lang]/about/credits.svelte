@@ -54,4 +54,13 @@
       <a href="https://stripe.com/">Stripe</a>
     </li>
   </ul>
+  <h4>{$_('usedTutorials')}</h4>
+  <ul>
+    <li>
+      <a href="https://youtu.be/biOMz4puGt8">{$_('navbarTutorial')}</a>
+    </li>
+    <li>
+      <a href="https://youtu.be/MMNEEdGa5eE">{$_('wavesTutorial')}</a>
+    </li>
+  </ul>
 </section>

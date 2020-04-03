@@ -28,7 +28,7 @@ export default {
     editCommentsPlaceholder: 'Quels sont vos commentaires?',
     email: 'Adresse courriel',
     enNotLegallyBinding:
-      'Veuillez noter que seule la version française de la politique de respect de la vie privée a valeur légale',
+      'Veuillez noter que seule la version française de la politique de confidentialité a valeur légale',
     errorLoadingOrders: 'Une erreur est survenue lors du chargements des commandes',
     errorMessage: 'Une erreur inattendue est survenue',
     errorRedirectingCheckout: 'Une erreur est survenue lors de la redirection du paiment',
@@ -116,6 +116,16 @@ export default {
     usedLibraries: 'Les librairies suivantes ont été utilisés pour la réalisation de ce site :',
     signInGoogle: 'Se connecter avec Google',
     noOrders: 'Pas de commandes',
+    navbarTutorial: 'Menu de navigation',
+    wavesTutorial: 'Vagues de la page principale',
+    usedTutorials: 'Les tutoriels suivantes ont été utilisés durant la réalisation de ce site :',
+    orderReceived: 'Nous avons reçu votre commande !',
+    orderReceivedMessage: 'Nous commencerons sous peu la création du produit commandé',
+    checkSpam:
+      "Si vous n'avez pas de nouvelles de nous dans les quelques prochains jours, n'oubliez pas de regarder vos courriels indésirables !",
+    toBuy: 'Acheter',
+    acceptSalesAgreement:
+      'En cliquant sur « Acheter », vous accepter le <a href="/fr/about/contract#top" target="_blank">contrat de vente</a>',
   },
   en: {
     aboutUs:
@@ -218,7 +228,7 @@ export default {
     validName: 'Please enter a name',
     validTitle: 'Please enter a title',
     webPackages: 'Website Packages',
-    webPackagesInstructions: 'Click on one of the packages in order to purchase it.',
+    webPackagesInstructions: 'Click on one of the packages to purchase it.',
     websiteOptimization: 'Website Optimization',
     websiteOptimizationDescription:
       'We use special techniques and tools in the process of your site’s creation in order to make it as fast as possible for the users. It’s thoroughly added to the site so that navigation and loading is swiftly and pleasant.',
@@ -230,5 +240,15 @@ export default {
     usedLibraries: 'The following libraries were used in the making of this site :',
     signInGoogle: 'Sign in with Google',
     noOrders: 'No orders',
+    navbarTutorial: 'Navigation menu',
+    wavesTutorial: 'Front page waves',
+    usedTutorials: 'The following tutorials were used in the making of this site :',
+    orderReceived: 'We received your order !',
+    orderReceivedMessage: "We'll soon start the creation of the ordered product",
+    checkSpam:
+      "If you don't hear from us in the next few days, don't forget to check in your spam / junk mail box!",
+    toBuy: 'Buy',
+    acceptSalesAgreement:
+      'By clicking on "Buy" you accept the <a href="/fr/about/contract#top" target="_blank">sales agreement</a>',
   },
 };

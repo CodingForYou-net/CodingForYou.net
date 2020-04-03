@@ -40,9 +40,16 @@
 </style>
 
 <div id="content">
-  <h3>{completed ? '✅' : '❌'} {product.name}</h3>
+  <h3>{completed ? '✅' : '❌'} {product.name[$lang.current]}</h3>
   <p>
-    <samp>{product.description} ({price})</samp>
+    <samp>{product.description[$lang.current]} ({price})</samp>
+  </p>
+  <p>
+    {#if product.features.length > 0}
+      <samp>
+        {$_('features')}: {product.features.map((feature) => feature[$lang.current]).join(', ')}
+      </samp>
+    {/if}
   </p>
   <div id="comments">
     {@html xssFilter.process(comments)}

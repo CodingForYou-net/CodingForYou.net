@@ -12,9 +12,13 @@ export async function get(req, res) {
   if (!cancelPath) return res.status(400).send('please specify a cancel path');
   if (!comments) return res.status(400).send('please specify a comments');
   if (!productID) return res.status(400).send('please specify a productID');
-  const product = await (await Product.findById(productID)).toObject();
-  if (!product || product.archived) return res.status(400).send('please specify a valid productID');
-
+  const product = await await Product.findById(productID);
+  if (
+    !product ||
+    product.archived ||
+    (product.specificUser && product.specificUser !== req.user.id)
+  )
+    return res.status(400).send('please specify a valid productID');
   const { lang } = req.user;
   const { name, images, amount, currency, description, quantity } = product;
 
@@ -39,5 +43,9 @@ export async function get(req, res) {
       productID,
     },
   });
+  if (product.oneTime) {
+    product.archived = true;
+    product.save();
+  }
   res.send(session.id);
 }

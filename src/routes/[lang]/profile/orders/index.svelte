@@ -31,35 +31,44 @@
 <style lang="scss">
   section {
     position: relative;
-    height: 100vh;
   }
-  #spinner {
+  #spinner-container {
+    height: 100vh;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    right: 0;
+    #spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 </style>
 
 <section class="page">
   <h1>{$_('orders')}</h1>
   {#if !orders}
-    <div id="spinner">
-      <Spinner size="60" speed="750" color="#272727" thickness="3" gap="40" />
+    <div id="spinner-container">
+      <div id="spinner">
+        <Spinner size="60" speed="750" color="#272727" thickness="3" gap="40" />
+      </div>
     </div>
   {/if}
   {#await orders}
-    <div id="spinner">
-      <Spinner size="60" speed="750" color="#272727" thickness="3" gap="40" />
+    <div id="spinner-container">
+      <div id="spinner">
+        <Spinner size="60" speed="750" color="#272727" thickness="3" gap="40" />
+      </div>
     </div>
   {:then orders}
-    {#if orders}
-      <h3>{$_('noOrders')}</h3>
-    {/if}
     <div in:fade={{ duration: 250 }}>
       {#if orders}
         {#each orders as order}
           <OrderCard {...order} />
+        {:else}
+          <h3>{$_('noOrders')}</h3>
         {/each}
       {/if}
     </div>

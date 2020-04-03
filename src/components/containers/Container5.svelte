@@ -163,7 +163,7 @@
       <p id="contactInfo" data-scroll data-type="1">
         {$_('contactInfo')}
         <strong>contact@codingforyou.net</strong>
-        !
+        ! {$_('checkSpam')}
       </p>
       <form id="contact-form" enctype="text/plain">
         <input

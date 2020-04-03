@@ -56,6 +56,14 @@ const OrderSchema = new Schema({
   },
   archived: {
     type: Boolean,
+    default: true,
+  },
+  specificUser: {
+    type: Schema.Types.Mixed,
+    default: true,
+  },
+  oneTime: {
+    type: Boolean,
     default: false,
   },
 });

@@ -24,8 +24,14 @@
 </style>
 
 <div class="order">
-  <h2>{product.name}</h2>
-  <h5>{product.description}</h5>
+  <h2>{product.name[$lang.current]}</h2>
+  <h5>{product.description[$lang.current]}</h5>
+  {#if product.features.length > 0}
+    <p>
+      <strong>{$_('features')}:</strong>
+      <span>{product.features.map((feature) => feature[$lang.current]).join(', ')}</span>
+    </p>
+  {/if}
   <hr />
   <p>
     <strong>{$_('completed')}:</strong>

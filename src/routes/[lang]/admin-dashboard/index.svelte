@@ -180,22 +180,25 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   #error {
     color: red;
   }
   #input {
     width: 99%;
   }
-  #spinner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  section {
-    position: relative;
+  #spinner-container {
     height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    #spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 </style>
 
@@ -241,8 +244,10 @@
 
   <input id="input" type="text" bind:value={searchTerms} placeholder={$_('searchTerms')} />
   {#await promise}
-    <div id="spinner">
-      <Spinner size="60" speed="750" color="#272727" thickness="3" gap="40" />
+    <div id="spinner-container">
+      <div id="spinner">
+        <Spinner size="60" speed="750" color="#272727" thickness="3" gap="40" />
+      </div>
     </div>
   {:then}
     {#if error}
