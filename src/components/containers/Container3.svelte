@@ -34,30 +34,26 @@
         goto('/api/auth/google');
       }
     } else {
-      let editor;
-      setTimeout(() => {
-        editor = new Quill('#editor', {
-          modules: { toolbar: '#toolbar' },
-          theme: 'snow',
-          placeholder: getTranslation('editCommentsPlaceholder'),
-        });
-      }, 0);
       const { dismiss } = await Swal.fire({
-        title: getTranslation('haveComments'),
-        html: `${quillHtml}<br><small>${getTranslation('acceptSalesAgreement')}</small>`,
-        width: 1500,
+        title: getTranslation('contract'),
+        html: `<br><small><label><input type="checkbox" id="agreementAccepted"> ${getTranslation(
+          'acceptSalesAgreement'
+        )}</label></small>`,
         showCancelButton: true,
         confirmButtonText: getTranslation('toBuy'),
         cancelButtonText: getTranslation('cancel'),
+        preConfirm() {
+          const checked = document.getElementById('agreementAccepted').checked;
+          if (!checked) Swal.showValidationMessage(getTranslation('plsAcceptAgreement'));
+          else return [checked];
+        },
       });
       if (dismiss) return;
-      const comments = editor.container.firstChild.innerHTML;
       try {
         const res = await fetch(
           `/api/stripe/create-checkout-session
         ?productID=${productID}
-        &cancelPath=%23buy
-        &comments=${encodeURIComponent(comments)}`
+        &cancelPath=%23buy`
             .replace(/\s/gm, '')
             .replace(/\n/gm, ''),
           {
@@ -137,6 +133,27 @@
       width: 100%;
     }
   }
+
+  #wantMore {
+    margin-top: 20px;
+    a {
+      display: inline-block;
+      color: white;
+      text-decoration: none;
+      &::after {
+        background: white;
+        content: '';
+        display: block;
+        height: 1px;
+        transition: width 0.3s;
+        width: 0;
+      }
+      &:hover::after {
+        transition: width 0.3s;
+        width: 100%;
+      }
+    }
+  }
 </style>
 
 <section id="buy">
@@ -154,6 +171,11 @@
         {showDetails ? $_('learnLess') + ' -' : $_('learnMore') + ' +'}
       </span>
     </div>
+    <p id="wantMore">
+      {$_('wantMore')}
+      <a href="/{$lang.current}/#contact">{$_('contactUs')}</a>
+      !
+    </p>
   </div>
   <div id="repeating-bottom" />
 </section>

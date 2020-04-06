@@ -15,16 +15,14 @@ export async function post(req, res) {
 
     if (event.type === 'checkout.session.completed') {
       const {
-        metadata: { comments, userID, productID },
+        metadata: { userID, productID },
         customer_email,
       } = event.data.object;
       try {
-        if (!comments) throw new Error('description is missing');
         if (!userID) throw new Error('userID is missing');
         if (!productID) throw new Error('productID is missing');
         const order = new Order({
           product: productID,
-          comments,
           user: userID,
         });
         await order.save();
@@ -41,7 +39,6 @@ export async function post(req, res) {
             customer_email,
             product,
             productID,
-            comments,
             dev,
             orderID: order.id,
             userID,
@@ -55,7 +52,7 @@ export async function post(req, res) {
           getTranslation('messageFromCFY', {}, user.lang),
           'message-to-client',
           {
-            message: getTranslation('orderReceivedMessage'),
+            message: getTranslation('orderReceivedMessage', { package: product.name[user.lang] }),
             lang: user.lang,
             subject: getTranslation('orderReceived'),
           }

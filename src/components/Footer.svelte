@@ -64,7 +64,7 @@
           <a href="/{$lang.current}/about/privacy#top">&rarr; {$_('privacy')}</a>
         </li>
         <li>
-          <a href="/{$lang.current}/about/contract#top">&rarr; {$_('contract')}</a>
+          <a href="/{$lang.current}/about/terms-and-conditions#top">&rarr; {$_('contract')}</a>
         </li>
         <li>
           <a href="/{$lang.current}/about/credits#top">&rarr; {$_('credits')}</a>

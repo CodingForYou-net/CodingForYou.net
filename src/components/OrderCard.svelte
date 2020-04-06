@@ -2,7 +2,6 @@
   import { xssFilter } from '@helpers/other.js';
   import { _, store as lang } from '@helpers/translation.js';
   export let product;
-  export let comments;
   export let date;
   export let completed;
 </script>
@@ -41,9 +40,5 @@
     <strong>Date:</strong>
     {new Date(date).toLocaleDateString()}
   </p>
-  <p>
-    <strong>{$_('comments')}:</strong>
-    ({$_('addOrderDetails')})
-  </p>
-  {@html xssFilter.process(comments)}
+  <p>({$_('addOrderDetails')})</p>
 </div>
